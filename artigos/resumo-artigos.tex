@@ -1,0 +1,666 @@
+
+
+\documentclass[10pt,a4paper]{article}
+\usepackage[brazil]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{latexsym}
+\usepackage{amssymb}
+
+\sloppy
+
+\title{Resumo de Artigos Selecionados}
+
+\author{Celina d' Ávila Samogin - RA 820157}
+
+\hyphenation{a-ta-lhos a-nu-al es-ca-la-bi-li-da-de a-tu-a-li-za-cao ins-tan-te a-pre-sen-ta-das ca-rac-te-ris-ti-cas ar-qui-va-dor ca-mi-nho pu-bli-ca-cao des-cre-vendo li-nhas}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+\newpage
+
+\begin{center}
+\begin{tabular}{|p{5cm}||p{10cm}|}
+\hline
+Categoria Genérica: & Sistemas Distribuídos\\\hline
+Categoria Específica: & Distribuição de Dados\\\hline
+Referência Bibliográfica: & Byers, J. W.; Luby, M.; Mitzenmacher, M. ; Rege, A. A digital fountain approach to reliable distribution of bulk data. In: \emph{Proceedings of the ACM SIGCOMM Conference on Applications, Technologies, Architectures and Protocols for Computer Communication (SIGCOMM'98)}.\\\hline
+Tipo: & Teórico\\\hline
+Local: & http://citeseerx.ist.psu.edu/viewdoc/\\ & summary?doi=10.1.1.57.628\\\hline
+Número de Páginas: & 12\\\hline
+Citações (CiteSeer): & 285\\\hline
+Número de Referências: & 27\\\hline
+Visão geral do assunto do artigo: &  Esse artigo descreve um protocolo chamado Digital Fountain, projetado para aplicações que tem requisitos de confiabilidade na distribuição de dados e de programas. Esses requisitos foram descritos: confiabilidade, eficiência, suporte às requisições dos clientes (iniciar, interromper, continuar), tolerância (perda de dados e diferentes taxas de transmissão). São brevemente apresentadas várias soluções já propostas para garantia destes requisitos. A DF utiliza um princípio básico de \emph{erasure codes}: os dados originais da fonte e seus dados redundantes são transmitidos para o destino e os dados redundantes podem ser usados para recuperar dados perdidos. Os autores descrevem o que eles chamam de requisitos importantes no projeto deste protocolo para obtenção de tráfego mínimo na rede e de escalabilidade. Os meios físicos considerados incluem IP \emph{multicast} sob internet, transmissão por satélite, rede sem fio e transmissão cabeada.\\\hline
+Conclusões, Contribuições e Resultados Obtidos: & A contribuição desse trabalho é uma comparação entre Tornado codes e Reed-Solomon codes. Foi feito um experimento de transmissão de um vídeo de 2MB, em uma rede entre UBerkeley, CMU e UCornell entre máquinas SUN Solaris.\\\hline
+Comentários: & Não foram consideradas aplicações de tempo real.\\\hline
+Expressões-chave: & \emph{Erasure Codes, Tornado Codes, Reed-Solomon Codes}\\\hline
+Observações: & O artigo foi sugerido nas notas de aula de Peer-to-Peer and Grid Computing http://www.cs.umd.edu/class/spring2007/cmsc818s/\\ & Lectures/lectures.htm acessado em 19/03/2010.\\\hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{|p{5cm}||p{10cm}|}
+\hline
+Categoria Genérica: & Sistemas Distribuídos\\\hline
+Categoria Específica: & Sistema de Armazenamento Distribuído\\\hline
+Referência Bibliográfica: & J. Kubiatowicz; D. Bindel; Y. Chen; S. Czerwinski; P. Eaton; D. Geels; R. Gummadi; S. Rhea; H. Weatherspoon; W. Weimer; C. Wells; B. Zhao. OceanStore: an architecture for global-scale persistent storage. In: \emph{Proceedings of the 9o international conference on Architectural support for programming languages and operating systems (ASPLOS '00)}.\\\hline
+Tipo: & Teórico\\\hline
+Local: & http://citeseerx.ist.psu.edu/viewdoc/\\ & summary?doi=10.1.1.38.1044\\\hline
+Número de Páginas: & 12\\\hline
+Citações (CiteSeer): & 749\\\hline
+Número de Referências: & 52\\\hline
+Visão geral do assunto do artigo: & Os autores falam dos requisitos da computação obíqua em infraestrutura persistente: conectividade, segurança e durabilidade de dados. São comentados os objetivos do OceanStore: possibilidade de ser projetado a partir de uma infraestrutura não-confiável e suportar dados que fluem livremente. O objetivo do OceanStore é propor uma arquitetura para Internet-wide archival storage utility baseado em uma federação de servidores não confiáveis. Os autores comentam o atual estado do protótipo: objetos e suas versões, objetos e suas formas (ativa e arquivada), réplicas e servidores e de que forma um objeto é encontrado (algoritmo probabilístico e algoritmo determinístico). Algumas aplicações do OceanStore são comentadas: serviço de e-mail, bibliotecas digitais, repositórios para dados científicos e agregação e difusão de dados de sensores. A arquitetura foi apresentada: identificação de objetos, controle de acesso (restrições de escrita e de leitura), mecanismos de localização de dados, modelo de atualização de dados, mecanismos de arquivamento (utiliza Tornado codes e Read-Solomon codes) e APIs para sistemas de arquivos Unix, para base de dados transacionais e \emph{gateway} para internet. O princípio básico de \emph{Erasure codes} utilizado pelo OceanStore é o tratamento dos dados de entrada como uma série de fragmentos (n), sua transformação desses fragmentos em um número maior ainda (2n ou 4n) e a propriedade essencial do código resultante que é que quaisquer n fragmentos codificados são suficientes para construir os dados originais. Os fragmentos são gerados em paralelo pela camada interna de servidores durante o processo de commit. \\\hline
+Conclusões, Contribuições e Resultados Obtidos: & A contribuição desse trabalho é uma publicação que propõe uma arquitetura para armazenamento de dados que usa \emph{erasure codes}. Os autores calculam a confiabilidade em um dado instante através de probabilidade e através da variação do número de fragmentos, concluem que a fragmentação dos dados aumenta a confiabilidade. \\\hline
+Comentários: & Os autores supõem que existam apenas falhas não correlacionadas entre as máquinas. O código pode ser baixado em http://oceanstore.cs.berkeley.edu/\\\hline
+Expressões-chave: & \emph{Ubiquitous Computing, Data Durability, Distributed Storage System, Replication, Erasure Code}\\\hline
+Observações: & O texto do artigo foi acessado em 03/04/2010. Outros artigos estão em http://oceanstore.cs.berkeley.edu/publications/index.html\\\hline
+
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{|p{5cm}||p{10cm}|}
+\hline
+Categoria Genérica: & Sistemas Distribuídos\\\hline
+Categoria Específica: & Disponibilidade de dados\\\hline
+Referência Bibliográfica: & Weatherspoon, H.; Kubiatowicz, J. D. Erasure Coding vs. Replication: A Quantitative Comparison. In: \emph{Proceedings of the 1st International Workshop on Peer-to-Peer Systems (IPTPS'01)} London, UK. p. 328--338, March 2002.\\\hline
+Tipo: & Teórico\\\hline
+Local: & http://citeseerx.ist.psu.edu/viewdoc/\\ & summary?doi=10.1.1.16.5545\\\hline
+Número de Páginas: & 10\\\hline
+Citações (CiteSeer): & 115\\\hline
+Número de Referências: & 14\\\hline
+Visão geral do assunto do artigo: & Esse artigo faz uma quantificação estatística das vantagens de \emph{erasure codes}, comparando características de sistemas  que utilizam esta técnica e também utilizam replicação de dados, com o objetivo de obter alta disponibilidade e durabilidade de dados diante de falhas de componentes destes sistemas. O artigo introduz uma definição de \emph{erasure codes} em termos de codificação e decodificação dos fragmentos de objetos. Os autores assumem que os sistemas estudados são constituídos por uma coleção de discos distribuídos que podem falhar e que são imediatamente substituídos por outros discos novos e sem dados.  Em seguida, são descritas detalhadamente três comparações utilizando tempo médio entre falhas, \emph{overhead} de armazenamento e \emph{repair epoch} (tempo de verificação do bloco). O artigo ainda apresenta brevemente uma arquitetura híbrida (arquivador central, fragmentos e réplicas) e conclui falando de questões abertas para pesquisa.\\\hline
+Conclusões, Contribuições e Resultados Obtidos: & A contribuição desse trabalho é a publicação de um trabalho que quantifica o ganho de disponibilidade de dados obtido com \emph{erasure codes}, que \emph{erasure codes} utilizam menos \emph{bandwidth} e armazenamento que replicação simples em sistemas com  tempo médio entre falhas semelhantes e que o uso de \emph{erasure codes} aumenta o tempo médio entre falhas para o mesmo armazenamento e mesmo \emph{repair epoch}, quando comparado com a replicação simples.\\\hline
+Comentários: & Os autores não avaliaram falhas como erros de softwre, erros operacionais, problemas de configuração para esse trabalho. \\\hline
+Expressões-chave: & \emph{Availability, Distributed Storage System, Replication, Erasure Code}\\\hline
+Observações: & Esse artigo foi sugerido nas notas de aula sobre \emph{erasure codes} do curso Peer-to-Peer and Grid Computing http://www.cs.umd.edu/class/spring2007/cmsc818s/\\ & Lectures/lectures.htm acessado em 19/03/2010. O texto do artigo também foi acessado nesta data.\\\hline
+
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{|p{5cm}||p{10cm}|}
+\hline
+Categoria Genérica: & Sistemas Distribuídos\\\hline
+Categoria Específica: & Distribuição de Dados\\\hline
+Referência Bibliográfica: & Dabek, F.; Li, J.; Sit, E.; Robertson, J.; Kaashoek, M. F.; Morris, R. Designing a DHT for low latency and high throughput. In: \emph{Proceedings of the 1st Conference on Symposium on Networked Systems Design and Implementation (NSDI'04)} San Francisco, California, USA. p. 85--98, 2004.\\\hline
+Tipo: & Experimental\\\hline
+Local: & http://citeseerx.ist.psu.edu/viewdoc/\\ & summary?doi=10.1.1.3.8345\\\hline
+Número de Páginas: & 14\\\hline
+Citações (CiteSeer): & 105\\\hline
+Número de Referências: & 47\\\hline
+Visão geral do assunto do artigo: & Esse artigo comenta várias técnicas como \emph{iterative routing, recursive routing, proximity routing e neighbor selection, erasure coding, replication e server selection} e as possíveis interações e implicações destas técnicas em algoritmos de leitura e de escrita em DHTs (\emph{Distributed Hash Tables}) utilizando testes e medição através de parâmetros como latência média. Segundo os autores, DHTs são um caminho promissor para uma infraestrutura de armazenamento global e têm sido utilizadas como base para uma variedade de arquivos \emph{wide-area} e para sistemas de publicação de conteúdo. Os autores comentam as condições assumidas para as discussões: todos os nós da rede cooperam; os algoritmos de leitura e de escrita ficam mais custosos, pois tratam acessos mal intencionados; \emph{lookups} são roteados usando protocolos cujos algoritmos são $O(log N)$, DHT armazenam blocos de $8K$ bytes. \\\hline
+Conclusões, Contribuições e Resultados Obtidos: & Uma contribuição desse trabalho é a exploração de grande conjunto de decisões de projeto para DHTs no contexto de um único sistema operacional. Os autores afirmam que dados replicados permitem leituras de baixa latência porque há muitas opções para a seleção de servidores, enquanto que dados \emph{erasure-coded} reduzem o consumo de \emph{bandwidth} para escritas em detrimento do aumento da latência de leituras. Os autores afirmam e comentam que replicação é um caso especial de \emph{erasure codes}. Quando se usa replicação, o objeto de dados pode ser baixado a partir da réplica que está mais próximo do cliente, enquanto que, com a codificação, a latência de download é limitada pela distância para a m-réplica mais próxima. Este problema foi ilustrado com resultados de simulação.\\hline
+Comentários: & Os autores não avaliaram os efeitos do tamanho do bloco, o que acontece quando nós entram e saem do sistema. \\\hline
+Expressões-chave: & \emph{Data Hash Table, Replication, Erasure Code}\\\hline
+Observações: & Esse artigo foi escolhido por comentar algoritmos de leitura e escrita de DHTs, comparando replicação e \emph{erasure codes} e por comentar decisões de projeto de DHTs. O texto do artigo foi acessado em 03/04/2010. Outros artigos estão em http://project-iris.net/\\\hline
+
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{|p{5cm}||p{10cm}|}
+\hline
+Categoria Genérica: & Sistemas Distribuídos\\\hline
+Categoria Específica: & Distribuição de Dados\\\hline
+Referência Bibliográfica: & Rodrigues, R.; Liskov, B. High Availability in DHTs: Erasure Coding vs. Replication.
+In: \emph{Proceedings of the 4th International Workshop on Peer-to-Peer Systems (IPTPS'05)}. Ithica, New York, USA. p. 226--239, February 2005.\\\hline
+Tipo: & Teórico\\\hline
+Local: & http://citeseerx.ist.psu.edu/viewdoc/\\ & summary?doi=10.1.1.59.6053\\\hline
+Número de Páginas: & 6\\\hline
+Citações (CiteSeer): & 35\\\hline
+Número de Referências: & 17\\\hline
+Visão geral do assunto do artigo: & Esse artigo apresenta as vantagens de se usar as técnicas \emph{erasure codes} e replicação para implementar DHTs (\emph{Distributed Hash Tables}) de sistemas \emph{peer-to-peer}. Inicialmente é feita uma definição estatística da disponibilidade de um objeto em sistemas que utilizam estas técnicas. Os autores fazem muitos comentários sobre os resultados obtidos com as duas técnicas em outras pesquisas. Depois descrevem o modelo básico utilizado para as comparações: uma coleção grande e dinâmica de nós que compartilham dados. O estudo foca na avaliação do custo da \emph{bandwidth} para manter a redundância e no entendimento dos autores sobre o que é disponibilidade do servidor na DHT. \\\hline
+Conclusões, Contribuições e Resultados Obtidos: & Os autores assumem que um sistema que utiliza \emph{erasure codes} mantém uma cópia completa adicional para cada objeto armazenado no sistema, dessa forma, aumentando em uma unidade o fator de replicação, nesse caso. A tarefa de transferir apenas um subconjunto particular do objeto (um sub-bloco) é também complicado pela codificação, onde o objeto inteiro deve ser reconstruído. Com réplicas, sub-blocos podem ser baixados trivialmente. O artigo é encerrado com as conclusões e com alguns desafios na pesquisa como estudar técnicas de redundância em dados alteráveis. \\\hline
+Comentários: & Na análise foram considerados apenas os dados imutáveis. \\\hline
+Expressões-chave: & \emph{Data Hash Table, Replication, Erasure Code}\\\hline
+Observações: & Esse artigo foi escolhido porque comenta algumas desvantagens de \emph{erasure codes} e replicação. O texto do artigo foi acessado em 19/03/2010.\\\hline
+
+\end{tabular}
+\end{center}
+
+
+\begin{center}
+\begin{tabular}{|p{5cm}||p{10cm}|}
+\hline
+Categoria Genérica: & Sistemas Distribuídos\\\hline
+Categoria Específica: & Redundância em Sistemas Distribuídos\\\hline
+Referência Bibliográfica: & Houri, Y.; Jobmann, M.; Fuhrmann, T. Self-organized Data Redundancy Management for Peer-to-Peer Storage Systems. In: \emph{Proceedings of the 4th IFIP TC 6 International Workshop on Self-Organizing Systems (IWSOS '09)}. Zurich, Switzerland. p. 65--76, 2009.\\\hline
+Tipo: & Teórico\\\hline
+Local: & http://dx.doi.org/10.1007/978-3-642-10865-5\_6\\\hline 
+Número de Páginas: & 12\\\hline
+Citações (CiteSeer): & \\\hline
+Número de Referências: & 22\\\hline
+Visão geral do assunto do artigo: & Nesse artigo os autores fazem uma comparação entre duas técnicas para se obter redundância em sistemas de armazenagem: \emph{erasure codes} e replicação analisando apenas o custo de \emph{bandwidth} para manter a disponibilidade de dados em um sistema de armazenamento baseado em DHT. Os sistemas comparados são sistemas de armazenagem \emph{peer-to-peer}, onde os nós aleatoriamente entram e saem do sistema. Os autores descrevem o conceito de disponibilidade e de durabilidade de dados. Depois descrevem como alguns estudos e protótipos implementados usam estas duas técnicas, e que métricas foram usadas por eles para medir os resultados. Depois descrevem o modelo de sistemas \emph{peer-to-peer} que utilizaram para as avaliações. \\\hline
+Conclusões, Contribuições e Resultados Obtidos: & O principal problema é que aumentando a quantidade de replicação também aumenta a probabilidade de que um dos nós envolvidos falhar. A probabilidade de perder um fragmento aumenta proporcionalmente ao número de nós que estão envolvidos no armazenamento dos fragmentos. Para cada ponto que falha, é preciso reparar a redundância e, portanto, consumir bandwidth de rede. Quanto mais redundância temos, maiores são as monitorização, manutenção e os custos de armazenamento. Os autores finalizam, descrevendo as conclusões que foram obtidas e fazem muitos comentários sobre os efeitos da variação de parâmetros como tamanho do bloco.\\\hline
+Comentários: & Os autores consideram apenas bandwidth pois consideram esse o único e mais importante critério para selecionar uma estratégia de redundância, pois os custos de bandwidth de hoje predominam sobre os custos de armazenamento: uma típica DSL up-link oferece até 1 Mbit/s, enquanto que um típico drive HD doméstico oferece até 1000 GB.\\\hline
+Expressões-chave: & \emph{Data Hash Table, Distributed Storage System, Replication, Erasure Code}\\\hline
+Observações: & O texto do artigo foi acessado em 19/03/2010.\\\hline
+
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{|p{5cm}||p{10cm}|}
+\hline
+Categoria Genérica: & Sistemas Distribuídos\\\hline
+Categoria Específica: &  Redundância em Sistemas Distribuídos\\\hline
+Referência Bibliográfica: & Plank, J. S. ; Xu, L. ; Luo, J. ; Schuman, C. D. ; Wilcox-O'Hearn, Z. A Performance Evaluation and Examination of Open-Source Erasure Coding Libraries For Storage. In:  \emph{Proceedings of the 7th Conference on File and Storage Technologies (FAST '09)}. San Francisco, California, USA. p. 253--265, 2009.\\\hline
+Tipo: & Teórico\\\hline
+Local: & http://citeseerx.ist.psu.edu/viewdoc/\\ & summary?doi=10.1.1.145.9642\\\hline
+Número de Páginas: & 13\\\hline
+Citações (CiteSeer): & 2\\\hline
+Número de Referências: & 36\\\hline
+Visão geral do assunto do artigo: & O artigo faz uma comparação entre cinco implementações de código aberto de diferentes \emph{erasure codes}. Os autores citam a nomenclatura de \emph{erasure codes} que utilizaram no texto. É apresentado um sistema de armazenamento com $k$ discos de dados e $m$ discos de paridade utilizado nas comparações. Os autores descrevem quais são os tipos de \emph{erasure codes} utilizados nas cinco implementações. Depois descrevem as cinco bibliotecas de código aberto de \emph{erasure codes} que foram testadas. Das cinco bibliotecas testadas, Zfec implementou a codificação Reed-Solomon e Jerasure implementou as outras codificações(Cauchy Read-Solomon, Even-Odd, Row-Diagonal Parity ou RDP e Minimal Density RAID-6 codes). Os experimentos realizados foram de \emph{encoding} de um grande arquivo de vídeo e de \emph{decoding} de \emph{drive} de dados. Depois descrevem as máquinas utilizadas nos experimentos: um mac-book com sistema operacional macosX e uma workstation dell com debian gnu linux.\\\hline
+Conclusões, Contribuições e Resultados Obtidos: & Os autores apresentam as conclusões que foram obtidas e as lições aprendidas.\\\hline
+Comentários: & \\\hline
+Expressões-chave: & \emph{Open Source Erasure Coding Libraries}\\\hline
+Observações: & O texto do artigo foi acessado em 19/03/2010.\\\hline
+
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{|p{5cm}||p{10cm}|}
+\hline
+
+Categoria Genérica: & Sistemas Distribuídos\\\hline
+Categoria Específica: & Distributed Storage System\\\hline
+Referência Bibliográfica: & Fan, B. ; Tantisiriroj, W. ; Xiao, L. ; Gibson, G. DiskReduce: RAID for Data-Intensive Scalable Computing. In:  \emph{Proceedings of the 4th Annual Workshop on Petascale Data Storage (PDSW '09)}. Portland, Oregon, USA. p. 6--10, 2009.\\\hline
+Tipo: & Teórico\\\hline
+Local: & http://citeseerx.ist.psu.edu/viewdoc/\\ &summary?doi=10.1.1.153.5950\\\hline
+Número de Páginas: & 5\\\hline
+Citações (CiteSeer): & 0\\\hline
+Número de Referências: & 24\\\hline
+Visão geral do assunto do artigo: & O artigo propõe uma aplicação de \emph{erasure codes}, o Diskreduce, uma modificação do HDFS (Hadoop \emph{distributed file system}). O HDFS é o sistema de arquivos do Hadoop, um ambiente de programação paralela \emph{open source} e que possui semelhanças com o GFS (\emph{Google file system}). Para tratar falhas, o Diskreduce mantem $3$ cópias de cada arquivo, assim como o Hadoop. O protótipo do Diskreduce é descrito em termos das técnicas de \emph{erasure codes} utilizadas (RAID 6, RAID 5 e espelhamento), do número de linhas de código da implementação e da biblioteca de \emph{erasure coding} utilizada, do número de nós da rede, do meio físico e do \emph{kernel} das máquinas. O protótipo utilizado tem 63 nós com linux 2.6.28.10, 4TB de discos. A principal diferença entre o Diskreduce e o Hadoop é que aquele substitui várias cópias de dados de maneira assíncrona. Dessa forma, como a substituição é assíncrona, ela pode ser adiada no Diskreduce, até que a capacidade de reposição esteja disponível.\\\hline
+Conclusões, Contribuições e Resultados Obtidos: & Os autores afirmam que o atraso para codificar pode ser de 1 hora.\\\hline
+Comentários: & \\\hline
+Expressões-chave: & \emph{Open Source Distributed Storage System, Replication, Erasure Code, RAID}\\\hline
+Observações: & Esse artigo foi escolhido porque comenta informações sobre o Hadoop, que será utilizado no meu trabalho de mestrado. O texto do artigo foi acessado em 19/03/2010.\\\hline
+
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{|p{5cm}||p{10cm}|}
+\hline
+
+Categoria Genérica: & Sistemas Distribuídos\\\hline
+Categoria Específica: & Distributed Storage System\\\hline
+Referência Bibliográfica: & De Camargo, R. Y.; Castor Filho, F. ; Kon, F. Efficient maintenance of distributed data in highly dynamic opportunistic grids. In:  \emph{Proceedings of the 2009 ACM Symposium on Applied Computing (SAC '09)}. Honolulu, Hawaii, USA. p. 1067--1071, 2009.\\\hline
+Tipo: & Teórico\\\hline
+Local: & http://doi.acm.org/10.1145/1529282.1529515\\\hline
+Número de Páginas: & 5\\\hline
+Citações (CiteSeer): & 0\\\hline
+Número de Referências: & 15\\\hline
+Visão geral do assunto do artigo: & O artigo propõe um protocolo chamado OppStore que permite armazenar grande quantidade de dados utilizando técnicas para redundância em um ambiente dinâmico. Os gerentes de repósitório de dados são organizados em uma rede \emph{peer-to-peer} com uma DHT. As outras máquinas disponibilizam espaço de armazenamento para os dados das aplicações e executam o módulo de repositório autônomo de dados.  Os experimentos mediram a \emph{bandwidth} utilizada pelo protocolo em um sistema de duas camadas.\\\hline
+Conclusões, Contribuições e Resultados Obtidos: & Os experimentos utilizaram uma pequena quantidade de dados: mais de 3 000 arquivos de diferentes tamanhos ocupando um total de 65GB.\\\hline
+Comentários: & No artigo, os autores não mencionaram qual classe de \emph{erasure codes} foi utilizada.\\\hline
+Expressões-chave: & \emph{Grid computing, Open Source Distributed Storage System, Replication, Erasure Code}\\\hline
+Observações: &  O texto do artigo foi acessado em 03/04/2010.\\\hline
+
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{|p{5cm}||p{10cm}|}
+\hline
+
+Categoria Genérica: & \emph{Information theory}\\\hline
+Categoria Específica: & \emph{Channel code}\\\hline
+Referência Bibliográfica: & Mitzenmacher, M. Digital Fountains: A Survey and Look Forward. In:  \emph{Proceedings of the IEEE Information Theory Workshop (ITW '04)}. Santo Antonio, Texas, USA. p. 271--276, 2004.\\\hline
+Tipo: & Teórico\\\hline
+Local: & http://citeseerx.ist.psu.edu/viewdoc/\\ &summary?doi=10.1.1.126.9463\\\hline
+Número de Páginas: & 6\\\hline
+Citações (CiteSeer): & 0\\\hline
+Número de Referências: & 33\\\hline
+Visão geral do assunto do artigo: & O artigo introduz o conceito de \emph{digital fountains} que é uma abstração de códigos corretores para aplicações de rede que não necessitam receber mensagens na ordem correta. Os autores comparam \emph{digital fountains} a ``uma fonte de água que se usa para encher um copo de água e não se tem preocupação se cai um pouco de água, mas apenas se quer saciar a sede''. Neste esquema, o receptor pode reconstruir uma mensagem que demanda quaisquer k pacotes codificados para envio usando TCP. Quatro algoritmos de códigos corretores são comentados em termos da complexidade da codificação e da decodificação: Reed-Solomon codes, Tornado codes, LT codes e Raptor codes.  \\\hline
+Conclusões, Contribuições e Resultados Obtidos: & Os autores comentam sobre inúmeros requisitos de aplicações de \emph{digital fountains}: os mecanismos de controle de fluxo e controle de congestionamento do TCP estariam mantidos e aplicações de \emph{streaming} de vídeo seriam desafios. Depois os autores comentam as barreiras para adoção de \emph{digital fountains} como proteção a patentes e o sucesso de serviços de entrega de conteúdo como akamai.Para os autores, o uso de códigos corretores de erros cresceu muito na última década e sua larga adoção ainda é muito pretensiosa.\\\hline
+Comentários: & É um artigo sobre teoria e não apresenta experimentos. \\\hline
+Expressões-chave: & \emph{Network Communication, Erasure Code}\\\hline
+Observações: &  O texto do artigo foi acessado em 22/04/2010.\\\hline
+
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{|p{5cm}||p{10cm}|}
+\hline
+
+Categoria Genérica: & \emph{Information theory}\\\hline
+Categoria Específica: & \emph{Channel code}\\\hline
+Referência Bibliográfica: & Shannon, C. E. A Mathematical Theory of Communication. \emph{The Bell System Technical Journal}, v. 35, n. 11, p. 379-423, 623-656, 1948. Murray Hill, NJ, USA. \\\hline
+Tipo: & Teórico\\\hline
+Local: & http://cm.bell-labs.com/cm/ms/what/shannonday/\\ &shannon1948.pdf\\\hline
+Número de Páginas: & 55\\\hline
+Citações (CiteSeer): & 0\\\hline
+Número de Referências: & 13\\\hline
+Visão geral do assunto do artigo: & O artigo introduz o conceito de codificação de mensagens. O autor demonstrou que a eficiência da codificação de mensagens do emissor antes da transmissão e da decodificação das mensagens (possivelmente danificadas) que chegam no receptor, possibilita reparar os efeitos de um canal ruidoso. Um sistema de comunicação foi definido com 5 partes: a fonte de informação, o emissor, o canal, destino e destinatário.  O texto está dividido em 4 partes: sistemas discretos sem ruído, canal discreto com ruído, conceitos básicos de matemática, canal contínuo. \\\hline
+Conclusões, Contribuições e Resultados Obtidos: & Shannon demonstrou dois importantes teoremas que são fundamentais na comunicação ponto-a-ponto: \emph{source coding theorem} e \emph{channel coding theorem}. Shannon introduziu dois conceitos fundamentais sobre informação que é transmitida em um sistema de comunicação: a incerteza da informação e a informação transmitida é digital. Esse trabalho do Shannon parece ser o primeiro trabalho publicado que usa o termo \emph{bit} (\emph{binary digit}).\\\hline
+Comentários: & É um artigo considerado base para a teoria de códigos. \\\hline
+Expressões-chave: & \emph{Network Communication, Erasure Code, Coding Theory}\\\hline
+Observações: &  O texto do artigo foi acessado em 21/04/2010.\\\hline
+
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{|p{5cm}||p{10cm}|}
+\hline
+
+Categoria Genérica: & \emph{Information theory}\\\hline
+Categoria Específica: & \emph{Erasure channel}\\\hline
+Referência Bibliográfica: & Purser, M. Chapter 1: Introduction. \emph{Introduction to Error-Correcting Codes}, p. 1-10, 1995. Norwood, MA, USA. \\\hline
+Tipo: & Teórico\\\hline
+Local: & http://books.google.com/books?id=LglhQgAACAAJ\\\hline
+Número de Páginas: & 10\\\hline
+Citações (CiteSeer): & 0\\\hline
+Número de Referências: & 17\\\hline
+Visão geral do assunto do artigo: & O capítulo 1 é uma introdução a codificação de blocos.  O texto comenta redundância em textos (ortografia, sintaxe e semântica). Também comenta a função principal da codificação que é introduzir uma redundância controlada, possibilitando que mensagens corrompidas possam ser corrigidas antes de ser processadas. O texto define mensagens válidas como \emph{codewords} ou \emph{codevectors}. Segundo o texto, se um erro é detectado em uma mensagem, ela pode ser corrigida, à princípio, por um de 2 métodos: retransmissão da mensagem e correção da mensagem através de \emph{Error correcting-codes}. O texto introduz o conceito de \emph{erasure channel}. Comenta que a ocorrência de erros pode não ser uniforme e nem aleatória. Erros tem causas e se a causa for um pico de energia, um breve curto-circuito ou uma avaria na mídia magnética, é comum que isto afete mais de um bit. O texto comenta brevemente técnicas de correção utilizadas nos algoritmos Fire codes e Reed-Solomon codes. O texto indroduz o a distância de Hamming, \emph{sphere-packing} e teorema de Shannon.\\\hline
+Conclusões, Contribuições e Resultados Obtidos: &  O texto tem uma abrangência muito boa para quase todas as classes de códigos mais utilizadas. \\\hline
+Comentários: & Trata-se de um livro de 133 páginas com mais capítulos sobre códigos lineares, códigos cíclicos, códigos BCH, códigos convulacionais e alguns apêndices como um sobre corpos finitos.\\\hline
+Expressões-chave: & \emph{Redundancy, Erasure Code, Coding Theory}\\\hline
+Observações: &  O texto do livro foi acessado em 30/04/2010.\\\hline
+
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{|p{5cm}||p{10cm}|}
+\hline
+
+Categoria Genérica: & \emph{Information theory}\\\hline
+Categoria Específica: & \emph{Erasure code}\\\hline
+Referência Bibliográfica: & Plank, J. S. A tutorial on Reed-Solomon coding for fault-tolerance in RAID-like systems. In:  \emph{Journal of Software - Practice \& Experience}, p. 995-1012, 1997. New York, NY, USA. \\\hline
+Tipo: & Experimental\\\hline
+Local: & http://citeseerx.ist.psu.edu/viewdoc/\\ &summary?doi=10.1.1.103.7089\\\hline
+Número de Páginas: & 19\\\hline
+Citações (CiteSeer): & 127\\\hline
+Número de Referências: & 28\\\hline
+Visão geral do assunto do artigo: & O artigo é uma especificação completa para a implementação do algoritmo de codificação Reed-Solomon para sistemas \emph{RAID-like}: \emph{disk arrays, network file systems} e \emph{distributed checkpointing systems}. Inicialmente é apresentada a especificação do problema através de n \emph{data devices} e m \emph{checksum devices}. O objetivo é calcular os \emph{checksum devices} de tal maneira que para quaisquer m \emph{devices} que falhem, os outros que não falharam podem reconstruir o conteúdo dos que falharam. O modelo assumido inclui falhas que ocorrem quando um dispositivo falha, ele cai e o sistema reconhece esta queda. Não é o caso de erros como uma falha do dispositivo que é manifestada pelo armazenamento e recuperação de valores incorretos. Depois o autor fala dos três principais aspectos do algoritmo de RS-Raid: usar a matriz de Vandermonde para calcular e manter as palavras de \emph{checksum} (soma de verificação), utilizar eliminação de Gauss para a recuperação de falhas e usar Galois \emph{fields} para realizar operações aritméticas. O autor descreve o algoritmo em linhas gerais e dá um exemplo de sua execução com  $3$ \emph{data devices} e $3$ \emph{checksum devices}. Os detalhes de implementação são apresentados através de um controlador RAID e um sistema de \emph{checkpoint} distribuído. O autor apresenta outros métodos de codificação utilizados em sistemas \emph{RAID-like} como paridade. O texto tem um apêndice sobre Galois \emph{fields}. \\\hline
+Conclusões, Contribuições e Resultados Obtidos: &  O autor afirma que a abordagem (RS-RAID) baseada em tabelas de multiplicação e divisão sob corpo de Galois é apenas uma maneira de resolver o problema para sistemas com n + m < 65536, pois, nesse caso, é uma solução software eficiente que é fácil de implementar e não consome muita memória física. \\\hline
+Comentários: & Trata-se de . \\\hline
+Expressões-chave: & \emph{Reed-Solomon, Raid, Redundancy, Erasure Code}\\\hline
+Observações: &  Este artigo é um relatório técnico do \emph{Department of Computer Science, University of Tennessee}. O autor escreve o texto para leitores não treinados em \emph{coding theory}. Contém um apêndice sobre corpos de Galois. O texto do artigo foi acessado em 04/05/2010.\\\hline
+
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{|p{5cm}||p{10cm}|}
+\hline
+
+Categoria Genérica: & Sistemas Distribuídos\\\hline
+Categoria Específica: & \emph{Erasure Code}\\\hline
+Referência Bibliográfica: & Plank, J. S. ; Simmermann, S. ; Schuman, C. D. Jerasure: A Library in C/C++ Facilitating Erasure Coding for Storage Applications - Version 1.2.  Technical report of \emph{Department of Computer Science, University of Tennessee}. Knoxville, TN, USA. 2007.\\\hline
+Tipo: & Experimental\\\hline
+Local: & http://citeseerx.ist.psu.edu/viewdoc/\\ &summary?doi=10.1.1.140.3116\\\hline
+Número de Páginas: & 39\\\hline
+Citações (CiteSeer): & 6\\\hline
+Número de Referências: & 19\\\hline
+Visão geral do assunto do artigo: & O autor inicia falando que \emph{erasure codes} para aplicações de armazenamento de dados está crescendo em importância assim como cresce o tamanho e a complexidade dos sistemas de armazenamento. O modelo de sistema de armazenagem suportado é constituído de  $k$ dispositivos de dados e $m$ dispositivos cujo conteúdo é calculado a partir dos  $k$ dispositivos originais. O autor afirma que se o algoritmo da codificação de apagamento tem a propriedade \emph{Maximum Distance Separable} (MDS), então o sistema como um todo será capaz de se recuperar da perda de quaisquer $m$ dispositivos. No texto é apresentada uma figura para ilustrar as operações de codificação e a decodificação. O autor define \emph{word size} (\emph{w}) que é o tamanho de um dispositivo codificado. Como na realidade os dispositivos tem megabytes ou gigabytes de dados, o autor sugere uma de duas possibilidades para mapear \emph{w}: $1^o$ se $w \in \{ 8, 16, 32 \}$ Considere $w = 8$. O primeiro byte de cada um dos $m$ dispositivos de codificação é codificado com o primeiro byte de cada um dos $k$ dispositivos de dados e assim por diante. É desta forma que Reed-Solomon \emph{codes} funciona. $2^o$ se cada bit de codificação $C_i,_j$ é uma operação \emph{bitwise exclusive} (XOR) de uma sequência de outros bits. O dispositivo é composto de $w$ pacotes de mesmo tamanho. Cada pacote é calculado por uma operação XOR de algum conjunto de pacotes. Uma figura mostra um exemplo. Depois o autor fala da biblioteca composta de 5 módulos e cada um deles é descrito em uma seção com código e exemplos de uso: módulo aritmética de corpo de Galois, módulo rotinas do kernel, módulo código RS, módulo código Cauchy-RS, RAID-6. O autor usa os produtos matriz-vetor e bit-matriz-vetor para mostrar a codificação do sistema. Depois o autor fala da propriedade MDS.\\\hline
+Conclusões, Contribuições e Resultados Obtidos: &  O texto é um tutorial da biblioteca e um guia do programador. \\\hline
+Comentários: & O código pode ser baixado de http://www.cs.utk.edu/~plank/plank/papers/CS-08-627.html. \\\hline
+Expressões-chave: & \emph{Open Source Erasure Codes Library, Reed-Solomon, Raid, Erasure Codes}\\\hline
+Observações: &  O texto do artigo foi acessado em 04/04/2010.\\\hline
+
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{|p{5cm}||p{10cm}|}
+\hline
+
+Categoria Genérica: & \emph{Information theory}\\\hline
+Categoria Específica: & \emph{Erasure code}\\\hline
+Referência Bibliográfica: & Luby, M. ; Mitzenmacher, M. ; Shokrollahi, A. ; Spielman, D. Analysis of low density codes and improved designs using irregular graphs. In:  \emph{Proceedings of the 30th annual ACM Symposium on Theory of Computing}, p. 249-258, 1998. Dallas, Texas, USA. \\\hline
+Tipo: & Experimental\\\hline
+Local: & http://citeseerx.ist.psu.edu/viewdoc/\\ &summary?doi=10.1.1.37.6389\\\hline
+Número de Páginas: & 10\\\hline
+Citações (CiteSeer): & 64\\\hline
+Número de Referências: & 17\\\hline
+Visão geral do assunto do artigo: & O artigo é uma proposta de código baseado em grafos irregulares e mostrara uma técnica de como projetá-lo. Os experimentos utilizaram código com taxa 1/2, mensagens de 16 mil bits e 8 mil check bits. Foram feitas 2 mil tentativas para 3 códigos diferentes: regular, code 14 e code 22. \\\hline
+Conclusões, Contribuições e Resultados Obtidos: &  Os autores mostraram que uma classe de códigos corretores de erros em tempo linear corrige uma grande parte dos erros com alta probabilidade. \\\hline
+Comentários: & Trata-se de . \\\hline
+Expressões-chave: & \emph{Low-density parity-check, Erasure Code, Irregular Graphs}\\\hline
+Observações: &  O texto do artigo foi acessado em 04/05/2010.\\\hline
+
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{|p{5cm}||p{10cm}|}
+\hline
+
+Categoria Genérica: & \emph{Information theory}\\\hline
+Categoria Específica: & \emph{Erasure code}\\\hline
+Referência Bibliográfica: & GALLAGER, G. R. Low-Density Parity-Check Codes. \emph{Revised Doctoral Dissertation}, \emph{Department of Electrical Engineering, MIT}, 1963. Cambridge, Massachusetts, USA. \\\hline
+Tipo: & Experimental\\\hline
+Local: & http://www.rle.mit.edu/rgallager/documents/ldpc.pdf\\\hline
+Número de Páginas: & 90\\\hline
+Citações (CiteSeer): & 0\\\hline
+Número de Referências: & 18\\\hline
+Visão geral do assunto do artigo: & Este relatório é a tese de doutorado do autor de 1960 que foi revisada. \\\hline
+Conclusões, Contribuições e Resultados Obtidos: &  O texto . \\\hline
+Comentários: & Trata-se de . \\\hline
+Expressões-chave: & \emph{Low-density parity-check, Erasure Code, Regular Graphs}\\\hline
+Observações: &  O texto do artigo foi acessado em 04/05/2010.\\\hline
+
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{|p{5cm}||p{10cm}|}
+\hline
+
+Categoria Genérica: & \emph{Information theory}\\\hline
+Categoria Específica: & \emph{Erasure code}\\\hline
+Referência Bibliográfica: & OLIVEIRA, C. T. ; MOREIRA, M. D. D. ; RUBINSTEIN, M. G. ; COSTA, L. H. M. K. ; DUARTE, O. C. M. B. MC05: Redes Tolerantes a Atrasos e Desconexões. In: \emph{Anais do 25o Simpósio Brasileiro de Redes de Computadores e Sistemas Distribuídos}, 2007. Belém, Pará, Brasil. \\\hline
+Tipo: & Experimental\\\hline
+Local: & http://www.rle.mit.edu/rgallager/documents/ldpc.pdf\\\hline
+Número de Páginas: & 54\\\hline
+Citações (CiteSeer): & 0\\\hline
+Número de Referências: & 68\\\hline
+Visão geral do assunto do artigo: & O texto  é do mini-curso \\\hline
+Conclusões, Contribuições e Resultados Obtidos: &  O texto . \\\hline
+Comentários: & Trata-se de . \\\hline
+Expressões-chave: & \emph{Low-density parity-check, Erasure Code, Regular Graphs}\\\hline
+Observações: &  O texto do artigo foi acessado em 22/04/2010.\\\hline
+
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{|p{5cm}||p{10cm}|}
+\hline
+
+Categoria Genérica: & \emph{Information theory}\\\hline
+Categoria Específica: & \emph{Erasure code}\\\hline
+Referência Bibliográfica: & WOITASZEK, M. Tornado Codes for Archival Storage.  \emph{PHD Thesis}, \emph{Department of Computer Science of the University of Colorado}, 2007. Boulder, Colorado, USA. \\\hline
+Tipo: & Experimental\\\hline
+Local: & http://citeseerx.ist.psu.edu/viewdoc/\\ &summary?doi=10.1.1.160.1219\\\hline
+Número de Páginas: & 136\\\hline
+Citações (CiteSeer): & 0\\\hline
+Número de Referências: & 71\\\hline
+Visão geral do assunto do artigo: & O artigo é  \\\hline
+Conclusões, Contribuições e Resultados Obtidos: &  O texto . \\\hline
+Comentários: & Trata-se de . \\\hline
+Expressões-chave: & \emph{Low-density parity-check, Erasure Code, Irregular Graphs}\\\hline
+Observações: &  O texto do artigo foi acessado em 08/05/2010.\\\hline
+
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{|p{5cm}||p{10cm}|}
+\hline
+
+Categoria Genérica: & \emph{Information theory}\\\hline
+Categoria Específica: & \emph{Erasure code}\\\hline
+Referência Bibliográfica: & Cabral, M. B. GRITO: Sistema de Medições para Suporte a Preservação Digital num Ambiente Heterogêneo.  \emph{Master Thesis}, Universidade Técnica de Lisboa, Instituto Superior Técnico, 2009. Lisboa, Portugal. \\\hline
+Tipo: & Experimental\\\hline
+Local: & http://citeseerx.ist.psu.edu/viewdoc/\\ &summary?doi=10.1.1.160.1219\\\hline
+Número de Páginas: & 80\\\hline
+Citações (CiteSeer): & 0\\\hline
+Número de Referências: & 0\\\hline
+Visão geral do assunto do artigo: & O artigo é  \\\hline
+Conclusões, Contribuições e Resultados Obtidos: &  O texto . \\\hline
+Comentários: & Trata-se de . \\\hline
+Expressões-chave: & \emph{Erasure Code}\\\hline
+Observações: &  O texto do artigo foi acessado em 03/05/2010.\\\hline
+
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{|p{5cm}||p{10cm}|}
+\hline
+
+Categoria Genérica: & \emph{Information theory}\\\hline
+Categoria Específica: & \emph{Erasure code}\\\hline
+Referência Bibliográfica: & White, T. Chapters 1, 2 e 3. \emph{Hadoop: The Definive Guide}, p. 1-74. Sebastopol, CA, USA, 2009. \\\hline
+Tipo: & Teórico\\\hline
+Local: & \\\hline
+Número de Páginas: & 73\\\hline
+Citações (CiteSeer): & 0\\\hline
+Número de Referências: & 0\\\hline
+Visão geral do assunto do artigo: & O artigo é  \\\hline
+Conclusões, Contribuições e Resultados Obtidos: &  O texto . \\\hline
+Comentários: & Trata-se de . \\\hline
+Expressões-chave: & \emph{Erasure Code}\\\hline
+Observações: &  O texto do artigo foi acessado em 03/05/2010.\\\hline
+
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{|p{5cm}||p{10cm}|}
+\hline
+
+Categoria Genérica: & \emph{Information theory}\\\hline
+Categoria Específica: & \emph{Erasure code}\\\hline
+Referência Bibliográfica: & Kurose, J. F. Ross, K. W. Chapter 5. \emph{Redes de Computadores e a Internet: uma abordagem top-down}, p. 318-376, 2010. São Paulo, Brasil. \\\hline
+Tipo: & Teórico\\\hline
+Local: & \\\hline
+Número de Páginas: & 59\\\hline
+Citações (CiteSeer): & 0\\\hline
+Número de Referências: & 0\\\hline
+Visão geral do assunto do artigo: & O artigo é  \\\hline
+Conclusões, Contribuições e Resultados Obtidos: &  O texto . \\\hline
+Comentários: & Trata-se de . \\\hline
+Expressões-chave: & \emph{Erasure Code}\\\hline
+Observações: &  O texto do artigo foi acessado em 03/07/2010.\\\hline
+
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{|p{5cm}||p{10cm}|}
+\hline
+
+Categoria Genérica: & \emph{Information theory}\\\hline
+Categoria Específica: & \emph{Erasure code}\\\hline
+Referência Bibliográfica: & Dean, J. Ghemawat, S. MapReduce: simplified data processing on large clusters. In:  \emph{Proceedings of the 6th conference on Symposium on Opearting Systems Design \& Implementation}, p. 137-150, 2004. San Francisco, CA, USA. \\\hline
+Tipo: & Experimental\\\hline
+Local: & http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.163.5292\\\hline
+Número de Páginas: & 10\\\hline
+Citações (CiteSeer): & 459\\\hline
+Número de Referências: & 0\\\hline
+Visão geral do assunto do artigo: & O artigo é uma proposta de código baseado em grafos irregulares e mostrara uma técnica de como projetá-lo. Os experimentos utilizaram código com taxa 1/2, mensagens de 16 mil bits e 8 mil check bits. Foram feitas 2 mil tentativas para 3 códigos diferentes: regular, code 14 e code 22. \\\hline
+Conclusões, Contribuições e Resultados Obtidos: &  Os autores mostraram que uma classe de códigos corretores de erros em tempo linear corrige uma grande parte dos erros com alta probabilidade. \\\hline
+Comentários: & Trata-se de . \\\hline
+Expressões-chave: & \emph{Low-density parity-check, Erasure Code, Irregular Graphs}\\\hline
+Observações: &  O texto do artigo foi acessado em 04/05/2010.\\\hline
+
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{|p{5cm}||p{10cm}|}
+\hline
+
+Categoria Genérica: & \emph{Information theory}\\\hline
+Categoria Específica: & \emph{Erasure channel}\\\hline
+Referência Bibliográfica: & Huffman, W. C. Pless, V. Chapter 1. \emph{Fundamentals of Error-Correcting Codes}, p. 1-52, 2003. New York, USA. \\\hline
+Tipo: & Teórico\\\hline
+Local: & http://books.google.com/books?id=LglhQgAACAAJ\\\hline
+Número de Páginas: & 52\\\hline
+Citações (CiteSeer): & 0\\\hline
+Número de Referências: & 0\\\hline
+Visão geral do assunto do artigo: & O capítulo 1 é uma .\\\hline
+Conclusões, Contribuições e Resultados Obtidos: &  O texto tem uma abrangência muito boa para quase todas as classes de códigos mais utilizadas. \\\hline
+Comentários: & Trata-se de um livro de 133 páginas com mais capítulos sobre códigos lineares, códigos cíclicos, códigos BCH, códigos convulacionais e alguns apêndices como um sobre corpos finitos.\\\hline
+Expressões-chave: & \emph{Redundancy, Erasure Code, Coding Theory}\\\hline
+Observações: &  O texto do livro foi acessado em 04/07/2010.\\\hline
+
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{|p{5cm}||p{10cm}|}
+\hline
+
+Categoria Genérica: & \emph{Information theory}\\\hline
+Categoria Específica: & \emph{Erasure code}\\\hline
+Referência Bibliográfica: & Patterson, D. A. Gibson, G. Katz, R. H. A case for redundant arrays of inexpensive disks (RAID). In:  \emph{Proceedings of the 1988 ACM SIGMOD International Conference on Management of Data}, p. 109-116, 1988. Chicago, Illinois, USA. \\\hline
+Tipo: & Experimental\\\hline
+Local: & http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.72.2597\\\hline
+Número de Páginas: & 6\\\hline
+Citações (CiteSeer): & 0\\\hline
+Número de Referências: & 0\\\hline
+Visão geral do assunto do artigo: & O artigo é uma proposta de código baseado em grafos irregulares e mostrara uma técnica de como projetá-lo. Os experimentos utilizaram código com taxa 1/2, mensagens de 16 mil bits e 8 mil check bits. Foram feitas 2 mil tentativas para 3 códigos diferentes: regular, code 14 e code 22. \\\hline
+Conclusões, Contribuições e Resultados Obtidos: &  Os autores mostraram que uma classe de códigos corretores de erros em tempo linear corrige uma grande parte dos erros com alta probabilidade. \\\hline
+Comentários: & Trata-se de . \\\hline
+Expressões-chave: & \emph{Low-density parity-check, Erasure Code, Irregular Graphs}\\\hline
+Observações: &  O texto do artigo foi acessado em 04/05/2010.\\\hline
+
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{|p{5cm}||p{10cm}|}
+\hline
+Categoria Genérica: & Sistemas Distribuídos\\\hline
+Categoria Específica: &  Redundância em Sistemas Distribuídos\\\hline
+Referência Bibliográfica: & Chiola, G. An Empirical Study of Data Redundancy for High Availability in Large Overlay Networks. In:  \emph{Proceedings of the 2nd International Workshop on Hot Topics in Peer-to-Peer Systems (HOTP2 '05)}. Washington, DC, USA. p. 43--51, 2005.\\\hline
+Tipo: & Teórico\\\hline
+Local: & http://portal.acm.org/citation.cfm?id=1090948.1091374\\\hline
+Número de Páginas: & 8\\\hline
+Citações (CiteSeer): & 0\\\hline
+Número de Referências: & 10\\\hline
+Visão geral do assunto do artigo: & O artigo apresenta um estudo que analisa a relação da redundância, implementada por replicação e por codificação por apagamento, com a disponibilidade de dados. Foi feita uma caracterização da replicação e da codificação, utilizando a sobrecarga de armazenamento ($n$ cópias para replicação e $n$ pedaços codificados e $k$ pedaços originais para codificação), em termos das operações nos dados: criar, ler, nova versão, atualizar e eliminar. Os sistemas simulados tinham 60 peers, 1 000 peers e 500 000 peers. Os sistemas foram simulados através da técnica de simulação Montecarlo. Os experimentos utilizaram sistemas com diferentes replicações e codificações. Os gráficos mostraram a fração de peers que falharam e disponibilidade de dados.\\\hline
+Conclusões, Contribuições e Resultados Obtidos: & Os autores concluíram que usar apenas a replicação tem sentido apenas em poucos casos. O parâmetro $k$ deve ser escolhido com base num equilíbrio entre eficiência da comunicação e a disponibilidade desejada. Os autores concluiram que o acesso somente de leitura pode ser suportado tanto por replicação de dados simples como por codificação, para privilegiar atualização consistente, uma codificação de alta disponibilidade é necessária, que se caracteriza por fracionamento do original dados em $k$ pedaços e adicionando exatamente $k-1$ pedaços e que se ler e a disponibilidade de atualização consistente são de igual importância, isso requer codificação ($k, 2k-1)$.\\\hline
+Comentários: & É um estudo muito interessante.\\\hline
+Expressões-chave: & \emph{Redundancy, Availability, DHT}\\\hline
+Observações: & O texto do artigo foi acessado em 25/06/2011.\\\hline
+
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{|p{5cm}||p{10cm}|}
+\hline
+
+Categoria Genérica: & Sistemas Distribuídos\\\hline
+Categoria Específica: & Distributed Storage System\\\hline
+Referência Bibliográfica: & Storer, M. W.  Greenan, K. M. Miller, E. L. Voruganti, K. Pergamum: replacing tape with energy efficient, reliable, disk-based archival storage. In:  \emph{Proceedings of the 6th USENIX Conference on File and Storage Technologies (FAST'08)}. San Jose, California, USA. p. 1:1--1:16, 2008.\\\hline
+Tipo: & Teórico\\\hline
+Local: & http://citeseerx.ist.psu.edu/viewdoc/\\ &summary?doi=10.1.1.130.1267\\\hline
+Número de Páginas: & 16\\\hline
+Citações (CiteSeer): & 0\\\hline
+Número de Referências: & 24\\\hline
+Visão geral do assunto do artigo: & O artigo propõe sistema MAID (\emph{massive array of idle disks}) utilizando milhares de discos de dados. O sistema é projetado para aplicações do tipo uma escrita, várias leituras. O sistema substitue sistemas de armazenamento em fitas. O sistema é composto por milhares  de \emph{tomes} conectados por uma rede. Cada \emph{tome} tem 4 componentes: \emph{commodity hardware} para armazenamento, memória flash com metadados, CPU e porta de rede e executa seu daemon. Não existe um controlador central. As assinaturas de dados dos conteúdos de disco estão na NVRAM o que diminui o consumo de energia caso estivessem no disco. A codificação gera blocos redundantes de um conjunto de blocos de dados (\emph{intra-disk}) e também gera redundância para os discos (\emph{inter-disk}). No texto aparece uma seleção de alguns sistemas de armazenamento, comparando-se algumas de suas características. A estratégia mais utilizada nos sistemas avaliados é a codificação. Uma instalação de Pergamum pode conter apenas um tome ou até milhares deles. Os clientes submetem pedidos de arquivos de dados a um Pergamum tome através de uma interface. Entre os Pergamum tomes, os pedidos são de blocos de dados. Através da console, cada Pergamum tome reporta seu estado. Os blocos tem tamanho de 128KB até 1MB ou mais.  Segmentos em um único disco são agrupados em regiões e um grupo de redundância é construído a partir de regiões de tamanhos idênticos em vários discos. Uma tabela com vários sistemas de armazenamento compara o custo de 10 PB. A sobrecarga de armazenamento para um sistema Pergamum com segmentos que utilizem 62 blocos de dados e dois blocos de paridade e os grupos de redundância de dados com 13 discos e três discos de paridade é 64/62 x 16/13 - 1 = 0,27 vezes a capacidade de dados. Foi utilizada simulação para estimar a confiabilidade dos dados pela métrica tempo médio de perda de dados através de fatores como taxa de falha do disco, taxa de reparação do disco, taxa de falha de setor, taxa de correção pela codificação. O protótipo do Pergamum é descrito em termos das técnicas de \emph{erasure codes} utilizadas (XOR parity, Reed-Solomon), do número de linhas de código da implementação, das linguagens de implementação (Python e C), do \emph{hardware} utilizado (ARM para Pergamum tome e intel duo core para cliente), do meio físico (rede ethernet), do \emph{kernel} das máquinas com Pergamum tome(linux), do sistema operacional dos clientes (OS X) e do armazenamento (drive 7200 RPM SATA formatado com XFS).\\\hline
+Conclusões, Contribuições e Resultados Obtidos: & O custo de manutenção foi calculado em \$0.50 por gigabyte. Pelos experimentos, os autores mostraram que o Pergamum pode ter uso de energia de baixa, custo de hardware baixo, alta confiabilidade e gerenciamento mais simples. \\\hline
+Comentários: & Esse artigo tem interessantes referências.\\\hline
+Expressões-chave: & \emph{Distributed Storage System, Erasure Code}\\\hline
+Observações: & O texto do artigo foi acessado em 25/06/2011.\\\hline
+
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{|p{5cm}||p{10cm}|}
+\hline
+
+Categoria Genérica: & Sistemas Distribuídos\\\hline
+Categoria Específica: & Distributed Storage System\\\hline
+Referência Bibliográfica: & Saito, Y. Fr{\o}lund, S. and Veitch, A. Merchant, A. Spence, S. FAB: building distributed enterprise disk arrays from commodity components. In:  \emph{Proceedings of the 11th International Conference on Architectural Support for Programming Languages and Operating Systems}. Boston, MA, USA. p. 48--58, 2004.\\\hline
+Tipo: & Teórico\\\hline
+Local: & http://citeseerx.ist.psu.edu/viewdoc/\\ &summary?doi=10.1.1.1.2631\\\hline
+Número de Páginas: & 11\\\hline
+Citações (CiteSeer): & 77\\\hline
+Número de Referências: & 36\\\hline
+Visão geral do assunto do artigo: & O artigo propõe sistema MAID (\emph{massive array of idle disks}) utilizando milhares de discos de dados. O sistema é projetado para aplicações do tipo uma escrita, várias leituras. O sistema substitue sistemas de armazenamento em fitas. O sistema é composto por milhares  de \emph{bricks} conectados por uma rede. Cada \emph{brick} tem \emph{commodity hardware} para armazenamento, CPU, and NVRAM conectados por uma rede ethernet. Não existe um controlador central. Um algoritmo assíncrono baseado em voto  Paxos é usado para manter a consistência de metadados entre os \emph{bricks}. Uma instalação de Pergamum pode conter apenas um tome ou até milhares deles. Os clientes submetem pedidos de arquivos de dados a um \emph{brick} coordenador (qualquer \emph{brick}). O coordenador envia um pedido para os \emph{bricks} de armazenamento desses blocos. \\\hline
+Conclusões, Contribuições e Resultados Obtidos: & O custo de manutenção foi calculado em \$0.50 por gigabyte. Pelos experimentos, os autores mostraram que o Pergamum pode ter uso de energia de baixa, custo de hardware baixo, alta confiabilidade e gerenciamento mais simples. \\\hline
+Comentários: & Esse artigo tem interessantes referências.\\\hline
+Expressões-chave: & \emph{Distributed Storage System, Erasure Code}\\\hline
+Observações: & O texto do artigo foi acessado em 26/06/2011.\\\hline
+
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{|p{5cm}||p{10cm}|}
+\hline
+
+Categoria Genérica: & \emph{Information theory}\\\hline
+Categoria Específica: & \emph{Erasure code}\\\hline
+Referência Bibliográfica: & Duminoco, A. Data Redundancy and Maintenance for Peer-to-Peer File Backup Systems.  \emph{PHD Thesis}, \emph{\'{E}cole Doctorale d\'{}Informatique, T\'{e}l\'{e}communications et \'{E}lectronique de Paris}, 2009. Paris, France. \\\hline
+Tipo: & Experimental\\\hline
+Local: & http://www.eurecom.fr/people/duminuco.en.htm\\\hline
+Número de Páginas: & 175\\\hline
+Citações (CiteSeer): & 0\\\hline
+Número de Referências: & 111\\\hline
+Visão geral do assunto do artigo: & O artigo é uma tese de doutorado que propõe uma codificação que combina a eficiência da largura de banda da replicação com a eficiência do armazenamento dos clássicos \emph{Erasure codes}. As seções avaliadas foram as 2 e 3 que tratam de trabalhos relacionados e desafios e custos. \\\hline
+Conclusões, Contribuições e Resultados Obtidos: &  O texto . \\\hline
+Comentários: & Trata-se de . \\\hline
+Expressões-chave: & \emph{Erasure Code, Peer-to-Peer, Storage}\\\hline
+Observações: &  O texto do artigo foi acessado em 28/06/2011.\\\hline
+
+\end{tabular}
+\end{center}
+
+
+\begin{center}
+\begin{tabular}{|p{5cm}||p{10cm}|}
+\hline
+
+Categoria Genérica: & Sistemas Distribuídos\\\hline
+Categoria Específica: & Reliability\\\hline
+Referência Bibliográfica: & Baker, M. Shah, M. Rosenthal, D. S. H.  Roussopoulos, M. Maniatis, P. Giuli, TJ Bungale, P. A fresh look at the reliability of long-term digital storage. In:  \emph{Proceedings of the 1st ACM SIGOPS/EuroSys European Conference on Computer Systems (EuroSys '06)}. Leuven, Belgium. p. 221--234, 2006.\\\hline
+Tipo: & Teórico\\\hline
+Local: & http://citeseerx.ist.psu.edu/viewdoc/\\ &summary?doi=10.1.1.60.4521\\\hline
+Número de Páginas: & 14\\\hline
+Citações (CiteSeer): & 31\\\hline
+Número de Referências: & 58\\\hline
+Visão geral do assunto do artigo: & O artigo comenta a importância da preservação de dados e as ameaças a ela. Os autores apresentam várias estratégias para reduzir a probabilidade de perda de dados.\\\hline
+Conclusões, Contribuições e Resultados Obtidos: & \\\hline
+Comentários: & \\\hline
+Expressões-chave: & \emph{Distributed Storage System, Erasure Code}\\\hline
+Observações: & O texto do artigo foi acessado em 28/06/2011.\\\hline
+
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{|p{5cm}||p{10cm}|}
+\hline
+Categoria Genérica: & Sistemas Distribuídos\\\hline
+Categoria Específica: &  Redundância em Sistemas Distribuídos\\\hline
+Referência Bibliográfica: & Weatherspoon, H. Moscovitz, T. Kubiatowicz, J. Introspective Failure Analysis: Avoiding Correlated Failures in Peer-to-Peer Systems. In:  \emph{Proceedings of the 21st IEEE Symposium on Reliable Distributed Systems (SRDS '02)}. Los Alamitos, CA, USA. p. 362--367, 2002.\\\hline
+Tipo: & Teórico\\\hline
+Local: & http://citeseerx.ist.psu.edu/viewdoc/\\ &summary?doi=10.1.1.19.2434\\\hline
+Número de Páginas: & 6\\\hline
+Citações (CiteSeer): & 27\\\hline
+Número de Referências: & 19\\\hline
+Visão geral do assunto do artigo: & O artigo apresenta um estudo que analisa técnicas de tolerância a falhas: falhas bizantinas, codificação por apagamento, independência de falhas.\\\hline
+Conclusões, Contribuições e Resultados Obtidos: & Os autores concluíram que \\\hline
+Comentários: & \\\hline
+Expressões-chave: & \emph{Redundancy, Fault tolerance, Peer-to-Peer}\\\hline
+Observações: & O texto do artigo foi acessado em 28/06/2011.\\\hline
+
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{|p{5cm}||p{10cm}|}
+\hline
+
+Categoria Genérica: & Sistemas Distribuídos\\\hline
+Categoria Específica: & Distributed Storage System\\\hline
+Referência Bibliográfica: & Ghemawat, S. Gobioff, H. Leung, S. The Google file system. In:  \emph{Proceedings of the nineteenth ACM symposium on Operating systems principles (SOSP '03)}. New York, NY, USA. p. 29--43, 2003.\\\hline
+Tipo: & Teórico\\\hline
+Local: & http://labs.google.com/papers/gfs.html\\\hline
+Número de Páginas: & 15\\\hline
+Citações (CiteSeer): & 77\\\hline
+Número de Referências: & 12\\\hline
+Visão geral do assunto do artigo: & O artigo propõe sistema MAID (\emph{massive array of idle disks}) utilizando milhares de discos de dados. O sistema é projetado para aplicações do tipo uma escrita, várias leituras. O sistema substitue sistemas de armazenamento em fitas. O sistema é composto por milhares  de \emph{bricks} conectados por uma rede. Cada \emph{brick} tem \emph{commodity hardware} para armazenamento, CPU, and NVRAM conectados por uma rede ethernet. Não existe um controlador central. Um algoritmo assíncrono baseado em voto  Paxos é usado para manter a consistência de metadados entre os \emph{bricks}. Uma instalação de Pergamum pode conter apenas um tome ou até milhares deles. Os clientes submetem pedidos de arquivos de dados a um \emph{brick} coordenador (qualquer \emph{brick}). O coordenador envia um pedido para os \emph{bricks} de armazenamento desses blocos. \\\hline
+Conclusões, Contribuições e Resultados Obtidos: & O custo de manutenção foi calculado em \$0.50 por gigabyte. Pelos experimentos, os autores mostraram que o Pergamum pode ter uso de energia de baixa, custo de hardware baixo, alta confiabilidade e gerenciamento mais simples. \\\hline
+Comentários: & Esse artigo tem interessantes referências.\\\hline
+Expressões-chave: & \emph{Distributed Storage System, Erasure Code}\\\hline
+Observações: & O texto do artigo foi acessado em 26/06/2011.\\\hline
+
+\end{tabular}
+\end{center}
+
+\end{document}
