@@ -4,3 +4,7 @@ Fichamento dos artigos
 
 cd artigos
 pdflatex resumo-artigos
+
+Texto da dissertação - ainda escrevendo e alterando texto só da seção teórica
+bibtex secao-teorica
+pdflatex secao-teorica
