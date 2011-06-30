@@ -1,0 +1,22 @@
+\section{Discussão sobre esquemas adequados de redundância de dados}
+
+Pode-se encontrar na literatura um número significativo de projetos que propõem sistemas de armazenamento distribuído, sistemas de arquivos distribuídos, ou sistemas de backup. Apesar da disso, nenhum esquema de redundância de dados tem sido amplamente aceito para esses sistemas e nenhuma regra fácil foi criada para se encontrar um esquema adequado de redundância de dados.
+
+Os autores em \cite{Duminoco:2009} estudaram redundância de dados em sistemas \emph{peer-to-peer} para \emph{backup} e propuseram um esquema hídrido para implementar redundância (replicação e codificação) de dados. Em \cite{Storer:2008}, foi proposto um sistema de armazenamento de dados baseado em discos que usa dois níveis de codificação. Nesses textos, encontramos uma comparação entre alguns sistemas de armazenamento, avaliando-se algumas de suas características. Podemos observar que os tipos de esquema de redundância de dados são replicação, codificação por apagamento e híbrido, sendo a replicação, a estratégia mais utilizada nos sistemas comparados por \cite{Duminoco:2009} e a codificação por apagamento, para os sistemas comparados por \cite{Storer:2008}.
+
+Redundância de dados é necessária para prevenir perda de dados, mas não é suficiente. A avaliação de esquemas de redundância é muitas vezes baseada na suposição de que as réplicas falham de forma independente. Na prática, as falhas não são tão independentes, segundo \cite{Weatherspoon:2002:02,Baker:2006}. Esse trabalho não tratará a independência das réplicas.
+
+Cada esquema de redundância estabelece (i) como criar os dados redundantes e (ii) como reconstruir os dados quando houver falha. Essas duas operações geram custos que diferem de um esquema para outro. Esse trabalho comentará os mais amplamente usados esquemas de redundância: replicação e códigos corretores de erros.
+
+\subsection{Esquemas de redundância de dados para sistema de armazenamento}
+
+Esquemas de redundância de dados são utilizados em sistemas de armazenamento (exemplo: sistemas RAID) para prover disponibilidade, tolerância a falhas e durabilidade de dados e em sistemas de comunicação (exemplo, sistemas \emph{peer-to-peer}) para prover uma entrega confiável e segura de dados.
+
+Replicação é o esquema de redundância mais simples. A maioria dos sistemas, que utiliza redundância de dados, é baseada em replicação, mas esse esquema consume mais armazenamento que a codificação por apagamento.
+
+A replicação é usada no Google File System \cite{Ghemawat:2003} (GFS) e no Hadoop Distributed File System \cite{Hadoop:2010} (HDFS), sistemas de arquivos distribuídos que apresentam características semelhantes. Um \emph{cluster} do GFS ou do HDFS é formado por um único servidor, master (GFS) ou namenode (HDFS), que mantém os metadados e muitos servidores de dados, os chunkservers (GFS) ou os datanodes (HDFS) e é acessado por vários clientes. Os arquivos de dados são armazenados nos chunkservers (GFS) ou datanodes (HDFS) e particionados em blocos de igual tamanho. Ambos, GFS e HDFS foram projetados para aplicações que processam grande volume de dados. 
+
+Seus projetos consideram \emph{clusters} de (\emph{commodity hardware}), uma versão do \emph{kernel} linux como sistema operacional para as máquinas e uma arquitetura de rede com dois níveis: vários \emph{racks} interligados por um comutador e cada \emph{rack} é formado por várias máquinas e seus discos, estes também interligados por um comutador. A estratégia de inserção de dados cria réplicas em \emph{racks} distintos do \emph{rack} onde está a 1$^a$ réplica, assim, falhas que comprometam um \emph{rack} não provocam a indisponibilidade de dados. Os arquivos de dados são alterados por concatenações ao invés de sobrescrever dados existentes. Após a criação, os arquivos de dados são usados apenas para leitura e esta leitura ocorre sequencialmente. As APIs do cliente fornecidas pelo GFS e pelo HDFS suportam operações de criação, leitura, escrita, remoção, mas não implementam a interface POSIX.
+
+O Farsite, que utiliza apenas replicação, é um sistema de arquivos distribuídos, particionados em namespaces, explorando os desktops presentes dentro da Microsoft. Ceph \footnote{http://ceph.newdream.net/} é um sistema de arquivos \emph{open source} (existe módulo em desenvolvimento que permite usá-lo como armazenamento para uma instância do Hadoop) e também utiliza apenas replicação.
+

@@ -1,0 +1,15 @@
+\vspace{1cm}
+
+{\bf \emph{Códigos Convolacionais}}
+
+\vspace{0.5cm}
+
+P. Elias introduziu códigos convolucionais em 1955. Um código convulacional é um dispositivo com memória. Apesar de aceitar uma mensagem de entrada de tamanho fixo e produzir uma saída codificada, seus cálculos não dependem somente da entrada atual, mas também das entradas e saídas anteriores.
+
+Um codificador para um código convolucional também aceita blocos de $k$ bits da sequência de dados $u$ e gera uma sequência de saída $v$ de $n$ \emph{bits} chamada \emph{codeword} ou palavra código. Cada bloco da palavra código não depende apenas dos $k$ bits do bloco da sequência de dados correspondente, mas também de $M$ blocos anteriores. Dizemos que o codificador tem memória de ordem $M$, onde $M$ é o número de registradores de memória. Esse conjunto de blocos de $k$ bits, o codificador das palavras código de tamanho $n$ e de memória de ordem $M$ é chamado de ($n$, $k$, $M$) código convolucional. $R = \frac{k}{n}$  é a taxa de codificação. Como o codificador tem memória, ele pode ser implementado como circuito lógico sequêncial \cite{Lin:1983}.
+
+Em um código convolucional, os $n - k$ bits redundantes, que provem à codificação a capacidade de tratar os ruídos do canal, podem ser adicionados quando $k < n$. Para uma mesma taxa de codificação $R$, pode-se adicionar redundância, aumentando a ordem da memória $M$ do codificador. Como usar a memória para obter uma transmissão confiável sob um canal com ruído é o principal problema do projeto do codificador.
+
+Códigos convolucionais podem ser usados para melhorar o desempenho da comunicação por rádio e satélites. Códigos convolucionais são utilizados nas tecnologias CDMA (\emph{Code division multiple access}) e GSM (\emph{Global System for Mobile Communications}) para telefones celulares, \emph{dial-up modems}, satélites, \emph{NASA's Deep Space Network} deep-space communications e na rede WLAN Wi-Fi IEEE 802.11.
+
+\vspace{1cm}
