@@ -14,9 +14,44 @@ Esquemas de redundância de dados são utilizados em sistemas de armazenamento (ex
 
 Replicação é o esquema de redundância mais simples. A maioria dos sistemas, que utiliza redundância de dados, é baseada em replicação, mas esse esquema consume mais armazenamento que a codificação por apagamento.
 
-A replicação é usada no Google File System \cite{Ghemawat:2003} (GFS) e no Hadoop Distributed File System \cite{Hadoop:2010} (HDFS), sistemas de arquivos distribuídos que apresentam características semelhantes. Um \emph{cluster} do GFS ou do HDFS é formado por um único servidor, master (GFS) ou namenode (HDFS), que mantém os metadados e muitos servidores de dados, os chunkservers (GFS) ou os datanodes (HDFS) e é acessado por vários clientes. Os arquivos de dados são armazenados nos chunkservers (GFS) ou datanodes (HDFS) e particionados em blocos de igual tamanho. Ambos, GFS e HDFS foram projetados para aplicações que processam grande volume de dados. 
+A replicação é usada no Google File System \cite{Ghemawat:2003} (GFS), no Hadoop Distributed File System \cite{Hadoop:2010} (HDFS) e no Kosmos distributed file system \cite{TKDFS:2011} (KFS), sistemas de arquivos distribuídos que apresentam características semelhantes. Um \emph{cluster} do GFS ou do HDFS ou do KFS é formado por um único servidor, master (GFS) ou namenode (HDFS) ou Meta server (KFS), que mantém os metadados e muitos servidores de dados, os chunkservers (GFS e KFS) ou os datanodes (HDFS) e é acessado por vários clientes. Os arquivos de dados são armazenados nos chunkservers (GFS e KFS) ou datanodes (HDFS) e são particionados em blocos de igual tamanho. GFS, HDFS e KFS foram projetados para aplicações que processam grande volume de dados. 
 
-Seus projetos consideram \emph{clusters} de (\emph{commodity hardware}), uma versão do \emph{kernel} linux como sistema operacional para as máquinas e uma arquitetura de rede com dois níveis: vários \emph{racks} interligados por um comutador e cada \emph{rack} é formado por várias máquinas e seus discos, estes também interligados por um comutador. A estratégia de inserção de dados cria réplicas em \emph{racks} distintos do \emph{rack} onde está a 1$^a$ réplica, assim, falhas que comprometam um \emph{rack} não provocam a indisponibilidade de dados. Os arquivos de dados são alterados por concatenações ao invés de sobrescrever dados existentes. Após a criação, os arquivos de dados são usados apenas para leitura e esta leitura ocorre sequencialmente. As APIs do cliente fornecidas pelo GFS e pelo HDFS suportam operações de criação, leitura, escrita, remoção, mas não implementam a interface POSIX.
+Seus projetos consideram \emph{clusters} de (\emph{commodity hardware}), uma versão do \emph{kernel} linux como sistema operacional para as máquinas e uma arquitetura de rede com dois níveis: vários \emph{racks} interligados por um comutador e cada \emph{rack} é formado por várias máquinas e seus discos, estes também interligados por um comutador. A estratégia de inserção de dados cria réplicas em \emph{racks} distintos do \emph{rack} onde está a 1$^a$ réplica, assim, falhas que comprometam um \emph{rack} não provocam a indisponibilidade de dados. Os arquivos de dados são alterados por concatenações ao invés de sobrescrever dados existentes. Após a criação, os arquivos de dados são usados apenas para leitura e esta leitura ocorre sequencialmente. O KFS permite escrever em posições randômicas nos arquivos. As APIs do cliente fornecidas pelo GFS, pelo HDFS e pelo KFS suportam operações de criação, leitura, escrita, remoção de arquivos, mas não implementam a interface POSIX.
 
-O Farsite, que utiliza apenas replicação, é um sistema de arquivos distribuídos, particionados em namespaces, explorando os desktops presentes dentro da Microsoft. Ceph \footnote{http://ceph.newdream.net/} é um sistema de arquivos \emph{open source} (existe módulo em desenvolvimento que permite usá-lo como armazenamento para uma instância do Hadoop) e também utiliza apenas replicação.
+O GFS está disponível para linux sob uma licença de software proprietário. O HDFS \footnote{http://hadoop.apache.org/}  e o KFS \footnote{http://code.google.com/p/kosmosfs/} estão disponíveis para linux sob uma licença Apache. 
 
+O Farsite, que utiliza apenas replicação, é um sistema de arquivos distribuídos, particionados em namespaces, explorando os desktops presentes dentro da Microsoft, disponível para Windows sob uma licença de software proprietário. A escolha da replicação foi, pelos autores, considerada uma opção mais simples para disponibilidade, já que a codificação poderia significar latência adicional nas leituras dos arquivos. Ainda segundo os autores, estudos com experimentos já mostraram que a codificação pode apresentar um bom desempenho e seria possível, então, alterar no futuro o esquema de redundância do Farsite.
+
+Ceph \cite{Weil:2006} é um sistema de arquivos \emph{open source} que possui três principais componentes: um \emph{cluster} de servidores de metadados (que gerencia o namespace, nomes de arquivos e diretórios), um \emph{cluster} de OSDs (dispositivos de armazenamento de objetos) que armazenam dados e metadados e os clientes que utilizam uma interface do sistema de arquivos. O Ceph agrupa dados em PGs (grupos de colocação) e usa uma função \emph{hash} para distribuir os PGs nos OSDs, cujo algoritmo CRUSH é $O(log n)$ e usa uma árvore-B para indexar os PGs. Existe um módulo em desenvolvimento que permite usar o Ceph como armazenamento para uma instância do Hadoop. O Ceph utiliza apenas replicação, implementa parcialmente a interface POSIX e está disponível para linux sob LGPL \footnote{http://ceph.newdream.net/}.
+
+Lustre \footnote{git://git.lustre.org/prime/lustre.git} tem na sua arquitetura os metadata server (disponibiliza os metadados para clientes), o metadata target (um por sistema de arquivos, armazena os metadados), object storage servers (armazena os dados), object storage target (armazena os objetos que contém os arquivos de dados) e clientes.
+
+Moosefs \footnote{http://www.moosefs.org/} também foi projetado com uma arquitetura que se assemelha a do GFS, HDFS e KFS: master server (que armazena os metadados), chunk servers (que armazenam os dados), metalogger server (podem substituir algumas funções do master server, se ele falhar) e clientes (que solicitam dados e se comunicam com o master server e o chunk servers. 
+
+Ambos usam replicação, implementam a interface POSIX e estão disponíveis para linux sob uma licença GPL.
+
+Com exceção do Farsite, os sistemas de armazenamento apresentados consideram \emph{clusters} de (\emph{commodity hardware}) e uma versão do \emph{kernel} linux como sistema operacional para as máquinas.
+
+\begin{table}
+\singlespacing
+  \begin{center}
+    \begin{tabular}{|p{2.5cm}||p{3cm}||p{3cm}||p{2.5cm}||p{2cm}|}
+      \hline
+Sistema & Codificação & Objetivo com a Codificação & Ambiente de funcionamento & Licença\\ \hline
+Pergamum & XOR parity, Reed-Solomon & confiabilidade, disponibilidade & MAID &\\ \hline
+Potshards & RAID e Reed-Solomon & confiabilidade, disponibilidade & &\\ \hline
+RobuStore & Luby Transform (LT) codes & confiabilidade, disponibilidade & &\\ \hline
+Glacier & & confiabilidade, disponibilidade & LAN da empresa &\\ \hline
+Total Recall & & reduzir tamanho do armazenamento & internet &\\ \hline
+FAB & Reed-Solomon & confiabilidade, disponibilidade & &\\ \hline
+GPFS & RAID & confiabilidade, disponibilidade & &\\ \hline
+Oceanstore & Tornado codes e Read-Solomon codes & reduzir tamanho do armazenamento & internet &\\ \hline
+xFS & RAID & confiabilidade, disponibilidade & &\\ \hline
+Swift & RAID & confiabilidade, disponibilidade & &\\ \hline
+Tahoe-LAFS & RAID & confiabilidade, disponibilidade & &\\ \hline
+HDFS & RAID, Reed-Solomon, ... & reduzir tamanho do armazenamento & MAID & Apache\\ \hline
+    \end{tabular}
+\caption{Comparação entre Sistemas de armazenamento de grande volume de dados utilizam codificação}
+\label{tab1:comp}
+  \end{center}
+\end{table}
