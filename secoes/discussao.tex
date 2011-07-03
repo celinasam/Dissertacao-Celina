@@ -12,7 +12,13 @@ Cada esquema de redundância estabelece (i) como criar os dados redundantes e (ii
 
 Esquemas de redundância de dados são utilizados em sistemas de armazenamento (exemplo: sistemas RAID) para prover disponibilidade, tolerância a falhas e durabilidade de dados e em sistemas de comunicação (exemplo, sistemas \emph{peer-to-peer}) para prover uma entrega confiável e segura de dados.
 
-Replicação é o esquema de redundância mais simples. A maioria dos sistemas, que utiliza redundância de dados, é baseada em replicação, mas esse esquema consume mais armazenamento que a codificação por apagamento.
+\subsubsection{Replicação}
+
+Replicação é o esquema de redundância mais simples. A maioria dos sistemas, que utiliza redundância de dados, é baseada em replicação, mas esse esquema consume mais espaço que a codificação por apagamento, pois uma cópia completa de cada arquivo é armazenada em cada um dos servidores de dados.
+
+A principal desvantagem da replicação é que ela requer um grande \emph{overhead} de armazenamento para pouco ganho em disponibilidade e tolerância a falhas. Garantir que os dados permaneçam disponíveis quando todos os $n$ dispositivos falham exige que, pelo menos, $n + 1$ cópias existam \cite{Woitaszek:2007}. Por exemplo, o sistema Glaciar de armazenamento aumenta de 11 vezes a quantidade de dados armazenados utilizando replicação para conseguir 0.999999\% (\emph{six nines}) de confiabilidade.
+
+Os autores em \cite{Dabek:2004} afirmam que dados replicados permitem leituras de baixa latência, porque há muitas opções para a seleção de servidores, enquanto que dados codificados reduzem o consumo de largura de banda para escritas, em detrimento do aumento da latência de leituras.
 
 A replicação é usada no Google File System \cite{Ghemawat:2003} (GFS), no Hadoop Distributed File System \cite{Hadoop:2010} (HDFS) e no Kosmos distributed file system \cite{TKDFS:2011} (KFS), sistemas de arquivos distribuídos que apresentam características semelhantes. Um \emph{cluster} do GFS ou do HDFS ou do KFS é formado por um único servidor, master (GFS) ou namenode (HDFS) ou Meta server (KFS), que mantém os metadados e muitos servidores de dados, os chunkservers (GFS e KFS) ou os datanodes (HDFS) e é acessado por vários clientes. Os arquivos de dados são armazenados nos chunkservers (GFS e KFS) ou datanodes (HDFS) e são particionados em blocos de igual tamanho. GFS, HDFS e KFS foram projetados para aplicações que processam grande volume de dados. 
 
@@ -22,36 +28,42 @@ O GFS está disponível para linux sob uma licença de software proprietário. O HDF
 
 O Farsite, que utiliza apenas replicação, é um sistema de arquivos distribuídos, particionados em namespaces, explorando os desktops presentes dentro da Microsoft, disponível para Windows sob uma licença de software proprietário. A escolha da replicação foi, pelos autores, considerada uma opção mais simples para disponibilidade, já que a codificação poderia significar latência adicional nas leituras dos arquivos. Ainda segundo os autores, estudos com experimentos já mostraram que a codificação pode apresentar um bom desempenho e seria possível, então, alterar no futuro o esquema de redundância do Farsite.
 
+Big Table (construído sob o GFS) e Dynamo (construído para Amazon.com) são dois sistemas de armazenamento que gravam e recuperaram dados através de uma chave e operates in a shared pool of machines, utilizam apenas replicação. 
+
 Ceph \cite{Weil:2006} é um sistema de arquivos \emph{open source} que possui três principais componentes: um \emph{cluster} de servidores de metadados (que gerencia o namespace, nomes de arquivos e diretórios), um \emph{cluster} de OSDs (dispositivos de armazenamento de objetos) que armazenam dados e metadados e os clientes que utilizam uma interface do sistema de arquivos. O Ceph agrupa dados em PGs (grupos de colocação) e usa uma função \emph{hash} para distribuir os PGs nos OSDs, cujo algoritmo CRUSH é $O(log n)$ e usa uma árvore-B para indexar os PGs. Existe um módulo em desenvolvimento que permite usar o Ceph como armazenamento para uma instância do Hadoop. O Ceph utiliza apenas replicação, implementa parcialmente a interface POSIX e está disponível para linux sob LGPL \footnote{http://ceph.newdream.net/}.
 
 Lustre \footnote{git://git.lustre.org/prime/lustre.git} tem na sua arquitetura os metadata server (disponibiliza os metadados para clientes), o metadata target (um por sistema de arquivos, armazena os metadados), object storage servers (armazena os dados), object storage target (armazena os objetos que contém os arquivos de dados) e clientes.
 
 Moosefs \footnote{http://www.moosefs.org/} também foi projetado com uma arquitetura que se assemelha a do GFS, HDFS e KFS: master server (que armazena os metadados), chunk servers (que armazenam os dados), metalogger server (podem substituir algumas funções do master server, se ele falhar) e clientes (que solicitam dados e se comunicam com o master server e o chunk servers. 
 
-Ambos usam replicação, implementam a interface POSIX e estão disponíveis para linux sob uma licença GPL.
+Ambos, Lustre e Moosefs, usam replicação, implementam a interface POSIX e estão disponíveis para linux sob uma licença GPL.
 
 Com exceção do Farsite, os sistemas de armazenamento apresentados consideram \emph{clusters} de (\emph{commodity hardware}) e uma versão do \emph{kernel} linux como sistema operacional para as máquinas.
+
+\subsubsection{Codificação por Apagamento}
+
+Uma vantagem de codificação por apagamento é um custo menor de armazenamento se comparado a replicação, no caso de grande volume de dados. Outra vantagem com relação a replicação foi comentada em \cite{Weatherspoon:2002:01}: para um mesmo espaço de armazenamento, o tempo médio entre falhas (\emph{mean time to failure}) é maior.
 
 \begin{table}
 \singlespacing
   \begin{center}
-    \begin{tabular}{|p{2.5cm}||p{3cm}||p{3cm}||p{2.5cm}||p{2cm}|}
-      \hline
-Sistema & Codificação & Objetivo com a Codificação & Ambiente de funcionamento & Licença\\ \hline
-Pergamum & XOR parity, Reed-Solomon & confiabilidade, disponibilidade & MAID &\\ \hline
-Potshards & RAID e Reed-Solomon & confiabilidade, disponibilidade & &\\ \hline
-RobuStore & Luby Transform (LT) codes & confiabilidade, disponibilidade & &\\ \hline
-Glacier & & confiabilidade, disponibilidade & LAN da empresa &\\ \hline
-Total Recall & & reduzir tamanho do armazenamento & internet &\\ \hline
-FAB & Reed-Solomon & confiabilidade, disponibilidade & &\\ \hline
-GPFS & RAID & confiabilidade, disponibilidade & &\\ \hline
-Oceanstore & Tornado codes e Read-Solomon codes & reduzir tamanho do armazenamento & internet &\\ \hline
-xFS & RAID & confiabilidade, disponibilidade & &\\ \hline
-Swift & RAID & confiabilidade, disponibilidade & &\\ \hline
-Tahoe-LAFS & RAID & confiabilidade, disponibilidade & &\\ \hline
-HDFS & RAID, Reed-Solomon, ... & reduzir tamanho do armazenamento & MAID & Apache\\ \hline
+    \begin{tabular}{|p{2cm}||p{3cm}||p{3cm}||p{3.5cm}||p{1.7cm}|}
+      \hline \hline
+sistema & codificação & objetivo com a codificação & arquitetura do sistema & licença\\ \hline \hline
+Pergamum \cite{Storer:2008}& XOR parity, Reed-Solomon & confiabilidade, disponibilidade & disk-based archival storage & não disponível\\ \hline
+Potshards & RAID e Reed-Solomon & confiabilidade, disponibilidade & disk-based archival storage & não disponível\\ \hline
+RobuStore & Luby Transform (LT) codes & confiabilidade, disponibilidade & disk-based archival storage & não disponível\\ \hline
+Glacier \cite{Haeberlen:2005}& Reed-Solomon com matrizes Cauchy & confiabilidade, disponibilidade & desktops e notebooks conectados a uma intranet ou conectados por modem & não disponível\\ \hline
+Total Recall & Maymounkov's online codes & reduzir tamanho do armazenamento &  peer-to-peer storage system & não disponível\\ \hline
+FAB \cite{Saito:2004}& Reed-Solomon & confiabilidade, disponibilidade & distributed disk array & não disponível\\ \hline
+GPFS & RAID & confiabilidade, disponibilidade & shared-disk file system for cluster & não disponível\\ \hline
+Oceanstore \cite{Kubiatowicz:2000} \footnote{http://oceanstore.sourceforge.net/}& Tornado codes e Read-Solomon codes & reduzir o tamanho do armazenamento & desktops e notebooks conectados a servidores geograficamente distribuídos & BSD \\ \hline
+xFS \footnote{http://oss.sgi.com/projects/xfs/} & RAID & confiabilidade, disponibilidade & serverless network file system & GPL\\ \hline
+Swift & RAID & confiabilidade, disponibilidade & desktops sob unix conectados a uma intranet & não disponível\\ \hline
+Tahoe-LAFS \footnote{http://tahoe-lafs.org/trac/tahoe-lafs} & RAID & confiabilidade, disponibilidade & storage servers, clients, gateway & GPL\\ \hline
+HDFS \cite{Hadoop:2010}& RAID, Reed-Solomon, ... & reduzir o tamanho do armazenamento & shared-disk file system for cluster & Apache\\ \hline
     \end{tabular}
-\caption{Comparação entre Sistemas de armazenamento de grande volume de dados utilizam codificação}
+\caption{Comparação entre sistemas de armazenamento de grande volume de dados que utilizam \emph{commodity hardware}}
 \label{tab1:comp}
   \end{center}
 \end{table}

@@ -406,20 +406,20 @@ Códigos Tornado são uma classe de códigos LDPC \cite{Woitaszek:2007}. Segundo \c
 
 Em \cite{Luby:1998}, os autores apresentam códigos Tornado baseados em grafos irregulares. Segundo \cite{CS540:2010}, as implicações práticas desses códigos ainda não foram bem estudadas.
 
-Na tabela~\ref{tab1:comp}, alguns sistemas que utilizam com
-codificação por apagamento foram comparados.
+%Na tabela~\ref{tab1:comp}, alguns sistemas que utilizam com
+%codificação por apagamento foram comparados.
 
-\input{tabelas/tabela-comp-sistemas-arquivos-codificacao}
+%\input{tabelas/tabela-comp-sistemas-arquivos-codificacao}
 
-\subsection{Replicação versus Codificação por Apagamento}
+%\subsection{Replicação versus Codificação por Apagamento}
 
-Para implementar redundância de dados em sistemas, são utilizadas várias técnicas: codificação por apagamento, replicação, espelhamento, \emph{Cyclic redundancy check} (CRC), \emph{bits} de paridade, \emph{checksum}, assinatura digital \cite{EDC:2010}. Mecanismos de redundância podem implementar um conjunto destas técnicas \cite{Fan:2009}.
+%Para implementar redundância de dados em sistemas, são utilizadas várias técnicas: codificação por apagamento, replicação, espelhamento, \emph{Cyclic redundancy check} (CRC), \emph{bits} de paridade, \emph{checksum}, assinatura digital \cite{EDC:2010}. Mecanismos de redundância podem implementar um conjunto destas técnicas \cite{Fan:2009}.
 
-Entre as técnicas para implementar redundância de dados, a replicação é a mais utilizada em sistemas com o objetivo de se obter alta disponibilidade e durabilidade de dados diante de falhas de componentes destes sistemas. O motivo disto é a simplicidade na implementação de replicação, mas algumas pesquisas demonstram um campo promissor para codificação por apagamento para armazenamento em sistemas distribuídos.
+%Entre as técnicas para implementar redundância de dados, a replicação é a mais utilizada em sistemas com o objetivo de se obter alta disponibilidade e durabilidade de dados diante de falhas de componentes destes sistemas. O motivo disto é a simplicidade na implementação de replicação, mas algumas pesquisas demonstram um campo promissor para codificação por apagamento para armazenamento em sistemas distribuídos.
 
-A principal desvantagem da replicação é que ela requer um grande \emph{overhead} de armazenamento para pouco ganho em disponibilidade e tolerância a falhas. Garantir que os dados permaneçam disponíveis quando todos os $n$ dispositivos falham exige que, pelo menos, $n + 1$ cópias existam \cite{Woitaszek:2007}. Por exemplo, o sistema Glaciar de armazenamento aumenta de 11 vezes a quantidade de dados armazenados utilizando replicação para conseguir 0.999999\% (\emph{six nines})  de confiabilidade.
+%A principal desvantagem da replicação é que ela requer um grande \emph{overhead} de armazenamento para pouco ganho em disponibilidade e tolerância a falhas. Garantir que os dados permaneçam disponíveis quando todos os $n$ dispositivos falham exige que, pelo menos, $n + 1$ cópias existam \cite{Woitaszek:2007}. Por exemplo, o sistema Glaciar de armazenamento aumenta de 11 vezes a quantidade de dados armazenados utilizando replicação para conseguir 0.999999\% (\emph{six nines})  de confiabilidade.
 
-Uma vantagem de codificação por apagamento seria um custo menor de armazenamento se comparado a replicação, no caso de grande volume de dados. Outra vantagem com relação a replicação foi comentada em \cite{Weatherspoon:2002:01}: para um mesmo espaço de armazenamento, o tempo médio entre falhas (\emph{mean time to failure}) é maior.
+%Uma vantagem de codificação por apagamento seria um custo menor de armazenamento se comparado a replicação, no caso de grande volume de dados. Outra vantagem com relação a replicação foi comentada em \cite{Weatherspoon:2002:01}: para um mesmo espaço de armazenamento, o tempo médio entre falhas (\emph{mean time to failure}) é maior.
 
-Os autores em \cite{Dabek:2004} afirmam que dados replicados permitem leituras de baixa latência, porque há muitas opções para a seleção de servidores, enquanto que dados codificados reduzem o consumo de largura de banda para escritas, em detrimento do aumento da latência de leituras.
+%Os autores em \cite{Dabek:2004} afirmam que dados replicados permitem leituras de baixa latência, porque há muitas opções para a seleção de servidores, enquanto que dados codificados reduzem o consumo de largura de banda para escritas, em detrimento do aumento da latência de leituras.
 
