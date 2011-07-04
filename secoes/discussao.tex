@@ -72,7 +72,7 @@ HDFS, Total Recall e OceanStore usam codificação para reduzir o tamanho do armaz
 
 Esses sistemas que foram comparados, estão disponíveis para uma versão de sistema operacional linux ou unix. Além da codificação, todos eles implementam replicação.
 
-Vamos avaliar algumas das métricas utilizadas em literatura para comparar redundância de dados em sistemas de armazenamento: sobrecarga de armazenamento, disponibilidade dos \emph{peers} e operações de criação, leitura, atualização consistente e remoção de dados redundantes. Inicialmente vamos definir alguns conceitos adaptados de \cite{Duminoco:2009, Chiola:2005} para esses dois esquemas de redundância.
+Vamos avaliar algumas das métricas utilizadas em literatura para comparar redundância de dados em sistemas de armazenamento: sobrecarga de armazenamento, disponibilidade dos \emph{peers} e operações de criação, leitura, atualização consistente e remoção de dados redundantes. Inicialmente vamos definir alguns conceitos adaptados de \cite{Duminoco:2009, Chiola:2005, Williams:2007} para esses dois esquemas de redundância.
 
 \subsection{Caracterização da replicação e da codificação}
 
@@ -84,7 +84,7 @@ O {\bf grau de reparação} mede o que deve ser feito após parte da redundância se
 
 Definimos $p$ como a probabilidade de um \emph{peer} estar disponível e  $q\ =\ 1\ -\ p$ como a probabilidade de um \emph{peer} não estar disponível. Nesse estudo, assumimos que elas são iguais para todos os \emph{peers}.
 
-Vamos definir as operações de acesso a dados redundantes como uma tupla $(r, w, a)$, onde $r$ é o número mínimo de \emph{peers} disponíveis que armazenam dados redundantes, $w$ é o número mínimo de \emph{peers} disponíveis que armazenam dados redundantes que devem ser acessados para armazenar novos valores e $a$ número de \emph{peers} (provavelmente outros) que devem estar disponíveis para completar a operação.
+Vamos definir as operações de acesso a dados redundantes como uma tupla $(r, w, a)$, onde $r$ é o número mínimo de \emph{peers} disponíveis que armazenam dados redundantes, $w$ é o número mínimo de \emph{peers} disponíveis que armazenam dados redundantes que devem ser acessados para armazenar novos valores e $a$ é número de \emph{peers} (provavelmente outros) que devem estar disponíveis para completar a operação.
 
 \subsubsection{Replicação}
 
@@ -143,7 +143,7 @@ Comparando as tuplas (1, 0, 0) e (1, n, 0) da tabela ~\ref{tab2:comp}, podemos o
 
 \subsubsection{Codificação por Apagamento}
 
-Na Codificação (m, k), $k$ é o número de pedaços originais  e $m\ -\ k$ é o número de pedaços adicionados.
+Na Codificação (m, k), $k$ é o número de blocos originais do dado, $m$ é o número de blocos codificados  e $m\ -\ k$ é o número de blocos adicionados pela codificação.
 
 {\bf número de falhas suportadas} $l\ =\ m\ -\ k$
 
@@ -197,13 +197,13 @@ Por outro lado, comparando-se as tuplas $(k, 0, 0)$ e $(k, m-k+1, k-1)$ da tabel
 
 \subsection{Sobrecarga de armazenamento}
 
-Em \cite{Weatherspoon:2002:01, Dabek:2004}, os autores afirmam que a codificação consegue o mesmo nível de disponibilidade como a replicação, usando muito menos espaço de armazenamento.
+Em \cite{Weatherspoon:2002:01, Dabek:2004}, os autores afirmam que a codificação obtem o mesmo nível de disponibilidade como a replicação, usando muito menos espaço de armazenamento.
 
 \subsection{Disponibilidade dos peers}
 
 \subsection{Leitura ou Atualização dos dados redundantes}
 
-Em \cite{Chiola:2005}, os autores ainda concluem que:
+Em \cite{Chiola:2005}, os autores concluem que:
 
 \begin{itemize}
   \item o acesso somente de leitura pode ser suportado tanto por replicação de dados simples como por codificação
