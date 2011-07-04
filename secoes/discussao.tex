@@ -26,9 +26,9 @@ Seus projetos consideram \emph{clusters} de (\emph{commodity hardware}), uma ver
 
 O GFS está disponível para linux sob uma licença de software proprietário. O HDFS \footnote{http://hadoop.apache.org/}  e o KFS \footnote{http://code.google.com/p/kosmosfs/} estão disponíveis para linux sob uma licença Apache. 
 
-O Farsite, que utiliza apenas replicação, é um sistema de arquivos distribuídos, particionados em namespaces, explorando os desktops presentes dentro da Microsoft, disponível para Windows sob uma licença de software proprietário. A escolha da replicação foi, pelos autores, considerada uma opção mais simples para disponibilidade, já que a codificação poderia significar latência adicional nas leituras dos arquivos. Ainda segundo os autores, estudos com experimentos já mostraram que a codificação pode apresentar um bom desempenho e seria possível, então, alterar no futuro o esquema de redundância do Farsite.
+O Farsite, que utiliza apenas replicação, é um sistema de arquivos distribuídos, particionados em namespaces, explorando os desktops presentes dentro da Microsoft, sem servidor mestre, disponível para Windows sob uma licença de software proprietário. A escolha da replicação foi, pelos autores, considerada uma opção mais simples para disponibilidade, já que a codificação poderia significar latência adicional nas leituras dos arquivos. Ainda segundo os autores, estudos com experimentos já mostraram que a codificação pode apresentar um bom desempenho e seria possível, então, alterar no futuro o esquema de redundância do Farsite.
 
-Big Table (construído sob o GFS) e Dynamo (construído para Amazon.com) são dois sistemas de armazenamento que gravam e recuperaram dados através de uma chave e operates in a shared pool of machines, utilizam apenas replicação. 
+Big Table (construído sob o GFS) e Dynamo (construído para Amazon.com) são dois sistemas de armazenamento que gravam e recuperaram dados através de uma chave e executam em um \emph{pool} compartilhado de máquinas, utilizam apenas replicação. 
 
 Ceph \cite{Weil:2006} é um sistema de arquivos \emph{open source} que possui três principais componentes: um \emph{cluster} de servidores de metadados (que gerencia o namespace, nomes de arquivos e diretórios), um \emph{cluster} de OSDs (dispositivos de armazenamento de objetos) que armazenam dados e metadados e os clientes que utilizam uma interface do sistema de arquivos. O Ceph agrupa dados em PGs (grupos de colocação) e usa uma função \emph{hash} para distribuir os PGs nos OSDs, cujo algoritmo CRUSH é $O(log n)$ e usa uma árvore-B para indexar os PGs. Existe um módulo em desenvolvimento que permite usar o Ceph como armazenamento para uma instância do Hadoop. O Ceph utiliza apenas replicação, implementa parcialmente a interface POSIX e está disponível para linux sob LGPL \footnote{http://ceph.newdream.net/}.
 
@@ -47,23 +47,171 @@ Uma vantagem de codificação por apagamento é um custo menor de armazenamento se 
 \begin{table}
 \singlespacing
   \begin{center}
-    \begin{tabular}{|p{2cm}||p{3cm}||p{3cm}||p{3.5cm}||p{1.7cm}|}
+    \begin{tabular}{|p{2cm}||p{4cm}||p{5cm}||p{2cm}|}
       \hline \hline
-sistema & codificação & objetivo com a codificação & arquitetura do sistema & licença\\ \hline \hline
-Pergamum \cite{Storer:2008}& XOR parity, Reed-Solomon & confiabilidade, disponibilidade & disk-based archival storage & não disponível\\ \hline
-Potshards & RAID e Reed-Solomon & confiabilidade, disponibilidade & disk-based archival storage & não disponível\\ \hline
-RobuStore & Luby Transform (LT) codes & confiabilidade, disponibilidade & disk-based archival storage & não disponível\\ \hline
-Glacier \cite{Haeberlen:2005}& Reed-Solomon com matrizes Cauchy & confiabilidade, disponibilidade & desktops e notebooks conectados a uma intranet ou conectados por modem & não disponível\\ \hline
-Total Recall & Maymounkov's online codes & reduzir tamanho do armazenamento &  peer-to-peer storage system & não disponível\\ \hline
-FAB \cite{Saito:2004}& Reed-Solomon & confiabilidade, disponibilidade & distributed disk array & não disponível\\ \hline
-GPFS & RAID & confiabilidade, disponibilidade & shared-disk file system for cluster & não disponível\\ \hline
-Oceanstore \cite{Kubiatowicz:2000} \footnote{http://oceanstore.sourceforge.net/}& Tornado codes e Read-Solomon codes & reduzir o tamanho do armazenamento & desktops e notebooks conectados a servidores geograficamente distribuídos & BSD \\ \hline
-xFS \footnote{http://oss.sgi.com/projects/xfs/} & RAID & confiabilidade, disponibilidade & serverless network file system & GPL\\ \hline
-Swift & RAID & confiabilidade, disponibilidade & desktops sob unix conectados a uma intranet & não disponível\\ \hline
-Tahoe-LAFS \footnote{http://tahoe-lafs.org/trac/tahoe-lafs} & RAID & confiabilidade, disponibilidade & storage servers, clients, gateway & GPL\\ \hline
-HDFS \cite{Hadoop:2010}& RAID, Reed-Solomon, ... & reduzir o tamanho do armazenamento & shared-disk file system for cluster & Apache\\ \hline
+sistema & codificação &  arquitetura do sistema & licença\\ \hline \hline
+Pergamum \cite{Storer:2008}& XOR parity, Reed-Solomon &  disk-based archival storage & não disponível\\ \hline
+Potshards & RAID e Reed-Solomon &  disk-based archival storage & não disponível\\ \hline
+RobuStore & Luby Transform (LT) codes & disk-based archival storage & não disponível\\ \hline
+Glacier \cite{Haeberlen:2005}& Reed-Solomon com matrizes Cauchy & peer-to-peer storage system & não disponível\\ \hline
+Total Recall & Maymounkov's online codes &  peer-to-peer storage system & não disponível\\ \hline
+FAB \cite{Saito:2004}& Reed-Solomon & distributed disk array & não disponível\\ \hline
+GPFS & RAID & shared-disk file system for cluster & não disponível\\ \hline
+Oceanstore \cite{Kubiatowicz:2000} \footnote{http://oceanstore.sourceforge.net/}& Tornado codes e Read-Solomon codes & desktops e notebooks conectados a servidores geograficamente distribuídos & BSD \\ \hline
+xFS \footnote{http://oss.sgi.com/projects/xfs/} & RAID & serverless network file system & GPL\\ \hline
+Swift & RAID & desktops sob unix conectados a uma intranet & não disponível\\ \hline
+Tahoe-LAFS \footnote{http://tahoe-lafs.org/trac/tahoe-lafs} & RAID & peer-to-peer filesystem & GPL2\\ \hline
+HDFS \cite{Hadoop:2010}& RAID, Reed-Solomon, ... & shared-disk file system for cluster & Apache\\ \hline
     \end{tabular}
 \caption{Comparação entre sistemas de armazenamento de grande volume de dados que utilizam \emph{commodity hardware}}
 \label{tab1:comp}
   \end{center}
 \end{table}
+
+HDFS, Total Recall e OceanStore usam codificação para reduzir o tamanho do armazenamento de dados e todos os outros sistemas usam codificação para prover disponibilidade e confiabilidade.
+
+Esses sistemas que foram comparados, estão disponíveis para uma versão de sistema operacional linux ou unix. Além da codificação, todos eles implementam replicação.
+
+Vamos avaliar algumas das métricas utilizadas em literatura para comparar redundância de dados em sistemas de armazenamento: sobrecarga de armazenamento, disponibilidade dos \emph{peers} e operações de criação, leitura, atualização consistente e remoção de dados redundantes. Inicialmente vamos definir alguns conceitos adaptados de \cite{Duminoco:2009, Chiola:2005} para esses dois esquemas de redundância.
+
+\subsection{Caracterização da replicação e da codificação}
+
+A confiabilidade de um esquema de redundância é medida pelo número de falhas simultâneas que ele pode tolerar sem comprometer a capacidade de reconstruir os dados originais. Assim esta propriedade pode ser expressada como a {\bf probabilidade de perda de dados, dado que ocorreram $l$ falhas}, $P(l)$.
+
+Para avaliar o armazenamento, vamos definir {\bf fator de redundância} $B$, uma razão entre tamanho dos dados originais mais a redundância $|dado\ +\ red|$ e o tamanho dos dados originais $|dado|$ e também vamos definir grau de reparação.
+
+O {\bf grau de reparação} mede o que deve ser feito após parte da redundância ser perdida. Para isso, é feita uma leitura de dados disponíveis para produzir novos. O custo dessa leitura em um sistema de armazenamento distribuído inclue volume do tráfego da rede, política de reparação, algoritmo de coordenação. Nesse estudo vamos apenas avaliar a contribuição do esquema de redundância: a quantidade de dados a serem lidos para que dados novos sejam criados para reparar o dado corrompido, definido por $d$.
+
+Definimos $p$ como a probabilidade de um \emph{peer} estar disponível e  $q\ =\ 1\ -\ p$ como a probabilidade de um \emph{peer} não estar disponível. Nesse estudo, assumimos que elas são iguais para todos os \emph{peers}.
+
+Vamos definir as operações de acesso a dados redundantes como uma tupla $(r, w, a)$, onde $r$ é o número mínimo de \emph{peers} disponíveis que armazenam dados redundantes, $w$ é o número mínimo de \emph{peers} disponíveis que armazenam dados redundantes que devem ser acessados para armazenar novos valores e $a$ número de \emph{peers} (provavelmente outros) que devem estar disponíveis para completar a operação.
+
+\subsubsection{Replicação}
+
+Para as definições, $n$ é o número de réplicas dos dados.
+
+{\bf número de falhas suportadas} $l\ =\ n\ -\ 1$
+
+{\bf probabilidade de perda de dados, dado que ocorreram $l$ falhas}
+
+$$
+P(l) = \left\{
+\begin{array}{rcl}
+0,& \mbox{se} & l\ <\ n\\
+1,& \mbox{se} & l\ =\ n
+\end{array}
+\right.
+$$
+
+{\bf fator de redundância}
+$$
+B\ =\ |dado\ +\ red|\ /\ |dado|\ =\ n
+$$
+
+{\bf grau de reparação}
+$$
+d\ =\ 1
+$$
+
+{\bf disponibilidade de um dado}
+$$
+1 - q^n
+$$
+
+{\bf corrupção de um dado}
+$$
+q^n
+$$
+
+\begin{table}
+\singlespacing
+  \begin{center}
+    \begin{tabular}{|p{5cm}||p{5cm}|}
+      \hline  \hline
+acesso & tupla $(r, w, a)$\\ \hline
+criar & $(0, 0, n)$\\ \hline
+apenas leitura & $(1, 0, 0)$\\ \hline
+atualização consistente & $(1, n, 0)$\\ \hline
+apagar & $(0, n, 0)$\\ \hline
+    \end{tabular}
+\caption{Operações sobre dados redundantes na replicação}
+\label{tab2:comp}
+  \end{center}
+\end{table}
+
+Comparando as tuplas (1, 0, 0) e (1, n, 0) da tabela ~\ref{tab2:comp}, podemos observar que a disponibilidade da operação "atualização consistente" é menor que a disponibilidade da operação "apenas leitura", quando o número de réplicas $n > 1$ é aplicado.
+
+\subsubsection{Codificação por Apagamento}
+
+Na Codificação (m, k), $k$ é o número de pedaços originais  e $m\ -\ k$ é o número de pedaços adicionados.
+
+{\bf número de falhas suportadas} $l\ =\ m\ -\ k$
+
+{\bf probabilidade de perda de dados, dado que ocorreram $l$ falhas}
+$$
+P(l) = \left\{
+\begin{array}{rcl}
+0,& \mbox{se} & l\ <=\ m\ -\ k\\
+1,& \mbox{se} & l\ > m\ -\ k
+\end{array}
+\right.
+$$
+
+{\bf fator de redundância}
+$$
+B\ =\ m / k
+$$
+
+{\bf grau de reparação}
+$$
+d\ =\ k
+$$
+
+{\bf disponibilidade de um dado}
+$$
+B(k, m, p)\ =\ \sum_{i=k}^{m}{m \choose i}p^{i}q^{m-i}
+$$
+
+{\bf corrupção de um dado}
+$$
+q^{m-k}
+$$
+
+\begin{table}
+\singlespacing
+  \begin{center}
+    \begin{tabular}{|p{5cm}||p{5cm}|}
+      \hline  \hline
+acesso & tupla $(r, w, a)$\\ \hline
+criar & $(0, 0, n)$\\ \hline
+apenas leitura & $(k, 0, 0)$\\ \hline
+atualização consistente & $(k, m-k+1, k-1)$\\ \hline
+apagar & $(0, m-k+1, 0)$\\ \hline
+    \end{tabular}
+\caption{Operações sobre dados redundantes na codificação por apagamento}
+\label{tab3:comp}
+  \end{center}
+\end{table}
+
+Por outro lado, comparando-se as tuplas $(k, 0, 0)$ e $(k, m-k+1, k-1)$ da tabela ~\ref{tab3:comp}, podemos observar que existe um caso no qual as operações "apenas leitura" e "atualização consistente" podem ter a mesma disponibilidade. Isto ocorre quando $m = 2k-1$ (assumindo-se também que número total de \emph{peers} disponíveis é maior ou igual a $m$), obtendo-se a tupla $(k, k, k-1)$.
+
+\subsection{Sobrecarga de armazenamento}
+
+Em \cite{Weatherspoon:2002:01, Dabek:2004}, os autores afirmam que a codificação consegue o mesmo nível de disponibilidade como a replicação, usando muito menos espaço de armazenamento.
+
+\subsection{Disponibilidade dos peers}
+
+\subsection{Leitura ou Atualização dos dados redundantes}
+
+Em \cite{Chiola:2005}, os autores ainda concluem que:
+
+\begin{itemize}
+  \item o acesso somente de leitura pode ser suportado tanto por replicação de dados simples como por codificação
+  \item para privilegiar atualização consistente, uma codificação de alta disponibilidade é necessária que se caracteriza por fracionamento do original dados em pedaços $k$ e adicionando exatamente $k-1$ pedaços
+  \item se ler e a disponibilidade de atualização consistente são de igual importância, isso requer codificação $(2k-1, k)$
+\end{itemize}
+
+Podemos também concluir que a replicação é um caso onde $k = 1$ e $l\ =\ m - k\ = \ n\ -\ 1$, portanto $m\ =\ n$. 
+
+Os autores também concluíram que usar apenas a replicação tem sentido apenas em poucos casos.
+
