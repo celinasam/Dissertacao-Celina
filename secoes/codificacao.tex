@@ -1,6 +1,6 @@
-\section{Códigos Corretores de Erros}
+\section{Codificação por Apagamento}
 
-A transmissão e o armazenamento de informação tem muito em comum. Ambos transferem dados da fonte para o destino. Para garantir confiabilidade nessas operações, são utilizados códigos corretores de erros.
+A transmissão e o armazenamento de informação tem muito em comum. Ambos transferem dados da fonte para o destino. Para garantir confiabilidade nessas operações, é utilizada codificação por apagamento ou códigos corretores de erros.
 
 Em um trabalho publicado em 1948, o matemático Claude E. Shannon demonstrou que a eficiência da codificação de mensagens do emissor antes da transmissão e da decodificação das mensagens (possivelmente danificadas) que chegam no receptor, possibilita reparar, para um nível aceitável, os efeitos de um canal físico com ruídos \cite{Shannon:1948} sem sobrecarregar a taxa de transmissão de informação ou o \emph{overhead} de armazenamento \cite{Lin:1983}. A Teoria dos Códigos tem sido estudada há décadas: por matemáticos nas décadas de 50 e 60 e a partir da década de 70 por engenheiros \cite{Hefez:2008}.
 
@@ -28,7 +28,7 @@ A probabilidade de erro no canal determina a capacidade de transferência de info
 
 O código da fonte é o conjunto de elementos que definem forma como a informação será transmitida, por exemplo, em termos de \emph{bits} e o código do canal inclui o código da fonte e a redundância (por exemplo, em termos de \emph{bits}) introduzida para garantir a correção de erros.
 
-Uma dificuldade encontrada por quem estuda códigos corretores é que não existe uma nomenclatura unificada \cite{Plank:2009}. Também segundo \cite{CS540:2010}, existem poucos pesquisadores que são programadores de sistemas e que fazem propostas neste tema.
+Uma dificuldade encontrada por quem estuda códigos corretores de erros é que não existe uma nomenclatura unificada \cite{Plank:2009}. Também segundo \cite{CS540:2010}, existem poucos pesquisadores que são programadores de sistemas e que fazem propostas neste tema.
 
 A idéia básica da código ótimo é que o objeto original possa ser reconstruído a partir de quaisquer $m$ únicos fragmentos que são aproximadamente do mesmo tamanho do objeto original \cite{Weatherspoon:2002:01}. Para uma codificação quase ótima, são necessários $ \approx  (1+e)m$ fragmentos, onde $e \geq 1$ \cite{EC:2010}.
 
