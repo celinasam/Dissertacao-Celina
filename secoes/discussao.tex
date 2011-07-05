@@ -16,7 +16,7 @@ Esquemas de redundância de dados são utilizados em sistemas de armazenamento (ex
 
 Replicação é o esquema de redundância mais simples. A maioria dos sistemas, que utiliza redundância de dados, é baseada em replicação, mas esse esquema consume mais espaço que a codificação por apagamento, pois uma cópia completa de cada arquivo é armazenada em cada um dos servidores de dados.
 
-A principal desvantagem da replicação é que ela requer um grande \emph{overhead} de armazenamento para pouco ganho em disponibilidade e tolerância a falhas. Garantir que os dados permaneçam disponíveis quando todos os $n$ dispositivos falham exige que, pelo menos, $n + 1$ cópias existam \cite{Woitaszek:2007}. Por exemplo, o sistema Glaciar de armazenamento aumenta de 11 vezes a quantidade de dados armazenados utilizando replicação para conseguir 0.999999\% (\emph{six nines}) de confiabilidade.
+A principal desvantagem da replicação é que ela requer um grande \emph{overhead} de armazenamento para pouco ganho em disponibilidade e tolerância a falhas. Garantir que os dados permaneçam disponíveis quando todos os $n$ dispositivos falham exige que, pelo menos, $n + 1$ cópias existam \cite{Woitaszek:2007}. Por exemplo, no artigo sobre o sistema Glacier \cite{Haeberlen:2005}, os autores argumentam que o armazenamento aumenta de 11 vezes a quantidade de dados armazenados utilizando apenas replicação para conseguir 0.999999 (\emph{six nines}) de confiabilidade num cenário com 60\% de indisponibilidade dos \emph{peers}.
 
 Os autores em \cite{Dabek:2004} afirmam que dados replicados permitem leituras de baixa latência, porque há muitas opções para a seleção de servidores, enquanto que dados codificados reduzem o consumo de largura de banda para escritas, em detrimento do aumento da latência de leituras.
 
@@ -50,29 +50,33 @@ Uma vantagem de codificação por apagamento é um custo menor de armazenamento se 
     \begin{tabular}{|p{2cm}||p{4cm}||p{5cm}||p{2cm}|}
       \hline \hline
 sistema & codificação &  arquitetura do sistema & licença\\ \hline \hline
-Pergamum \cite{Storer:2008}& XOR parity, Reed-Solomon &  disk-based archival storage & não disponível\\ \hline
-Potshards & RAID e Reed-Solomon &  disk-based archival storage & não disponível\\ \hline
-RobuStore & Luby Transform (LT) codes & disk-based archival storage & não disponível\\ \hline
-Glacier \cite{Haeberlen:2005}& Reed-Solomon com matrizes Cauchy & peer-to-peer storage system & não disponível\\ \hline
-Total Recall & Maymounkov's online codes &  peer-to-peer storage system & não disponível\\ \hline
-FAB \cite{Saito:2004}& Reed-Solomon & distributed disk array & não disponível\\ \hline
-GPFS & RAID & shared-disk file system for cluster & não disponível\\ \hline
-Oceanstore \cite{Kubiatowicz:2000} \footnote{http://oceanstore.sourceforge.net/}& Tornado codes e Read-Solomon codes & desktops e notebooks conectados a servidores geograficamente distribuídos & BSD \\ \hline
-xFS \footnote{http://oss.sgi.com/projects/xfs/} & RAID & serverless network file system & GPL\\ \hline
-Swift & RAID & desktops sob unix conectados a uma intranet & não disponível\\ \hline
-Tahoe-LAFS \footnote{http://tahoe-lafs.org/trac/tahoe-lafs} & RAID & peer-to-peer filesystem & GPL2\\ \hline
 HDFS \cite{Hadoop:2010}& RAID, Reed-Solomon, ... & shared-disk file system for cluster & Apache\\ \hline
+Tahoe-LAFS \cite{Wilcox-O'Hearn:2008} \footnote{http://tahoe-lafs.org/trac/tahoe-lafs} & RAID & peer-to-peer filesystem & GPL2\\ \hline
+Pergamum \cite{Storer:2008}& XOR parity, Reed-Solomon &  disk-based archival storage & *\\ \hline
+Potshards \cite{Storer:2009} & RAID e Reed-Solomon &  disk-based archival storage & *\\ \hline
+RobuStore \cite{Xia:2006} & Luby Transform (LT) codes & disk-based archival storage & *\\ \hline
+Glacier \cite{Haeberlen:2005}& Reed-Solomon com matrizes Cauchy & peer-to-peer storage system & *\\ \hline
+Total Recall \cite{Bhagwan:2004} & Maymounkov's online codes &  peer-to-peer storage system & *\\ \hline
+FAB \cite{Saito:2004}& Reed-Solomon & distributed disk array & *\\ \hline
+GPFS \cite{Schmuck:2002}& RAID & shared-disk file system for cluster & *\\ \hline
+Oceanstore \cite{Kubiatowicz:2000} \footnote{http://oceanstore.sourceforge.net/}& Tornado codes e Read-Solomon codes & desktops e notebooks conectados a servidores geograficamente distribuídos & BSD \\ \hline
+xFS \cite{Anderson:1998} \footnote{http://oss.sgi.com/projects/xfs/} & RAID & serverless network file system & GPL\\ \hline
+Swift \cite{Cabrera:1991} & RAID & desktops sob unix conectados a uma intranet & *\\ \hline
     \end{tabular}
 \caption{Comparação entre sistemas de armazenamento de grande volume de dados que utilizam \emph{commodity hardware}}
 \label{tab1:comp}
   \end{center}
+
+onde:\\
+* = não disponível
+
 \end{table}
 
 HDFS, Total Recall e OceanStore usam codificação para reduzir o tamanho do armazenamento de dados e todos os outros sistemas usam codificação para prover disponibilidade e confiabilidade.
 
-Esses sistemas que foram comparados, estão disponíveis para uma versão de sistema operacional linux ou unix. Além da codificação, todos eles implementam replicação.
+Os sistemas que foram comparados na tabela ~\ref{tab1:comp}, estão disponíveis para uma versão de sistema operacional linux ou unix. Além da codificação, todos eles implementam replicação.
 
-Vamos avaliar algumas das métricas utilizadas em literatura para comparar redundância de dados em sistemas de armazenamento: sobrecarga de armazenamento, disponibilidade dos \emph{peers} e operações de criação, leitura, atualização consistente e remoção de dados redundantes. Inicialmente vamos definir alguns conceitos adaptados de \cite{Duminoco:2009, Chiola:2005, Williams:2007} para esses dois esquemas de redundância.
+Vamos avaliar algumas das métricas utilizadas em literatura para comparar redundância de dados em sistemas de armazenamento: sobrecarga de armazenamento, disponibilidade dos \emph{peers}, corrupção de um dado e operações de criação, leitura, atualização consistente e remoção de dados redundantes. Inicialmente vamos definir alguns conceitos adaptados de \cite{Duminoco:2009, Chiola:2005, Rodrigues:2005, Williams:2007} para esses dois esquemas de redundância.
 
 \subsection{Caracterização da replicação e da codificação}
 
@@ -120,7 +124,7 @@ $$
 
 {\bf corrupção de um dado}
 $$
-q^n
+e = q^n
 $$
 
 \begin{table}
@@ -174,7 +178,7 @@ $$
 
 {\bf corrupção de um dado}
 $$
-q^{m-k}
+e = q^{m-k}
 $$
 
 \begin{table}
@@ -195,9 +199,45 @@ apagar & $(0, m-k+1, 0)$\\ \hline
 
 Por outro lado, comparando-se as tuplas $(k, 0, 0)$ e $(k, m-k+1, k-1)$ da tabela ~\ref{tab3:comp}, podemos observar que existe um caso no qual as operações "apenas leitura" e "atualização consistente" podem ter a mesma disponibilidade. Isto ocorre quando $m = 2k-1$ (assumindo-se também que número total de \emph{peers} disponíveis é maior ou igual a $m$), obtendo-se a tupla $(k, k, k-1)$.
 
+
 \subsection{Sobrecarga de armazenamento}
 
 Em \cite{Weatherspoon:2002:01, Dabek:2004}, os autores afirmam que a codificação obtem o mesmo nível de disponibilidade como a replicação, usando muito menos espaço de armazenamento.
+
+No esquema da replicação, para um objetivo de probabilidade de indisponibilidade de um dado $e = 0.0001$, dado uma probabilidade de um \emph{peer} estar indisponível $q = 0.05$, obtemos o valor de $n = 3$ réplicas.
+
+$$
+\begin{array}{cl}
+e\ =\ q^n\\
+n\ =\ log\ e\ /\ log\ q\ =\ log\ 0.0001\ / log\ 0.05\ =\ 3.074487147\\
+n\ \approx 3
+\end{array}
+$$
+
+No esquema da codificação, para o mesmo objetivo, para as mesmas probabilidades $e$ e $q$, obtemos um valor de 3 blocos de paridade para uma codificação $(2k-1, k)$.
+
+$$
+\begin{array}{cl}
+e\ =\ q^{m-k},\ substituindo\ m\ =\ 2k-1\\
+e\ =\ q^{k-1}\\
+k-1\ =\ log\ e\ /\ log\ q\ =\ log\ 0.0001\ / log\ 0.05\ =\ 3.074487147\\
+k\ \approx\ 4 
+\end{array}
+$$
+
+Para uma mesma probabilidade de indisponibilidade de um dado $e = 0.0001$ e uma mesma probabilidade de um \emph{peer} estar indisponível $q = 0.05$, obtemos o valor de $n = 3$ réplicas para a replicação e um valor de $k=4$ blocos iniciais para a codificação (2k-1,k). O fator de redundância é $B\ =\ 3$ para a replicação e $B\ =\ m / k\ =\ (2k-1) / k\ =\ 7/4\ =\ 1.75$ para a codificação.
+
+No HDFS, a codificação RS implementada é (16, 10), 10 blocos iniciais e 6 blocos de paridade. Logo, tolera até $l=6$ falhas por \emph{stripe} de 10 blocos ($k=10$) com sobrecarga de $B=1.6$ como a replicação de $n=6$ réplicas, que tem sobrecarga de $B=6$. A codificação RAID implementada é RAID-5, portanto, é (12, 10), 10 blocos iniciais e 2 blocos de paridade. Logo tolera $l=2$ falhas por \emph{stripe} de 10 blocos ($k=10$) com sobrecarga de $B=1.2$ como a replicação de $n=2$ réplicas, que tem sobrecarga de $B=2$.
+
+Na figura ~\ref{fig1:sarc}, podemos observar o gráfico \footnote{O gráfico foi gerado em formato PNG pelo Gnuplot.} das funções $y = 2x$, $y = 3x$ e $y = (2x-1)/x$, para $x>0$,  representando a sobrecarga de armazenamento na replicação $2n$ e na $3n$ e na codificação $(2k-1,k)$, respectivamente. O eixo x representa o tamanho de um dado e o eixo y, a sobrecarga de armazenamento desse dado.
+
+    \begin{figure}[h]
+      \centering
+      \includegraphics[scale=0.69]{figuras/gnuplot-replicacao-codificacao-3.png}
+      \caption{Sobrecarga de armazenamento para replicação $3n$, $2n$ e codificação $(2k-1,k)$ representadas, respectivamente, pelas funções $y = 3x$, $y = 2x$ e $y = (2x-1)/x$, para $x>0$}
+      \label{fig1:sarc}
+    \end{figure} 
+
 
 \subsection{Disponibilidade dos peers}
 
