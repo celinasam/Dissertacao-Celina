@@ -1,4 +1,4 @@
-\section{Discussão sobre esquemas adequados de redundância de dados}
+\chapter{Discussão sobre esquemas adequados de redundância de dados}
 
 Pode-se encontrar na literatura um número significativo de projetos que propõem sistemas de armazenamento distribuído, sistemas de arquivos distribuídos, ou sistemas de backup. Apesar da disso, nenhum esquema de redundância de dados tem sido amplamente aceito para esses sistemas e nenhuma regra fácil foi criada para se encontrar um esquema adequado de redundância de dados.
 
@@ -8,11 +8,11 @@ Redundância de dados é necessária para prevenir perda de dados, mas não é sufici
 
 Cada esquema de redundância estabelece (i) como criar os dados redundantes e (ii) como reconstruir os dados quando houver falha. Essas duas operações geram custos que diferem de um esquema para outro. Esse trabalho comentará os mais amplamente usados esquemas de redundância: replicação e codificação por apagamento, que chamaremos de codificação.
 
-\subsection{Esquemas de redundância de dados para sistema de armazenamento}
+\section{Esquemas de redundância de dados para sistema de armazenamento}
 
 Esquemas de redundância de dados são utilizados em sistemas de armazenamento (exemplo: sistemas RAID) para prover disponibilidade, tolerância a falhas e durabilidade de dados e em sistemas de comunicação (exemplo, sistemas \emph{peer-to-peer}) para prover uma entrega confiável e segura de dados.
 
-\subsubsection{Replicação}
+\subsection{Replicação}
 
 Replicação é o esquema de redundância mais simples. A maioria dos sistemas, que utiliza redundância de dados, é baseada em replicação, mas esse esquema consume mais espaço que a codificação por apagamento, pois uma cópia completa de cada arquivo é armazenada em cada um dos servidores de dados.
 
@@ -40,12 +40,12 @@ Ambos, Lustre e Moosefs, usam replicação, implementam a interface POSIX e estão 
 
 Com exceção do Farsite, os sistemas de armazenamento apresentados consideram \emph{clusters} de (\emph{commodity hardware}) e uma versão do \emph{kernel} linux como sistema operacional para as máquinas.
 
-\subsubsection{Codificação por Apagamento}
+\subsection{Codificação por Apagamento}
 
 Uma vantagem de codificação por apagamento é um custo menor de armazenamento se comparado a replicação, no caso de grande volume de dados. Outra vantagem com relação a replicação foi comentada em \cite{Weatherspoon:2002:01}: para um mesmo espaço de armazenamento, o tempo médio entre falhas (\emph{mean time to failure}) é maior.
 
 \begin{table}
-\singlespacing
+%\singlespacing
   \begin{center}
     \begin{tabular}{|p{2cm}||p{4cm}||p{5cm}||p{2cm}|}
       \hline \hline
@@ -78,7 +78,7 @@ Os sistemas que foram comparados na tabela ~\ref{tab1:comp}, estão disponíveis p
 
 Vamos avaliar algumas das métricas utilizadas em literatura para comparar redundância de dados em sistemas de armazenamento: sobrecarga de armazenamento, disponibilidade dos \emph{peers}, corrupção de um dado e operações de criação, leitura, atualização consistente e remoção de dados redundantes. Inicialmente vamos definir alguns conceitos adaptados de \cite{Duminoco:2009, Chiola:2005, Rodrigues:2005, Williams:2007} para esses dois esquemas de redundância.
 
-\subsection{Caracterização da replicação e da codificação}
+\section{Caracterização da replicação e da codificação}
 
 A confiabilidade de um esquema de redundância é medida pelo número de falhas simultâneas que ele pode tolerar sem comprometer a capacidade de reconstruir os dados originais. Assim esta propriedade pode ser expressada como a {\bf probabilidade de perda de dados, dado que ocorreram $l$ falhas}, $P(l)$.
 
@@ -90,7 +90,7 @@ Definimos $p$ como a probabilidade de um \emph{peer} estar disponível e  $q\ =\ 
 
 Vamos definir as operações de acesso a dados redundantes como uma tupla $(r, w, a)$, onde $r$ é o número mínimo de \emph{peers} disponíveis que armazenam dados redundantes, $w$ é o número mínimo de \emph{peers} disponíveis que armazenam dados redundantes que devem ser acessados para armazenar novos valores e $a$ é número de \emph{peers} (provavelmente outros) que devem estar disponíveis para completar a operação.
 
-\subsubsection{Replicação}
+\subsection{Replicação}
 
 Para as definições, $n$ é o número de réplicas dos dados.
 
@@ -128,7 +128,7 @@ e = q^n
 $$
 
 \begin{table}
-\singlespacing
+%\singlespacing
   \begin{center}
     \begin{tabular}{|p{5cm}||p{5cm}|}
       \hline  \hline
@@ -145,7 +145,7 @@ apagar & $(0, n, 0)$\\ \hline
 
 Comparando as tuplas (1, 0, 0) e (1, n, 0) da tabela ~\ref{tab2:comp}, podemos observar que a disponibilidade da operação "atualização consistente" é menor que a disponibilidade da operação "apenas leitura", quando o número de réplicas $n > 1$ é aplicado.
 
-\subsubsection{Codificação por Apagamento}
+\subsection{Codificação por Apagamento}
 
 Na Codificação (m, k), $k$ é o número de blocos originais do dado, $m$ é o número de blocos codificados  e $m\ -\ k$ é o número de blocos adicionados pela codificação.
 
@@ -182,7 +182,7 @@ e = q^{m-k}
 $$
 
 \begin{table}
-\singlespacing
+%\singlespacing
   \begin{center}
     \begin{tabular}{|p{5cm}||p{5cm}|}
       \hline  \hline
@@ -200,7 +200,7 @@ apagar & $(0, m-k+1, 0)$\\ \hline
 Por outro lado, comparando-se as tuplas $(k, 0, 0)$ e $(k, m-k+1, k-1)$ da tabela ~\ref{tab3:comp}, podemos observar que existe um caso no qual as operações "apenas leitura" e "atualização consistente" podem ter a mesma disponibilidade. Isto ocorre quando $m = 2k-1$ (assumindo-se também que número total de \emph{peers} disponíveis é maior ou igual a $m$), obtendo-se a tupla $(k, k, k-1)$.
 
 
-\subsection{Sobrecarga de armazenamento}
+\section{Sobrecarga de armazenamento}
 
 Em \cite{Weatherspoon:2002:01, Dabek:2004}, os autores afirmam que a codificação obtem o mesmo nível de disponibilidade como a replicação, usando muito menos espaço de armazenamento.
 
@@ -240,9 +240,9 @@ Na figura ~\ref{fig1:sarc}, podemos observar o gráfico \footnote{O gráfico foi g
 
 Neste estudo, concluímos que, apenas avaliando a contribuição do esquema de redundância, a codificação por apagamento acarreta uma sobrecarga de armazenamento menor que a replicação para o mesmo número de falhas toleradas.
 
-\subsection{Disponibilidade dos peers}
+\section{Disponibilidade dos peers}
 
-\subsection{Leitura ou Atualização dos dados redundantes}
+\section{Leitura ou Atualização dos dados redundantes}
 
 Em \cite{Chiola:2005}, os autores concluem que:
 

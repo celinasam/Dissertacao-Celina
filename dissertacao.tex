@@ -1,0 +1,67 @@
+    \documentclass[12pt,twoside]{report} % Use esta linha para tese com mais de 100 p{\'a}ginas
+%    \documentclass[12pt]{report} % Use esta linha para tese com at{\'e} 100 p{\'a}ginas
+
+    \usepackage{ic-tese}
+    \usepackage[latin1]{inputenc}
+    \usepackage[brazil]{babel}
+
+    \usepackage{latexsym}
+    \usepackage{amssymb,amsmath,latexsym,amsfonts}
+    \usepackage{graphicx}
+    \usepackage{subfig}
+    \usepackage{makeidx}
+
+    \begin{document}
+    \title{Estudo e Implementação de Mecanismos de Codificação por Apagamento no Hadoop \emph{File System}}
+    \author{Celina d'Ávila Samogin}
+    \degreesought{Mestrado} % Doutorado
+    \titlesought{Mestre}     % Doutora/Mestre
+    \principaladvisor{Profa. Dra. Islene Calciolari Garcia}
+    \advisortitle{Orientadora} % Orientadora
+%    \coadvisor{Byron Meter (Co-orientador)} % Pode ser omitido.
+    \firstreader{Buzato}
+    \secondreader{Dahab}
+    \thirdreader{Edmundo (suplente)}
+%    \fourthreader{Fairy Tail}
+    \grants{{\rm Suporte financeiro de: Bolsa do CNPq (processo XYZ) 2010--2010.}} % Pode ser omitido.
+%
+    \submitdate{Janeiro de 2012} % Pode ser omitido.
+    \date{05 de março de 2012} % Pode ser omitido.
+%
+%   Se pretende utilizar \copyrighttrue, consulte antes seu orientador ou a CPG!!!
+%   Este ponto envolve quest{\~o}es legais complexas e de graves conseq{\"u}{\^e}ncias.
+    \copyrightfalse % Caso nao queira que apareca a pagina de Copyright.
+%    \copyrighttrue % Caso queira que apareca a pagina de Copyright.
+%
+%    \finalversiontrue % Caso seja a versao final.
+    \finalversionfalse % Caso nao seja a versao final ainda.
+%
+    \tablespagetrue % Caso queira que apareca a Lista de Tabelas.
+%    \tablespagefalse % Caso nao queira que apareca a Lista de Tabelas.
+%
+    \figurespagetrue % Caso queira que apareca o Lista de Figuras.
+%    \figurespagefalse % Caso nao queira que apareca o Lista de Figuras.
+%
+    \beforepreface
+    \prefacesection{Resumo}
+    \input{capa/resumo} 
+    \prefacesection{Abstract}
+    \input{capa/abstract}
+    \prefacesection{Agradecimentos}
+        Eu gostaria de agradecer a...
+    \afterpreface % Gera: Conteudo, Lista de Tabelas, Lista de Figuras.
+%
+
+   \input{capitulos/introducao}
+
+   \input{capitulos/algebra}
+
+   \input{capitulos/codificacao}
+
+   \input{capitulos/discussao}
+
+   \input{capitulos/hadoop}
+
+    \bibliographystyle{plain}
+    \bibliography{referencias/ref-dissertacao}
+    \end{document}

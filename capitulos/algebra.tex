@@ -1,17 +1,17 @@
-\section{Álgebra Abstrata}
+\chapter{Álgebra Abstrata}
 
 Essa seção tem por objetivo apresentar conceitos matemáticos fundamentais dentro do escopo de álgebra abstrata para entendimento de Códigos de Blocos. Alguns textos foram estudados para que ela pudesse ser escrita: \cite{Hefez:2008}.
 
 Códigos RS são projetados através da aritmética de corpos finitos. Corpos finitos também são chamados corpos de Galois, em homenagem ao matemático francês Évariste Galois.
 
-	\subsection{Congruência} \index{Congruência}
+	\section{Congruência} \index{Congruência}
 	Definição 1. Seja $m \in \mathbb{N}$. Dois inteiros $a$ e $b$ dizem-se $congruentes\ modulo\ m$ se tiverem o mesmo resto na divisão por $m$. A notação é $a \equiv b(mod\ m)$. Daí temos que $a = mk + b$, para um $k \in \mathbb{N}$. Exemplos:
 		\begin{itemize}
 			\item $32 \equiv 2(mod\ 3)$
 			\item $27 \equiv 5(mod\ 11)$
 			\item $63 \equiv 7(mod\ 8)$
 		\end{itemize}
-	\subsection{Classe Residual}
+	\section{Classe Residual}
 	Definição 2. Seja $m \in \mathbb{N}$ e $m > 1$. A classe residual módulo $m$ do elemento $a \in \mathbb{Z}$ pode ser assim definida:
 		
 	\begin{center}
@@ -27,12 +27,12 @@ Códigos RS são projetados através da aritmética de corpos finitos. Corpos finito
 	
 	Definição 4. Se a$\ \equiv\ b(mod\ m)$, então $\bar{a} = \bar{b}$
 
-	\subsection{Corpo}
+	\section{Corpo}
 	Um corpo é um conjunto $F$  que resume-se um espaço fechado com operações binárias, como "$.$" e "$+$", entre dois dos seus elementos, designados por operandos. O resultado da aplicação de uma operação resulta em um terceiro elemento também pertencente a $F$. As propriedades dessas operações são: associativa e comutativa e a operação "$.$" é distributiva sobre a operação "$+$" : $a.(b + c)\ =\ a.b\ +\ a.c,\ \forall a,\ \forall b,\ \forall c\ \in\ F$. Os elementos de $F$ apresentam essas propriedades: existência de elemento identidade (neutro) em $F$ para a operação "$.$" e para a operação "$+$" e existência de elemento um inverso da operação "$+$" para cada elemento de $F$.
 
 	Os conjuntos como $F$ podem ter ordem (por exemplo, cardinalidade) infinita. Como exemplos de corpos infinitos, temos os conjuntos dos números racionais $\mathbb{Q}$, reais $\mathbb{R}$, complexos $\mathbb{C}$ e e inteiros $mod\ p$ ($p$ é primo) sob as operações de adição e multiplicação usuais.
 
-	\subsection{Corpo de Galois}
+	\section{Corpo de Galois}
 	Um Corpo de Galois é um corpo de ordem finita ou seja, sua cardinalidade é conhecida.
 
 	Exemplo: Seja o conjunto $G = \{ 0, 1 \}$ e a operação binária $\bigoplus$ em $G$: $0 \bigoplus 0 = 0$, $0 \bigoplus 1 = 1$, $1 \bigoplus 0 = 1$, $1 \bigoplus 1 = 0$.
@@ -41,7 +41,7 @@ Códigos RS são projetados através da aritmética de corpos finitos. Corpos finito
 
 	Corpo 
 
-		\subsubsection{Ordem do Corpo}
+		\section{Ordem do Corpo}
 		O número de elementos de um corpo finito $G$ é denominado ordem de $G$. Um corpo de Galois de ordem $q$ é representado por $GF(q)$. Um corpo finito G tem ordem $p^n$, onde $p$ é a característica do corpo $G$ e $n = [K: Z_p]$.
 		Todo o corpo finito tem $p^n$ elementos para algum primo $p$ e algum natural $n$. Para cada primo $p$ e cada natural $n$, existe um
 corpo com $p^n$ elementos. Qualquer corpo com $p^n$ elementos é isomorfo à extensão de decomposição de $x^q - x, q = p^n$ sobre $GF(q)$.
@@ -55,17 +55,17 @@ corpo com $p^n$ elementos. Qualquer corpo com $p^n$ elementos é isomorfo à exten
 		\item Corpos de Galois de ordem 8: $GF(2^3) = GF(8) = \{0, 1, 2, 3, 4, 5, 6, 7\}$
 		\end{itemize}
 
-		\subsubsection{Ordem do Elemento}
+		\subsection{Ordem do Elemento}
 		Seja $a_i \in GF(q)$. A ordem de $a_i$, representada por $ord(a_i)$, é o menor inteiro positivo $o$ tal que $a_i^o = 1$. 
 		Se elevarmos ambos os lados a potência $q - 1$, temos que $(a_i^o)^{q - 1} = 1$. Multiplicando ambos os lados por $a_i^o$, temos que $(a_i^o)^q = a_i^o$ e substituindo $a_i^o$ por $x$, temos $x^q = x$. Portanto, todos os $a_i \in GF(p)$ satisfazem a equação: $x^q - x = 0, q = p^n$. 
 
-		\subsubsection{Aritmética de Corpo Binário}
+		\subsection{Aritmética de Corpo Binário}
 		Códigos são construídos com elementos de um corpo $GF(q)$ onde $q$ ou é primo $p$ ou uma potência de $p$. Os dados de sistemas de transmissão e armazenamento de dados podem ser facilmente codificados em códigos com símbolos gerados a partir de um corpo $GF(2)$ ou $GF(2^m)$ \cite{Lin:1983}.
-		\subsubsection{Propriedades dos Polinômios e suas Raízes}		
+		\subsection{Propriedades dos Polinômios e suas Raízes}		
 		$GF [q](x)$ é um corpo de Galois que tem ordem $q$, sobre o qual são aplicados polinômios de grau $n$ com coeficientes entre $0$ e $q - 1$. Um exemplo de um polinômio $p(x)$ pode ser apresentado na equação: $p(x) = a_7.x^7 + a_5.x^5 + a_2.x^2 + ax + 1$. Os coeficientes de um polinômio $a_i$ pertencem ao $GF(p)$ e o grau do polinômio $n$, pode ter um valor qualquer.
 
-		\subsection{Construção de um Código Corretor de Erros}
-		\subsubsection{Métrica de Hamming}
+		\section{Construção de um Código Corretor de Erros}
+		\subsection{Métrica de Hamming}
 		página 4 - livro Hefez
 		página 7 - Parâmetros fundamentais $[n, M, d]$
 

@@ -1,4 +1,5 @@
-\section{Codificação por Apagamento}
+%\section{Codificação por Apagamento}
+\chapter{Codificação por Apagamento}
 
 A transmissão e o armazenamento de informação tem muito em comum. Ambos transferem dados da fonte para o destino. Para garantir confiabilidade nessas operações, é utilizada codificação por apagamento ou códigos corretores de erros.
 
@@ -6,7 +7,7 @@ Em um trabalho publicado em 1948, o matemático Claude E. Shannon demonstrou que 
 
 Com a popularização dos computadores e as pesquisas espaciais, os códigos corretores tornaram-se parte comum de comunicações por satélite, de redes de computadores, de armazenamento em discos óticos e outros meios magnéticos. A presença dos códigos corretores de erros é frequente em nosso cotidiano: quando se assiste a um programa de televisão, quando se ouve música a partir de um CD, quando se faz um telefonema, quando se assiste um filme gravado em DVD, quando se navega pela internet.
 
-\subsection{Shannon: conceitos e teoremas fundamentais}
+\section{Shannon: conceitos e teoremas fundamentais}
 
 Shannon introduziu dois conceitos fundamentais sobre informação que é transmitida em um sistema de comunicação \cite{Yeung:2008}:
 
@@ -24,7 +25,7 @@ Nesse mesmo trabalho, Shannon demonstrou dois importantes teoremas que são funda
 
 A probabilidade de erro no canal determina a capacidade de transferência de informação no canal.
 
-\subsection{Canais: modelos e erros}
+\section{Canais: modelos e erros}
 
 O código da fonte é o conjunto de elementos que definem forma como a informação será transmitida, por exemplo, em termos de \emph{bits} e o código do canal inclui o código da fonte e a redundância (por exemplo, em termos de \emph{bits}) introduzida para garantir a correção de erros.
 
@@ -95,7 +96,7 @@ Em algumas aplicações como comunicações óticas, os erros tem uma natureza assimé
 
    \vspace{2cm}
 
-\subsection{Transmissão e armazenamento de informação}
+\section{Transmissão e armazenamento de informação}
 
 A transmissão e o armazenamento de informação tem muito em comum. Ambos transferem dados da fonte para o destino.
 
@@ -183,13 +184,13 @@ Em um diagrama mais simplificado (figura ~\ref{fig2:mcs}), estão enfatizadas as 
 
 Em \cite{Huffman:2003} são apresentados o processo de codificação e decodificação de uma mensagem utilizando o teorema de Shannon.
 
-\subsection{Técnicas para detecção e correção de erros}
+\section{Técnicas para detecção e correção de erros}
 
 Existem dois métodos básicos para tratar erros em comunicação e ambos envolvem a codificação de mensagens. A diferença está em como esses códigos são utilizados. Em um \emph{repeat request system}, os códigos são utilizados para detectar erros e se existirem erros, é feito um pedido de retransmissão. Com \emph{forward erros correction}, os códigos são usados para detectar e corrigir erros.
 
 Os erros de um canal com ruídos podem ser corrigidos por um das seguintes estratégias: \emph{Automatic Repeat reQuest} e \emph{Forward corrEction Code}  \cite{Purser:1995}.
 
-\subsubsection{\emph{Automatic Repeat reQuest} - ARQ}
+\subsection{\emph{Automatic Repeat reQuest} - ARQ}
 
 ARQ utiliza redundância para detectar erros em mensagens e, após a detecção, o destinatário solicita uma repetição da transmissão. Um caminho de retorno é necessário. São sistemas de \emph{two-way transmission}. Exemplos de sistemas que utilizam ARQ são linhas telefônicas e alguns sistemas de satélite \cite{Lin:1983}.
 
@@ -197,7 +198,7 @@ Se existe um grande atraso de propagação, uma grande distância entre emissor e d
 
 Técnicas ARQ incluem repetição seletiva, \emph{Go-back N} e sistemas de reconhecimento positivo ou negativo \cite{Kurose:2010}.
 
-\subsubsection{\emph{Forward Correction Code} - FEC}
+\subsection{\emph{Forward Correction Code} - FEC}
 
 O diagrama da figura ~\ref{fig1:dtss} representa um \emph{one-way system}. A tranmissão ou gravação é restrita a uma direção: da fonte para o sumidouro (destino). Sistemas de armazenamento de fita magnética e sistemas  da \emph{NASA's Deep Space Network} utilizam técnicas FEC \cite{Lin:1983}.
 
@@ -208,7 +209,7 @@ FEC utiliza redundância, assim o decodificador pode corrigir os erros de mensage
 Uma analogia pode ser feita com uma pessoa que fala devagar e repetidamente, em uma linha telefônica com ruídos, acrescentando mais redundância para o ouvinte entender a mensagem correta.
 
 
-\subsubsection{Como FEC funcionam}
+\subsection{Como FEC funcionam}
 Os tipos de códigos de canal podem ser agrupados em duas grandes categorias: códigos de bloco e ódigos convolacionais.
 
 Técnicas FEC incluem códigos convolacionais, que são códigos com memória e códigos de blocos (\emph{block codes}, que são códigos sem memória \cite{Berlekamp:1987}. O alfabeto dos códigos explicados aqui consistem de dois elementos: $0$ e $1$. O conjunto $\{0, 1\}$ é denominado $K$.
@@ -281,7 +282,7 @@ Um código C é linear se v e w são palavras código distintas de um código C, entã
 
 Um código C é chamado de cíclico se o deslocamento cíclico (\emph{shift}) de qualquer palavra código gera uma nova palavra código. Por exemplo, $C1 = \{000, 110, 101, 011\}$   é um código cíclico. $C2 = \{000, 100, 011, 111\}$ não é um código cíclico.
 
-\subsection{Códigos Convolacionais}
+\section{Códigos Convolacionais}
 
 P. Elias introduziu códigos convolucionais em 1955. Um código convulacional é um dispositivo com memória. Apesar de aceitar uma mensagem de entrada de tamanho fixo e produzir uma saída codificada, seus cálculos não dependem somente da entrada atual, mas também das entradas e saídas anteriores.
 
@@ -297,7 +298,7 @@ Existem vários algoritmos de codificação por apagamento \cite{Byers:1998, Kubiat
 
 Segundo \cite{Woitaszek:2007}, para sistemas de armazenamento, a codificação por apagamento baseada em operações simples, tais como XOR RAID e códigos Tornado,  são preferíveis. Apesar de que um mecanismo externo deva ser utilizado para detectar erros, as operações de XOR podem ser realizadas rapidamente e resultar em alto \emph{throughput} das operações de codificação e decodificação.
 
-\subsection{Características de Códigos de Blocos}
+\section{Características de Códigos de Blocos}
 
 
 A distância de Hamming (dH) entre duas palavras código $v_i$ e $v_j$  é o número de \emph{bits} que são diferentes nessas duas palavras.
@@ -314,9 +315,9 @@ Segundo \cite{AF:2010}, as principais características de códigos de blocos são:
 
 Um código com $d_{min} = 1$ não tem capacidade de detectar erros.
 
-\subsection{Códigos de Blocos Lineares}
+\section{Códigos de Blocos Lineares}
 
-\subsubsection{Códigos Reed-Solomon}
+\subsection{Códigos Reed-Solomon}
 
 São códigos de blocos, lineares e cíclicos.
 
@@ -330,7 +331,7 @@ Uma implementação de biblioteca em C/C++ para o algoritmo RS foi apresentada em 
 
 O sistema de armazenamento OceanStore \cite{Kubiatowicz:2000} e o protocolo BitTorrent (aplicação da camada de rede da internet) usam uma codificação RS.
 
-\subsubsection{Códigos RAID}
+\subsection{Códigos RAID}
 
 \emph{Redundant Arrays of Inexpensive [Independent] Disks} (RAID) é uma classe de códigos RS. RAID é um método para prover tolerância a falhas ou alto desempenho em sistemas de armazenagem utilizando para isso uma codificação de correção de erros ou paridade. RAID foi introduzido por D. A. Patterson na Universidade da California, Berkeley (UC Berkeley) em 1988 \cite{Patterson:1988}.
 
@@ -396,7 +397,7 @@ Passo 4: nó 0 e nó 1 codificam b1, b2 e b3 e criam o bloco de paridade p1 = f1(b
 
 \vspace{1cm}
 
-\subsubsection{Códigos Low-Density Parity-Check e Tornado}
+\subsection{Códigos Low-Density Parity-Check e Tornado}
 
 São códigos de blocos, lineares e acíclicos.
 
@@ -411,7 +412,7 @@ Em \cite{Luby:1998}, os autores apresentam códigos Tornado baseados em grafos ir
 
 %\input{tabelas/tabela-comp-sistemas-arquivos-codificacao}
 
-%\subsection{Replicação versus Codificação por Apagamento}
+%\section{Replicação versus Codificação por Apagamento}
 
 %Para implementar redundância de dados em sistemas, são utilizadas várias técnicas: codificação por apagamento, replicação, espelhamento, \emph{Cyclic redundancy check} (CRC), \emph{bits} de paridade, \emph{checksum}, assinatura digital \cite{EDC:2010}. Mecanismos de redundância podem implementar um conjunto destas técnicas \cite{Fan:2009}.
 

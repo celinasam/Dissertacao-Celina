@@ -1,4 +1,4 @@
-\section{Hadoop}
+\chapter{Hadoop}
 
 Atualmente, o Google é uma empresa de consulta e publicidade e é capaz de fornecer os seus serviços devido a investimentos em armazenamento distribuído em larga escala e a capacidade de processamento, estes desenvolvidos \emph{in-house}.
 
@@ -32,7 +32,7 @@ Em poucas palavras, o Hadoop disponibiliza um armazenamento
 compartilhado (HDFS) e um sistema de análise (MapReduce) que compõem o
 seu \emph{kernel}.
 
-\subsection{MapReduce}
+\section{MapReduce}
 
 O MapReduce utiliza algoritmos de ordenação para reconstruir sua base de dados.  Um bom uso para o MapReduce são aplicações cujos dados são escritos uma vez e lidos muitas vezes. São dados não estruturados como texto ou imagens. O MapReduce tenta colocar esses dados no nó onde são feitas as computações, desta forma, o acesso aos dados é rápido, pois é local \cite{White:2009}.
 
@@ -49,7 +49,7 @@ O MapReduce pode resolver problemas genéricos, cujos dados podem ser divididos e
 Um programas para execução no HDFS/MapReduce que podem ser escritos em várias linguagens como Java, Ruby, Python e C++.
 
 
-\subsection{Arquitetura do Hadoop \emph{Distributed File System}}
+\section{Arquitetura do Hadoop \emph{Distributed File System}}
 
 Um \emph{cluster} do HDFS é composto por um único NameNode, um
 servidor-mestre que gerencia o sistema de arquivos e controla o acesso
@@ -116,7 +116,7 @@ não inicia chamadas RPCs. Ele responde a chamadas RPCs feitas pelo
 DataNodes e pelos clientes.
 
 
-\subsection{Codificação por apagamento}
+\section{Codificação por Apagamento}
 
 Existe uma nova característica proposta em 2009 para implementação de
 uma camada de codificação por apagamento no Hadoop utilizando
