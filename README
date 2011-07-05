@@ -7,7 +7,9 @@ pdflatex resumo-artigos
 
 Texto da dissertação
 Ainda escrevendo e alterando texto só da seção teórica.
-Eu fiz modificações no formato a partir do template para Latex criado por Tony Saad para a University of Tennessee, Knoxville.
+Eu utilizei o formato do IC-Unicamp
+http://cpg.ic.unicamp.br/informacoes/defesa
+e eu fiz modificações no formato a partir do template para Latex criado por Tony Saad para a University of Tennessee, Knoxville.
 http://web.utk.edu/~thesis/templates.shtml
 
 bibtex dissertacao
