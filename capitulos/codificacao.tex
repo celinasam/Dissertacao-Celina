@@ -39,9 +39,8 @@ Um dos principais parâmetros de um código para detecção de erros é a probabilida
 
 Em canais binários simétricos, assume-se que ambos os erros $0 \rightarrow 1$ e $1 \rightarrow 0$  ocorrem com igual probabilidade \cite{Weber:1985}.
 
-\vspace{2cm}
-
-\begin{figure}[htb]
+\vspace*{2cm}
+\begin{figure}[h]
   \setlength{\unitlength}{1cm}
   \begin{center}
   \begin{picture}(3,3)
@@ -65,13 +64,10 @@ Em canais binários simétricos, assume-se que ambos os erros $0 \rightarrow 1$ e 
 \end{figure}
 
 
-   \vspace{2cm}
-
 Em algumas aplicações como comunicações óticas, os erros tem uma natureza assimétrica. Canais, onde esse tipo de erro ocorrem, podem ser modelados para canais binários assimétricos ou canal-Z, onde apenas erros com $1$'s ocorrem. Um exemplo disso são sistemas que utilizam \emph{photons} para transmitir informação \cite{Weber:1985}.
 
-\vspace{2cm}
-
-\begin{figure}[htb]
+\vspace*{2cm}
+\begin{figure}[h]
   \setlength{\unitlength}{1cm}
   \begin{center}
   \begin{picture}(3,3)
@@ -93,16 +89,12 @@ Em algumas aplicações como comunicações óticas, os erros tem uma natureza assimé
 \end{figure}
 
 
-
-   \vspace{2cm}
-
 \section{Transmissão e armazenamento de informação}
 
 A transmissão e o armazenamento de informação tem muito em comum. Ambos transferem dados da fonte para o destino.
 
-\vspace{2cm}
-
-\begin{figure}[htb]
+\vspace*{2cm}
+\begin{figure}[h]
   \setlength{\unitlength}{1cm}
   \begin{picture}(4,3)
     \put(0,2){\framebox(3,1){{\scriptsize Information source}}}
@@ -135,8 +127,6 @@ A transmissão e o armazenamento de informação tem muito em comum. Ambos transfer
 \end{figure}
   
 
-   \vspace{2cm}
-
 Na figura ~\ref{fig1:dtss}, o \emph{source encoder} transforma a saída da fonte em uma sequência de bits $u$. Esse codificador é projetado para que o número de bits que represente a saída da fonte seja mínimo e para que a saída da fonte possa ser reconstruída sem ambiguidade.
 
 O \emph{channel encoder} transforma a sequência $u$ em uma sequência codificada discreta $v$, também chamada \emph{codeword}. As instâncias de $v$ também são sequências binárias e permitem códigos não-binários.
@@ -151,9 +141,8 @@ O \emph{source decoder} transforma a sequência estimada $\mathaccent 94 u$ em um
 
 Em um diagrama mais simplificado (figura ~\ref{fig2:mcs}), estão enfatizadas as operações de codificação e decodificação. A \emph{information source} e o \emph{source encoder} são combinados em uma fonte digital com saída $u$. O \emph{modulator}, o \emph{channel encoder} e o \emph{demodulator} são combinados em um \emph{coding channel} com entrada $v$ e saída $r$.  O \emph{source decoder} e o \emph{destination} são combinados em um sumidouro digital.
 
-\vspace{2cm}
-
-\begin{figure}[htb]
+\vspace*{2cm}
+\begin{figure}[h]
   \setlength{\unitlength}{1cm}
   \begin{picture}(3,3)
     \put(0,2){\framebox(3,1){Fonte digital}}
@@ -177,9 +166,6 @@ Em um diagrama mais simplificado (figura ~\ref{fig2:mcs}), estão enfatizadas as 
    \caption{Figura ~\ref{fig2:mcs} - Modelo simplificado de um sistema de codificação \cite{Lin:1983}}
    \label{fig2:mcs}
 \end{figure}
-
- 
-   \vspace{2cm}
 
 
 Em \cite{Huffman:2003} são apresentados o processo de codificação e decodificação de uma mensagem utilizando o teorema de Shannon.
@@ -218,32 +204,33 @@ Técnicas FEC incluem códigos convolacionais, que são códigos com memória e códig
 
 {\bf Códigos de Blocos}
 
-\begin{figure}[htb]
+\vspace*{2cm}
+\begin{figure}[h]
   \setlength{\unitlength}{1cm}
-  \begin{picture}(3,3)
+  \begin{center}
+  {\begin{picture}(12.5,6)(0,-3)
     \put(0,2){\framebox(3,1){Fonte}}
     \put(3,2.5){\vector(1,0){2}}
     \put(4,2.6){u}
-    \put(5,2){\framebox(3,1){{\scriptsize Codificador (n,k)}}}
-    \put(8,2.5){\line(1,0){2}}
-    \put(9,2.6){v}
-    \put(10,2.5){\vector(0,-1){2}}
-    \put(8.5,-0.5){\framebox(3,1){Coding channel}}
-    \put(5.8,-0.1){ruídos}
-    \put(7,-0){\vector(1,0){1.5}}
-    \put(10,-0.5){\line(0,-1){2}}
-    \put(10,-2.5){\vector(-1,0){2}}
-    \put(9,-2.4){r}
+    \put(5,2){\framebox(4,1){{Codificador (n,k)}}}
+    \put(9,2.5){\line(1,0){2}}
+    \put(10,2.6){v}
+    \put(11,2.5){\vector(0,-1){2}}
+    \put(9.5,-0.5){\framebox(3,1){Canal}}
+    \put(6.8,-0.1){ruídos}
+    \put(8,-0){\vector(1,0){1.5}}
+    \put(11,-0.5){\line(0,-1){2}}
+    \put(11,-2.5){\vector(-1,0){2}}
+    \put(10,-2.4){r}
     \put(0,-3){\framebox(3,1){Destino}}
     \put(5,-2.5){\vector(-1,0){2}}
     \put(4,-2.4){$\mathaccent 94 u$}
-    \put(5,-3){\framebox(3,1){{\scriptsize Decodificador (n,k)}}}
-   \end{picture}
-   \caption{Figura ~\ref{fig3:fec} - Como códigos de blocos funcionam}
-   \label{fig3:fec}
+    \put(5,-3){\framebox(4,1){{Decodificador (n,k)}}}
+   \end{picture}}
+  \end{center}
+  \caption{Códigos de bloco}
+  \label{fig3:fec}
 \end{figure}
-
-   \vspace{2cm}
 
 Na figura ~\ref{fig3:fec}, vemos um sistema que utiliza código de blocos. A fonte envia uma sequência de dados para o codificador. O codificador divide a sequência de dados em $m$ blocos de  $k$ \emph{bits} cada chamados mensagens.  Uma mensagem é representada por uma $k$-tupla binária $u = u_1, u_2, ... , u_k$. Existem $2^k$ diferentes mensagens. O codificador insere \emph{bits} redundantes (ou de paridade) para cada mensagem $u$, gerando uma sequência de saída de $n$ \emph{bits} chamada \emph{codeword} ou palavra código representada por uma $n$-tupla de símbolos discretos $v = v_1, v_2, ... , v_n$.  Fazendo uma correspondência entre as $2^k$ mensagens, existem $2^k$ diferentes palavras código para a saída do codificador. Esse conjunto de $2^k$ palavras código de tamanho $n$ é chamado de códigos de blocos ($n$, $k$).
 
@@ -269,6 +256,7 @@ Se o sistema não exige uma transferência de dados em tempo-real, então o atraso 
 
 A figura ~\ref{fig4:cbc} apresenta uma classificação para códigos de blocos.
 
+\vspace*{2cm}
     \begin{figure}[h]
       \centering
       \includegraphics[scale=1]{figuras/blockcodes.png}
@@ -276,7 +264,6 @@ A figura ~\ref{fig4:cbc} apresenta uma classificação para códigos de blocos.
       \label{fig4:cbc}
     \end{figure} 
 
-\vspace{2cm}
 
 Um código C é linear se v e w são palavras código distintas de um código C, então v+w é também uma palavra código de C. Um código linear contém a palavra código zero, pois $v + v = 0$. Operação simples de decodificação, pouca memória e métodos simples para determinação de padrões de erros são algumas das vantagens de códigos lineares.
 

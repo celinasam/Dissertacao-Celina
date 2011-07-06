@@ -1,0 +1,23 @@
+\begin{table}
+%\singlespacing
+    \centerline{
+    \begin{tabular}{|p{2cm}|p{4cm}|p{5cm}|p{2cm}|}\hline
+	{\bf sistema} & {\bf codificação} &  {\bf arquitetura do sistema} & {\bf licença}\\ \hline
+	HDFS \cite{Hadoop:2010}& RAID, Reed-Solomon, ... & shared-disk file system for cluster & Apache\\ \hline
+	Tahoe-LAFS \cite{Wilcox-O'Hearn:2008} \footnote{http://tahoe-lafs.org/trac/tahoe-lafs} & RAID & peer-to-peer filesystem & GPL2\\ \hline
+	Pergamum \cite{Storer:2008}& XOR parity, Reed-Solomon &  disk-based archival storage & *\\ \hline
+	Potshards \cite{Storer:2009} & RAID e Reed-Solomon &  disk-based archival storage & *\\ \hline
+	RobuStore \cite{Xia:2006} & Luby Transform (LT) codes & disk-based archival storage & *\\ \hline
+	Glacier \cite{Haeberlen:2005}& Reed-Solomon com matrizes Cauchy & peer-to-peer storage system & *\\ \hline
+	Total Recall \cite{Bhagwan:2004} & Maymounkov's online codes &  peer-to-peer storage system & *\\ \hline
+	FAB \cite{Saito:2004}& Reed-Solomon & distributed disk array & *\\ \hline
+	GPFS \cite{Schmuck:2002}& RAID & shared-disk file system for cluster & *\\ \hline
+	Oceanstore \cite{Kubiatowicz:2000} \footnote{http://oceanstore.sourceforge.net/}& Tornado codes e Read-Solomon codes & desktops e notebooks conectados a servidores geograficamente distribuídos & BSD \\ \hline
+	xFS \cite{Anderson:1998} \footnote{http://oss.sgi.com/projects/xfs/} & RAID & serverless network file system & GPL\\ \hline
+	Swift \cite{Cabrera:1991} & RAID & desktops sob unix conectados a uma intranet & *\\ \hline
+    \end{tabular}}
+    \caption{Comparação de codificação entre sistemas de armazenamento de grande volume de dados que utilizam \emph{commodity hardware}}
+    \label{tab1:comp}
+    onde:\\
+    * = não disponível
+\end{table}
