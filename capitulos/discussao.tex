@@ -2,6 +2,13 @@
 
 Pode-se encontrar na literatura um número significativo de projetos que propõem sistemas de armazenamento distribuído, sistemas de arquivos distribuídos, ou sistemas de backup. Apesar da disso, nenhum esquema de redundância de dados tem sido amplamente aceito para esses sistemas e nenhuma regra fácil foi criada para se encontrar um esquema adequado de redundância de dados.
 
+Para implementar redundância de dados em sistemas, são utilizadas
+várias técnicas: codificação por apagamento, replicação, espelhamento,
+\emph{Cyclic redundancy check} (CRC), \emph{bits} de paridade,
+\emph{checksum} e assinatura digital. Esquemas de
+redundância podem implementar um conjunto destas
+técnicas~\cite{Fan:2009}.
+
 Os autores em \cite{Duminoco:2009} estudaram redundância de dados em sistemas \emph{peer-to-peer} para \emph{backup} e propuseram um esquema hídrido para implementar redundância (replicação e codificação) de dados. Em \cite{Storer:2008}, foi proposto um sistema de armazenamento de dados baseado em discos que usa dois níveis de codificação. Nesses textos, encontramos uma comparação entre alguns sistemas de armazenamento, avaliando-se algumas de suas características. Podemos observar que os tipos de esquema de redundância de dados são replicação, codificação por apagamento e híbrido, sendo a replicação, a estratégia mais utilizada nos sistemas comparados por \cite{Duminoco:2009} e a codificação por apagamento, para os sistemas comparados por \cite{Storer:2008}.
 
 Redundância de dados é necessária para prevenir perda de dados, mas não é suficiente. A avaliação de esquemas de redundância é muitas vezes baseada na suposição de que as réplicas falham de forma independente. Na prática, as falhas não são tão independentes, segundo \cite{Weatherspoon:2002:02,Baker:2006}. Esse trabalho não tratará a independência das réplicas.
@@ -11,6 +18,22 @@ Cada esquema de redundância estabelece (i) como criar os dados redundantes e (ii
 \section{Esquemas de redundância de dados para sistema de armazenamento}
 
 Esquemas de redundância de dados são utilizados em sistemas de armazenamento (exemplo: sistemas RAID) para prover disponibilidade, tolerância a falhas e durabilidade de dados e em sistemas de comunicação (exemplo, sistemas \emph{peer-to-peer}) para prover uma entrega confiável e segura de dados.
+
+A Figura~\ref{fig4:srp} apresenta um sistema de armazenamento com um arquivo de dados particionado em 8 blocos. O fator de replicação é 4. Os clientes precisam que, para cada um dos 8 distintos blocos, uma das quatro cópias esteja disponível. A Figura~\ref{fig5:crs} apresenta o mesmo sistema que a Figura~\ref{fig4:srp}, mas utilizando códigos RS. O arquivo está particionado em 8 blocos e 32 blocos codificados foram gerados. Os clientes podem utilizar quaisquer 8 blocos para obter o arquivo inicial. A Figura~\ref{fig5:crs} também se aplica a códigos Tornado.
+
+   \begin{figure}[h]
+     \centering
+     \includegraphics[scale=.6]{figuras/replicacao-pura.jpg}
+     \caption{Sistema com replicação pura \cite{Plank:2004}}
+     \label{fig4:srp}
+   \end{figure}
+
+   \begin{figure}[h]
+     \centering
+     \includegraphics[scale=.6]{figuras/codigos-RS.jpg}
+     \caption{Sistema com códigos RS \cite{Plank:2004}}
+     \label{fig5:crs}
+   \end{figure}
 
 \subsection{Replicação}
 
@@ -44,33 +67,7 @@ Com exceção do Farsite, os sistemas de armazenamento apresentados consideram \em
 
 Uma vantagem de codificação por apagamento é um custo menor de armazenamento se comparado a replicação, no caso de grande volume de dados. Outra vantagem com relação a replicação foi comentada em \cite{Weatherspoon:2002:01}: para um mesmo espaço de armazenamento, o tempo médio entre falhas (\emph{mean time to failure}) é maior.
 
-\begin{table}
-%\singlespacing
-  \begin{center}
-    \begin{tabular}{|p{2cm}||p{4cm}||p{5cm}||p{2cm}|}
-      \hline \hline
-sistema & codificação &  arquitetura do sistema & licença\\ \hline \hline
-HDFS \cite{Hadoop:2010}& RAID, Reed-Solomon, ... & shared-disk file system for cluster & Apache\\ \hline
-Tahoe-LAFS \cite{Wilcox-O'Hearn:2008} \footnote{http://tahoe-lafs.org/trac/tahoe-lafs} & RAID & peer-to-peer filesystem & GPL2\\ \hline
-Pergamum \cite{Storer:2008}& XOR parity, Reed-Solomon &  disk-based archival storage & *\\ \hline
-Potshards \cite{Storer:2009} & RAID e Reed-Solomon &  disk-based archival storage & *\\ \hline
-RobuStore \cite{Xia:2006} & Luby Transform (LT) codes & disk-based archival storage & *\\ \hline
-Glacier \cite{Haeberlen:2005}& Reed-Solomon com matrizes Cauchy & peer-to-peer storage system & *\\ \hline
-Total Recall \cite{Bhagwan:2004} & Maymounkov's online codes &  peer-to-peer storage system & *\\ \hline
-FAB \cite{Saito:2004}& Reed-Solomon & distributed disk array & *\\ \hline
-GPFS \cite{Schmuck:2002}& RAID & shared-disk file system for cluster & *\\ \hline
-Oceanstore \cite{Kubiatowicz:2000} \footnote{http://oceanstore.sourceforge.net/}& Tornado codes e Read-Solomon codes & desktops e notebooks conectados a servidores geograficamente distribuídos & BSD \\ \hline
-xFS \cite{Anderson:1998} \footnote{http://oss.sgi.com/projects/xfs/} & RAID & serverless network file system & GPL\\ \hline
-Swift \cite{Cabrera:1991} & RAID & desktops sob unix conectados a uma intranet & *\\ \hline
-    \end{tabular}
-\caption{Comparação entre sistemas de armazenamento de grande volume de dados que utilizam \emph{commodity hardware}}
-\label{tab1:comp}
-  \end{center}
-
-onde:\\
-* = não disponível
-
-\end{table}
+\input{tabelas/tabela-comp-sistemas-armazenamento}
 
 HDFS, Total Recall e OceanStore usam codificação para reduzir o tamanho do armazenamento de dados e todos os outros sistemas usam codificação para prover disponibilidade e confiabilidade.
 
@@ -129,18 +126,16 @@ $$
 
 \begin{table}
 %\singlespacing
-  \begin{center}
-    \begin{tabular}{|p{5cm}||p{5cm}|}
-      \hline  \hline
-acesso & tupla $(r, w, a)$\\ \hline
-criar & $(0, 0, n)$\\ \hline
-apenas leitura & $(1, 0, 0)$\\ \hline
-atualização consistente & $(1, n, 0)$\\ \hline
-apagar & $(0, n, 0)$\\ \hline
-    \end{tabular}
-\caption{Operações sobre dados redundantes na replicação}
-\label{tab2:comp}
-  \end{center}
+    \centerline{
+    \begin{tabular}{|p{5cm}|p{5cm}|}\hline
+        {\bf acesso} & {\bf tupla $(r, w, a)$}\\ \hline
+        criar & $(0, 0, n)$\\ \hline
+        apenas leitura & $(1, 0, 0)$\\ \hline
+        atualização consistente & $(1, n, 0)$\\ \hline
+        apagar & $(0, n, 0)$\\ \hline
+    \end{tabular}}
+    \caption{Operações sobre dados redundantes na replicação}
+    \label{tab2:comp}
 \end{table}
 
 Comparando as tuplas (1, 0, 0) e (1, n, 0) da tabela ~\ref{tab2:comp}, podemos observar que a disponibilidade da operação "atualização consistente" é menor que a disponibilidade da operação "apenas leitura", quando o número de réplicas $n > 1$ é aplicado.
@@ -183,18 +178,16 @@ $$
 
 \begin{table}
 %\singlespacing
-  \begin{center}
-    \begin{tabular}{|p{5cm}||p{5cm}|}
-      \hline  \hline
-acesso & tupla $(r, w, a)$\\ \hline
-criar & $(0, 0, n)$\\ \hline
-apenas leitura & $(k, 0, 0)$\\ \hline
-atualização consistente & $(k, m-k+1, k-1)$\\ \hline
-apagar & $(0, m-k+1, 0)$\\ \hline
-    \end{tabular}
-\caption{Operações sobre dados redundantes na codificação por apagamento}
-\label{tab3:comp}
-  \end{center}
+    \centerline{
+    \begin{tabular}{|p{5cm}|p{5cm}|}\hline
+       {\bf acesso} & {\bf tupla $(r, w, a)$}\\ \hline
+       criar & $(0, 0, n)$\\ \hline
+       apenas leitura & $(k, 0, 0)$\\ \hline
+       atualização consistente & $(k, m-k+1, k-1)$\\ \hline
+       apagar & $(0, m-k+1, 0)$\\ \hline
+    \end{tabular}}
+    \caption{Operações sobre dados redundantes na codificação por apagamento}
+    \label{tab3:comp}
 \end{table}
 
 Por outro lado, comparando-se as tuplas $(k, 0, 0)$ e $(k, m-k+1, k-1)$ da tabela ~\ref{tab3:comp}, podemos observar que existe um caso no qual as operações "apenas leitura" e "atualização consistente" podem ter a mesma disponibilidade. Isto ocorre quando $m = 2k-1$ (assumindo-se também que número total de \emph{peers} disponíveis é maior ou igual a $m$), obtendo-se a tupla $(k, k, k-1)$.
@@ -203,6 +196,8 @@ Por outro lado, comparando-se as tuplas $(k, 0, 0)$ e $(k, m-k+1, k-1)$ da tabel
 \section{Sobrecarga de armazenamento}
 
 Em \cite{Weatherspoon:2002:01, Dabek:2004}, os autores afirmam que a codificação obtem o mesmo nível de disponibilidade como a replicação, usando muito menos espaço de armazenamento.
+
+Em \cite{Bhagwan:2004}, concluiu-se que se a disponibilidade do peer for 0.5, então isso requer 10 cópias de cada arquivo para garantir a disponibilidade de 0.999 dos arquivos.
 
 No esquema da replicação, para um objetivo de probabilidade de indisponibilidade de um dado $e = 0.0001$, dado uma probabilidade de um \emph{peer} estar indisponível $q = 0.05$, obtemos o valor de $n = 3$ réplicas.
 
@@ -214,7 +209,7 @@ n\ \approx 3
 \end{array}
 $$
 
-No esquema da codificação, para o mesmo objetivo, para as mesmas probabilidades $e$ e $q$, obtemos um valor de 3 blocos de paridade para uma codificação $(2k-1, k)$.
+No esquema da codificação, para o mesmo objetivo, para as mesmas probabilidades $e$ e $q$, obtemos um valor de 4 blocos de paridade para uma codificação $(2k-1, k)$.
 
 $$
 \begin{array}{cl}
@@ -231,6 +226,7 @@ No HDFS, a codificação RS implementada é (16, 10), 10 blocos iniciais e 6 blocos
 
 Na figura ~\ref{fig1:sarc}, podemos observar o gráfico \footnote{O gráfico foi gerado em formato PNG pelo Gnuplot.} das funções $y = 2x$, $y = 3x$ e $y = (2x-1)/x$, para $x>0$,  representando a sobrecarga de armazenamento na replicação $2n$ e na $3n$ e na codificação $(2k-1,k)$, respectivamente. O eixo x representa o tamanho de um dado e o eixo y, a sobrecarga de armazenamento desse dado.
 
+    \vspace*{2cm}
     \begin{figure}[h]
       \centering
       \includegraphics[scale=0.69]{figuras/gnuplot-replicacao-codificacao-3.png}
@@ -238,7 +234,7 @@ Na figura ~\ref{fig1:sarc}, podemos observar o gráfico \footnote{O gráfico foi g
       \label{fig1:sarc}
     \end{figure}
 
-Neste estudo, concluímos que, apenas avaliando a contribuição do esquema de redundância, a codificação por apagamento acarreta uma sobrecarga de armazenamento menor que a replicação para o mesmo número de falhas toleradas.
+Neste estudo, concluímos que, apenas avaliando a contribuição do esquema de redundância, a codificação por apagamento acarreta uma sobrecarga de armazenamento menor que a replicação para o mesmo número de falhas toleradas. 
 
 \section{Disponibilidade dos peers}
 
