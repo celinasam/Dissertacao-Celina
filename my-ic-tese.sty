@@ -1,0 +1,20 @@
+% Arquivo para inclusÃ£o de modificaÃ§Ãµes no estilo ic-tese
+
+\renewcommand{\afterpreface}{\clearemptydoublepage
+    \tableofcontents
+    \clearemptydoublepage
+    \iftablespage
+        \listoftables
+        \clearemptydoublepage
+    \fi
+    \iffigurespage
+        \listoffigures
+        \clearemptydoublepage
+    \fi
+        \chapter*{Lista de Abreviaturas}
+        \input{capa/lista-simbolos-abreviaturas.tex}
+    \if@twoside\ifodd\c@page\else\null\thispagestyle{empty}\clearpage\fi\fi
+    \@openrighttrue
+    \pagenumbering{arabic}
+    \pagestyle{headings}
+}
