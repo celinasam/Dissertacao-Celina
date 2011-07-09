@@ -222,7 +222,11 @@ $$
 
 Para uma mesma probabilidade de indisponibilidade de um dado $e = 0.0001$ e uma mesma probabilidade de um \emph{peer} estar indisponível $q = 0.05$, obtemos o valor de $n = 3$ réplicas para a replicação e um valor de $k=4$ blocos iniciais para a codificação (2k-1,k). O fator de redundância é $B\ =\ 3$ para a replicação e $B\ =\ m / k\ =\ (2k-1) / k\ =\ 7/4\ =\ 1.75$ para a codificação.
 
-No HDFS, a codificação RS implementada é (16, 10), 10 blocos iniciais e 6 blocos de paridade. Logo, tolera até $l=6$ falhas por \emph{stripe} de 10 blocos ($k=10$) com sobrecarga de $B=1.6$, como a replicação de $n=6$ réplicas, que tem sobrecarga de $B=6$. A codificação RAID implementada é RAID-5, portanto, é (12, 10), 10 blocos iniciais e 2 blocos de paridade. Logo, tolera $l=2$ falhas por \emph{stripe} de 10 blocos ($k=10$) com sobrecarga de $B=1.2$ como a replicação de $n=2$ réplicas, que tem sobrecarga de $B=2$.
+No HDFS, a codificação RS \emph{default} é (5, 3).  Logo, tolera até $l=3$ falhas por \emph{stripe} de 5 blocos ($k=5$) com sobrecarga de $B=1.6667$, como a replicação de $n=3$ réplicas, que tem sobrecarga de $B=3$. 
+
+No HDFS, a codificação RAID implementada é RAID-5 com tamanho \emph{default} da \emph{stripe} de 5 blocos, logo, tolera $l=2$ falhas por \emph{stripe} de 5 blocos ($k=5$) com sobrecarga de $B=2.5$ como a replicação de $n=2$ réplicas, que tem sobrecarga de $B=2$.
+
+Nas máquinas do Facebook, a codificação RS tem 10 blocos iniciais e 6 blocos de paridade ($B=1.6$) e a codificação RAID é (12, 10), 10 blocos iniciais e 2 blocos de paridade ($B=1.2$).
 
 Na figura ~\ref{fig1:sarc}, podemos observar o gráfico \footnote{O gráfico foi gerado em formato PNG pelo Gnuplot.} das funções $y = 2x$, $y = 3x$ e $y = (2x-1)/x$, para $x>0$,  representando a sobrecarga de armazenamento na replicação $2n$ e na $3n$ e na codificação $(2k-1,k)$, respectivamente. O eixo x representa o tamanho de um dado e o eixo y, a sobrecarga de armazenamento desse dado.
 
