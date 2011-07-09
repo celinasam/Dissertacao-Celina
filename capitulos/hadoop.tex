@@ -118,15 +118,20 @@ protocolos executam uma \emph{Remote Procedure Call} (RPC). O NameNode
 não inicia chamadas RPCs. Ele responde a chamadas RPCs feitas pelo
 DataNodes e pelos clientes.
 
-
 \section{Codificação por Apagamento}
 
 Existe uma nova característica proposta em 2009 para implementação de
 uma camada de codificação por apagamento no Hadoop utilizando
-RAID~\cite{HDFS-503:2010} e uma mais recente utilizando códigos
-RS~\cite{MR-1969:2010}.
-
-A versão atual do Hadoop utiliza apenas a técnica de replicação
-\cite{White:2009} para obter disponibilidade e confiabilidade de
-dados. A inclusão da codificação por apagamento será feita com o
+XOR (RAID-5)~\cite{HDFS-503:2010} e uma mais recente utilizando códigos
+RS~\cite{MR-1969:2010}. A inclusão da codificação por apagamento foi proposta com o
 objetivo de reduzir o tamanho do armazenamento do HDFS.
+
+A versão atual do Hadoop não utiliza apenas a técnica de replicação
+\cite{White:2009} para obter disponibilidade e confiabilidade de
+dados. Ela pode ser configurada para usar também  codicação XOR (RAID-5) e RS.
+
+No HDFS, a codificação RS \emph{default} é (8, 5) e a XOR \emph{default} é (7, 5).  Logo, toleram até $l=3$ e até $l=2$ falhas, respectivamente, por \emph{stripe} de 5 blocos ($k=5$) com sobrecarga de $B=1.6$ e de $B=1.4$, respectivamente.
+
+Na codificação XOR, é possível configurar o número de blocos por \emph{stripe}. Já na codificação RS, tanto o número de blocos por \emph{stripe} e como o número de blocos de paridade são configuráveis.
+
+

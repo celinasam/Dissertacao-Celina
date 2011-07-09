@@ -228,13 +228,7 @@ $$
 
 Para uma mesma probabilidade de indisponibilidade de um dado $e = 0.0001$ e uma mesma probabilidade de um \emph{peer} estar indisponível $q = 0.05$, obtemos o valor de $n = 3$ réplicas para a replicação e um valor de $k=4$ blocos iniciais para a codificação (2k-1,k). O fator de redundância é $B\ =\ 3$ para a replicação e $B\ =\ m / k\ =\ (2k-1) / k\ =\ 7/4\ =\ 1.75$ para a codificação.
 
-No HDFS, a codificação RS \emph{default} é (5, 2) e a XOR (RAID-5) é (5, 3).  Logo, toleram até $l=3$ e até $l=2$ falhas, respectivamente, por \emph{stripe} de 5 blocos ($k=3$) com sobrecarga de $B=2.5$ e de $B=1.6667$, respectivamente.
-
-Na codificação XOR, é possível configurar o número de blocos por \emph{stripe}. Já na codificação RS, tanto o número de blocos por \emph{stripe} e como o número de blocos de paridade são configuráveis.
-
-Nas máquinas do Facebook, a codificação RS é (13, 10) tem 10 blocos iniciais e 3 blocos de paridade ($B=1.3$) e a codificação RAID é (12, 10), 10 blocos iniciais e 2 blocos de paridade ($B=1.2$).
-
-Na figura ~\ref{fig1:sarc}, podemos observar o gráfico \footnote{O gráfico foi gerado em formato PNG pelo Gnuplot.} das funções $y = 2x$, $y = 3x$ e $y = (2x-1)/x$, para $x>0$,  representando a sobrecarga de armazenamento na replicação $2n$ e na $3n$ e na codificação $(2k-1,k)$, respectivamente. O eixo x representa o tamanho de um dado e o eixo y, a sobrecarga de armazenamento desse dado.
+Na figura ~\ref{fig1:sarc}, podemos observar o gráfico das funções $y = 2x$, $y = 3x$ e $y = (2x-1)/x$, para $x>0$,  representando a sobrecarga de armazenamento na replicação $2n$ e na $3n$ e na codificação $(2k-1,k)$, respectivamente. O eixo x representa o tamanho de um dado e o eixo y, a sobrecarga de armazenamento desse dado.
 
     \vspace*{2cm}
     \begin{figure}[h]
@@ -244,7 +238,9 @@ Na figura ~\ref{fig1:sarc}, podemos observar o gráfico \footnote{O gráfico foi g
       \label{fig1:sarc}
     \end{figure}
 
-Neste estudo, concluímos que, apenas avaliando a contribuição do esquema de redundância, a codificação por apagamento acarreta uma sobrecarga de armazenamento menor que a replicação para o mesmo número de falhas toleradas. 
+Neste estudo, concluímos que a codificação por apagamento acarreta uma sobrecarga de armazenamento menor que a replicação para o mesmo número de falhas toleradas. 
+
+Nas máquinas do Facebook, a codificação RS é (13, 10) com sobrecarga de ($B=1.3$) e tolera até 3 falhas por \emph{stripe}. A codificação XOR (RAID-5) é (12, 10) com sobrecarga de ($B=1.2$). Outro exemplo é a codificação RS(255, 223), utilizada pela DSN \cite{TDD:2010}, que é padrão CCSDS \footnote{http://public.ccsds.org/} e tolera 32 falhas com sobrecarga de $B=1.1435$. Uma codificação BCH(63, 56), também padrão CCSDS, pode tolerar até 7 falhas, dependendo do polinômio gerador da síndrome \cite{Almeida:2007} . 
 
 \section{Disponibilidade dos peers}
 
@@ -258,7 +254,11 @@ Em \cite{Chiola:2005}, os autores concluem que:
   \item se ler e a disponibilidade de atualização consistente são de igual importância, isso requer codificação $(2k-1, k)$
 \end{itemize}
 
+Os autores também concluíram que usar apenas a replicação tem sentido apenas em poucos casos.
+
+Concluímos que, apenas avaliando a contribuição do esquema de redundância, a codificação por apagamento 
+
 Podemos também concluir que a replicação é um caso onde $k = 1$ e $l\ =\ m - k\ = \ n\ -\ 1$, portanto $m\ =\ n$. 
 
-Os autores também concluíram que usar apenas a replicação tem sentido apenas em poucos casos.
+
 
