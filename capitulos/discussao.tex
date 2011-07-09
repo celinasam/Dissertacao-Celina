@@ -240,7 +240,7 @@ Na figura ~\ref{fig1:sarc}, podemos observar o gráfico das funções $y = 2x$, $y 
 
 Neste estudo, concluímos que a codificação por apagamento acarreta uma sobrecarga de armazenamento menor que a replicação para o mesmo número de falhas toleradas. 
 
-Nas máquinas do Facebook, a codificação RS é (13, 10) com sobrecarga de ($B=1.3$) e tolera até 3 falhas por \emph{stripe}. A codificação XOR (RAID-5) é (12, 10) com sobrecarga de ($B=1.2$). Outro exemplo é a codificação RS(255, 223), utilizada pela DSN \cite{TDD:2010}, que é padrão CCSDS \footnote{http://public.ccsds.org/} e tolera 32 falhas com sobrecarga de $B=1.1435$. Uma codificação BCH(63, 56), também padrão CCSDS, pode tolerar até 7 falhas, dependendo do polinômio gerador da síndrome \cite{Almeida:2007} . 
+Nas máquinas do Facebook, a codificação RS é (13, 10) com sobrecarga de ($B=1.3$) e tolera até 3 falhas por \emph{stripe}. A codificação XOR (RAID-5) é (11, 10) com sobrecarga de ($B=1.1$). Outro exemplo é a codificação RS(255, 223), utilizada pela DSN \cite{TDD:2010}, que é padrão CCSDS \footnote{http://public.ccsds.org/} e tolera 32 falhas com sobrecarga de $B=1.1435$. Uma codificação BCH(63, 56), também padrão CCSDS, pode tolerar até 7 falhas, dependendo do polinômio gerador da síndrome \cite{Almeida:2007} . 
 
 \section{Disponibilidade dos peers}
 
