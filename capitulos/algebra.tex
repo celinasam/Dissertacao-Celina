@@ -1,35 +1,57 @@
 \chapter{Álgebra Abstrata}
 
-Essa seção tem por objetivo apresentar conceitos matemáticos fundamentais dentro do escopo de álgebra abstrata para entendimento de Códigos de Blocos. Alguns textos foram estudados para que ela pudesse ser escrita: \cite{Hefez:2008}.
+Essa capítulo tem por objetivo apresentar conceitos matemáticos fundamentais
+dentro do escopo de álgebra abstrata para entendimento de Códigos de Blocos~\cite{Hefez:2008}.
 
-Códigos RS são projetados através da aritmética de corpos finitos e seus algoritmos de codificação e decodificação funcionam basicamente através de cálculos sobre polinômios. 
+Códigos RS são projetados através da aritmética de corpos finitos. Corpos finitos
+também são chamados corpos de Galois, em homenagem ao matemático francês Évariste Galois.
 
-Corpos finitos também são chamados corpos de Galois, em homenagem ao matemático francês Évariste Galois.
+\section{Definições} \index{Congruência}
 
-	\section{Congruência} \index{Congruência}
-	Definição 1. Seja $m \in \mathbb{N}$. Dois inteiros $a$ e $b$ dizem-se $congruentes\ modulo\ m$ se tiverem o mesmo resto na divisão por $m$. A notação é $a \equiv b(mod\ m)$. Daí temos que $a = mk + b$, para um $k \in \mathbb{N}$. Exemplos:
-		\begin{itemize}
-			\item $32 \equiv 2(mod\ 3)$
-			\item $27 \equiv 5(mod\ 11)$
-			\item $63 \equiv 7(mod\ 8)$
-		\end{itemize}
-	\section{Classe Residual}
-	Definição 2. Seja $m \in \mathbb{N}$ e $m > 1$. A classe residual módulo $m$ do elemento $a \in \mathbb{Z}$ pode ser assim definida:
+\begin{definition} {\bf Congruência} Seja $m \in \mathbb{N}$. Dois inteiros $a$
+ e $b$ dizem-se $congruentes\ modulo\ m$ se tiverem o mesmo resto na divisão por
+ $m$. A notação é $a \equiv b(mod\ m)$. Daí temos que $a = mk + b$, para um $k \
+in \mathbb{N}$.
+\end{definition}
+
+Exemplos:
+\begin{itemize}
+\item $32 \equiv 2(mod\ 3)$
+\item $27 \equiv 5(mod\ 11)$
+\item $63 \equiv 7(mod\ 8)$
+\end{itemize}
+
+\begin{definition} {\bf Classe Residual} Seja $m \in \mathbb{N}$ e $m > 1$. A classe
+residual módulo $m$ do elemento $a \in \mathbb{Z}$ pode ser assim definida:
+
+ 	\begin{center}
+ 	$\bar{a}\ =\ \{ x \in \mathbb{Z}\ |\ x \equiv a(mod\ m)\}$
+ 	\end{center}
 		
 	\begin{center}
 	$\bar{a}\ =\ \{ x \in \mathbb{Z}\ |\ x \equiv a(mod\ m)\}$
 	\end{center}
-	Exemplos:
-		\begin{itemize}
-			\item se $m = 2$, então temos 2 classes residuais: $\bar{0}=\{ ... -4, -2, 0, 2, 4, ...\}$ e  $\bar{1}=\{ ... -3, -1, 1, 3, ...\}$
-			\item se $m = 3$, então temos 3 classes residuais: $ \bar{0}, \bar{1}, \bar{2}$
-			\item se $m = 5$, então temos 4 classes residuais: $\bar{0}, \bar{1}, \bar{2}, \bar{3}, \bar{4}$
-		\end{itemize}
-	Definição 3. ${\bf Z}_m = \{\bar{0}, \bar{1}, ..., \overline{m-1}\}$ é o conjunto das classes residuais dos inteiros módulo $m$. Notemos que ${\bf Z}_m$ tem exatamente $m$ elementos, portanto ${\bf Z}_m$ é finito.
-	
-	Definição 4. Se a$\ \equiv\ b(mod\ m)$, então $\bar{a} = \bar{b}$
 
-	\section{Corpo}
+\end{definition}
+
+Exemplos:
+\begin{itemize}
+\item se $m = 2$, então temos 2 classes residuais: $\bar{0}=\{ ... -4, -2, 0, 2, 4, ...\}$
+e  $\bar{1}=\{ ... -3, -1, 1, 3, ...\}$
+\item se $m = 3$, então temos 3 classes residuais: $ \bar{0}, \bar{1}, \bar{2}$
+\item se $m = 5$, então temos 4 classes residuais: $\bar{0}, \bar{1}, \bar{2}, \bar{3}, \bar{4}$
+\end{itemize}
+
+\begin{definition} ${\bf Z}_m = \{\bar{0}, \bar{1}, ..., \overline{m-1}\}$ é o conjunto
+das classes residuais dos inteiros módulo $m$. 
+\end{definition}
+
+Notemos que ${\bf Z}_m$ tem exatamente $m$ elementos, portanto ${\bf Z}_m$ é finito.
+
+\begin{property} Se a$\ \equiv\ b(mod\ m)$, então $\bar{a} = \bar{b}$
+\end{property}
+
+\section{Corpo}
 	Um corpo é um conjunto $F$  que resume-se um espaço fechado com operações binárias, como "$.$" e "$+$", entre dois dos seus elementos, designados por operandos. O resultado da aplicação de uma operação resulta em um terceiro elemento também pertencente a $F$. As propriedades dessas operações são: associativa e comutativa e a operação "$.$" é distributiva sobre a operação "$+$" : $a.(b + c)\ =\ a.b\ +\ a.c,\ \forall a,\ \forall b,\ \forall c\ \in\ F$. Os elementos de $F$ apresentam essas propriedades: existência de elemento identidade (neutro) em $F$ para a operação "$.$" e para a operação "$+$" e existência de elemento um inverso da operação "$+$" para cada elemento de $F$.
 
 	Os conjuntos como $F$ podem ter ordem (por exemplo, cardinalidade) infinita. Como exemplos de corpos infinitos, temos os conjuntos dos números racionais $\mathbb{Q}$, reais $\mathbb{R}$, complexos $\mathbb{C}$ e e inteiros $mod\ p$ ($p$ é primo) sob as operações de adição e multiplicação usuais.

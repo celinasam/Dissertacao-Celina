@@ -1,4 +1,4 @@
-% Arquivo para inclusÃ£o de modificaÃ§Ãµes no estilo ic-tese
+% Arquivo para inclusão de modificações no estilo ic-tese
 
 \renewcommand{\afterpreface}{\clearemptydoublepage
     \tableofcontents
@@ -18,3 +18,13 @@
     \pagenumbering{arabic}
     \pagestyle{headings}
 }
+
+% Definições, teoremas, etc.
+\newtheorem{definition}{Definição} [chapter]
+\newtheorem{theorem}{Teorema} [chapter]
+\newtheorem{lemma}{Lema} [chapter]
+\newtheorem{proposition}{Proposição}
+\newtheorem{property}{Propriedade}
+\newtheorem{corollary} [theorem]{Corolário}
+\newtheorem{conjecture}{Conjectura} [chapter]
+\newtheorem{observation}{Observação} [chapter]
