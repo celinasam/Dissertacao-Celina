@@ -1,18 +1,16 @@
 \chapter{Codificação Tornado}
 
-A idéia básica do algoritmo da codificação Tornado está descrita em \cite{Stoten:2011}.
+A idéia básica deste algoritmo da codificação Tornado está descrita em \cite{Stoten:2011}.
 
-Um checksum de 64 bits pode ser calculado para cada 100 bytes.
+Um checksum de 64 bits pode ser calculado para cada 100 bytes. Para um bloco de 64MB, o checksum é de 5.12MB.
 
-Para um bloco de 64MB, o checksum é de 5.12MB.
+A sobrecarga de armazenamento de checksum é $864/800 = 1.08$. A sobrecarga da paridade é $2n/n = 2$. Portanto, a  sobrecarga total de armazenamento é $1.08*2 = 2.16$.
 
-sobrecarga de checksum: $864/800 = 1.08$
+O número de falhas suportadas é $l\ =\ numero de blocos da stripe\ =\ 10$.
 
-sobrecarga de paridade: $2n/n = 2$
+Seja $s\ =\ numero\ de\ blocos\ da\ stripe\ =\ 10$.
 
-sobrecarga total: $1.08*2 = 2.16$
-
-l = número de falhas suportadas = número de blocos da stripe = 10
+A operação mais custosa dos algoritmos é o cálculo do $XOR$ entre 2 blocos de 64M. São $s/2$ operações, no caso de $s$ par e $(n/2)-1$ operações, no caso de $s$ ímpar. Nesse caso, podemos afirmar que os algoritmos são lineares no tamanho da entrada, ou seja, $O(s)$.
 
 \subsection{Algoritmo de Codificação}
 
@@ -83,7 +81,7 @@ O tamanho da \emph{stripe} é 10 blocos e existe um arquivo $/a/arquivo.txt$ com 
 		\item bloco$[4]\ =\ $bloco\_paridade$[7]$
 		\item bloco$[6]\ =\ $bloco\_paridade$[8]$
 		\item bloco$[8]\ =\ $bloco\_paridade$[9]$
-		\item bloco$[1]\ =\ $bloco\_paridade$[0] xor $bloco$[0]$
+		\item bloco$[1]\ =\ $bloco\_paridade$[0]\ xor\ $bloco$[0]$
 		\item bloco$[3]\ =\ $bloco$[2]\ xor\ $bloco\_paridade$[1]$
 		\item bloco$[5]\ =\ $bloco$[4]\ xor\ $bloco\_paridade$[2]$
 		\item bloco$[7]\ =\ $bloco$[6]\ xor\ $bloco\_paridade$[3]$
