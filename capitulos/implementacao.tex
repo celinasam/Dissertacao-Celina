@@ -1,0 +1,172 @@
+\chapter{Implementação das Codificações}
+
+Uma boa escolha de codificação para um canal depende da sobrecarga de armazenamento, do tamanho do bloco, da complexidade dos algoritmos de codificação e de decodificação e se uma eventual não detecção de erros é aceitável. Códigos LDPC e Tornado são versáteis para serem projetados para muitas opções de tamanho do bloco e de sobrecarga de armazenamento.
+
+\section{Codificação Tornado}
+
+A idéia básica deste algoritmo da codificação Tornado está descrita em \cite{Stoten:2011}.
+
+O cálculo do checksum de 64 bits foi feito para cada 100 bytes. Para um bloco de 64MB, o checksum é de 5.12MB.
+
+A sobrecarga de armazenamento de checksum é $864/800 = 1.08$. A sobrecarga da paridade é $2n/n = 2$. Portanto, a  sobrecarga total de armazenamento é $1.08*2 = 2.16$.
+
+O número de falhas suportadas é $l\ =\ numero\ de\ blocos\ da\ stripe\ =\ 10$.
+
+Seja $s\ =\ numero\ de\ blocos\ da\ stripe\ =\ 10$.
+
+A operação mais custosa dos algoritmos é o cálculo do $XOR$ entre 2 blocos de 64M. São $s/2$ operações, no caso de $s$ par e $(n/2)-1$ operações, no caso de $s$ ímpar. Nesse caso, podemos afirmar que os algoritmos são lineares no tamanho da entrada, ou seja, $O(s)$.
+
+
+\subsection{Algoritmo de Codificação}
+
+Apresentamos um exemplo do algoritmo de codificação para uma \emph{stripe} de tamanho 10 blocos e para um arquivo $/a/arquivo.txt$ com exatamente 10 blocos. Nesse caso, o algoritmo de codificação faz o seguinte:
+
+\begin{itemize}
+\item bloco$[0]\ =$ primeiro bloco da stripe
+\item bloco$[1]\ =$ segundo bloco da stripe
+\item ...
+\item bloco$[9]\ =$ último bloco da stripe
+
+\item para i de 0 até 9
+	\begin{itemize}
+		\item bloco\_checksum$[i]\ =\ $checksum do bloco$[i]$
+	\end{itemize}
+
+\item bloco\_paridade$[0]\ =\ $bloco$[0]\ xor\ $bloco$[1]$
+\item bloco\_paridade$[1]\ =\ $bloco$[2]\ xor\ $bloco$[3]$
+\item bloco\_paridade$[2]\ =\ $bloco$[4]\ xor\ $bloco$[5]$
+\item bloco\_paridade$[3]\ =\ $bloco$[6]\ xor\ $bloco$[7]$
+\item bloco\_paridade$[4]\ =\ $bloco$[8]\ xor\ $bloco$[9]$
+\item bloco\_paridade$[5]\ =\ $bloco$[0]$
+\item bloco\_paridade$[6]\ =\ $bloco$[2]$
+\item bloco\_paridade$[7]\ =\ $bloco$[4]$
+\item bloco\_paridade$[8]\ =\ $bloco$[6]$
+\item bloco\_paridade$[9]\ =\ $bloco$[8]$
+
+\item para i de 0 até 9:
+      \begin{itemize}
+    \item escreva bloco\_checksum$[i]$ no arquivo $/checksum/a/arquivo.txt$
+      \end{itemize}
+
+\item para i de 0 até 9:
+      \begin{itemize}
+    \item escreva bloco\_paridade$[i]$ no arquivo $/tor/a/arquivo.txt$
+      \end{itemize}
+\end{itemize}
+
+\subsection{Algoritmo de Decodificação}
+
+O algoritmo de decodificação faz o seguinte:
+
+\begin{itemize}
+
+\item bloco\_checksum$[0]\ =$ primeiro bloco de checksum da stripe
+\item bloco\_checksum$[1]\ =$ segundo bloco de checksum da stripe
+\item ...
+\item bloco\_checksum$[9]\ =$ último bloco de checksum da stripe
+
+\item $i\ =\ 0$
+\item $erro\ =\ false$
+\item enquanto $(i\ <=\ 9)\ e\ (nao\ erro)$ faça
+	\begin{itemize}
+		\item	se bloco\_checksum$[i]\ =\ $checksum do bloco$[i]$
+		\item	então $i++$
+		\item	senão $erro\ =\ true$
+	\end{itemize}
+
+\item se erro
+\item então
+	\begin{itemize}
+		\item Ler  o arquivo  $/tor/a/arquivo.txt$
+		\item bloco\_paridade$[0]\ =$ primeiro bloco de paridade da stripe
+		\item bloco\_paridade$[1]\ =$ segundo bloco de paridade da stripe
+		\item ...
+		\item bloco\_paridade$[9]\ =$ último bloco de paridade da stripe
+
+		\item bloco$[0]\ =\ $bloco\_paridade$[5]$
+		\item bloco$[2]\ =\ $bloco\_paridade$[6]$
+		\item bloco$[4]\ =\ $bloco\_paridade$[7]$
+		\item bloco$[6]\ =\ $bloco\_paridade$[8]$
+		\item bloco$[8]\ =\ $bloco\_paridade$[9]$
+		\item bloco$[1]\ =\ $bloco\_paridade$[0]\ xor\ $bloco$[0]$
+		\item bloco$[3]\ =\ $bloco$[2]\ xor\ $bloco\_paridade$[1]$
+		\item bloco$[5]\ =\ $bloco$[4]\ xor\ $bloco\_paridade$[2]$
+		\item bloco$[7]\ =\ $bloco$[6]\ xor\ $bloco\_paridade$[3]$
+		\item bloco$[9]\ =\ $bloco$[8]\ xor\ $bloco\_paridade$[4]$
+	\end{itemize}
+\end{itemize}
+
+\section{Codificação Simples Turbo-\emph{Like}}
+
+Esse algoritmo foi baseado nos estudos de \cite{Divsalar:1998,MacKay:2003} e é muito simples de entender. 
+
+A sobrecarga total de armazenamento é $n/n=1$.
+
+O número de falhas suportadas é $l\ =\ numero\ de\ blocos\ da\ stripe\ =\ 10$.
+
+Seja $s\ =\ numero\ de\ blocos\ da\ stripe\ =\ 10$.
+
+A operação mais custosa dos algoritmos é o cálculo do $XOR$ entre 2 blocos de 64M. São $s$ operações. Nesse caso, podemos afirmar que os algoritmos são lineares no tamanho da entrada, ou seja, $O(s)$.
+
+No pior caso, temos que decodificar todos os blocos para recuperar apenas um.
+
+\subsection{Algoritmo de Codificação}
+
+Apresentamos um exemplo do algoritmo de codificação para uma \emph{stripe} de tamanho 10 blocos e para um arquivo $/a/arquivo.txt$ com exatamente 10 blocos. Nesse caso, o algoritmo de codificação faz o seguinte:
+
+\begin{itemize}
+\item bloco$[0]\ =$ primeiro bloco da stripe
+\item bloco$[1]\ =$ segundo bloco da stripe
+\item ...
+\item bloco$[9]\ =$ último bloco da stripe
+
+\item Gerar uma permutação dos índices dos blocos da stripe: $p\ = \ [b_0, b_1, b_2, b_3, b_4, b_5, b_6, b_7, b_8, b_9]$
+
+\item bloco\_paridade$[0]\ =\ $bloco$[b_0]$
+\item bloco\_paridade$[1]\ =\ $bloco\_paridade$[0]\ xor\ $bloco$[b_1]$
+\item bloco\_paridade$[2]\ =\ $bloco\_paridade$[1]\ xor\ $bloco$[b_2]$
+\item bloco\_paridade$[3]\ =\ $bloco\_paridade$[2]\ xor\ $bloco$[b_3]$
+\item bloco\_paridade$[4]\ =\ $bloco\_paridade$[3]\ xor\ $bloco$[b_4]$
+\item bloco\_paridade$[5]\ =\ $bloco\_paridade$[4]\ xor\ $bloco$[b_5]$
+\item bloco\_paridade$[6]\ =\ $bloco\_paridade$[5]\ xor\ $bloco$[b_6]$
+\item bloco\_paridade$[7]\ =\ $bloco\_paridade$[6]\ xor\ $bloco$[b_7]$
+\item bloco\_paridade$[8]\ =\ $bloco\_paridade$[7]\ xor\ $bloco$[b_8]$
+\item bloco\_paridade$[9]\ =\ $bloco\_paridade$[8]\ xor\ $bloco$[b_9]$
+
+\item para i de 0 até 9:
+      \begin{itemize}
+    \item escreva bloco\_paridade$[i]$ no arquivo $/turbo/a/arquivo.txt$
+      \end{itemize}
+
+\end{itemize}
+
+\subsection{Algoritmo de Decodificação}
+
+O algoritmo de decodificação faz o seguinte:
+
+\begin{itemize}
+
+\item Ler a permutação do índices dos blocos da stripe: $p\ = \ [b_0, b_1, b_2, b_3, b_4, b_5, b_6, b_7, b_8, b_9]$
+
+\item Ler  o arquivo  $/turbo/a/arquivo.txt$
+
+\item bloco\_paridade$[0]\ =$ primeiro bloco de paridade da stripe
+\item bloco\_paridade$[1]\ =$ segundo bloco de paridade da stripe
+\item ...
+\item bloco\_paridade$[9]\ =$ último bloco de paridade da stripe
+
+\item bloco$[b_0]\ =\ $bloco\_paridade$[0]$
+\item bloco$[b_1]\ =\ $bloco\_paridade$[0]\ xor\ $bloco\_paridade$[1]$
+\item bloco$[b_2]\ =\ $bloco\_paridade$[1]\ xor\ $bloco\_paridade$[2]$
+\item bloco$[b_3]\ =\ $bloco\_paridade$[2]\ xor\ $bloco\_paridade$[3]$
+\item bloco$[b_4]\ =\ $bloco\_paridade$[3]\ xor\ $bloco\_paridade$[4]$
+\item bloco$[b_5]\ =\ $bloco\_paridade$[4]\ xor\ $bloco\_paridade$[5]$
+\item bloco$[b_6]\ =\ $bloco\_paridade$[5]\ xor\ $bloco\_paridade$[6]$
+\item bloco$[b_7]\ =\ $bloco\_paridade$[6]\ xor\ $bloco\_paridade$[7]$
+\item bloco$[b_8]\ =\ $bloco\_paridade$[7]\ xor\ $bloco\_paridade$[8]$
+\item bloco$[b_9]\ =\ $bloco\_paridade$[8]\ xor\ $bloco\_paridade$[9]$
+
+\end{itemize}
+
+
+
