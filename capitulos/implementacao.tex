@@ -1,10 +1,10 @@
 \chapter{Implementação das Codificações}
 
-Uma boa escolha de codificação para um canal depende da sobrecarga de armazenamento, do tamanho do bloco, da complexidade dos algoritmos de codificação e de decodificação e se uma eventual não detecção de erros é aceitável. Códigos LDPC e Tornado são versáteis para serem projetados para muitas opções de tamanho do bloco e de sobrecarga de armazenamento.
+Uma boa escolha de codificação para um canal depende da sobrecarga de armazenamento, do tamanho do bloco, da complexidade dos algoritmos de codificação e de decodificação e se uma eventual não detecção de erros é aceitável. Códigos LDPC e Tornado são versáteis para serem projetados para muitas opções de tamanho do bloco e de sobrecarga de armazenamento e segundo muitos estudos, códigos LDPC são a codificação que mais se aproxima do limite de Shannon (quantidade máxima de dados transmitidos em um canal em bytes por segundo).
 
 \section{Codificação Tornado}
 
-A idéia básica deste algoritmo da codificação Tornado está descrita em \cite{Stoten:2011}.
+A idéia básica deste algoritmo da codificação Tornado está descrita em \cite{Woitaszek:2007,Stoten:2011}.
 
 O cálculo do checksum de 64 bits foi feito para cada 100 bytes. Para um bloco de 64MB, o checksum é de 5.12MB.
 
@@ -15,6 +15,21 @@ O número de falhas suportadas é $l\ =\ numero\ de\ blocos\ da\ stripe\ =\ 10$.
 Seja $s\ =\ numero\ de\ blocos\ da\ stripe\ =\ 10$.
 
 A operação mais custosa dos algoritmos é o cálculo do $XOR$ entre 2 blocos de 64M. São $s/2$ operações, no caso de $s$ par e $(n/2)-1$ operações, no caso de $s$ ímpar. Nesse caso, podemos afirmar que os algoritmos são lineares no tamanho da entrada, ou seja, $O(s)$.
+
+O grafo da codificação para uma \emph{stripe} de tamanho 10 blocos é:
+
+\begin{verbatim}
+1 0 0 0 0 0 0 0 0 0
+1 1 0 0 0 0 0 0 0 0
+0 1 1 0 0 0 0 0 0 0
+0 0 1 1 0 0 0 0 0 0
+0 0 0 1 1 0 0 0 0 0
+0 0 0 0 1 1 0 0 0 0
+0 0 0 0 0 1 1 0 0 0
+0 0 0 0 0 0 1 1 0 0
+0 0 0 0 0 0 0 1 1 0
+0 0 0 0 0 0 0 0 1 1
+\end{verbatim}
 
 
 \subsection{Algoritmo de Codificação}
@@ -32,16 +47,27 @@ Apresentamos um exemplo do algoritmo de codificação para uma \emph{stripe} de ta
 		\item bloco\_checksum$[i]\ =\ $checksum do bloco$[i]$
 	\end{itemize}
 
-\item bloco\_paridade$[0]\ =\ $bloco$[0]\ xor\ $bloco$[1]$
-\item bloco\_paridade$[1]\ =\ $bloco$[2]\ xor\ $bloco$[3]$
-\item bloco\_paridade$[2]\ =\ $bloco$[4]\ xor\ $bloco$[5]$
-\item bloco\_paridade$[3]\ =\ $bloco$[6]\ xor\ $bloco$[7]$
-\item bloco\_paridade$[4]\ =\ $bloco$[8]\ xor\ $bloco$[9]$
-\item bloco\_paridade$[5]\ =\ $bloco$[0]$
-\item bloco\_paridade$[6]\ =\ $bloco$[2]$
-\item bloco\_paridade$[7]\ =\ $bloco$[4]$
-\item bloco\_paridade$[8]\ =\ $bloco$[6]$
-\item bloco\_paridade$[9]\ =\ $bloco$[8]$
+%\item bloco\_paridade$[0]\ =\ $bloco$[0]\ xor\ $bloco$[1]$
+%\item bloco\_paridade$[1]\ =\ $bloco$[2]\ xor\ $bloco$[3]$
+%\item bloco\_paridade$[2]\ =\ $bloco$[4]\ xor\ $bloco$[5]$
+%\item bloco\_paridade$[3]\ =\ $bloco$[6]\ xor\ $bloco$[7]$
+%\item bloco\_paridade$[4]\ =\ $bloco$[8]\ xor\ $bloco$[9]$
+%\item bloco\_paridade$[5]\ =\ $bloco$[0]$
+%\item bloco\_paridade$[6]\ =\ $bloco$[2]$
+%\item bloco\_paridade$[7]\ =\ $bloco$[4]$
+%\item bloco\_paridade$[8]\ =\ $bloco$[6]$
+%\item bloco\_paridade$[9]\ =\ $bloco$[8]$
+
+\item bloco\_paridade$[0]\ =\ $bloco$[0]$
+\item bloco\_paridade$[1]\ =\ $bloco$[0]\ xor\ $bloco$[1]$
+\item bloco\_paridade$[2]\ =\ $bloco$[1]\ xor\ $bloco$[2]$
+\item bloco\_paridade$[3]\ =\ $bloco$[2]\ xor\ $bloco$[3]$
+\item bloco\_paridade$[4]\ =\ $bloco$[3]\ xor\ $bloco$[4]$
+\item bloco\_paridade$[5]\ =\ $bloco$[4]\ xor\ $bloco$[5]$
+\item bloco\_paridade$[6]\ =\ $bloco$[5]\ xor\ $bloco$[6]$
+\item bloco\_paridade$[7]\ =\ $bloco$[6]\ xor\ $bloco$[7]$
+\item bloco\_paridade$[8]\ =\ $bloco$[7]\ xor\ $bloco$[8]$
+\item bloco\_paridade$[9]\ =\ $bloco$[8]\ xor\ $bloco$[9]$
 
 \item para i de 0 até 9:
       \begin{itemize}
@@ -83,16 +109,27 @@ O algoritmo de decodificação faz o seguinte:
 		\item ...
 		\item bloco\_paridade$[9]\ =$ último bloco de paridade da stripe
 
-		\item bloco$[0]\ =\ $bloco\_paridade$[5]$
-		\item bloco$[2]\ =\ $bloco\_paridade$[6]$
-		\item bloco$[4]\ =\ $bloco\_paridade$[7]$
-		\item bloco$[6]\ =\ $bloco\_paridade$[8]$
-		\item bloco$[8]\ =\ $bloco\_paridade$[9]$
-		\item bloco$[1]\ =\ $bloco\_paridade$[0]\ xor\ $bloco$[0]$
-		\item bloco$[3]\ =\ $bloco$[2]\ xor\ $bloco\_paridade$[1]$
-		\item bloco$[5]\ =\ $bloco$[4]\ xor\ $bloco\_paridade$[2]$
-		\item bloco$[7]\ =\ $bloco$[6]\ xor\ $bloco\_paridade$[3]$
-		\item bloco$[9]\ =\ $bloco$[8]\ xor\ $bloco\_paridade$[4]$
+%		\item bloco$[0]\ =\ $bloco\_paridade$[5]$
+%		\item bloco$[2]\ =\ $bloco\_paridade$[6]$
+%		\item bloco$[4]\ =\ $bloco\_paridade$[7]$
+%		\item bloco$[6]\ =\ $bloco\_paridade$[8]$
+%		\item bloco$[8]\ =\ $bloco\_paridade$[9]$
+%		\item bloco$[1]\ =\ $bloco\_paridade$[0]\ xor\ $bloco$[0]$
+%		\item bloco$[3]\ =\ $bloco$[2]\ xor\ $bloco\_paridade$[1]$
+%		\item bloco$[5]\ =\ $bloco$[4]\ xor\ $bloco\_paridade$[2]$
+%		\item bloco$[7]\ =\ $bloco$[6]\ xor\ $bloco\_paridade$[3]$
+%		\item bloco$[9]\ =\ $bloco$[8]\ xor\ $bloco\_paridade$[4]$
+
+		\item bloco$[0]\ =\ $bloco\_paridade$[0]$
+		\item bloco$[1]\ =\ $bloco\_paridade$[1]\ xor\ $bloco$[0]$
+		\item bloco$[2]\ =\ $bloco\_paridade$[2]\ xor\ $bloco$[1]$
+		\item bloco$[3]\ =\ $bloco\_paridade$[3]\ xor\ $bloco$[2]$
+		\item bloco$[4]\ =\ $bloco\_paridade$[4]\ xor\ $bloco$[3]$
+		\item bloco$[5]\ =\ $bloco\_paridade$[5]\ xor\ $bloco$[4]$
+		\item bloco$[6]\ =\ $bloco\_paridade$[6]\ xor\ $bloco$[5]$
+		\item bloco$[7]\ =\ $bloco\_paridade$[7]\ xor\ $bloco$[6]$
+		\item bloco$[8]\ =\ $bloco\_paridade$[8]\ xor\ $bloco$[7]$
+		\item bloco$[9]\ =\ $bloco\_paridade$[9]\ xor\ $bloco$[8]$
 	\end{itemize}
 \end{itemize}
 
@@ -100,13 +137,29 @@ O algoritmo de decodificação faz o seguinte:
 
 Esse algoritmo foi baseado nos estudos de \cite{Divsalar:1998,MacKay:2003} e é muito simples de entender. 
 
-A sobrecarga total de armazenamento é $n/n=1$.
+A sobrecarga total de armazenamento é $2n/n=2$.
 
 O número de falhas suportadas é $l\ =\ numero\ de\ blocos\ da\ stripe\ =\ 10$.
 
 Seja $s\ =\ numero\ de\ blocos\ da\ stripe\ =\ 10$.
 
 A operação mais custosa dos algoritmos é o cálculo do $XOR$ entre 2 blocos de 64M. São $s$ operações. Nesse caso, podemos afirmar que os algoritmos são lineares no tamanho da entrada, ou seja, $O(s)$.
+
+O grafo da codificação para uma \emph{stripe} de tamanho 10 blocos na sequência $7, 1, 4, 8, 2, 5, 9, 3, 0, 6$:
+
+\begin{verbatim}
+0 0 0 0 0 0 0 1 0 0
+0 1 0 0 0 0 0 1 0 0
+0 1 0 0 1 0 0 0 0 0
+0 0 0 0 1 0 0 0 1 0
+0 0 1 0 0 0 0 0 1 0
+0 0 1 0 0 1 0 0 0 0
+0 0 0 0 0 1 0 0 0 1
+0 0 0 1 0 0 0 0 0 1
+1 0 0 1 0 0 0 0 0 0
+1 0 0 0 0 0 1 0 0 0
+\end{verbatim}
+
 
 \subsection{Algoritmo de Codificação}
 
@@ -166,5 +219,5 @@ O algoritmo de decodificação faz o seguinte:
 
 \end{itemize}
 
-
+\input{tabelas/tabela-comp-codificacoes-hadoop}
 
