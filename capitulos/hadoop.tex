@@ -134,4 +134,72 @@ No HDFS, a codificação RS \emph{default} é (8, 5) e a XOR \emph{default} é (6, 5
 
 Na codificação XOR, é possível configurar o número de blocos por \emph{stripe}. Já na codificação RS, tanto o número de blocos por \emph{stripe} e como o número de blocos de paridade são configuráveis.
 
+\subsection{Algoritmos da Camada RAID}
 
+Exemplo do algoritmo de codificação
+
+O tamanho da \emph{stripe} é 5 blocos e existe um arquivo $/a/arquivo.txt$ com exatamente 5 blocos. Nesse caso, o algoritmo de codificação da camada RAID faz o seguinte:
+
+\begin{verbatim}
+bloco[0] = primeiro bloco
+bloco[1] = segundo bloco
+bloco[2] = terceiro bloco
+bloco[3] = quarto bloco
+bloco[4] = quinto bloco
+
+bloco_paridade = iniciado com 0 em todos os bytes
+
+para i de 0 até número de bytes em um bloco:
+   para j de 0 até 4:
+      bloco_paridade = bloco_paridade xor bloco[j][i]
+
+para i de 0 até 4:
+   escreva bloco_paridade no arquivo /raid/a/arquivo.txt
+\end{verbatim}
+
+\subsection{Algoritmos da Camada RS}
+
+Exemplo do algoritmo de codificação
+
+O tamanho da \emph{stripe} é 5 blocos, são 3 blocos de paridade, o polinômio primitivo é $x^8 + x^4 + x^3 + x^2 + 1$ e existe um arquivo $/a/arquivo.txt$ com exatamente 5 blocos. Nesse caso, o algoritmo de codificação da camada RS faz o seguinte:
+
+\begin{verbatim}
+// polinômio primitivo g representado por 285
+g = x^8 + x^4 + x^2 + x + 1 
+m = 8
+k = 5
+i = 0
+L = m-k
+j = 0
+
+bloco[0] = primeiro bloco
+bloco[1] = segundo bloco
+bloco[2] = terceiro bloco
+bloco[3] = quarto bloco
+bloco[4] = quinto bloco
+
+enquanto j >= L faça
+   // para GF = 2
+   // x^0 representado por 1; x^1 por 2; x^2 por 4; x^3 por 8; 
+   // x^4 por 16; x^5 por 32; x^6 por 64; x^7 por 128;
+   a = x^j
+   i = 0
+   bloco_paridade[j] = iniciado com 0 em todos os bytes
+   enquanto i >= k faça
+      r = novo bloco
+      resto(g, a, bloco[i], r)
+      bloco_paridade[j] = bloco_paridade[j] xor r
+      i++
+   j++
+   
+para j de 0 até L
+   escreva bloco_paridade[j] no arquivo /raidrs/a/arquivo.txt
+
+resto (g, a , bloco, r)
+   para i de 0 até número de bytes em um bloco:
+      r[i] = resto(g, a, bloco[i])
+
+resto (g, a, b)
+retorna resto = (byte) rem (g(b), a(b))
+   
+\end{verbatim}
