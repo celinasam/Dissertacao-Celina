@@ -52,7 +52,7 @@ O código da fonte é o conjunto de elementos que definem forma como a informação 
 
 Uma dificuldade encontrada por quem estuda códigos corretores de erros é que não existe uma nomenclatura unificada \cite{Plank:2009}. Também segundo \cite{CS540:2010}, existem poucos pesquisadores que são programadores de sistemas e que fazem propostas neste tema.
 
-A idéia básica da código ótimo é que o objeto original possa ser reconstruído a partir de quaisquer $m$ únicos fragmentos que são aproximadamente do mesmo tamanho do objeto original \cite{Weatherspoon:2002:01}.
+A idéia básica da código ótimo é que o objeto original possa ser reconstruído a partir de quaisquer $k$ únicos fragmentos que são aproximadamente do mesmo tamanho do objeto original \cite{Weatherspoon:2002:01}.
 %Para uma codificação quase ótima, são necessários $ \approx  (1+e)k$ fragmentos, onde $e \geq 1$ \cite{EC:2010}.
 
 Corrigir erros é uma tarefa mais complexa que detectá-los. Detectar erros tem a mesma complexidade que a operação de codificar, que pode ser linear no tamanho das palavras código. A operação de decodificar para uma correção de erros ótima é um problema NP-difícil e são conhecidos apenas algoritmos eficientes para algumas classes de códigos. Novas classes de códigos com eficientes decodificadores e novos algoritmos para decodificação para códigos conhecidos são promissoras pesquisas \cite{Klove:2007}.
@@ -144,13 +144,13 @@ Técnicas FEC incluem códigos de blocos (\emph{block codes}), que são códigos sem
 
 Na Figura~\ref{fig3:fec}, vemos um sistema que utiliza código de
 blocos. A fonte envia uma sequência de dados para o codificador. O
-codificador divide esta sequência em $m$ blocos de $k$ \emph{bits}
+codificador divide esta sequência em blocos de $k$ \emph{bits}
 cada chamados mensagens.  Uma mensagem é representada por uma
 $k$-tupla binária $u = u_1, u_2,\dots, u_k$. O codificador insere
 \emph{bits} redundantes (ou de paridade) para cada mensagem $u$,
-gerando uma sequência de saída de $n$ \emph{bits} chamada
-\emph{codeword} ou palavra código representada por uma $n$-tupla de
-símbolos discretos $v = v_1, v_2, \dots, v_n$.  Os $n - k$ bits são os
+gerando uma sequência de saída de $m$ \emph{bits} chamada
+\emph{codeword} ou palavra código representada por uma $m$-tupla de
+símbolos discretos $v = v_1, v_2, \dots, v_m$.  Os $m - k$ bits são os
 bits redundantes que provêm à codificação a capacidade de tratar os
 ruídos do canal.
 
@@ -161,7 +161,7 @@ ruídos do canal.
     \put(0,2){\framebox(3,1){Fonte}}
     \put(3,2.5){\vector(1,0){2}}
     \put(4,2.6){u}
-    \put(5,2){\framebox(4,1){{Codificador (n,k)}}}
+    \put(5,2){\framebox(4,1){{Codificador (m,k)}}}
     \put(9,2.5){\line(1,0){2}}
     \put(10,2.6){v}
     \put(11,2.5){\vector(0,-1){2}}
@@ -174,7 +174,7 @@ ruídos do canal.
     \put(0,-3){\framebox(3,1){Destino}}
     \put(5,-2.5){\vector(-1,0){2}}
     \put(4,-2.4){$\mathaccent 94 u$}
-    \put(5,-3){\framebox(4,1){{Decodificador (n,k)}}}
+    \put(5,-3){\framebox(4,1){{Decodificador (m,k)}}}
    \end{picture}}
   \end{center}
   \caption{Códigos de bloco}
@@ -182,23 +182,23 @@ ruídos do canal.
 \end{figure}
 \vspace*{2cm}
 
-Códigos de blocos são identificados pela notação ($n$, $k$), de acordo com o número de \emph{bits} de saída $n$ e o número de \emph{bits} $k$ de cada um dos  blocos de entrada.
+Códigos de blocos são identificados pela notação ($m$, $k$), de acordo com o número de \emph{bits} de saída $m$ e o número de \emph{bits} $k$ de cada um dos  blocos de entrada.
 
 Todas as palavras código de um código de blocos tem tamanho fixo, que é um certo número de blocos de  $k$ \emph{bits}. 
 
-A geração de uma palavra código depende apenas de um cálculo algébrico entre os $k$ bits, portanto, um codificador pode ser implementado como um circuito lógico combinacional. O codificador executa o mapeamento: $T :  U \rightarrow V$ onde $U$ é um conjunto de palavras de dados de tamanho $k$ e $V$ é um conjunto de palavras código de tamanho $n$ onde $n > k$. Cada uma das $2^k$ palavras de dados é mapeada para uma única palavra código.
+A geração de uma palavra código depende apenas de um cálculo algébrico entre os $k$ bits, portanto, um codificador pode ser implementado como um circuito lógico combinacional. O codificador executa o mapeamento: $T :  U \rightarrow V$ onde $U$ é um conjunto de palavras de dados de tamanho $k$ e $V$ é um conjunto de palavras código de tamanho $m$ onde $m > k$. Cada uma das $2^k$ palavras de dados é mapeada para uma única palavra código.
 
 A taxa de codificação e a sobrecarga de armazenamento são
-calculados a partir de $m$ blocos originais \cite{RTAD:2007,
-  CMSC:2010}. São gerados $n$ símbolos pelo algoritmo de
-codificação. $R = \frac{k}{n}$ é a taxa de codificação que pode ser
+calculados a partir de $k$ blocos originais \cite{RTAD:2007,
+  CMSC:2010}. São gerados $m$ símbolos pelo algoritmo de
+codificação. $R = \frac{k}{m}$ é a taxa de codificação que pode ser
 interpretada como o número de bits de informação por palavra código
 transmitida e $O = \frac{1}{R}$ é a sobrecarga de armazenamento.
 
-Se $k \leq n$, mais bits redundantes podem ser adicionados, com aumento do tamanho da palavra código, mantendo $R = \frac{k}{n}$ constante. Como escolher este número $n - k$ de bits redundantes para obter transmissão confiável em cima de um canal com ruídos é o problema principal do projeto do codificador. No destino, o decodificador extrai a sequência original de dados.
+Se $k \leq m$, mais bits redundantes podem ser adicionados, com aumento do tamanho da palavra código, mantendo $R = \frac{k}{m}$ constante. Como escolher este número $m - k$ de bits redundantes para obter transmissão confiável em cima de um canal com ruídos é o problema principal do projeto do codificador. No destino, o decodificador extrai a sequência original de dados.
 
 Outra métrica utilizada é a redundância que pode ser definida por
-$\frac{(n - k)}{n}$. A alta redundância reduz a possibilidade de
+$\frac{(m - k)}{m}$. A alta redundância reduz a possibilidade de
 todos os dados serem enviados em uma única transmissão. A desvantagem
 da redundância é que a adição de \emph{bits} pode exigir uma largura
 de banda transmissão maior ou aumentar o atraso das mensagens (ou
@@ -220,8 +220,8 @@ Existem vários códigos de blocos \cite{Byers:1998, Kubiatowicz:2000}. Alguns dos
 Segundo \cite{AF:2010}, as principais características de códigos de blocos são:
 
 \begin{description}
-   \item [taxa de codificação] $R = \frac{k}{n}$ é a medida da eficiência do código, pois é o quociente do número de \emph{bits} da palavra de dados sobre o número de \emph{bits} total da palavra transmitida
-   \item [distância mínima] $(d_{min})$ é a menor distância de Hamming \footnote{A distância de Hamming (dH) entre duas palavras código $v_i$ e $v_j$  é o número de \emph{bits} que são diferentes nessas duas palavras.} entre duas quaisquer palavras do código; ela depende do número de \emph{bits} redundantes $q = n - k$, tal que  $(d_{min} \leq q + 1)$
+   \item [taxa de codificação] $R = \frac{k}{m}$ é a medida da eficiência do código, pois é o quociente do número de \emph{bits} da palavra de dados sobre o número de \emph{bits} total da palavra transmitida
+   \item [distância mínima] $(d_{min})$ é a menor distância de Hamming \footnote{A distância de Hamming (dH) entre duas palavras código $v_i$ e $v_j$  é o número de \emph{bits} que são diferentes nessas duas palavras.} entre duas quaisquer palavras do código; ela depende do número de \emph{bits} redundantes $q = m - k$, tal que  $(d_{min} \leq q + 1)$
    \item [capacidade de detecção] detecta até $l$ erros, onde $l \leq d_{min} - 1$
    \item [capacidade de correção] corrige os erros até $t$ erros, onde $ t \leq \lfloor \frac{d_{min} - 1}{2} \rfloor$
    \item [capacidade de detecção e correção] detecta até $l$ erros e corrige os erros até $t$ erros, onde $d_{min} \geq l + t + 1$ e $l > t$
@@ -233,11 +233,11 @@ Códigos Reed-Solomon são códigos de blocos, lineares e cíclicos. São códigos par
 
 %Definition. A Reed-Solomon (or RS) code over GF(q) is a BCH (BOSE-CHAUDHURI-HOCQUENGHEM) code of length N = q - 1. Of course q is never 2. Thus the length is the number of nonzero elements in the ground field. We shall use N , K and D to denote the length, dimension, and minimum distance (using capital letters to distinguish them from the parameters of the binary codes which will be constructed later). RS codes are important in concatenated codes and burst correction.
 
-Em \cite{Plank:1997}, o autor apresenta uma especificação completa do problema e do algoritmo da codificação e detalhes de sua implementação. O modelo estudado é formado por $n$ dispositivos de armazenamento  $D_1, D_2, ..., D_n$ (\emph{data devices}) e outros $m$ dispositivos de armazenamento  $C_1, C_2, ..., C_m$ (\emph{checksum devices}). O conteúdo de cada um dos $m$ \emph{checksum devices} é calculado a partir do conteúdo dos $n$ \emph{data devices}. O objetivo do cálculo dos $C_i$ para $1 \leq i \leq m$ é tal que para quaisquer $m$ dispositivos que falhem dos $D_1, D_2, ..., D_n, C_1, C_2, ..., C_m$, o conteúdo dos dispositivos que falharam possa ser reconstituído a partir dos dispositivos que não falharam.
+%Em \cite{Plank:1997}, o autor apresenta uma especificação completa do problema e do algoritmo da codificação e detalhes de sua implementação. O modelo estudado é formado por $n$ dispositivos de armazenamento  $D_1, D_2, ..., D_n$ (\emph{data devices}) e outros $m$ dispositivos de armazenamento  $C_1, C_2, ..., C_m$ (\emph{checksum devices}). O conteúdo de cada um dos $m$ \emph{checksum devices} é calculado a partir do conteúdo dos $n$ \emph{data devices}. O objetivo do cálculo dos $C_i$ para $1 \leq i \leq m$ é tal que para quaisquer $m$ dispositivos que falhem dos $D_1, D_2, ..., D_n, C_1, C_2, ..., C_m$, o conteúdo dos dispositivos que falharam possa ser reconstituído a partir dos dispositivos que não falharam.
 
 Segundo \cite{Almeida:2007}, códigos RS são particularmente úteis para correção de erros em rajada (seqüência símbolos consecutivos, nenhum desses recebidos corretamente, chamados \emph{burst errors}). Também podem ser usados eficientemente em canais onde o conjunto de símbolos de entrada é consideravelmente grande.
 
-Uma implementação de biblioteca em C/C++ para o algoritmo RS foi apresentada em \cite{Plank:2007}.
+%Uma implementação de biblioteca em C/C++ para o algoritmo RS foi apresentada em \cite{Plank:2007}.
 
 O sistema de armazenamento OceanStore \cite{Kubiatowicz:2000} e o protocolo BitTorrent (aplicação da camada de rede da internet) usam uma codificação RS.
 
@@ -310,7 +310,7 @@ Códigos Tornado são uma classe de códigos LDPC (Low Density Parity
 Check) que utiliza grafos irregulares e que foi proposta por
 M. Luby~\cite{Woitaszek:2007}. Segundo~\cite{Kubiatowicz:2000}, são
 mais rápidos para codificar e decodificar e necessitam de um pouco
-mais de $m$ fragmentos para reconstruir a informação. Em
+mais de $k$ fragmentos para reconstruir a informação. Em
 \cite{Byers:1998}, o autor comentou o tempo de decodificação para
 códigos RS e Tornado. Códigos Tornado usam equações com um número
 pequeno de variáveis em contraste com códigos RS.
@@ -323,9 +323,9 @@ Em \cite{Luby:1998}, os autores apresentam códigos Tornado baseados em grafos ir
 
 P. Elias introduziu códigos convolucionais em 1955. Um código convulacional é um dispositivo com memória. Apesar de aceitar uma mensagem de entrada de tamanho fixo e produzir uma saída codificada, seus cálculos não dependem somente da entrada atual, mas também das entradas e saídas anteriores.
 
-Um codificador para um código convolucional também aceita blocos de $k$ bits da sequência de dados $u$ e gera uma sequência de saída $v$ de $n$ \emph{bits} chamada \emph{codeword} ou palavra código. Cada bloco da palavra código não depende apenas dos $k$ bits do bloco da sequência de dados correspondente, mas também de $M$ blocos anteriores. Dizemos que o codificador tem memória de ordem $M$, onde $M$ é o número de registradores de memória. Esse conjunto de blocos de $k$ bits, o codificador das palavras código de tamanho $n$ e de memória de ordem $M$ é chamado de ($n$, $k$, $M$) código convolucional. $R = \frac{k}{n}$  é a taxa de codificação. Como o codificador tem memória, ele pode ser implementado como circuito lógico sequêncial \cite{Lin:1983}.
+Um codificador para um código convolucional também aceita blocos de $k$ bits da sequência de dados $u$ e gera uma sequência de saída $v$ de $m$ \emph{bits} chamada \emph{codeword} ou palavra código. Cada bloco da palavra código não depende apenas dos $k$ bits do bloco da sequência de dados correspondente, mas também de $M$ blocos anteriores. Dizemos que o codificador tem memória de ordem $M$, onde $M$ é o número de registradores de memória. Esse conjunto de blocos de $k$ bits, o codificador das palavras código de tamanho $m$ e de memória de ordem $M$ é chamado de ($m$, $k$, $M$) código convolucional. $R = \frac{k}{m}$  é a taxa de codificação. Como o codificador tem memória, ele pode ser implementado como circuito lógico sequêncial \cite{Lin:1983}.
 
-Em um código convolucional, os $n - k$ bits redundantes, que provem à codificação a capacidade de tratar os ruídos do canal, podem ser adicionados quando $k < n$. Para uma mesma taxa de codificação $R$, pode-se adicionar redundância, aumentando a ordem da memória $M$ do codificador. Como usar a memória para obter uma transmissão confiável sob um canal com ruído é o principal problema do projeto do codificador.
+Em um código convolucional, os $m - k$ bits redundantes, que provem à codificação a capacidade de tratar os ruídos do canal, podem ser adicionados quando $k < m$. Para uma mesma taxa de codificação $R$, pode-se adicionar redundância, aumentando a ordem da memória $M$ do codificador. Como usar a memória para obter uma transmissão confiável sob um canal com ruído é o principal problema do projeto do codificador.
 
 Códigos convolucionais podem ser usados para melhorar o desempenho da comunicação por rádio e satélites. Códigos convolucionais são utilizados nas tecnologias CDMA (\emph{Code division multiple access}) e GSM (\emph{Global System for Mobile Communications}) para telefones celulares, \emph{dial-up modems}, satélites, \emph{NASA's Deep Space Network} deep-space communications e na rede WLAN Wi-Fi IEEE 802.11.
 

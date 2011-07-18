@@ -108,7 +108,7 @@ Gerar uma permutação dos índices dos blocos da stripe: p = [b_0,
 b_1, b_2, b_3, ..., b_{s-2}, b_{s-1}]
 
 para i de 0 até s-1:
-   se p[i] = 0
+   se i = 0
    então
       bloco_paridade[i] = bloco[p[i]]
    senão
@@ -116,7 +116,7 @@ para i de 0 até s-1:
    i++
 
 para i de 0 até s-1:
-   escreva bloco_paridade[i] no arquivo /tor/a/arquivo.txt
+   escreva bloco_paridade[i] no arquivo /turbo/a/arquivo.txt
 \end{verbatim}
 
 \subsection{Algoritmo de Decodificação}
@@ -132,7 +132,7 @@ para i de 0 até s-1:
    bloco_paridade[i] = i-ésimo bloco de paridade da stripe
 
 para i de 0 até s-1:
-   se p[i] = 0
+   se i = 0
    então
       bloco[p[i]] = bloco_paridade[i]
    senão
@@ -140,5 +140,6 @@ para i de 0 até s-1:
    i++
 \end{verbatim}
 
+\section{Comparação entre as Codificações}
 \input{tabelas/tabela-comp-codificacoes-hadoop}
 

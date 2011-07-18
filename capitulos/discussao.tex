@@ -39,7 +39,7 @@ A Figura~\ref{fig4:srp} apresenta um sistema de armazenamento com um arquivo de 
 
 Replicação é o esquema de redundância mais simples. A maioria dos sistemas, que utiliza redundância de dados, é baseada em replicação, mas esse esquema consume mais espaço que a codificação por apagamento, pois uma cópia completa de cada arquivo é armazenada em cada um dos servidores de dados.
 
-A principal desvantagem da replicação é que ela requer um grande \emph{overhead} de armazenamento para pouco ganho em disponibilidade e tolerância a falhas. Garantir que os dados permaneçam disponíveis quando todos os $n$ dispositivos falham exige que, pelo menos, $n + 1$ cópias existam \cite{Woitaszek:2007}. Por exemplo, no artigo sobre o sistema Glacier \cite{Haeberlen:2005}, os autores argumentam que o armazenamento aumenta de 11 vezes a quantidade de dados armazenados utilizando apenas replicação para conseguir 0.999999 (\emph{six nines}) de confiabilidade num cenário com 60\% de indisponibilidade dos \emph{peers}.
+A principal desvantagem da replicação é que ela requer uma grande sobrecarga de armazenamento para pouco ganho em disponibilidade e tolerância a falhas. Garantir que os dados permaneçam disponíveis quando todos os $n$ dispositivos falham exige que, pelo menos, $n + 1$ cópias existam \cite{Woitaszek:2007}. Por exemplo, no artigo sobre o sistema Glacier \cite{Haeberlen:2005}, os autores argumentam que o armazenamento aumenta de 11 vezes a quantidade de dados armazenados utilizando apenas replicação para conseguir 0.999999 (\emph{six nines}) de confiabilidade num cenário com 60\% de indisponibilidade dos nós.
 
 Os autores em \cite{Dabek:2004} afirmam que dados replicados permitem leituras de baixa latência, porque há muitas opções para a seleção de servidores, enquanto que dados codificados reduzem o consumo de largura de banda para escritas, em detrimento do aumento da latência de leituras.
 
@@ -73,7 +73,7 @@ HDFS, Total Recall e OceanStore usam codificação para reduzir o tamanho do armaz
 
 Os sistemas que foram comparados na tabela ~\ref{tab1:comp}, estão disponíveis para uma versão de sistema operacional linux ou unix. Além da codificação, todos eles implementam replicação.
 
-Vamos avaliar algumas das métricas utilizadas em literatura para comparar redundância de dados em sistemas de armazenamento: sobrecarga de armazenamento, disponibilidade dos \emph{peers}, corrupção de um dado e operações de criação, leitura, atualização consistente e remoção de dados redundantes. Inicialmente vamos definir alguns conceitos adaptados de \cite{Duminoco:2009, Chiola:2005, Rodrigues:2005, Williams:2007} para esses dois esquemas de redundância.
+Vamos avaliar algumas das métricas utilizadas em literatura para comparar redundância de dados em sistemas de armazenamento: sobrecarga de armazenamento, disponibilidade dos nós, corrupção de um dado e operações de criação, leitura, atualização consistente e remoção de dados redundantes. Inicialmente vamos definir alguns conceitos adaptados de \cite{Duminoco:2009, Chiola:2005, Rodrigues:2005, Williams:2007} para esses dois esquemas de redundância.
 
 \section{Caracterização da replicação e da codificação}
 
@@ -83,9 +83,9 @@ Para avaliar o armazenamento, vamos definir {\bf fator de redundância} $B$, uma 
 
 O {\bf grau de reparação} mede o que deve ser feito após parte da redundância ser perdida. Para isso, é feita uma leitura de dados disponíveis para produzir novos. O custo dessa leitura em um sistema de armazenamento distribuído inclue volume do tráfego da rede, política de reparação, algoritmo de coordenação. Nesse estudo vamos apenas avaliar a contribuição do esquema de redundância: a quantidade de dados a serem lidos para que dados novos sejam criados para reparar o dado corrompido, definido por $d$.
 
-Definimos $p$ como a probabilidade de um \emph{peer} estar disponível e  $q\ =\ 1\ -\ p$ como a probabilidade de um \emph{peer} não estar disponível. Nesse estudo, assumimos que elas são iguais para todos os \emph{peers}.
+Definimos $p$ como a probabilidade de um nó estar disponível e  $q\ =\ 1\ -\ p$ como a probabilidade de um nó não estar disponível. Nesse estudo, assumimos que elas são iguais para todos os nós.
 
-Vamos definir as operações de acesso a dados redundantes como uma tupla $(r, w, a)$, onde $r$ é o número mínimo de \emph{peers} disponíveis que armazenam dados redundantes, $w$ é o número mínimo de \emph{peers} disponíveis que armazenam dados redundantes que devem ser acessados para armazenar novos valores e $a$ é número de \emph{peers} (provavelmente outros) que devem estar disponíveis para completar a operação.
+Vamos definir as operações de acesso a dados redundantes como uma tupla $(r, w, a)$, onde $r$ é o número mínimo de nós disponíveis que armazenam dados redundantes, $w$ é o número mínimo de nós disponíveis que armazenam dados redundantes que devem ser acessados para armazenar novos valores e $a$ é número de nós (provavelmente outros) que devem estar disponíveis para completar a operação.
 
 \subsection{Replicação}
 
@@ -106,7 +106,7 @@ $$
 
 {\bf fator de redundância}
 $$
-B\ =\ |dado\ +\ red|\ /\ |dado|\ =\ n
+B\ =\ \frac{|dado + red|}{|dado|}\ =\ n
 $$
 
 {\bf grau de reparação}
@@ -158,7 +158,7 @@ $$
 
 {\bf fator de redundância}
 $$
-B\ =\ m / k
+B\ =\ \frac{m}{k}
 $$
 
 {\bf grau de reparação}
@@ -190,21 +190,21 @@ $$
     \label{tab3:comp}
 \end{table}
 
-Por outro lado, comparando-se as tuplas $(k, 0, 0)$ e $(k, m-k+1, k-1)$ da tabela ~\ref{tab3:comp}, podemos observar que existe um caso no qual as operações "apenas leitura" e "atualização consistente" podem ter a mesma disponibilidade. Isto ocorre quando $m = 2k-1$ (assumindo-se também que número total de \emph{peers} disponíveis é maior ou igual a $m$), obtendo-se a tupla $(k, k, k-1)$.
+Por outro lado, comparando-se as tuplas $(k, 0, 0)$ e $(k, m-k+1, k-1)$ da tabela ~\ref{tab3:comp}, podemos observar que existe um caso no qual as operações "apenas leitura" e "atualização consistente" podem ter a mesma disponibilidade. Isto ocorre quando $m = 2k-1$ (assumindo-se também que número total de nós disponíveis é maior ou igual a $m$), obtendo-se a tupla $(k, k, k-1)$.
 
 
 \section{Sobrecarga de armazenamento}
 
 Em \cite{Weatherspoon:2002:01, Dabek:2004}, os autores afirmam que a codificação obtem o mesmo nível de disponibilidade como a replicação, usando muito menos espaço de armazenamento.
 
-Em \cite{Bhagwan:2004}, concluiu-se que se a disponibilidade do peer for 0.5, então isso requer 10 cópias de cada arquivo para garantir a disponibilidade de 0.999 dos arquivos.
+Em \cite{Bhagwan:2004}, concluiu-se que se a disponibilidade do nó for 0.5, então isso requer 10 cópias de cada arquivo para garantir a disponibilidade de 0.999 dos arquivos.
 
-No esquema da replicação, para um objetivo de probabilidade de indisponibilidade de um dado $e = 0.0001$, dado uma probabilidade de um \emph{peer} estar indisponível $q = 0.05$, obtemos o valor de $n = 3$ réplicas.
+No esquema da replicação, para um objetivo de probabilidade de indisponibilidade de um dado $e = 0.0001$, dado uma probabilidade de um nó estar indisponível $q = 0.05$, obtemos o valor de $n = 3$ réplicas.
 
 $$
 \begin{array}{cl}
 e\ =\ q^n\\
-n\ =\ log\ e\ /\ log\ q\ =\ log\ 0.0001\ / log\ 0.05\ =\ 3.074487147\\
+n\ =\ \frac{\log e}{\log q}\ =\ \frac{\log 0.0001}{\log 0.05} =\ 3.074487147\\
 n\ \approx 3
 \end{array}
 $$
@@ -214,11 +214,11 @@ No esquema da codificação, para o mesmo objetivo, para as mesmas probabilidades 
 $$
 \begin{array}{cl}
 e\ =\ q^{m-k}\\
-m\ -\ k\ =\ log\ e\ /\ log\ q
+m\ -\ k\ =\ \frac{\log e}{\log q}
 \end{array}
 $$
 
-Substituindo $m$ por $2k-1$ e $\ log\ e/\ log\ q$\ por $3.074487147$,
+Substituindo $m$ por $2k-1$ e $\frac{\log e}{\log q}$\ por $3.074487147$,
 $$
 \begin{array}{cl}
 k-1\ =\ 3.074487147\\
@@ -226,15 +226,15 @@ k\ \approx\ 4
 \end{array}
 $$
 
-Para uma mesma probabilidade de indisponibilidade de um dado $e = 0.0001$ e uma mesma probabilidade de um \emph{peer} estar indisponível $q = 0.05$, obtemos o valor de $n = 3$ réplicas para a replicação e um valor de $k=4$ blocos iniciais para a codificação (2k-1,k). O fator de redundância é $B\ =\ 3$ para a replicação e $B\ =\ m / k\ =\ (2k-1) / k\ =\ 7/4\ =\ 1.75$ para a codificação.
+Para uma mesma probabilidade de indisponibilidade de um dado $e = 0.0001$ e uma mesma probabilidade de um nó estar indisponível $q = 0.05$, obtemos o valor de $n = 3$ réplicas para a replicação e um valor de $k=4$ blocos iniciais para a codificação (2k-1,k). O fator de redundância é $B\ =\ 3$ para a replicação e $B\ =\ \frac{m}{k}\ =\ \frac{2k-1}{k}\ =\ \frac{7}{4}\ =\ 1.75$ para a codificação.
 
-Na figura ~\ref{fig1:sarc}, podemos observar o gráfico das funções $y = 2x$, $y = 3x$ e $y = (2x-1)/x$, para $x>0$,  representando a sobrecarga de armazenamento na replicação $2n$ e na $3n$ e na codificação $(2k-1,k)$, respectivamente. O eixo x representa o tamanho de um dado e o eixo y, a sobrecarga de armazenamento desse dado.
+Na figura ~\ref{fig1:sarc}, podemos observar o gráfico das funções $y = 2x$, $y = 3x$ e $y = \frac{2x-1}{x}$, para $x>0$,  representando a sobrecarga de armazenamento na replicação $2n$ e na $3n$ e na codificação $(2k-1,k)$, respectivamente. O eixo x representa o tamanho de um dado e o eixo y, a sobrecarga de armazenamento desse dado.
 
     \vspace*{2cm}
     \begin{figure}[h]
       \centering
       \includegraphics[scale=0.69]{figuras/gnuplot-replicacao-codificacao-3.png}
-      \caption{Sobrecarga de armazenamento para replicação $3n$, $2n$ e codificação $(2k-1,k)$ representadas, respectivamente, pelas funções $y = 3x$, $y = 2x$ e $y = (2x-1)/x$, para $x>0$}
+      \caption{Sobrecarga de armazenamento para replicação $3n$, $2n$ e codificação $(2k-1,k)$ representadas, respectivamente, pelas funções $y = 3x$, $y = 2x$ e $y = \frac{2x-1}{x}$, para $x>0$}
       \label{fig1:sarc}
     \end{figure}
 
@@ -242,7 +242,7 @@ Neste estudo, concluímos que a codificação por apagamento acarreta uma sobrecarg
 
 Nas máquinas do Facebook, a codificação RS é (13, 10) com sobrecarga de ($B=1.3$) e tolera até 3 falhas por \emph{stripe}. A codificação XOR (RAID-5) é (11, 10) com sobrecarga de ($B=1.1$). Outro exemplo é a codificação RS(255, 223), utilizada pela DSN \cite{TDD:2010}, que é padrão CCSDS \footnote{http://public.ccsds.org/} e tolera 32 falhas com sobrecarga de $B=1.1435$. Uma codificação BCH(63, 56), também padrão CCSDS, pode tolerar até 7 falhas, dependendo do polinômio gerador da síndrome \cite{Almeida:2007} . 
 
-\section{Disponibilidade dos peers}
+\section{Disponibilidade dos nós}
 
 \section{Leitura ou Atualização dos dados redundantes}
 
