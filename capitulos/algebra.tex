@@ -8,9 +8,9 @@ também são chamados corpos de Galois, em homenagem ao matemático francês Évarist
 
 \section{Definições}
 
-\begin{definition} {\bf Congruência} \index{Congruência} Seja $m \in \mathbb{N}$. Dois inteiros $a$
- e $b$ dizem-se $congruentes\ modulo\ m$ se tiverem o mesmo resto na divisão por
- $m$. A notação é $a \equiv b(mod\ m)$. Daí temos que $a = mk + b$, para um $k \in \mathbb{N}$.
+\begin{definition} {\bf Congruência} \index{Congruência} Seja $q \in \mathbb{N}$. Dois inteiros $a$
+ e $b$ dizem-se $congruentes\ modulo\ q$ se tiverem o mesmo resto na divisão por
+ $q$. A notação é $a \equiv b(mod\ q)$. Daí temos que $a = qk + b$, para um $k \in \mathbb{N}$.
 \end{definition}
 
 Exemplos:
@@ -20,15 +20,15 @@ Exemplos:
 \item $63 \equiv 7(mod\ 8)$
 \end{itemize}
 
-\begin{definition} {\bf Classe Residual} \index{Classe Residual} Seja $m \in \mathbb{N}$ e $m > 1$. A classe
-residual módulo $m$ do elemento $a \in \mathbb{Z}$ pode ser assim definida:
+\begin{definition} {\bf Classe Residual} \index{Classe Residual} Seja $q \in \mathbb{N}$ e $q > 1$. A classe
+residual módulo $q$ do elemento $a \in \mathbb{Z}$ pode ser assim definida:
 
  	\begin{center}
- 	$\bar{a}\ =\ \{ x \in \mathbb{Z}$ tal que $x \equiv a(mod\ m)\}$
+ 	$\bar{a}\ =\ \{ x \in \mathbb{Z}$ tal que $x \equiv a(mod\ q)\}$
  	\end{center}
 		
 	\begin{center}
-	$\bar{a}\ =\ \{ x \in \mathbb{Z}$  tal que $x \equiv a(mod\ m)\}$
+	$\bar{a}\ =\ \{ x \in \mathbb{Z}$  tal que $x \equiv a(mod\ q)\}$
 	\end{center}
 
 \end{definition}
@@ -42,16 +42,15 @@ residual módulo $m$ do elemento $a \in \mathbb{Z}$ pode ser assim definida:
    \end{enumerate}
 \end{example}
 
-\begin{definition} {\bf Conjunto das Classes Residuais} \index{Conjunto das Classes Residuais} Seja $\mathbb{Z}_m = \{\bar{0}, \bar{1}, \ldots , \overline{m-1}\}$ o conjunto
-das classes residuais dos inteiros módulo $m$. 
+\begin{definition} {\bf Conjunto das Classes Residuais} \index{Conjunto das Classes Residuais} Seja $\mathbb{Z}_q = \{\bar{0}, \bar{1}, \ldots , \overline{q-1}\}$ o conjunto das classes residuais dos inteiros módulo $q$. 
 \end{definition}
 
-Notemos que $\mathbb{Z}_m$ tem exatamente $m$ elementos, portanto $\mathbb{Z}_m$ é finito.
+Notemos que $\mathbb{Z}_q$ tem exatamente $q$ elementos, portanto $\mathbb{Z}_q$ é finito.
 
-\begin{property} Se a$\ \equiv\ b(mod\ m)$, então $\bar{a} = \bar{b}$.
+\begin{property} Se a$\ \equiv\ b(mod\ q)$, então $\bar{a} = \bar{b}$.
 \end{property}
 
-Com o objetivo de determinar quais são os $\mathbb{Z}_m$ que são corpos, vamos apresentar
+Com o objetivo de determinar quais são os $\mathbb{Z}_q$ que são corpos, vamos apresentar
 
 \begin{definition} {\bf Máximo Divisor Comum} \label{mdc} \index{Máximo Divisor Comum} Seja $a$ e $b \in \mathbb{Z}$ com $a \neq 0$ ou $b \neq 0$. O Máximo Divisor Comum de $a$ e $b$ é $d \in \mathbb{Z}$, se as condições forem verdadeiras:
   \begin{enumerate}[(i)]
@@ -60,10 +59,10 @@ Com o objetivo de determinar quais são os $\mathbb{Z}_m$ que são corpos, vamos a
   \end{enumerate}
 \end{definition}
 
-\begin{theorem} {\bf Divisão Euclidiana} \label{DivEucli} \index{Divisão Euclidiana} Dados $a \in \mathbb{Z}$, $b \in \mathbb{Z}$ e $b \neq 0$, $\exists q,\ \exists r$ inteiros únicos $\in\ \mathbb{Z}$ tais que $a\ =\ bq\ +\ r$ e $0 \leq r < |b|$.
+\begin{theorem} {\bf Divisão Euclidiana} \label{DivEucli} \index{Divisão Euclidiana} Dados $a \in \mathbb{Z}$, $b \in \mathbb{Z}$ e $b \neq 0$, $\exists c,\ \exists r$ inteiros únicos $\in\ \mathbb{Z}$ tais que $a\ =\ bc\ +\ r$ e $0 \leq r < |b|$.
 \end{theorem}
 
-$q$ e $r$ são chamados, respectivamente, o quociente e resto da divisão de a por b.
+$c$ e $r$ são chamados, respectivamente, o quociente e resto da divisão de a por b.
 
 \begin{theorem} {\bf Teorema de Euclides} \label{euclides} \index{Teorema de Euclides} Sejam $a$ e $b \in \mathbb{Z}$ não-nulos e seja $d\ =\ MDC(a,b)$. Então, $\exists \lambda, \mu \in \mathbb{Z}$ tais que $d\ = \ \lambda a\ + \mu b$.
  \end{theorem}
@@ -75,7 +74,7 @@ $q$ e $r$ são chamados, respectivamente, o quociente e resto da divisão de a por
 Se $a$ e $b$ são primos entre si, então $MDC(a,b)=1$ e pelo teorema~\ref{euclides}, temos que  $\exists \lambda, \ \exists \mu \in\ \mathbb{Z}$ tais que $MDC(a,b)\ =\ \lambda a\ +\ \mu b$.  Então: 
 $$
 \begin{array}{cl}
-MDC(a,b)\ =\ \lambda a\ +\ \mu b\ =\ 1\ (multiplica-se\ ambos\ os\ lados\ por\ d)\\
+MDC(a,b)\ =\ \lambda a\ +\ \mu b\ =\ 1\ (multiplica-se\ ambos\ os\ lados\ por\ d\ =\ MDC(a,b))\\
 d(\lambda a\ +\ \mu b)\ =\ d
 \end{array}
 $$
@@ -92,7 +91,7 @@ Nesse caso, sabemos que $d^{'}\ =\ 1$.
 Suponhamos que $\exists \lambda, \ \exists \mu \in\ \mathbb{Z}$ tais que $\lambda a\ +\ \mu b\ =\ 1$. 
 $$
 \begin{array}{cl}
-\lambda a\ +\ \mu b\ =\ 1\ (divide-se\ ambos\ os\ lados\ por\ d)\\
+\lambda a\ +\ \mu b\ =\ 1\ (divide-se\ ambos\ os\ lados\ por\ d\ =\ MDC(a,b))\\
 \frac{\lambda a\ +\ \mu b}{d}\ =\ \frac{1}{d}\\
 \frac{\lambda a}{d}\ +\ \frac{\mu b}{d}\ =\ \frac{1}{d}
 \end{array}
@@ -105,13 +104,13 @@ Pelo teorema~\ref{euclides}, então  $\frac{1}{d}$ é o $MDC(c, d) \in \mathbb{Z}$
 $\square$
 \end{proof}
 
-\begin{proposition} \label{invertivel} Para  $[a] \in \mathbb{Z}_m$  é invertível se, e somente se, $MDC(a,m)=1$.
+\begin{proposition} \label{invertivel} Para  $[a] \in \mathbb{Z}_q$  é invertível se, e somente se, $MDC(a,q)=1$.
 \end{proposition}
 
 \begin{proof}
-Suponhamos que $[a]$ seja inversível. Assim, $\exists b \in \mathbb{Z}$ tal que $[a].[b]\ =\ 1$. Assim, $[a.b]\ =\ 1$ e $a.b \equiv 1\ mod\ m$. Isso implica que $\exists s$ tal que $ab\ +\ sm\ =\ 1$. Pela proposição~\ref{primos}, implica que $MDC(a,m)\ =\ 1$.
+Suponhamos que $[a]$ seja inversível. Assim, $\exists b \in \mathbb{Z}$ tal que $[a].[b]\ =\ 1$. Assim, $[a.b]\ =\ 1$ e $a.b \equiv 1\ mod\ q$. Isso implica que $\exists s$ tal que $ab\ +\ sq\ =\ 1$. Pela proposição~\ref{primos}, implica que $MDC(a,q)\ =\ 1$.
 
-Suponhamos que $MDC(a,m)\ =\ 1$. Pela proposição~\ref{primos}, $\exists b, c \in \mathbb{Z}$ tais que $ba\ +\ cm\ =\ 1$. Assim, $b.a \equiv 1\ mod\ m$. Portanto, $[a].[b]\ =\ [a.b]\ =\ 1$.
+Suponhamos que $MDC(a,m)\ =\ 1$. Pela proposição~\ref{primos}, $\exists b, c \in \mathbb{Z}$ tais que $ba\ +\ cm\ =\ 1$. Assim, $b.a \equiv 1\ mod\ q$. Portanto, $[a].[b]\ =\ [a.b]\ =\ 1$.
 $\square$
 \end{proof}
 
@@ -140,20 +139,20 @@ $\square$
 \end{definition}
 
 \begin{example}
-Como exemplos de anéis comutativos, temos os conjuntos dos números racionais $\mathbb{Q}$, reais $\mathbb{R}$, complexos $\mathbb{C}$ e e inteiros $mod\ p$ ($p$ é primo) sob as operações de adição e multiplicação usuais.
+Como exemplos de anéis comutativos, temos os conjuntos dos números racionais $\mathbb{Q}$, reais $\mathbb{R}$, complexos $\mathbb{C}$ e e inteiros $mod\ q$ ($q$ é primo) sob as operações de adição e multiplicação usuais.
 \end{example}
 
 \begin{definition} {\bf Domínio de Integridade} \label{DomInt} \index{Domínio de Integridade} Um anel $A$ é chamado domínio de integridade, se possuir a propriedade: $\forall a,b, \in A\ e\ a\neq 0\ e\ b \neq 0 \Longrightarrow a.b \neq 0$
 \end{definition}
 
-\begin{example} Os anéis $\mathbb{Z}$, $\mathbb{Q}$, reais $\mathbb{R}$, $\mathbb{C}$ são todos domínios de integridade. O anel $\mathbb{Z}_m$ é um domínio de integridade, quando $m$ é um número primo.
+\begin{example} Os anéis $\mathbb{Z}$, $\mathbb{Q}$, reais $\mathbb{R}$, $\mathbb{C}$ são todos domínios de integridade. O anel $\mathbb{Z}_q$ é um domínio de integridade, quando $q$ é um número primo.
 \end{example}
 
-\begin{theorem} O anel $\mathbb{Z}_m$  é um corpo se, e somente se, $m$ é um número primo.
+\begin{theorem} O anel $\mathbb{Z}_q$  é um corpo se, e somente se, $q$ é um número primo.
 \end{theorem}
 
 \begin{proof}
-Se $\mathbb{Z}_m$ é um corpo se, e somente se, todos os seus elementos $\bar{0}, \bar{1}, \ldots , \overline{m-1}$ são inversíveis. Pela proposição~\ref{invertivel}, significa que  $MDC(0,m)\ =\ MDC(1,m)\ =\ MDC(2,m)\ = \ldots \ =\ MDC(m-1,m)\ =\ 1$. Portanto, $m$ é primo. $\square$
+Se $\mathbb{Z}_q$ é um corpo se, e somente se, todos os seus elementos $\bar{0}, \bar{1}, \ldots , \overline{q-1}$ são inversíveis. Pela proposição~\ref{invertivel}, significa que  $MDC(0,q)\ =\ MDC(1,q)\ =\ MDC(2,q)\ = \ldots \ =\ MDC(q-1,q)\ =\ 1$. Portanto, $q$ é primo. $\square$
 \end{proof}
 
 \begin{definition} {\bf Corpo} \label{corpo} \index{Corpo} Um anel onde todo elemento não nulo é invertível é chamado de Corpo.
@@ -206,7 +205,7 @@ Como $a \neq 0$ e $(b_1.b_2 \ldots  b_{q-1}) \neq 0$, logo $a^{q-1}\ =\ 1$. $\sq
 \end{definition}
 
 \begin{proposition}
-Todo o corpo finito tem $p^n$ elementos para algum primo $p$ e algum natural $n$.
+Todo o corpo finito tem $p^i$ elementos para algum primo $p$ e algum natural $i$.
 \end{proposition}
 
 \begin{proof}
@@ -214,7 +213,7 @@ $\square$
 \end{proof}
 
 \begin{proposition}
-Para cada primo $p$ e cada natural $n$, existe um corpo com $p^n$ elementos.
+Para cada primo $p$ e cada natural $i$, existe um corpo com $p^i$ elementos.
 \end{proposition}
 
 \begin{proof}
@@ -222,7 +221,7 @@ $\square$
 \end{proof}
 
 \begin{proposition}
-Qualquer corpo com $p^n$ elementos é isomorfo à extensão de decomposição de $x^q - x, q = p^n$ sobre $GF(q)$.
+Qualquer corpo com $p^i$ elementos é isomorfo à extensão de decomposição de $x^q - x, q = p^i$ sobre $GF(q)$.
 \end{proposition}
 
 \begin{proof}
@@ -273,7 +272,7 @@ $\square$
 $\square$
 \end{proof}
 
-\begin{example} O $GF(8)$ ilustrado nas tabelas~\ref{tab5:comp} e~\ref{tab6:comp}. A ordem do corpo é $8$. 
+\begin{example} O $GF(8)$ ilustrado nas tabelas~\ref{tab5:comp} e~\ref{tab6:comp}.
    \input{tabelas/tabela-operacoes-corpo-galois8}
 \end{example}
 
@@ -290,16 +289,16 @@ $$
 $\square$
 \end{proof}
 		\subsection{Aritmética de Corpo Binário}
-		Códigos são construídos com elementos de um corpo $GF(q)$ onde $q$ ou é primo $p$ ou uma potência de $p$. Os dados de sistemas de transmissão e armazenamento de dados podem ser facilmente codificados em códigos com símbolos gerados a partir de um corpo $GF(2)$ ou $GF(2^n)$ \cite{Lin:1983}.
+		Códigos são construídos com elementos de um corpo $GF(q)$ onde $q$ ou é primo $p$ ou uma potência de $p$. Os dados de sistemas de transmissão e armazenamento de dados podem ser facilmente codificados em códigos com símbolos gerados a partir de um corpo $GF(2)$ ou $GF(2^m)$ \cite{Lin:1983}.
 		\subsection{Propriedades dos Polinômios e suas Raízes}		
-		$GF [q](x)$ é um corpo de Galois que tem ordem $q$, sobre o qual são aplicados polinômios de grau $n$ com coeficientes entre $0$ e $q - 1$. Um exemplo de um polinômio $p(x)$ pode ser apresentado na equação: $p(x) = a_7.x^7 + a_5.x^5 + a_2.x^2 + ax + 1$. Os coeficientes de um polinômio $a_i$ pertencem ao $GF(p)$ e o grau do polinômio $n$, pode ter um valor qualquer.
+		$GF [q](x)$ é um corpo de Galois que tem ordem $q$, sobre o qual são aplicados polinômios com coeficientes entre $0$ e $q - 1$. Um exemplo de um polinômio $p(x)$ pode ser apresentado na equação: $p(x) = a_7.x^7 + a_5.x^5 + a_2.x^2 + ax + 1$. Os coeficientes de um polinômio $a_i$ pertencem ao $GF(p)$.
 
 		\section{Construção de um Código Corretor de Erros}
 		\subsection{Métrica de Hamming}
 %		página 4 - livro Hefez
 %		página 7 - Parâmetros fundamentais $[n, M, d]$
 
-O objetivo da codificação de canal é aumentar a resistência do sistema de comunicações digital face aos efeitos do ruído de canal. No caso particular dos códigos de bloco, a cada bloco de k bits da sequência binária gerada pela fonte faz-se corresponder um bloco de $n$ bits (palavra de código) com $n > k$. Este processo de codificação deve ser concebido de modo que a decodificação tenha solução única. Note-se que do universo de $2n$ blocos binários de comprimento $n$ apenas $2k$ são palavras de código (as que correspondem numa relação de um para um aos blocos binários de comprimento $k$ gerados pela fonte). Este esquema está representado simbolicamente na Figura 8.4. No caso de a transmissão se efetivar sem erros, o processo de decodificação conduz ao bloco de comprimento $k$ que havia sido gerado pela fonte. Quando ocorrem erros de transmissão, a palavra de comprimento $n$ recebida pode não ser uma palavra de código e o erro é detectado e/ou corrigido.
+O objetivo da codificação de canal é aumentar a resistência do sistema de comunicações digital face aos efeitos do ruído de canal. No caso particular dos códigos de bloco, a cada bloco de k bits da sequência binária gerada pela fonte faz-se corresponder um bloco de $m$ bits (palavra de código) com $m > k$. Este processo de codificação deve ser concebido de modo que a decodificação tenha solução única. Note-se que do universo de $2m$ blocos binários de comprimento $m$ apenas $2k$ são palavras de código (as que correspondem numa relação de um para um aos blocos binários de comprimento $k$ gerados pela fonte). Este esquema está representado simbolicamente na Figura~\ref{fig3:cod}. 8.4. No caso de a transmissão se efetivar sem erros, o processo de decodificação conduz ao bloco de comprimento $k$ que havia sido gerado pela fonte. Quando ocorrem erros de transmissão, a palavra de comprimento $m$ recebida pode não ser uma palavra de código e o erro é detectado e/ou corrigido.
 Figura 8.4: Codificação de canal
 
                 \vspace*{2cm}
@@ -322,7 +321,7 @@ Figura 8.4: Codificação de canal
 				\qbezier(3.4393, 1.4393)(3.8787, 1.0)(4.5, 1.0)
 				\qbezier(4.5, 1.0)(5.1213, 1.0)(5.5607, 1.4393)
 				\qbezier(5.5607, 1.4393)(6.0, 1.8787)(6.0, 2.5)
-				\put(4.5, 3.5){$2^n$}
+				\put(4.5, 3.5){$2^m$}
 				\put(2.3,1.8){\vector(4,0){2.3}}
 				\put(10, 2){\circle{2}}
 				\put(9.7, 2){$2^k$}
@@ -341,7 +340,7 @@ Figura 8.4: Codificação de canal
 				\qbezier(8.9393, 1.4393)(9.3787, 1.0)(10.0, 1.0)
 				\qbezier(10.0, 1.0)(10.6213, 1.0)(11.0607, 1.4393)
 				\qbezier(11.0607, 1.4393)(11.5, 1.8787)(11.5, 2.5)
-				\put(10, 3.5){$2^n$}
+				\put(10, 3.5){$2^m$}
 				\put(9.7, 3.2){\circle*{0.1}}
   	 		\end{picture}
    			\caption{Codificação de canal}
