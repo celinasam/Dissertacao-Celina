@@ -59,7 +59,7 @@ Corrigir erros é uma tarefa mais complexa que detectá-los. Detectar erros tem a 
 
 %Um dos principais parâmetros de um código para detecção de erros é a probabilidade de detecção de erro. Os modelos estudados por pesquisadores envolvem canais simétricos, assimétricos e outros, com ou sem memória.
 
-Em canais binários simétricos, assume-se que ambos os erros $0 \rightarrow 1$ e $1 \rightarrow 0$  ocorrem com igual probabilidade \cite{Weber:1985}.
+Em canais binários simétricos, assume-se que ambos os erros $0 \rightarrow 1$ e $1 \rightarrow 0$  ocorrem com igual probabilidade \cite{Weber:1985}. \index{Canal binário simétrico}
 
 \vspace*{2cm}
 \begin{figure}[h]
@@ -87,7 +87,7 @@ Em canais binários simétricos, assume-se que ambos os erros $0 \rightarrow 1$ e 
 \vspace*{2cm}
 
 
-Em algumas aplicações como comunicações óticas, os erros tem uma natureza assimétrica. Canais, onde esse tipo de erro ocorrem, podem ser modelados para canais binários assimétricos ou canal-Z, onde apenas erros com $1$'s ocorrem. Um exemplo disso são sistemas que utilizam \emph{photons} para transmitir informação \cite{Weber:1985}.
+Em algumas aplicações como comunicações óticas, os erros tem uma natureza assimétrica. Canais, onde esse tipo de erro ocorrem, podem ser modelados para canais binários assimétricos ou canal-Z, onde apenas erros com $1$'s ocorrem. Um exemplo disso são sistemas que utilizam \emph{photons} para transmitir informação \cite{Weber:1985}. \index{Canal binário assimétrico}
 
 \vspace*{4cm}
 \begin{figure}[h]
@@ -229,7 +229,7 @@ Segundo \cite{AF:2010}, as principais características de códigos de blocos são:
 
 Um código com $d_{min} = 1$ não tem capacidade de detectar erros.
 
-Códigos Reed-Solomon são códigos de blocos, lineares e cíclicos. São códigos parametrizáveis, cuja capacidade de correção de erros pode ser alterada facilmente.
+Códigos Reed-Solomon são códigos de blocos, lineares e cíclicos. São códigos parametrizáveis, cuja capacidade de correção de erros pode ser alterada facilmente. \index{Codificação Reed-Solomon}
 
 %Definition. A Reed-Solomon (or RS) code over GF(q) is a BCH (BOSE-CHAUDHURI-HOCQUENGHEM) code of length N = q - 1. Of course q is never 2. Thus the length is the number of nonzero elements in the ground field. We shall use N , K and D to denote the length, dimension, and minimum distance (using capital letters to distinguish them from the parameters of the binary codes which will be constructed later). RS codes are important in concatenated codes and burst correction.
 
@@ -241,7 +241,7 @@ Segundo \cite{Almeida:2007}, códigos RS são particularmente úteis para correção 
 
 O sistema de armazenamento OceanStore \cite{Kubiatowicz:2000} e o protocolo BitTorrent (aplicação da camada de rede da internet) usam uma codificação RS.
 
-\emph{Redundant Arrays of Inexpensive [Independent] Disks} (RAID) é uma classe de códigos RS. RAID é um método para prover tolerância a falhas ou alto desempenho em sistemas de armazenagem utilizando para isso uma codificação de correção de erros ou paridade. RAID foi introduzido por D. A. Patterson na Universidade da California, Berkeley (UC Berkeley) em 1988 \cite{Patterson:1988}.
+\emph{Redundant Arrays of Inexpensive [Independent] Disks} (RAID) é uma classe de códigos RS. RAID é um método para prover tolerância a falhas ou alto desempenho em sistemas de armazenagem utilizando para isso uma codificação de correção de erros ou paridade. RAID foi introduzido por D. A. Patterson na Universidade da California, Berkeley (UC Berkeley) em 1988 \cite{Patterson:1988}. \index{RAID}
 
 Segundo \cite{Woitaszek:2007}, para sistemas de armazenamento, a
 codificação por apagamento baseada em operações simples, tais como XOR
@@ -300,7 +300,7 @@ Esta configuração divide os dados a nivel de bloco com um único bloco de paridad
 
 Esta configuração divide os dados a nivel de bloco com dois blocos de paridade por \emph{stripe} e os blocos de paridade distribuídos por todos os discos. Duas síndromes diferentes precisam ser computadas para permitir a perda de quaisquer duas unidades. Uma delas, P pode ser um simples XOR de dados pelos \emph{stripes}, como em RAID 5. A outra, Q pode ser um XOR de um \emph{linear feedback shift register} de cada \emph{stripe} \cite{Anvin:2009}.
 
-Códigos Low-Density Parity-Check e Tornado são códigos de blocos, lineares e acíclicos.
+Códigos Low-Density Parity-Check e Tornado são códigos de blocos, lineares e acíclicos. \index{Codificação LPDC}
 
 Código Low-Density Parity-Check (LPDC) é  uma codificação baseada em grafos regulares \cite{Gallager:1963}. Códigos LDPC são conhecidos também como códigos Gallager \cite{LDPCC:2010}. Uma aplicação dessa codificação é a rede \emph{wireless} WMAN WiMAX (IEEE 802.16e \emph{standard for microwave communications}) para internet móvel \cite{wimax:2010}.
 
@@ -313,7 +313,7 @@ mais rápidos para codificar e decodificar e necessitam de um pouco
 mais de $k$ fragmentos para reconstruir a informação. Em
 \cite{Byers:1998}, o autor comentou o tempo de decodificação para
 códigos RS e Tornado. Códigos Tornado usam equações com um número
-pequeno de variáveis em contraste com códigos RS.
+pequeno de variáveis em contraste com códigos RS. \index{Codificação Tornado}
 
 
 Em \cite{Luby:1998}, os autores apresentam códigos Tornado baseados em grafos irregulares. Segundo \cite{CS540:2010}, as implicações práticas desses códigos ainda não foram bem estudadas.

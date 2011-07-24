@@ -8,7 +8,7 @@ também são chamados corpos de Galois, em homenagem ao matemático francês Évarist
 
 \section{Definições}
 
-\begin{definition} {\bf Congruência} \index{Congruência} Seja $q \in \mathbb{N}$. Dois inteiros $a$
+\begin{definition} {\bf Congruência Linear} \index{Congruência Linear} Seja $q \in \mathbb{N}$. Dois inteiros $a$
  e $b$ dizem-se $congruentes\ modulo\ q$ se tiverem o mesmo resto na divisão por
  $q$. A notação é $a \equiv b(mod\ q)$. Daí temos que $a = qk + b$, para um $k \in \mathbb{N}$.
 \end{definition}
@@ -52,26 +52,26 @@ Notemos que $\mathbb{Z}_q$ tem exatamente $q$ elementos, portanto $\mathbb{Z}_q$
 
 Com o objetivo de determinar quais são os $\mathbb{Z}_q$ que são corpos, vamos apresentar
 
-\begin{definition} {\bf Máximo Divisor Comum} \label{mdc} \index{Máximo Divisor Comum} Seja $a$ e $b \in \mathbb{Z}$ com $a \neq 0$ ou $b \neq 0$. O Máximo Divisor Comum de $a$ e $b$ é $d \in \mathbb{Z}$, se as condições forem verdadeiras:
+\begin{definition} {\bf Máximo Divisor Comum} \label{mdc} \index{Máximo Divisor Comum} Seja $a$ e $b \in \mathbb{Z}$ com $a \neq 0$ ou $b \neq 0$. O $MDC$ de $a$ e $b$ é $d \in \mathbb{Z}$, se as condições forem verdadeiras:
   \begin{enumerate}[(i)]
-     \item $d$ é um divisor comum de $a$ e $b$, ou seja, $d$ divide $a$ e $d$ divide $b$
+     \item $d$ é um divisor comum de $a$ e $b$, ou seja, $d\ |\ a$ e $d\ |\ b$
      \item $d$ é divisível por todo divisor comum de $a$ e $b$, ou seja, $\exists c \in \mathbb{Z},\ c\ |\ a\ e\ c\ |\ b\ \Longrightarrow\ c\ |\ d$.
   \end{enumerate}
 \end{definition}
 
-\begin{theorem} {\bf Divisão Euclidiana} \label{DivEucli} \index{Divisão Euclidiana} Dados $a \in \mathbb{Z}$, $b \in \mathbb{Z}$ e $b \neq 0$, $\exists c,\ \exists r$ inteiros únicos $\in\ \mathbb{Z}$ tais que $a\ =\ bc\ +\ r$ e $0 \leq r < |b|$.
-\end{theorem}
+\begin{lemma} {\bf Divisão Euclidiana} \label{DivEucli} \index{Divisão Euclidiana} Dados $a \in \mathbb{Z}$, $b \in \mathbb{Z}$ e $b \neq 0$, $\exists c,\ \exists r$ inteiros únicos $\in\ \mathbb{Z}$ tais que $a\ =\ bc\ +\ r$ e $0 \leq r < |b|$. Então o $MDC(a,b)\ =\ MDC(b,r)$.
+\end{lemma}
 
-$c$ e $r$ são chamados, respectivamente, o quociente e resto da divisão de a por b.
+$c$ e $r$ são chamados, respectivamente, o quociente e resto da divisão de a por b. O algoritmo euclidiano, um método eficiente para calcular o MDC~\cite{Rosen:2003}, usa o lemma~\ref{DivEucli}. 
 
-\begin{theorem} {\bf Teorema de Euclides} \label{euclides} \index{Teorema de Euclides} Sejam $a$ e $b \in \mathbb{Z}$ não-nulos e seja $d\ =\ MDC(a,b)$. Então, $\exists \lambda, \mu \in \mathbb{Z}$ tais que $d\ = \ \lambda a\ + \mu b$.
+\begin{theorem} {\bf Lema de Euclides} \label{euclides} \index{Lema de Euclides} Sejam $a$ e $b \in \mathbb{Z}$ não-nulos e seja $d\ =\ MDC(a,b)$. Então, $\exists \lambda, \mu \in \mathbb{Z}$ tais que $d\ = \ \lambda a\ + \mu b$.
  \end{theorem}
 
 \begin{proposition} \label{primos} Dois inteiros $a$  e $b$ são primos entre si se, e somente se, $\exists \lambda, \exists \mu \in\ \mathbb{Z}$ tais que $\lambda a\ +\ \mu b\ =\ 1$.
 \end{proposition}
 
 \begin{proof}
-Se $a$ e $b$ são primos entre si, então $MDC(a,b)=1$ e pelo teorema~\ref{euclides}, temos que  $\exists \lambda, \ \exists \mu \in\ \mathbb{Z}$ tais que $MDC(a,b)\ =\ \lambda a\ +\ \mu b$.  Então: 
+Se $a$ e $b$ são primos entre si, então $MDC(a,b)=1$ e pelo lema~\ref{euclides}, temos que  $\exists \lambda, \ \exists \mu \in\ \mathbb{Z}$ tais que $MDC(a,b)\ =\ \lambda a\ +\ \mu b$.  Então: 
 $$
 \begin{array}{cl}
 MDC(a,b)\ =\ \lambda a\ +\ \mu b\ =\ 1\ (multiplica-se\ ambos\ os\ lados\ por\ d\ =\ MDC(a,b))\\
@@ -100,7 +100,7 @@ Sabemos que $MDC(a,b)\ |\ a$ e $MDC(a,b)\ |\ b$. Portanto, $\frac{a}{d}, \frac{b
 $$
 \lambda c\ +\ \mu d\ =\ \frac{1}{d}
 $$
-Pelo teorema~\ref{euclides}, então  $\frac{1}{d}$ é o $MDC(c, d) \in \mathbb{Z}$. Nesse caso, sabemos que $d\ =\ 1$. 
+Pelo lema~\ref{euclides}, então  $\frac{1}{d}$ é o $MDC(c, d) \in \mathbb{Z}$. Nesse caso, sabemos que $d\ =\ 1$. 
 $\square$
 \end{proof}
 
@@ -114,7 +114,7 @@ Suponhamos que $MDC(a,m)\ =\ 1$. Pela proposição~\ref{primos}, $\exists b, c \in
 $\square$
 \end{proof}
 
-\begin{definition} $G$ é um conjunto não vazio, $\phi$ : $G\ X\ G \rightarrow G$, é uma função. $\phi$ é chamada operação binária tal que  $\phi(a,b)\ =\ a+b $ ou $\phi(a,b)\ =\ a.b$. Considere as seguintes propriedades:
+\begin{definition} $\mathbb{G}$ é um conjunto não vazio, $\phi$ : $\mathbb{G}\ X\ \mathbb{G} \rightarrow \mathbb{G}$, é uma função. $\phi$ é chamada operação binária tal que  $\phi(a,b)\ =\ a+b $ ou $\phi(a,b)\ =\ a.b$. Considere as seguintes propriedades:
   \begin{description}
      \item [Associatividade] Se $a, b, c \in G$ então $a+(b+c)\ =\ (a+b)+c$. Se $a, b, c \in G$ então $a.(b.c)\ =\ (a.b).c$. 
      \item [Elemento Neutro] $\exists 0 \in G$ tal que se $a \in G$ $0\ +\ a\ =\ a\ +\ 0\ =\ a$. $\exists e \in G$ tal que se $a \in G$ $e.a\ =\ a.e =\ a$.
@@ -158,7 +158,7 @@ Se $\mathbb{Z}_q$ é um corpo se, e somente se, todos os seus elementos $\bar{0},
 \begin{definition} {\bf Corpo} \label{corpo} \index{Corpo} Um anel onde todo elemento não nulo é invertível é chamado de Corpo.
 \end{definition}
 
-\begin{example} O Corpo de Galois $GF(2)$ é o conjunto $A\ =\ \{0, 1\}$ e as operações $+$ e $.$ :
+\begin{example} O Corpo de Galois $\mathbb{GF}(2)$ é o conjunto $\mathbb{A}\ =\ \{0, 1\}$ e as operações $+$ e $.$ :
 
    \input{tabelas/tabela-operacoes-corpo-galois}
 
@@ -176,20 +176,35 @@ Se $\mathbb{Z}_q$ é um corpo se, e somente se, todos os seus elementos $\bar{0},
 
 %	A operação $\bigoplus$ é chamada adição módulo 2. Portanto $G$ é fechado em $\bigoplus$ e $\bigoplus$ é comutativa. Também é possível demonstrar que $\bigoplus$ é associativa. O elemento $0$ é o elemento identidade. Os inversos de cada um dos elementos de $G$ também pertencem a $G$.
 
-\begin{theorem} Seja $GF_q$ um corpo finito com $q$ elementos. Então:
+\begin{definition} {\bf Espaço Vetorial} \label{EspVet} \index{Espaço Vetorial} Um espaço vetorial $\mathbb{V}$ é um conjunto não vazio de objetos chamados vetores e as suas duas operações chamadas adição e multiplicação com números reais, que seguem 10 propriedades. As propriedades são válidas para $\forall u, v, w \in V$ e $a, b \in \mathbb{R}$.
+   \begin{enumerate}[1]
+      \item a soma $v + u \in V$ 
+      \item $u + v\ =\ v + u$
+      \item $(u + v) + w\ =\  u + (v + w)$
+      \item $\exists 0 \in V$ um vetor zero tal que $u + 0\ =\ u$
+      \item $\forall u \in V \exists -u \in V$ um vetor tal que $u + (-u)\ =\ 0$
+      \item $a.u \in V$
+      \item $a.(u + v)\ =\ a.u + a.v$
+      \item $(a+b).u\ =\ a.u + b.u$
+      \item $a(b.u)\ =\ (ab).u$
+      \item $1.u\ =\ u$
+   \end{enumerate}
+\end{definition}
+
+\begin{theorem} Seja $\mathbb{GF}_q$ um corpo finito com $q$ elementos. Então:
    \begin{enumerate}[(i)]
-     \item $q = p^n$ para algum primo $p$,
-     \item $GF_q$ contém o sub-campo $GF_p$,
-     \item $GF_q$ é um espaço vetorial sob $GF_p$ de dimensão $n$,
-     \item $p\alpha\ =\ 0$ para todo $\alpha \in GF_q$ e
-     \item todos os campos de ordem $p$ são isomórficos
+     \item $q = p^n$ para algum primo $p$ e para algum inteiro positivo $n$,
+     \item $\mathbb{GF}_q$ contém o sub-campo $\mathbb{GF}_p$,
+     \item $\mathbb{GF}_q$ é um espaço vetorial sob $\mathbb{GF}_p$ de dimensão $n$,
+     \item $p\alpha\ =\ 0$ para todo $\alpha \in \mathbb{GF}_q$ e
+     \item Isomorfismo: \index{Isomorfismo entre Corpos} Dados dois corpos finitos $C_q$ e $G_q$, ambos com $q$ elementos, existe uma única bijeção $f\ :\ C_q \rightarrow G_q$ com $f(a+b)=f(a)+f(b)$ e $f(a.b)=f(a).f(b)$ para $\forall a,b \in C_q$. Dizemos que  $C_q$ é isomorfo a $G_q$.
    \end{enumerate}
 \end{theorem}
 
-\begin{theorem} \label{teorema1} Seja $GF(q)$ um corpo finito e $a \in GF(q)$ não nulo. Então $a^{q-1}\ =\ 1$.
+\begin{theorem} \label{teorema1} Seja $\mathbb{GF}(q)$ um corpo finito e $a \in \mathbb{GF}(q)$ não nulo. Então $a^{q-1}\ =\ 1$.
 \end{theorem}
 
-\begin{proof} Seja $b_1, b_2, \ldots , b_{q-1}$ os $q-1$ elementos não nulos de $GF(q)$. Os $q-1$ números  $a.b_1$, $a.b_2 \ldots  a.b_{q-1}$ são todos não nulos e distintos. Sabemos que pela operação multiplicação
+\begin{proof} Seja $b_1, b_2, \ldots , b_{q-1}$ os $q-1$ elementos não nulos de $\mathbb{GF}(q)$. Os $q-1$ números  $a.b_1$, $a.b_2 \ldots  a.b_{q-1}$ são todos não nulos e distintos. Sabemos que pela operação multiplicação
 
 $$
 \begin{array}{cl}
@@ -201,52 +216,49 @@ $$
 Como $a \neq 0$ e $(b_1.b_2 \ldots  b_{q-1}) \neq 0$, logo $a^{q-1}\ =\ 1$. $\square$
 \end{proof}
 
-\begin{definition} {\bf Ordem do Corpo} \label{OrdCorpo} \index{Ordem do Corpo} O número de elementos de um corpo finito $G$ é denominado ordem de $G$. Um corpo de Galois de ordem $q$ é representado por $GF(q)$. Um corpo finito G tem ordem $p^n$, onde $p$ é a característica do corpo $G$ e $n = [K: Z_p]$.
+\begin{definition} {\bf Ordem do Corpo} \label{OrdCorpo} \index{Ordem do Corpo} O número de elementos de um corpo finito $G$ é denominado ordem de $G$. Um corpo de Galois de ordem $q$ é representado por $\mathbb{GF}(q)$. Um corpo finito G tem ordem $p^n$, onde $p$ é a característica do corpo $G$ e $n = [K: Z_p]$.
 \end{definition}
 
 \begin{proposition}
-Todo o corpo finito tem $p^i$ elementos para algum primo $p$ e algum natural $i$.
+Todo o corpo finito tem $p^i$ elementos para algum primo $p$ e algum $i \in \mathbb{Z}^+$.
 \end{proposition}
 
 \begin{proof}
-$\square$
 \end{proof}
 
 \begin{proposition}
-Para cada primo $p$ e cada natural $i$, existe um corpo com $p^i$ elementos.
+Para cada primo $p$ e para cada  $i \in \mathbb{Z}^+$, existe um corpo com $p^i$ elementos.
 \end{proposition}
 
 \begin{proof}
-$\square$
 \end{proof}
 
 \begin{proposition}
-Qualquer corpo com $p^i$ elementos é isomorfo à extensão de decomposição de $x^q - x, q = p^i$ sobre $GF(q)$.
+Qualquer corpo com $p^i$ elementos é isomorfo à extensão de decomposição de $x^q - x, q = p^i$ sobre $\mathbb{GF}(q)$.
 \end{proposition}
 
 \begin{proof}
-$\square$
 \end{proof}
 
 \begin{example}
    \begin{itemize}
-	\item Corpo de Galois de ordem 3: $GF(3) = \{0, 1, 2\}$
-	\item Corpo de Galois de ordem 4: $GF(4) = \{0, 1, 2, 3\}$
-	\item Corpo de Galois de ordem 5: $GF(5) = \{0, 1, 2, 3, 4\}$
-	\item Corpo de Galois de ordem 7: $GF(7) = \{0, 1, 2, 3, 4, 5, 6\}$
+	\item Corpo de Galois de ordem 3: $\mathbb{GF}(3) = \{0, 1, 2\}$
+	\item Corpo de Galois de ordem 4: $\mathbb{GF}(4) = \{0, 1, 2, 3\}$
+	\item Corpo de Galois de ordem 5: $\mathbb{GF}(5) = \{0, 1, 2, 3, 4\}$
+	\item Corpo de Galois de ordem 7: $\mathbb{GF}(7) = \{0, 1, 2, 3, 4, 5, 6\}$
    \end{itemize}
 \end{example}
 
-\begin{definition} {\bf Ordem do Elemento} \label{OrdElem} \index{Ordem do Elemento} Seja $a \in GF(q)$ não nulo. A ordem de $a$, representada por $ord(a)$, é o menor inteiro positivo $o$ tal que $a^o\ =\ 1$.
+\begin{definition} {\bf Ordem do Elemento} \label{OrdElem} \index{Ordem do Elemento} Seja $a \in \mathbb{GF}(q)$ não nulo. A ordem de $a$, representada por $ord(a)$, é o menor inteiro positivo $o$ tal que $a^o\ =\ 1$.
 \end{definition}
 
-\begin{property} Se elevarmos ambos os lados a potência $q - 1$, temos que $(a^o)^{q - 1} = 1$. Multiplicando ambos os lados por $a^o$, temos que $(a^o)^q = a^o$ e substituindo $a^o$ por $x$, temos $x^q = x$. Portanto, todos os $a \in GF(p)$ satisfazem a equação: $x^q - x = 0, q = p^n$.
+\begin{property} Se elevarmos ambos os lados a potência $q - 1$, temos que $(a^o)^{q - 1} = 1$. Multiplicando ambos os lados por $a^o$, temos que $(a^o)^q = a^o$ e substituindo $a^o$ por $x$, temos $x^q = x$. Portanto, todos os $a \in \mathbb{GF}(p)$ satisfazem a equação: $x^q - x = 0, q = p^n$.
 \end{property}
 
-\begin{theorem} \label{teorema2} Seja $GF(q)$ um corpo finito e $a \in GF(q)$ não nulo. Seja $o$ a ordem de $a$. Então $o\ |\ q-1$.
+\begin{theorem} \label{teorema2} Seja $\mathbb{GF}(q)$ um corpo finito e $a \in \mathbb{GF}(q)$ não nulo. Seja $o$ a ordem de $a$. Então $o\ |\ q-1$.
 \end{theorem}
 
-\begin{proof} Suponhamos que $o$ não divide $q-1$. Assim, $q-1\ =\ ko\ +\ r$, onde $0 < r < o$.
+\begin{proof} Suponhamos que $o \nmid q-1$. Assim, $q-1\ =\ ko\ +\ r$, onde $0 < r < o$.
 $$
 \begin{array}{cl}
 a^{q-1}\ =\ a^{ko+r}\ =\ a^{ko}.a^r\ =\ (a^o)^k.a^r
@@ -255,43 +267,138 @@ $$
 Pelo teorema~\ref{teorema1}, $a^{q-1}\ =\ 1$ e $a^o\ =\ 1$, então $a^r\ =\ 1$. Isso é um absurdo, pois $0 < r < o$ e pela definição~\ref{OrdElem}, $o$ é o menor inteiro positivo tal que $a^o\ =\ 1$. Portanto, $o\ |\ q-1$. $\square$
 \end{proof}
 
-\begin{definition} {\bf Elemento Primitivo} \label{ElemPrim} \index{Elemento Primitivo} Seja $a \in GF(q)$ não nulo. $a$ é chamado elemento primitivo se a ordem de $a$ é $q-1$. Todos os campos tem um elemento primitivo.
+\begin{definition} {\bf Elemento Primitivo} \label{ElemPrim} \index{Elemento Primitivo} Seja $a \in \mathbb{GF}(q)$ não nulo. $a$ é chamado elemento primitivo se a ordem de $a$ é $q-1$. Todos os campos tem um elemento primitivo.
 \end{definition}
 
-\begin{proposition} Todas potências do elemento primitivo geram todos os elementos não nulos de $GF(q)$. 
+\begin{proposition} Todas potências do elemento primitivo geram todos os elementos não nulos de $\mathbb{GF}(q)$. 
 \end{proposition}
 
 \begin{proof}
-$\square$
 \end{proof}
 
 \begin{proposition} Todos os campos tem um elemento primitivo.
 \end{proposition}
 
 \begin{proof}
-$\square$
 \end{proof}
 
-\begin{example} O $GF(8)$ ilustrado nas tabelas~\ref{tab5:comp} e~\ref{tab6:comp}.
+\begin{example} O $\mathbb{GF}(8)$ ilustrado nas tabelas~\ref{tab5:comp} e~\ref{tab6:comp}.
    \input{tabelas/tabela-operacoes-corpo-galois8}
 \end{example}
 
-\begin{proposition}  Cada elemento $b \in GF(q)$ não nulo pode ser representado através de um conjunto com potências de um elemento primitivo, com o expoente variando de $1$ até $q-1$.
+\begin{proposition}  Cada elemento $b \in \mathbb{GF}(q)$ não nulo pode ser representado através de um conjunto com potências de um elemento primitivo, com o expoente variando de $1$ até $q-1$.
 \end{proposition}
 
 \begin{proof}
-Pela definição~\ref{OrdElem}, $b^o\ =\ 1$, onde $o$ é a ordem de $b$. Pelo teorema~\ref{teorema2}, $o\ |\ q-1$. Pelo teorema~\ref{teorema2}, $b^{q-1}\ =\ 1$. Seja $\alpha$ o elemento primitivo de $GF(q)$. 
+Pela definição~\ref{OrdElem}, $b^o\ =\ 1$, onde $o$ é a ordem de $b$. Pelo teorema~\ref{teorema2}, $o\ |\ q-1$. Pelo teorema~\ref{teorema2}, $b^{q-1}\ =\ 1$. Seja $\alpha$ o elemento primitivo de $\mathbb{GF}(q)$. 
 $$
+\begin{array}{cl}
 a^i, i = 1, a = a\\
 a^{q-1}\ =\ 1\\
 b^{q-1}.a^{q-1}\ =\ b^{q-1}\\
+\end{array}
+$$
+\end{proof}
+		\subsection{Aritmética de Corpo Binário}
+		Códigos são construídos com elementos de um corpo $\mathbb{GF}(q)$ onde $q$ ou é primo $p$ ou uma potência de $p$. Os dados de sistemas de transmissão e armazenamento de dados podem ser facilmente codificados em códigos com símbolos gerados a partir de um corpo $\mathbb{GF}(2)$ ou $\mathbb{GF}(2^m)$ \cite{Lin:1983}.
+
+\begin{theorem} {\bf Pequeno Teorema de Fermat} \label{Fermat} \index{Pequeno Teorema de Fermat}
+Se $p$ é um número primo e $p \nmid a$, então $a^{p-1} \equiv 1(mod\ p)$ para $\forall a \in \mathbb{Z}$. Além disso, $a^p \equiv a(mod\ p)$.
+Portanto, $p\ |\ a^p\ -\ a$. \cite{Rosen:2003}
+\end{theorem}
+
+\begin{proof} Seja $P(n)$ a proposição que $p\ |\ n^p\ -\ n$ para $\forall n \in \mathbb{Z}$ e para $p$ primo.
+
+Base: em $P(1)$ é verdadeira, pois $1^p\ -\ 1$ é divisível por $p$.
+
+Passo de indução: Suponhamos que P(k) é verdadeira $\forall k \in \mathbb{Z}$ e para $p$ primo.
+
+Queremos provar, para $k+1$, que P(k+1) é verdadeira. Podemos escrever $(k+1)^p$ da seguinte forma:
+$$
+(k+1)^p\ =\ k^p\ +\ ip\ +\ 1,\ para\ i \in \mathbb{Z}
+$$
+Subtraindo $(k+1)$ em ambos os lados, temos que:
+$$
+(k+1)^p\ -\ (k+1)\ =\ ip\ +\ (k^p-k)
+$$
+Como $(k^p-k)$ é divisível por $p$ por hipótese, temos que $(k+1)^p - (k+1)$ é divisível por $p$.
+$\square$
+\end{proof}
+
+\begin{definition} {\bf Anel de Polinômios} \label{AnelPol} \index{Anel de Polinômios} Dado um corpo $\mathbb{GF}_p$ definimos o anel comutativo com unidade $\mathbb{GF}_p[x]$ como sendo o conjunto das expressões da forma $P[x]\ =\ a_o\ +\ a_1x\ +\ a_2x^2\ +\ \ldots +\ a_nx^n$, com $a_n \neq 0$ e $n \in \mathbb{Z}^+$ chamados de polinômios com coeficientes em $\mathbb{GF}_p$. Cada polinômio define uma função polinomial $p(c)\ :\ \mathbb{GF}_p \rightarrow \mathbb{GF}_p$, $c \longmapsto\ p(c)\ =\ a_o\ +\ a_1c\ +\ a_2c^2\ +\ \ldots +\ a_nc^n$. A distinção entre um polinômio e uma função polinomial é bem ilustrada pelo polinômio $x^p-x,\ x \in \mathbb{Z}$. Pelo teorema~\ref{Fermat}, a função polinomial $p(x)\ =\ x^p-x$ tem propriedades diferentes do polinômio equivalente, onde para $\forall x \in \mathbb{Z}$, temos que $P[x]\ =\ 0$.
+\end{definition}
+
+%		\subsection{Propriedades dos Polinômios e suas Raízes}		
+%		$\mathbb{GF}_q[x]$ é um corpo de Galois que tem ordem $q$, sobre o qual são aplicados polinômios com coeficientes entre $0$ e $q - 1$. Um exemplo de um polinômio $P[x]$ pode ser apresentado na equação: $P[x] = a_7.x^7 + a_5.x^5 + a_2.x^2 + ax + 1$. Os coeficientes de um polinômio $a_i$ pertencem ao $\mathbb{GF}_q[x]$.
+
+\begin{theorem}
+Sejam $f$ e $g$ dois polinômios não nulos em $\mathbb{GF}_p[x]$. Então:
+  \begin{enumerate}[(i)]
+     \item $fg$ é um polinômio não nulo
+     \item o grau de $f.g$ é igual a soma do grau de $f$ mais o grau de $g$
+     \item $fg$ é um polinômio de grau 1 se, e somente se, $f$ e $g$ são polinômios de grau 1
+     \item $fg$ é um polinômio de grau 0 se, e somente se, $f$ e $g$ são polinômios de grau 0
+     \item se $f+g \neq 0$, $grau(f+g) \leq max (grau(f), grau(g))$
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Suponhamos que $f$ tenha grau $m$ e que $g$ tenha grau $n$. Se $k \in \mathbb{Z}^+$, temos que
+$$
+(fg)_{m+n}\ = \sum_{i=0}^{m+n+k} f_i g_{m+n+k-i}
+$$
+Sabemos que $i \leq m$ e $m+n+k-i \leq n$. Assim é necessário que $m+k \leq i \leq m$, que implica que $k=0$ e $i=m$. Então
+$$
+(fg)_{m+n}\ =\ f_m g_n
+$$
+e
+$$
+(fg)_{m+n+k}\ =\ 0
+$$
+\end{proof}
+
+\begin{corollary} Suponhamos que f, g e h são polinômios em $\mathbb{GF}_p[x]$ tais que $f \neq 0$ e $fg\ =\ fh$. Então $g\ =\ h$.
+\end{corollary}
+
+\begin{proof} Suponhamos que $fg\ =\ fh$.
+$$
+f(g\ -\ h)\ =\ 0
+$$
+Como $f \neq 0$, por (i) temos que $g\ -\ h\ =\ 0$. $\square$
+\end{proof}
+
+\begin{lemma} \label{lema1} Suponhamos que $f$ e $d$ sejam polinômios não nulos em $\mathbb{GF}_p[x]$ tais que $grau(d) \leq grau(f)$. Então $\exists g$ polinômio em $\mathbb{GF}_p[x]$ tal que ou $f-dg\ =\ 0$ ou  $\ grau(f-dg) < grau(f)$
+\end{lemma}
+
+\begin{proof} Suponhamos que
+$$
+\begin{array}{cl}
+f\ =\ a_mx^m\ +\ \sum_{i=0}^{m-1} a_ix^i,\ a_m \neq 0\\\\
+d\ =\ b_nx^n\ +\ \sum_{i=0}^{n-1} b_ix^i,\ b_n \neq 0
+\end{array}
+$$
+Seja $m$ o grau de $f$ e $n$ o grau de $d$. Então $m > n$. Suponhamos que $g\ =\ \frac{f}{d}$. Vamos tomar o polinômio $g^{'}$ igual ao termo de $g$ de maior grau:
+$$
+\begin{array}{cl}
+g\ =\ \frac{a_m}{b_n}x^{m-n}\ +\ \ldots\\
+g^{'}\ =\ \frac{a_m}{b_n}x^{m-n}
+\end{array}
+$$
+Se tomarmos $g\ =\ g^{'}\ =\ \frac{a_m}{b_n}x^{m-n}$,
+$$
+\begin{array}{cl}
+f - \frac{a_m}{b_n}x^{m-n}\ =\ 0\ ou\\
+grau(f-\frac{a_m}{b_n}x^{m-n}) < grau(f)
+\end{array}
 $$
 $\square$
 \end{proof}
-		\subsection{Aritmética de Corpo Binário}
-		Códigos são construídos com elementos de um corpo $GF(q)$ onde $q$ ou é primo $p$ ou uma potência de $p$. Os dados de sistemas de transmissão e armazenamento de dados podem ser facilmente codificados em códigos com símbolos gerados a partir de um corpo $GF(2)$ ou $GF(2^m)$ \cite{Lin:1983}.
-		\subsection{Propriedades dos Polinômios e suas Raízes}		
-		$GF [q](x)$ é um corpo de Galois que tem ordem $q$, sobre o qual são aplicados polinômios com coeficientes entre $0$ e $q - 1$. Um exemplo de um polinômio $p(x)$ pode ser apresentado na equação: $p(x) = a_7.x^7 + a_5.x^5 + a_2.x^2 + ax + 1$. Os coeficientes de um polinômio $a_i$ pertencem ao $GF(p)$.
+
+Usando o lemma~\ref{lema1}, podemos mostrar que a operação de divisão de polinômios pode ser feita em $\mathbb{GF}_p[x]$.
+
+\begin{proposition}
+Seja $F[x]$ um polinômio irredutível de grau $n$ em $GP_p[x]$. Prove que $GP_p[x]/F[x]$ é um corpo finito com $p^n$ elementos.
+\end{proposition}
 
 		\section{Construção de um Código Corretor de Erros}
 		\subsection{Métrica de Hamming}
