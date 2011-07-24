@@ -8,9 +8,9 @@ também são chamados corpos de Galois, em homenagem ao matemático francês Évarist
 
 \section{Definições}
 
-\begin{definition} {\bf Congruência Linear} \index{Congruência Linear} Seja $q \in \mathbb{N}$. Dois inteiros $a$
- e $b$ dizem-se $congruentes\ modulo\ q$ se tiverem o mesmo resto na divisão por
- $q$. A notação é $a \equiv b(mod\ q)$. Daí temos que $a = qk + b$, para um $k \in \mathbb{N}$.
+\begin{definition} {\bf Congruência Linear} \index{Congruência Linear} Seja $q \in \mathbb{Z}$. Dois inteiros $a$
+ e $b$ dizem-se congruentes $modulo\ q$ se tiverem o mesmo resto na divisão por
+ $q$. A notação é $a \equiv b(mod\ q)$. Daí temos que $a = qk + b$, para um $k \in \mathbb{Z}$.
 \end{definition}
 
 Exemplos:
@@ -20,7 +20,7 @@ Exemplos:
 \item $63 \equiv 7(mod\ 8)$
 \end{itemize}
 
-\begin{definition} {\bf Classe Residual} \index{Classe Residual} Seja $q \in \mathbb{N}$ e $q > 1$. A classe
+\begin{definition} {\bf Classe Residual} \index{Classe Residual} Seja $q \in \mathbb{Z}$ e $q > 1$. A classe
 residual módulo $q$ do elemento $a \in \mathbb{Z}$ pode ser assim definida:
 
  	\begin{center}
@@ -158,9 +158,10 @@ Se $\mathbb{Z}_q$ é um corpo se, e somente se, todos os seus elementos $\bar{0},
 \begin{definition} {\bf Corpo} \label{corpo} \index{Corpo} Um anel onde todo elemento não nulo é invertível é chamado de Corpo.
 \end{definition}
 
-\begin{example} O Corpo de Galois $\mathbb{GF}(2)$ é o conjunto $\mathbb{A}\ =\ \{0, 1\}$ e as operações $+$ e $.$ :
+\begin{example} O Corpo de Galois $\mathbb{GF}_2$ é o conjunto $\mathbb{A}\ =\ \{0, 1\}$ e as operações $+$ e $.$. O $\mathbb{GF}_8$ ilustrado nas tabelas~\ref{tab5:comp} e~\ref{tab6:comp}.
 
    \input{tabelas/tabela-operacoes-corpo-galois}
+   \input{tabelas/tabela-operacoes-corpo-galois8}
 
 \end{example}
 
@@ -201,10 +202,11 @@ Se $\mathbb{Z}_q$ é um corpo se, e somente se, todos os seus elementos $\bar{0},
    \end{enumerate}
 \end{theorem}
 
-\begin{theorem} \label{teorema1} Seja $\mathbb{GF}(q)$ um corpo finito e $a \in \mathbb{GF}(q)$ não nulo. Então $a^{q-1}\ =\ 1$.
+
+\begin{theorem} \label{teorema1} Seja $\mathbb{GF}_q$ um corpo finito e $a \in \mathbb{GF}_q$ não nulo. Então $a^{q-1}\ =\ 1$.
 \end{theorem}
 
-\begin{proof} Seja $b_1, b_2, \ldots , b_{q-1}$ os $q-1$ elementos não nulos de $\mathbb{GF}(q)$. Os $q-1$ números  $a.b_1$, $a.b_2 \ldots  a.b_{q-1}$ são todos não nulos e distintos. Sabemos que pela operação multiplicação
+\begin{proof} Seja $b_1, b_2, \ldots , b_{q-1}$ os $q-1$ elementos não nulos de $\mathbb{GF}_q$. Os $q-1$ números  $a.b_1$, $a.b_2 \ldots  a.b_{q-1}$ são todos não nulos e distintos. Sabemos que pela operação multiplicação
 
 $$
 \begin{array}{cl}
@@ -216,7 +218,8 @@ $$
 Como $a \neq 0$ e $(b_1.b_2 \ldots  b_{q-1}) \neq 0$, logo $a^{q-1}\ =\ 1$. $\square$
 \end{proof}
 
-\begin{definition} {\bf Ordem do Corpo} \label{OrdCorpo} \index{Ordem do Corpo} O número de elementos de um corpo finito $G$ é denominado ordem de $G$. Um corpo de Galois de ordem $q$ é representado por $\mathbb{GF}(q)$. Um corpo finito G tem ordem $p^n$, onde $p$ é a característica do corpo $G$ e $n = [K: Z_p]$.
+
+\begin{definition} {\bf Ordem do Corpo} \label{OrdCorpo} \index{Ordem do Corpo} O número de elementos de um corpo finito $G$ é denominado ordem de $G$. Um corpo de Galois de ordem $q$ é representado por $\mathbb{GF}_q$. Um corpo finito G tem ordem $p^n$, onde $p$ é a característica do corpo $G$ e $n = [K: Z_p]$.
 \end{definition}
 
 \begin{proposition}
@@ -234,7 +237,7 @@ Para cada primo $p$ e para cada  $i \in \mathbb{Z}^+$, existe um corpo com $p^i$
 \end{proof}
 
 \begin{proposition}
-Qualquer corpo com $p^i$ elementos é isomorfo à extensão de decomposição de $x^q - x, q = p^i$ sobre $\mathbb{GF}(q)$.
+Qualquer corpo com $p^i$ elementos é isomorfo à extensão de decomposição de $x^q - x, q = p^i$ sobre $\mathbb{GF}_q$.
 \end{proposition}
 
 \begin{proof}
@@ -242,20 +245,20 @@ Qualquer corpo com $p^i$ elementos é isomorfo à extensão de decomposição de $x^q
 
 \begin{example}
    \begin{itemize}
-	\item Corpo de Galois de ordem 3: $\mathbb{GF}(3) = \{0, 1, 2\}$
-	\item Corpo de Galois de ordem 4: $\mathbb{GF}(4) = \{0, 1, 2, 3\}$
-	\item Corpo de Galois de ordem 5: $\mathbb{GF}(5) = \{0, 1, 2, 3, 4\}$
-	\item Corpo de Galois de ordem 7: $\mathbb{GF}(7) = \{0, 1, 2, 3, 4, 5, 6\}$
+	\item Corpo de Galois de ordem 3: $\mathbb{GF}_3 = \{0, 1, 2\}$
+	\item Corpo de Galois de ordem 4: $\mathbb{GF}_3 = \{0, 1, 2, 3\}$
+	\item Corpo de Galois de ordem 5: $\mathbb{GF}_5 = \{0, 1, 2, 3, 4\}$
+	\item Corpo de Galois de ordem 7: $\mathbb{GF}_7 = \{0, 1, 2, 3, 4, 5, 6\}$
    \end{itemize}
 \end{example}
 
-\begin{definition} {\bf Ordem do Elemento} \label{OrdElem} \index{Ordem do Elemento} Seja $a \in \mathbb{GF}(q)$ não nulo. A ordem de $a$, representada por $ord(a)$, é o menor inteiro positivo $o$ tal que $a^o\ =\ 1$.
+\begin{definition} {\bf Ordem do Elemento} \label{OrdElem} \index{Ordem do Elemento} Seja $a \in \mathbb{GF}_q$ não nulo. A ordem de $a$, representada por $ord(a)$, é o menor inteiro positivo $o$ tal que $a^o\ =\ 1$.
 \end{definition}
 
-\begin{property} Se elevarmos ambos os lados a potência $q - 1$, temos que $(a^o)^{q - 1} = 1$. Multiplicando ambos os lados por $a^o$, temos que $(a^o)^q = a^o$ e substituindo $a^o$ por $x$, temos $x^q = x$. Portanto, todos os $a \in \mathbb{GF}(p)$ satisfazem a equação: $x^q - x = 0, q = p^n$.
+\begin{property} Se elevarmos ambos os lados a potência $q - 1$, temos que $(a^o)^{q - 1} = 1$. Multiplicando ambos os lados por $a^o$, temos que $(a^o)^q = a^o$ e substituindo $a^o$ por $x$, temos $x^q = x$. Portanto, todos os $a \in \mathbb{GF}_q$ satisfazem a equação: $x^q - x = 0, q = p^n$.
 \end{property}
 
-\begin{theorem} \label{teorema2} Seja $\mathbb{GF}(q)$ um corpo finito e $a \in \mathbb{GF}(q)$ não nulo. Seja $o$ a ordem de $a$. Então $o\ |\ q-1$.
+\begin{theorem} \label{teorema2} Seja $\mathbb{GF}_q$ um corpo finito e $a \in \mathbb{GF}_q$ não nulo. Seja $o$ a ordem de $a$. Então $o\ |\ q-1$.
 \end{theorem}
 
 \begin{proof} Suponhamos que $o \nmid q-1$. Assim, $q-1\ =\ ko\ +\ r$, onde $0 < r < o$.
@@ -267,10 +270,10 @@ $$
 Pelo teorema~\ref{teorema1}, $a^{q-1}\ =\ 1$ e $a^o\ =\ 1$, então $a^r\ =\ 1$. Isso é um absurdo, pois $0 < r < o$ e pela definição~\ref{OrdElem}, $o$ é o menor inteiro positivo tal que $a^o\ =\ 1$. Portanto, $o\ |\ q-1$. $\square$
 \end{proof}
 
-\begin{definition} {\bf Elemento Primitivo} \label{ElemPrim} \index{Elemento Primitivo} Seja $a \in \mathbb{GF}(q)$ não nulo. $a$ é chamado elemento primitivo se a ordem de $a$ é $q-1$. Todos os campos tem um elemento primitivo.
+\begin{definition} {\bf Elemento Primitivo} \label{ElemPrim} \index{Elemento Primitivo} Seja $a \in \mathbb{GF}_q$ não nulo. $a$ é chamado elemento primitivo se a ordem de $a$ é $q-1$. Todos os campos tem um elemento primitivo.
 \end{definition}
 
-\begin{proposition} Todas potências do elemento primitivo geram todos os elementos não nulos de $\mathbb{GF}(q)$. 
+\begin{proposition} Todas potências do elemento primitivo geram todos os elementos não nulos de $\mathbb{GF}_q$. 
 \end{proposition}
 
 \begin{proof}
@@ -282,15 +285,11 @@ Pelo teorema~\ref{teorema1}, $a^{q-1}\ =\ 1$ e $a^o\ =\ 1$, então $a^r\ =\ 1$. I
 \begin{proof}
 \end{proof}
 
-\begin{example} O $\mathbb{GF}(8)$ ilustrado nas tabelas~\ref{tab5:comp} e~\ref{tab6:comp}.
-   \input{tabelas/tabela-operacoes-corpo-galois8}
-\end{example}
-
 \begin{proposition}  Cada elemento $b \in \mathbb{GF}(q)$ não nulo pode ser representado através de um conjunto com potências de um elemento primitivo, com o expoente variando de $1$ até $q-1$.
 \end{proposition}
 
 \begin{proof}
-Pela definição~\ref{OrdElem}, $b^o\ =\ 1$, onde $o$ é a ordem de $b$. Pelo teorema~\ref{teorema2}, $o\ |\ q-1$. Pelo teorema~\ref{teorema2}, $b^{q-1}\ =\ 1$. Seja $\alpha$ o elemento primitivo de $\mathbb{GF}(q)$. 
+Pela definição~\ref{OrdElem}, $b^o\ =\ 1$, onde $o$ é a ordem de $b$. Pelo teorema~\ref{teorema2}, $o\ |\ q-1$. Pelo teorema~\ref{teorema2}, $b^{q-1}\ =\ 1$. Seja $\alpha$ o elemento primitivo de $\mathbb{GF}_q$. 
 $$
 \begin{array}{cl}
 a^i, i = 1, a = a\\
@@ -299,8 +298,8 @@ b^{q-1}.a^{q-1}\ =\ b^{q-1}\\
 \end{array}
 $$
 \end{proof}
-		\subsection{Aritmética de Corpo Binário}
-		Códigos são construídos com elementos de um corpo $\mathbb{GF}(q)$ onde $q$ ou é primo $p$ ou uma potência de $p$. Os dados de sistemas de transmissão e armazenamento de dados podem ser facilmente codificados em códigos com símbolos gerados a partir de um corpo $\mathbb{GF}(2)$ ou $\mathbb{GF}(2^m)$ \cite{Lin:1983}.
+
+%		\subsection{Aritmética de Corpo Binário}
 
 \begin{theorem} {\bf Pequeno Teorema de Fermat} \label{Fermat} \index{Pequeno Teorema de Fermat}
 Se $p$ é um número primo e $p \nmid a$, então $a^{p-1} \equiv 1(mod\ p)$ para $\forall a \in \mathbb{Z}$. Além disso, $a^p \equiv a(mod\ p)$.
@@ -401,9 +400,12 @@ Seja $F[x]$ um polinômio irredutível de grau $n$ em $GP_p[x]$. Prove que $GP_p[x
 \end{proposition}
 
 		\section{Construção de um Código Corretor de Erros}
-		\subsection{Métrica de Hamming}
+%		\subsection{Métrica de Hamming}
 %		página 4 - livro Hefez
 %		página 7 - Parâmetros fundamentais $[n, M, d]$
+
+
+Códigos de bloco são construídos com elementos de um corpo $\mathbb{GF}_q$ onde $q$ ou é primo $p$ ou uma potência de $p$. Os dados de sistemas de transmissão e armazenamento de dados podem ser facilmente codificados em códigos com símbolos gerados a partir de um corpo $\mathbb{GF}_2$ ou $\mathbb{GF}_{2^m}$ \cite{Lin:1983}.
 
 O objetivo da codificação de canal é aumentar a resistência do sistema de comunicações digital face aos efeitos do ruído de canal. No caso particular dos códigos de bloco, a cada bloco de k bits da sequência binária gerada pela fonte faz-se corresponder um bloco de $m$ bits (palavra de código) com $m > k$. Este processo de codificação deve ser concebido de modo que a decodificação tenha solução única. Note-se que do universo de $2m$ blocos binários de comprimento $m$ apenas $2k$ são palavras de código (as que correspondem numa relação de um para um aos blocos binários de comprimento $k$ gerados pela fonte). Este esquema está representado simbolicamente na Figura~\ref{fig3:cod}. 8.4. No caso de a transmissão se efetivar sem erros, o processo de decodificação conduz ao bloco de comprimento $k$ que havia sido gerado pela fonte. Quando ocorrem erros de transmissão, a palavra de comprimento $m$ recebida pode não ser uma palavra de código e o erro é detectado e/ou corrigido.
 Figura 8.4: Codificação de canal
