@@ -13,33 +13,31 @@ também são chamados corpos de Galois, em homenagem ao matemático francês Évarist
  $q$. A notação é $a \equiv b(mod\ q)$. Daí temos que $a = qk + b$, para um $k \in \mathbb{Z}$.
 \end{definition}
 
-Exemplos:
-\begin{itemize}
-\item $32 \equiv 2(mod\ 3)$
-\item $27 \equiv 5(mod\ 11)$
-\item $63 \equiv 7(mod\ 8)$
-\end{itemize}
+\begin{example}
+\begin{align*}
+& 32 \equiv 2(mod\ 3)\\
+& 27 \equiv 5(mod\ 11)\\
+& 63 \equiv 7(mod\ 8)
+\end{align*}
+\end{example}
+
 
 \begin{definition} {\bf Classe Residual} \index{Classe Residual} Seja $q \in \mathbb{Z}$ e $q > 1$. A classe
 residual módulo $q$ do elemento $a \in \mathbb{Z}$ pode ser assim definida:
 
- 	\begin{center}
- 	$\bar{a}\ =\ \{ x \in \mathbb{Z}$ tal que $x \equiv a(mod\ q)\}$
- 	\end{center}
-		
-	\begin{center}
-	$\bar{a}\ =\ \{ x \in \mathbb{Z}$  tal que $x \equiv a(mod\ q)\}$
-	\end{center}
+\begin{align*}
+& \bar{a}\ =\ \{ x \in \mathbb{Z}\ tal\ que\ x \equiv a(mod\ q)\}\\
+& \bar{a}\ =\ \{ x \in \mathbb{Z}\ tal\ que\ x \equiv a(mod\ q)\}
+\end{align*}
 
 \end{definition}
 
 \begin{example}
-   \begin{enumerate}[1]
-      \item Se $m = 2$, então temos 2 classes residuais: $\bar{0}=\{ \ldots  -4, -2, 0, 2, 4, \ldots \}$
-            e  $\bar{1}=\{ \ldots  -3, -1, 1, 3, \ldots \}$
-      \item Se $m = 3$, então temos 3 classes residuais: $ \bar{0}, \bar{1}, \bar{2}$
-      \item Se $m = 5$, então temos 4 classes residuais: $\bar{0}, \bar{1}, \bar{2}, \bar{3}, \bar{4}$
-   \end{enumerate}
+\begin{align*}
+& Se\ m\ =\ 2,\ temos\ 2\ classes\ residuais:\ \bar{0}\ =  \{ \ldots  -4, -2, 0, 2, 4, \ldots \}\ e\  \bar{1}\ =\ \{ \ldots  -3, -1, 1, 3, \ldots \}\\
+& Se\ m\ =\ 3,\ temos\ 3\ classes\ residuais:\  \bar{0}, \bar{1}, \bar{2}\\
+& Se\ m\ =\ 5,\ temos\ 4\ classes\ residuais:\ \bar{0}, \bar{1}, \bar{2}, \bar{3}, \bar{4}
+\end{align*}
 \end{example}
 
 \begin{definition} {\bf Conjunto das Classes Residuais} \index{Conjunto das Classes Residuais} Seja $\mathbb{Z}_q = \{\bar{0}, \bar{1}, \ldots , \overline{q-1}\}$ o conjunto das classes residuais dos inteiros módulo $q$. 
@@ -72,20 +70,21 @@ $c$ e $r$ são chamados, respectivamente, o quociente e resto da divisão de a por
 
 \begin{proof}
 Se $a$ e $b$ são primos entre si, então $MDC(a,b)=1$ e pelo lema~\ref{euclides}, temos que  $\exists \lambda, \ \exists \mu \in\ \mathbb{Z}$ tais que $MDC(a,b)\ =\ \lambda a\ +\ \mu b$.  Então: 
-$$
-\begin{array}{cl}
-MDC(a,b)\ =\ \lambda a\ +\ \mu b\ =\ 1\ (multiplica-se\ ambos\ os\ lados\ por\ d\ =\ MDC(a,b))\\
-d(\lambda a\ +\ \mu b)\ =\ d
-\end{array}
-$$
+\begin{align*}
+& MDC(a,b)\ & =\ \lambda a\ +\ \mu b\ =\ 1\ (multiplica-se\ ambos\ os\ lados\ por\ d\ =\ MDC(a,b))\\
+& d(\lambda a\ +\ \mu b)\ =\ d
+\end{align*}
+
 Se $\lambda a\ +\ \mu b\ =\ 0$, então $d\ =\ 0$, o que é um absurdo.
 
 Se $\lambda a\ +\ \mu b\ <\ 0$, então  $d\ <\ 0$ e $\lambda a\ +\ \mu b\ >\ 0$, o que é um absurdo.
 
 Se $\lambda a\ +\ \mu b\ >\ 0$, vamos chamar esse resultado de $d^{'}$.
-$$
-dd^{'}\ =\ d
-$$
+
+\begin{align*}
+& dd^{'}\ =\ d
+\end{align*}
+
 Nesse caso, sabemos que $d^{'}\ =\ 1$.
 
 Suponhamos que $\exists \lambda, \ \exists \mu \in\ \mathbb{Z}$ tais que $\lambda a\ +\ \mu b\ =\ 1$. 
@@ -244,12 +243,12 @@ Qualquer corpo com $p^i$ elementos é isomorfo à extensão de decomposição de $x^q
 \end{proof}
 
 \begin{example}
-   \begin{itemize}
-	\item Corpo de Galois de ordem 3: $\mathbb{GF}_3 = \{0, 1, 2\}$
-	\item Corpo de Galois de ordem 4: $\mathbb{GF}_3 = \{0, 1, 2, 3\}$
-	\item Corpo de Galois de ordem 5: $\mathbb{GF}_5 = \{0, 1, 2, 3, 4\}$
-	\item Corpo de Galois de ordem 7: $\mathbb{GF}_7 = \{0, 1, 2, 3, 4, 5, 6\}$
-   \end{itemize}
+\begin{align*}
+& Corpo\ de\ Galois\ de\ ordem\ 3:\ \mathbb{GF}_3 = \{0, 1, 2\}\\
+& Corpo\ de\ Galois\ de\ ordem\ 4:\ \mathbb{GF}_3 = \{0, 1, 2, 3\}\\
+& Corpo\ de\ Galois\ de\ ordem\ 5:\ \mathbb{GF}_5 = \{0, 1, 2, 3, 4\}\\
+& Corpo\ de\ Galois\ de\ ordem\ 7:\ \mathbb{GF}_7 = \{0, 1, 2, 3, 4, 5, 6\}
+\end{align*}
 \end{example}
 
 \begin{definition} {\bf Ordem do Elemento} \label{OrdElem} \index{Ordem do Elemento} Seja $a \in \mathbb{GF}_q$ não nulo. A ordem de $a$, representada por $ord(a)$, é o menor inteiro positivo $o$ tal que $a^o\ =\ 1$.
@@ -344,7 +343,7 @@ Sejam $f$ e $g$ dois polinômios não nulos em $\mathbb{GF}_p[x]$. Então:
 \begin{proof}
 Suponhamos que $f$ tenha grau $m$ e que $g$ tenha grau $n$. Se $k \in \mathbb{Z}^+$, temos que
 $$
-(fg)_{m+n}\ = \sum_{i=0}^{m+n+k} f_i g_{m+n+k-i}
+(fg)_{m+n}\ = \displaystyle\sum_{i=0}^{m+n+k} f_i g_{m+n+k-i}
 $$
 Sabemos que $i \leq m$ e $m+n+k-i \leq n$. Assim é necessário que $m+k \leq i \leq m$, que implica que $k=0$ e $i=m$. Então
 $$
@@ -372,8 +371,8 @@ Como $f \neq 0$, por (i) temos que $g\ -\ h\ =\ 0$. $\square$
 \begin{proof} Suponhamos que
 $$
 \begin{array}{cl}
-f\ =\ a_mx^m\ +\ \sum_{i=0}^{m-1} a_ix^i,\ a_m \neq 0\\\\
-d\ =\ b_nx^n\ +\ \sum_{i=0}^{n-1} b_ix^i,\ b_n \neq 0
+f\ =\ a_mx^m\ +\ \displaystyle\sum_{i=0}^{m-1} a_ix^i,\ a_m \neq 0\\\\
+d\ =\ b_nx^n\ +\ \displaystyle\sum_{i=0}^{n-1} b_ix^i,\ b_n \neq 0
 \end{array}
 $$
 Seja $m$ o grau de $f$ e $n$ o grau de $d$. Então $m > n$. Suponhamos que $g\ =\ \frac{f}{d}$. Vamos tomar o polinômio $g^{'}$ igual ao termo de $g$ de maior grau:
