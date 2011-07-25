@@ -1,15 +1,24 @@
 \chapter{Álgebra Abstrata}
 
+{\small
+\begin{align*}
+&& In\ Galois\ fields,\ full\ of\ flowers.\\
+&& Primitive\ elements\ dance\ for\ hours \ldots\\
+&& S.B.\ Weinstein
+\end{align*}
+}
+
 Essa capítulo tem por objetivo apresentar conceitos matemáticos fundamentais
 dentro do escopo de álgebra abstrata para entendimento de Códigos de Blocos~\cite{Hefez:2008}.
 
-Códigos BCH e RS são projetados através da aritmética de corpos finitos. Corpos finitos
+Códigos BCH e RS são projetados através da aritmética de corpos finitos\footnote{In Galois fields, full of flowers.
+Primitive elements dance for hours $\ldots$ S.B. Weinstein}. Corpos finitos
 também são chamados corpos de Galois, em homenagem ao matemático francês Évariste Galois~\cite{Connell:2004}.
 
 \section{Definições}
 
 \begin{definition} {\bf Congruência Linear} \index{Congruência Linear} Seja $q \in \mathbb{Z}$. Dois inteiros $a$
- e $b$ dizem-se congruentes $modulo\ q$ se tiverem o mesmo resto na divisão por
+ e $b$ dizem-se congruentes módulo$-q$ se tiverem o mesmo resto na divisão por
  $q$. A notação é $a \equiv b(mod\ q)$. Daí temos que $a = qk + b$, para um $k \in \mathbb{Z}$.
 \end{definition}
 
@@ -134,6 +143,10 @@ $\square$
   \end{description}
 \end{definition}
 
+\begin{example}
+Para um dado número primo $p$, o conjunto de números inteiros $\{0, 1, 2, . . . , p - 1\}$ é um grupo comutativo com relação à adição módulo-$p$. O conjunto de números inteiros $\{1, 2, . . . , p - 1\}$ é um grupo comutativo com relação à multiplicação módulo-$p$.
+\end{example}
+
 \begin{definition} {\bf Anel} \label{anel} \index{Anel} Se $(A, \phi, \varphi)$ é um anel, então satisfaz as propriedades associatividade, distributividade da multiplicação com relação a adição e elemento neutro. Se ele também satisfaz a propriedade comutatividade, $(A, \phi, \varphi)$ é um anel comutativo.
 \end{definition}
 
@@ -222,14 +235,14 @@ Como $a \neq 0$ e $(b_1.b_2 \ldots  b_{q-1}) \neq 0$, logo $a^{q-1}\ =\ 1$. $\sq
 \end{definition}
 
 \begin{proposition}
-Todo o corpo finito tem $p^i$ elementos para algum primo $p$ e algum $i \in \mathbb{Z}^+$.
+Todo o corpo finito tem $p^n$ elementos para algum primo $p$ e algum $n \in \mathbb{Z}^+$.
 \end{proposition}
 
 \begin{proof}
 \end{proof}
 
 \begin{proposition}
-Para cada primo $p$ e para cada  $i \in \mathbb{Z}^+$, existe um corpo com $p^i$ elementos.
+Para cada primo $p$ e para cada  $n \in \mathbb{Z}^+$, existe um corpo com $p^n$ elementos.
 \end{proposition}
 
 \begin{proof}
@@ -269,6 +282,34 @@ $$
 Pelo teorema~\ref{teorema1}, $a^{q-1}\ =\ 1$ e $a^o\ =\ 1$, então $a^r\ =\ 1$. Isso é um absurdo, pois $0 < r < o$ e pela definição~\ref{OrdElem}, $o$ é o menor inteiro positivo tal que $a^o\ =\ 1$. Portanto, $o\ |\ q-1$. $\square$
 \end{proof}
 
+\begin{definition} {\bf Adição módulo-$m$} \label{AdicaoM} \index{Adição módulo-$m$} Seja $a,b  \in \mathbb{GF}_q$ não nulos. A operação adição módulo-$m$ é definida  como:
+\begin{align*}
+& a \oplus b\ =\ c\\
+& c\ =\ (a+b)(mod\ m)
+\end{align*}
+Isso é, a adição de quaisquer dois elementos $a,b \in \mathbb{GF}_q$ é o resto da divisão da adição aritmética $(a+b)$ por $m$.
+\end{definition}
+
+\begin{definition} {\bf Multiplicação módulo-$m$} \label{MultiM} \index{Multiplicação módulo-$m$} Seja $a,b  \in \mathbb{GF}_q$ não nulos. A operação multiplicação módulo-$m$ é definida  como:
+\begin{align*}
+& a \otimes b\ =\ c\\
+& c\ =\ (a.b)(mod\ m)
+\end{align*}
+Isso é, a multiplicação de quaisquer dois elementos $a,b \in \mathbb{GF}_q$ é o resto da divisão da multiplicação aritmética $(a.b)$ por $m$.
+\end{definition}
+
+\begin{definition} 
+Dado um campo $\mathbb{GF}_q$, as operações adição e multiplicação seguem as seguintes propriedades:
+\begin{enumerate}[(i)]
+   \item $\mathbb{GF}_q$ é um anel comutativo com relação a operação de adição. O elemento $0$ é o elemento neutro.
+   \item ${\mathbb{GF}_q}^*$ é um anel comutativo com relação a operação de multiplicação. O elemento $1$ é o elemento neutro.
+   \item a operação multiplicação é distributiva com relação a adição:
+      \begin{align*}
+         & a \otimes (b \oplus c)\ =\ (a \otimes b) \oplus (a \otimes c)
+      \end{align*}
+\end{enumerate}
+\end{definition}
+
 \begin{definition} {\bf Elemento Primitivo} \label{ElemPrim} \index{Elemento Primitivo} Seja $a \in \mathbb{GF}_q$ não nulo. $a$ é chamado elemento primitivo se a ordem de $a$ é $q-1$. Todos os campos tem um elemento primitivo.
 \end{definition}
 
@@ -278,7 +319,7 @@ Pelo teorema~\ref{teorema1}, $a^{q-1}\ =\ 1$ e $a^o\ =\ 1$, então $a^r\ =\ 1$. I
 \begin{proof}
 \end{proof}
 
-\begin{proposition} Todos os campos tem um elemento primitivo.
+\begin{proposition} Todos os campos tem pelo menos um elemento primitivo.
 \end{proposition}
 
 \begin{proof}
@@ -323,7 +364,7 @@ Como $(k^p-k)$ é divisível por $p$ por hipótese, temos que $(k+1)^p - (k+1)$ é d
 $\square$
 \end{proof}
 
-\begin{definition} {\bf Anel de Polinômios} \label{AnelPol} \index{Anel de Polinômios} Dado um corpo $\mathbb{GF}_p$ definimos o anel comutativo com unidade $\mathbb{GF}_p[x]$ como sendo o conjunto das expressões da forma $P[x]\ =\ a_o\ +\ a_1x\ +\ a_2x^2\ +\ \ldots +\ a_nx^n$, com $a_n \neq 0$ e $n \in \mathbb{Z}^+$ chamados de polinômios com coeficientes em $\mathbb{GF}_p$. Cada polinômio define uma função polinomial $p(c)\ :\ \mathbb{GF}_p \rightarrow \mathbb{GF}_p$, $c \longmapsto\ p(c)\ =\ a_o\ +\ a_1c\ +\ a_2c^2\ +\ \ldots +\ a_nc^n$. A distinção entre um polinômio e uma função polinomial é bem ilustrada pelo polinômio $x^p-x,\ x \in \mathbb{Z}$. Pelo teorema~\ref{Fermat}, a função polinomial $p(x)\ =\ x^p-x$ tem propriedades diferentes do polinômio equivalente, onde para $\forall x \in \mathbb{Z}$, temos que $P[x]\ =\ 0$.
+\begin{definition} {\bf Anel de Polinômios} \label{AnelPol} \index{Anel de Polinômios} Dado um corpo $\mathbb{GF}_p$ definimos o anel comutativo com unidade $\mathbb{GF}_p[x]$ como sendo o conjunto das expressões da forma $P[x]\ =\ a_o\ +\ a_1x\ +\ a_2x^2\ + \ldots +\ a_{n-1}x^{n-1}\ +\ a_nx^n$, com $a_n \neq 0$ e $n \in \mathbb{Z}^+$ chamados de polinômios com coeficientes em $\mathbb{GF}_p$. Cada polinômio define uma função polinomial $p(c)\ :\ \mathbb{GF}_p \rightarrow \mathbb{GF}_p$, $c \longmapsto\ p(c)\ =\ a_o\ +\ a_1c\ +\ a_2c^2\ +\ \ldots +\ a_nc^n$. A distinção entre um polinômio e uma função polinomial é bem ilustrada pelo polinômio $x^p-x,\ x \in \mathbb{Z}$. Pelo teorema~\ref{Fermat}, a função polinomial $p(x)\ =\ x^p-x$ tem propriedades diferentes do polinômio equivalente, onde para $\forall x \in \mathbb{Z}$, temos que $P[x]\ =\ 0$.
 \end{definition}
 
 %		\subsection{Propriedades dos Polinômios e suas Raízes}		
@@ -394,9 +435,34 @@ $\square$
 
 Usando o lemma~\ref{lema1}, podemos mostrar que a operação de divisão de polinômios pode ser feita em $\mathbb{GF}_p[x]$.
 
+\begin{definition} {\bf Polinômio Redutível e Irredutível} \label{PolRedIrred} \index{Polinômio Redutível e Irredutível} Dado um corpo $\mathbb{GF}_p[x]$, um polinômio $f$  é redutível em $\mathbb{GF}_p[x]$, se existem os polinômios $g, h$ em $\mathbb{GF}_p[x]$ de grau $\geq 1$ tais que $f\ =\ gh$ e $f$ e senão, $f$ é irredutível em $\mathbb{GF}_p[x]$.
+\end{definition}
+
 \begin{proposition}
 Seja $F[x]$ um polinômio irredutível de grau $n$ em $GP_p[x]$. Prove que $GP_p[x]/F[x]$ é um corpo finito com $p^n$ elementos.
 \end{proposition}
+
+\begin{theorem} Seja $P[x]$ um irredutível polinômio sob $\mathbb{GP}_p$ e cujo grau é $m$. Então o conjunto de todos os polinômios em $x$ de grau $m-1$ e coefientes $\in \mathbb{GP}_p$ com as operações adição e multiplicação módulo-$2$ é um campo de ordem $p_m$.
+\end{theorem}
+
+\section{Polinômios sobre ${\mathbb{GF}_q}^*$}
+
+Códigos de bloco são construídos com elementos de um corpo $\mathbb{GF}_q$ onde $q$ ou é primo $p$ ou uma potência de $p$. Os dados de sistemas de transmissão e armazenamento de dados podem ser facilmente codificados em códigos com símbolos gerados a partir de um corpo $\mathbb{GF}_2$ ou $\mathbb{GF}_{2^m}$ \cite{Lin:1983}.
+
+$\mathbb{GF}_{2^m}$ consiste de todos os polinômios $P$ em $\alpha$ de grau $\leq m-1$ com coeficientes em $\mathbb{GF}_2$. Um elemento em $\mathbb{GF}_{2^m}$ é da forma: 
+
+\begin{align*}
+a_{m-1} \ldots a_1 a_0 \leftrightarrow a_{m-1}\alpha^{m-1}\ +\ \ldots +\ a_1\alpha\ +\ a_0
+\end{align*}
+
+onde $a_i \in \mathbb{GF}_2$ e $P(\alpha)\ =\ 0$
+
+O campo $\mathbb{GF}_{256}$ é um espaço vetorial sob $\mathbb{GF}_2$ de dimensão $8$ e é muito usado para construir códigos de bloco. A aritmética
+binária utiliza adição e multiplicação módulo-$2$. Um polinômio $F[x]$ definido sobre $\mathbb{GF}_2$ possui a forma:
+\begin{align*}
+P[x]\ =\ a_o\ +\ a_1x\ +\ a_2x^2\ + \ldots +\ a_{n-1}x^{n-1}\ +\ a_nx^n\\
+com\ a_i \in \{0, 1\}\ e\ n \in \{0, 1, 2, 3, 4, 5, 6, 7\}
+\end{align*}
 
 		\section{Construção de um Código Corretor de Erros}
 %		\subsection{Métrica de Hamming}
@@ -404,7 +470,7 @@ Seja $F[x]$ um polinômio irredutível de grau $n$ em $GP_p[x]$. Prove que $GP_p[x
 %		página 7 - Parâmetros fundamentais $[n, M, d]$
 
 
-Códigos de bloco são construídos com elementos de um corpo $\mathbb{GF}_q$ onde $q$ ou é primo $p$ ou uma potência de $p$. Os dados de sistemas de transmissão e armazenamento de dados podem ser facilmente codificados em códigos com símbolos gerados a partir de um corpo $\mathbb{GF}_2$ ou $\mathbb{GF}_{2^m}$ \cite{Lin:1983}.
+
 
 O objetivo da codificação de canal é aumentar a resistência do sistema de comunicações digital face aos efeitos do ruído de canal. No caso particular dos códigos de bloco, a cada bloco de k bits da sequência binária gerada pela fonte faz-se corresponder um bloco de $m$ bits (palavra de código) com $m > k$. Este processo de codificação deve ser concebido de modo que a decodificação tenha solução única. Note-se que do universo de $2m$ blocos binários de comprimento $m$ apenas $2k$ são palavras de código (as que correspondem numa relação de um para um aos blocos binários de comprimento $k$ gerados pela fonte). Este esquema está representado simbolicamente na Figura~\ref{fig3:cod}. 8.4. No caso de a transmissão se efetivar sem erros, o processo de decodificação conduz ao bloco de comprimento $k$ que havia sido gerado pela fonte. Quando ocorrem erros de transmissão, a palavra de comprimento $m$ recebida pode não ser uma palavra de código e o erro é detectado e/ou corrigido.
 Figura 8.4: Codificação de canal
@@ -454,6 +520,9 @@ Figura 8.4: Codificação de canal
    			\caption{Codificação de canal}
    			\label{fig3:cod}
 		\end{figure}
+
+
+O campo $\mathbb{GF}_{256}$ usado para construir a codificação RS implementada no Hadoop consiste de todos os polinômios $P[x]$ com coeficientes binários e grau até 255 e as operações de adição e multiplicação, calculadas módulo o polinômio irredutível $P[x]\ =\ x^8 + x^4 + x^3 + x^2 + 1$.
 
 %Teoria da Informação: Capacidade do Canal de Transmissão
 
