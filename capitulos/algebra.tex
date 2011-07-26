@@ -328,7 +328,7 @@ Dado um campo $\mathbb{GF}_q$, as operações adição e multiplicação seguem as seg
 \begin{proof}
 \end{proof}
 
-\begin{proposition}  Cada elemento $b \in \mathbb{GF}(q)$ não nulo pode ser representado através de um conjunto com potências de um elemento primitivo, com o expoente variando de $1$ até $q-1$.
+\begin{proposition}  Cada elemento $b \in \mathbb{GF}_q$ não nulo pode ser representado através de um conjunto com potências de um elemento primitivo, com o expoente variando de $1$ até $q-1$.
 \end{proposition}
 
 \begin{proof}
@@ -438,11 +438,25 @@ $\square$
 
 Usando o lemma~\ref{lema1}, podemos mostrar que a operação de divisão de polinômios pode ser feita em $\mathbb{GF}_p[x]$.
 
+\begin{definition} Seja $f, g \in \mathbb{GF}_p[x]$, $f$ e $g$ polinômios e $g$ não nulo. Existem um par de polinômios únicos $q$ e $r$ tal que $f(x)\ =\ q(x)g(x)\ +\ r(x)$, com $grau(r(x)) < grau(g(x))$.
+\end{definition}
+
+\begin{definition} {\bf Polinômio Irredutível} \label{PolIrred} \index{Polinômio Irredutível} Seja $p(x)$ um polinômio de grau $m$ sobre $\mathbb{GF}_2$. Se $p(x)$ não for divisível por nenhum polinômio de $grau \leq m-1$, então $p(x)$ é irredutível sobre $\mathbb{GF}_2$.
+\end{definition}
+
+\begin{proposition}
+$\forall$ polinômio irredutível sobre $\mathbb{GF}_2$ de grau $m$ divide $x^{2^m-1} + 1$.
+\end{proposition}
+
+\begin{definition} {\bf Polinômio Primitivo} \label{PolPrim} \index{Polinômio Primitivo}
+Seja $p(x)$ um polinômio de grau $m$ sobre $\mathbb{GF}_2$. Se $2^m-1$ for o menor inteiro positivo para o qual $p(x)$ divide $x^{2^m-1} + 1$, então $p(x)$ é um polinômio primitivo de grau $m$ sobre $\mathbb{GF}_2$.
+\end{definition}
+
 \begin{definition} {\bf Polinômio Redutível e Irredutível} \label{PolRedIrred} \index{Polinômio Redutível e Irredutível} Dado um corpo $\mathbb{GF}_p[x]$, um polinômio $f$  é redutível em $\mathbb{GF}_p[x]$, se existem os polinômios $g, h$ em $\mathbb{GF}_p[x]$ de grau $\geq 1$ tais que $f\ =\ gh$ e $f$ e senão, $f$ é irredutível em $\mathbb{GF}_p[x]$.
 \end{definition}
 
 \begin{proposition}
-Seja $F[x]$ um polinômio irredutível de grau $n$ em $GP_p[x]$. Prove que $GP_p[x]/F[x]$ é um corpo finito com $p^n$ elementos.
+Seja $F[x]$ um polinômio irredutível de grau $n$ em $GP_p[x]$. Então $GP_p[x]/F[x]$ é um corpo finito com $p^n$ elementos.
 \end{proposition}
 
 \begin{theorem} Seja $P[x]$ um irredutível polinômio sob $\mathbb{GP}_p$ e cujo grau é $m$. Então o conjunto de todos os polinômios em $x$ de grau $m-1$ e coefientes $\in \mathbb{GP}_p$ com as operações adição e multiplicação módulo-$2$ é um campo de ordem $p_m$.
@@ -452,7 +466,7 @@ Seja $F[x]$ um polinômio irredutível de grau $n$ em $GP_p[x]$. Prove que $GP_p[x
 
 Códigos de bloco são construídos com elementos de um corpo $\mathbb{GF}_q$ onde $q$ ou é primo $p$ ou uma potência de $p$. Os dados de sistemas de transmissão e armazenamento de dados podem ser facilmente codificados em códigos com símbolos gerados a partir de um corpo $\mathbb{GF}_2$ ou $\mathbb{GF}_{2^m}$ \cite{Lin:1983}.
 
-$\mathbb{GF}_{2^m}$ consiste de todos os polinômios $P$ em $\alpha$ de grau $\leq m-1$ com coeficientes em $\mathbb{GF}_2$. Um elemento em $\mathbb{GF}_{2^m}$ é da forma: 
+O corpo $\mathbb{GF}_{2^m}$ consiste de todos os polinômios $P$ em $\alpha$ de grau $\leq m-1$ com coeficientes em $\mathbb{GF}_2$. Um elemento em $\mathbb{GF}_{2^m}$ é da forma: 
 
 \begin{align*}
 a_{m-1} \ldots a_1 a_0 \leftrightarrow a_{m-1}\alpha^{m-1}\ +\ \ldots +\ a_1\alpha\ +\ a_0
@@ -526,7 +540,7 @@ Figura 8.4: Codificação de canal
 		\end{figure}
 
 
-O campo $\mathbb{GF}_{256}$ usado para construir a codificação RS implementada no Hadoop consiste de todos os polinômios $P[x]$ com coeficientes binários e grau até 255 e as operações de adição e multiplicação, calculadas módulo o polinômio irredutível $P[x]\ =\ x^8 + x^4 + x^3 + x^2 + 1$.
+O campo $\mathbb{GF}_{256}$ usado para construir a codificação RS implementada no Hadoop consiste de polinômios $P[x]$ com coeficientes binários e grau até $7$ e as operações de adição e multiplicação, calculadas módulo o polinômio irredutível $P[x]\ =\ x^8 + x^4 + x^3 + x^2 + 1$.
 
 %Teoria da Informação: Capacidade do Canal de Transmissão
 
