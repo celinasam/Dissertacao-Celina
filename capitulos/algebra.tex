@@ -139,6 +139,9 @@ $\square$
 \begin{definition} {\bf Grupo} \label{grupo} \index{Grupo} Se $(G, \phi)$ é um grupo, então satisfaz as propriedades associatividade, elemento neutro e elemento inverso. Se $\phi(a,b)\ =\ a+b$, então $G$ é um grupo aditivo. Se $\phi(a,b)\ =\ a.b$, então $G$ é um grupo multiplicativo. Se o grupo $(G, \phi)$ satisfaz a propriedade de comutatividade, ele é um grupo abeliano ou comutativo.
 \end{definition}
 
+\begin{definition} {\bf Classe de Conjugação} \label{clconj} \index{Classe de Conjugação} Dois elementos $a, b \in G$ são chamados conjugados, se $\exists g \in G$ tal que $gag^{-1}\ =\ b$. A classe de equivalência que contém o elemento $a \in G$ é $Cl(a)\ =\ \{gag^{-1}:\ g \in G \}$ e é chamado a classe de conjugação de $a$.
+\end{definition}
+
 \begin{definition} $A$ é um grupo comutativo aditivo, não vazio, e $\exists \varphi$ um segunda operação binária $A\ X\ A \rightarrow A$ chamada multiplicação. Considere as seguintes propriedades:
   \begin{description}
      \item [Associatividade] Se $a, b, c \in A$ então $a.(b.c)\ =\ (a.b).c$.
@@ -543,8 +546,33 @@ Figura 8.4: Codificação de canal
    			\label{fig3:cod}
 		\end{figure}
 
+\section{Construção de $\mathbb{GF}_q$}
 
-O campo $\mathbb{GF}_{256}$ usado para construir a codificação RS implementada no Hadoop consiste de polinômios $P[x]$ com coeficientes binários e grau até $7$ e as operações de adição e multiplicação, calculadas módulo o polinômio irredutível $P[x]\ =\ x^8 + x^4 + x^3 + x^2 + 1$.
+\begin{definition} Seja $\alpha$ um elemento primitivo em $\mathbb{GF}_q, q=2^m$. Então $\alpha$ tem ordem $q -1$ e as potências distintas de $\alpha$ geram todos os elementos diferentes de $0$ de $\mathbb{GF}_q$.
+\end{definition}
+
+\begin{definition} Um polinômio $p(x)$ irredutível sobre $\mathbb{GF}_q$ de grau $m$ é um polinômio primitivo se suas raízes forem um elemento de $\mathbb{GF}_q$.
+\end{definition}
+
+\begin{definition} Seja $p(x)$ um polinômio com coeficientes em $\mathbb{GF}_2$. Seja $\beta \in \mathbb{GF}_q$. Se $\beta$ é uma raiz de $p(x)$, então $\forall l \geq 0,\ \beta^{2^{l}}$ é também uma raiz de $p(x)$. O elemento $\beta^{2^{l}}$ é chamado conjugado de $\beta$.
+\end{definition}
+
+\begin{theorem} {\bf Raízes do Polinômio} \label{RaiPol} \index{Raízes do Polinômio} Os $2^m -1$ elementos diferentes de $0 \in \mathbb{GF}_q$ são as raízes do polinômio $x^{2^{m}-1} + 1$.
+\end{theorem}
+
+\begin{corollary} Para todos os elementos $ \in \mathbb{GF}_q$, incluindo o elemento $0$, esses são as raízes do polinômio $x^{2^{m}-1} + x$.
+\end{corollary}
+
+\begin{definition} {\bf Polinômio Minimal} \label{PolMinimal} \index{Polinômio Minimal}  Seja $\beta \in \mathbb{GF}_q$. O polinômio minimal $\phi(x)$ de $\beta$ é o polinômio de menor grau com coeficientes em $\mathbb{GF}_2$ tal que $\phi(\beta)=0$.
+\end{definition}
+
+\begin{theorem} Seja $\phi(x)$ o polinômio minimal de um elemento $\beta \in \mathbb{GF}_q$ e $e$ o menor inteiro tal que $\beta^{2^{e}}=\beta$. Então $\phi(x)= \displaystyle\prod\limits_{i=0}^{e-1} (x + \beta^{2^{i}})$
+\end{theorem}
+
+\begin{definition} {\bf Polinômio Gerador} \label{PolGer} \index{Polinômio Gerador}  
+\end{definition}
+
+O campo $\mathbb{GF}_{2^8-1}$ usado para construir a codificação RS implementada no Hadoop consiste de polinômios $P[x]$ com coeficientes binários e grau até $7 ?$ e as operações de adição e multiplicação, calculadas módulo o polinômio irredutível $P[x]\ =\ x^8 + x^4 + x^3 + x^2 + 1$.
 
 %Teoria da Informação: Capacidade do Canal de Transmissão
 
