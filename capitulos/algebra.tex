@@ -18,7 +18,7 @@ Códigos BCH e RS são projetados através da aritmética de corpos finitos\footnote
 Primitive elements dance for hours $\ldots$ S.B. Weinstein}. Corpos finitos
 também são chamados corpos de Galois, em homenagem ao matemático francês Évariste Galois~\cite{Connell:2004}.
 
-\section{Definições}
+\section{Definições em $\mathbb{Z}$}
 
 \begin{definition} {\bf Congruência Linear} \index{Congruência Linear} Seja $q \in \mathbb{Z}$. Dois inteiros $a$
  e $b$ dizem-se congruentes módulo$-q$ se tiverem o mesmo resto na divisão por
@@ -124,6 +124,8 @@ Suponhamos que $[a]$ seja inversível. Assim, $\exists b \in \mathbb{Z}$ tal que 
 Suponhamos que $MDC(a,m)\ =\ 1$. Pela proposição~\ref{primos}, $\exists b, c \in \mathbb{Z}$ tais que $ba\ +\ cm\ =\ 1$. Assim, $b.a \equiv 1\ mod\ q$. Portanto, $[a].[b]\ =\ [a.b]\ =\ 1$.
 $\square$
 \end{proof}
+
+\section{Grupo, Anel e Corpo de Galois}
 
 \begin{definition} $\mathbb{G}$ é um conjunto não vazio, $\phi$ : $\mathbb{G}\ X\ \mathbb{G} \rightarrow \mathbb{G}$, é uma função. $\phi$ é chamada operação binária tal que  $\phi(a,b)\ =\ a+b $ ou $\phi(a,b)\ =\ a.b$. Considere as seguintes propriedades:
   \begin{description}
@@ -367,6 +369,8 @@ Como $(k^p-k)$ é divisível por $p$ por hipótese, temos que $(k+1)^p - (k+1)$ é d
 $\square$
 \end{proof}
 
+\section{Anéis de Polinômios}
+
 \begin{definition} {\bf Anel de Polinômios} \label{AnelPol} \index{Anel de Polinômios} Dado um corpo $\mathbb{GF}_p$ definimos o anel comutativo com unidade $\mathbb{GF}_p[x]$ como sendo o conjunto das expressões da forma $P[x]\ =\ a_o\ +\ a_1x\ +\ a_2x^2\ + \ldots +\ a_{n-1}x^{n-1}\ +\ a_nx^n$, com $a_n \neq 0$ e $n \in \mathbb{Z}^+$ chamados de polinômios com coeficientes em $\mathbb{GF}_p$. Cada polinômio define uma função polinomial $p(c)\ :\ \mathbb{GF}_p \rightarrow \mathbb{GF}_p$, $c \longmapsto\ p(c)\ =\ a_o\ +\ a_1c\ +\ a_2c^2\ +\ \ldots +\ a_nc^n$. A distinção entre um polinômio e uma função polinomial é bem ilustrada pelo polinômio $x^p-x,\ x \in \mathbb{Z}$. Pelo teorema~\ref{Fermat}, a função polinomial $p(x)\ =\ x^p-x$ tem propriedades diferentes do polinômio equivalente, onde para $\forall x \in \mathbb{Z}$, temos que $P[x]\ =\ 0$.
 \end{definition}
 
@@ -462,7 +466,7 @@ Seja $F[x]$ um polinômio irredutível de grau $n$ em $GP_p[x]$. Então $GP_p[x]/F[
 \begin{theorem} Seja $P[x]$ um irredutível polinômio sob $\mathbb{GP}_p$ e cujo grau é $m$. Então o conjunto de todos os polinômios em $x$ de grau $m-1$ e coefientes $\in \mathbb{GP}_p$ com as operações adição e multiplicação módulo-$2$ é um campo de ordem $p_m$.
 \end{theorem}
 
-\section{Polinômios sobre ${\mathbb{GF}_q}^*$}
+\section{Polinômios sobre $\mathbb{GF}_q$}
 
 Códigos de bloco são construídos com elementos de um corpo $\mathbb{GF}_q$ onde $q$ ou é primo $p$ ou uma potência de $p$. Os dados de sistemas de transmissão e armazenamento de dados podem ser facilmente codificados em códigos com símbolos gerados a partir de um corpo $\mathbb{GF}_2$ ou $\mathbb{GF}_{2^m}$ \cite{Lin:1983}.
 

@@ -229,6 +229,12 @@ Segundo \cite{AF:2010}, as principais características de códigos de blocos são:
 
 Um código com $d_{min} = 1$ não tem capacidade de detectar erros.
 
+\begin{definition} Seja uma sequência de bits $w=w_0w_1 \ldots w_{k-1} \in \{0, 1\}^k$. Podemos definir $w$ como sendo um elemento $w=(w_0w_2 \ldots w_{k-1})$ do produto cartesiano:
+\begin{align*}
+{\mathbb{Z}_2}^k=\underbrace{\mathbb{Z}_2 \times \ldots \times \mathbb{Z}_2}_{k}
+\end{align*}
+\end{definition}
+
 \begin{definition}
 Seja $u=u_0u_1 \ldots u_k \in {\mathbb{Z}_2}^k$. O tamanho de $u$ é dado por 
 \begin{align*}
@@ -429,11 +435,10 @@ Códigos convolucionais podem ser usados para melhorar o desempenho da comunicaçã
 
 \section{Exemplos de Códigos Corretores de Erros}
 
-\begin{definition} Seja uma sequência de bits $w=w_0w_1 \ldots w_{n-1} \in \{0, 1\}^n$. Podemos definir $w$ como sendo um elemento $w=(w_0w_2 \ldots w_{n-1})$ do produto cartesiano:
+\begin{definition} Seja uma sequência de bits $w=w_0w_1 \ldots w_{m-1} \in \{0, 1\}^m$. Podemos definir $w$ como sendo um elemento $w=(w_0w_2 \ldots w_{m-1})$ do produto cartesiano:
 \begin{align*}
-{\mathbb{Z}_2}^n=\underbrace{\mathbb{Z}_2 \times \ldots \times \mathbb{Z}_2}_{n}
+{\mathbb{Z}_2}^m=\underbrace{\mathbb{Z}_2 \times \ldots \times \mathbb{Z}_2}_{m}
 \end{align*}
-
 \end{definition}
 
 \begin{example} Considere o código de bloco (6,5). A função de codificação $\alpha\ :\ {\mathbb{Z}_2}^5 \rightarrow {\mathbb{Z}_2}^6$ é definida da seguinte forma: para cada $w \in {\mathbb{Z}_2}^5$, seja $c=\alpha(w)=w_0w_1 \ldots w_4w_5 \in {\mathbb{Z}_2}^6$ e $w5=w_0+w_1+ \ldots +w_4\ (mod\ 2)$. Cada $c \in {\mathbb{Z}_2}^6$, o número de bits $1$ é sempre par. Desta forma, um erro (de transmissão ou de armazenamento) será detectado, mas sem a possibilidade de correção.
