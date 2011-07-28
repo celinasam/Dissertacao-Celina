@@ -518,6 +518,51 @@ com\ a_i \in \{0, 1\}\ e\ n \in \{0, 1, 2, 3, 4, 5, 6, 7\}
 \end{align*}
 
 
+\section{Construção de $\mathbb{GF}_q$}
+
+\begin{definition} {\bf Representação Exponencial} \label{RepExp} \index{Representação Exponencial} Seja $\alpha$ um elemento primitivo em $\mathbb{GF}_q, q=2^m$. Então $\alpha$ tem ordem $q -1$ e as potências distintas de $\alpha$ $\{ 1, \alpha, \alpha^2, \ldots \alpha^{q-2}\}$ geram todos os elementos diferentes de $0$ de $\mathbb{GF}_q$.
+
+A representação exponencial é utilizada na operação multiplicação de dois elementos do $\mathbb{GF}_q$, pois $\alpha^i.\alpha^j=\alpha^{i+j}$.
+
+\end{definition}
+
+\begin{definition} Um polinômio $p(x)$ irredutível sobre $\mathbb{GF}_q$ de grau $m$ é um polinômio primitivo se suas raízes forem um elemento de $\mathbb{GF}_q$.
+\end{definition}
+
+\begin{definition} Seja $p(x)$ um polinômio com coeficientes em $\mathbb{GF}_2$. Seja $\beta \in \mathbb{GF}_q$. Se $\beta$ é uma raiz de $p(x)$, então $\forall l \geq 0,\ \beta^{2^{l}}$ é também uma raiz de $p(x)$. O elemento $\beta^{2^{l}}$ é chamado conjugado de $\beta$.
+\end{definition}
+
+\begin{theorem} {\bf Raízes do Polinômio} \label{RaiPol} \index{Raízes do Polinômio} Os $2^m -1$ elementos diferentes de $0 \in \mathbb{GF}_q$ são as raízes do polinômio $x^{2^{m}-1} + 1$.
+\end{theorem}
+
+\begin{corollary} Para todos os elementos $ \in \mathbb{GF}_q$, incluindo o elemento $0$, esses são as raízes do polinômio $x^{2^{m}-1} + x$.
+\end{corollary}
+
+\begin{definition} {\bf Polinômio Minimal} \label{PolMinimal} \index{Polinômio Minimal}  Seja $\beta \in \mathbb{GF}_q$. O polinômio minimal $\phi(x)$ de $\beta$ é o polinômio de menor grau com coeficientes em $\mathbb{GF}_2$ tal que $\phi(\beta)=0$.
+\end{definition}
+
+\begin{theorem} Seja $\phi(x)$ o polinômio minimal de um elemento $\beta \in \mathbb{GF}_q$ e $e$ o menor inteiro tal que $\beta^{2^{e}}=\beta$. Então $\phi(x)= \displaystyle\prod\limits_{i=0}^{e-1} (x + \beta^{2^{i}})$
+\end{theorem}
+
+\begin{definition} {\bf Polinômio Gerador} \label{PolGer} \index{Polinômio Gerador} Seja $C:(m,k)$ um código cíclico sobre $\mathbb{GF}_q$. $\exists g(x)$ de grau $1$, tal que uma $m$-tupla $c \in C:(m,k)$ é uma palavra-código se, e somente se, $g(x)\ |\ c$ .
+\end{definition}
+
+\begin{property} O polinômio gerador é único. O grau do polinômio gerador é $m-k$. $g(x)$ é o polinômio código de menor grau entre todos os polinômios código. O polinômio gerador é um divisor de $x^m -1$.
+\end{property}
+
+\begin{definition} O polinômio gerador $g(x)$ é da forma $g[x]\ =\ 1\ +\ g_1x\ +\ g_2x^2\ + \ldots +\ g_{m-k}x^{m-k}$.
+\end{definition}
+
+\begin{proposition} Seja $a(x)= \ ao\ +\ a_1x\ +\ a_2x^2\ + \ldots +\ a_{k-1}x^{k-1}$. Então, $(a(x)g(x)\ mod\ (x^m -1)) \in C(m,k)$.
+\end{proposition}
+
+\begin{proof} $a(x)g(x)$ pode ser escrito da seguinte forma: 
+\begin{align*}
+\underbrace{a_og(x)}_{\in C} + \underbrace{a_1g(x)}_{\in C} + \ldots + \underbrace{a_{k-1}x^{k-1}g(x)}_{\in C}
+\end{align*}
+Portanto,  $a(x)g(x) \in C$.  
+\end{proof}
+
 \section{Construção de um Código Corretor de Erros}
 %		\subsection{Métrica de Hamming}
 %		página 4 - livro Hefez
@@ -574,51 +619,6 @@ Figura 8.4: Codificação de canal
    			\caption{Codificação de canal}
    			\label{fig3:cod}
 		\end{figure}
-
-\section{Construção de $\mathbb{GF}_q$}
-
-\begin{definition} {\bf Representação Exponencial} \label{RepExp} \index{Representação Exponencial} Seja $\alpha$ um elemento primitivo em $\mathbb{GF}_q, q=2^m$. Então $\alpha$ tem ordem $q -1$ e as potências distintas de $\alpha$ $\{ 1, \alpha, \alpha^2, \ldots \alpha^{q-2}\}$ geram todos os elementos diferentes de $0$ de $\mathbb{GF}_q$.
-
-A representação exponencial é utilizada na operação multiplicação de dois elementos do $\mathbb{GF}_q$, pois $\alpha^i.\alpha^j=\alpha^{i+j}$.
-
-\end{definition}
-
-\begin{definition} Um polinômio $p(x)$ irredutível sobre $\mathbb{GF}_q$ de grau $m$ é um polinômio primitivo se suas raízes forem um elemento de $\mathbb{GF}_q$.
-\end{definition}
-
-\begin{definition} Seja $p(x)$ um polinômio com coeficientes em $\mathbb{GF}_2$. Seja $\beta \in \mathbb{GF}_q$. Se $\beta$ é uma raiz de $p(x)$, então $\forall l \geq 0,\ \beta^{2^{l}}$ é também uma raiz de $p(x)$. O elemento $\beta^{2^{l}}$ é chamado conjugado de $\beta$.
-\end{definition}
-
-\begin{theorem} {\bf Raízes do Polinômio} \label{RaiPol} \index{Raízes do Polinômio} Os $2^m -1$ elementos diferentes de $0 \in \mathbb{GF}_q$ são as raízes do polinômio $x^{2^{m}-1} + 1$.
-\end{theorem}
-
-\begin{corollary} Para todos os elementos $ \in \mathbb{GF}_q$, incluindo o elemento $0$, esses são as raízes do polinômio $x^{2^{m}-1} + x$.
-\end{corollary}
-
-\begin{definition} {\bf Polinômio Minimal} \label{PolMinimal} \index{Polinômio Minimal}  Seja $\beta \in \mathbb{GF}_q$. O polinômio minimal $\phi(x)$ de $\beta$ é o polinômio de menor grau com coeficientes em $\mathbb{GF}_2$ tal que $\phi(\beta)=0$.
-\end{definition}
-
-\begin{theorem} Seja $\phi(x)$ o polinômio minimal de um elemento $\beta \in \mathbb{GF}_q$ e $e$ o menor inteiro tal que $\beta^{2^{e}}=\beta$. Então $\phi(x)= \displaystyle\prod\limits_{i=0}^{e-1} (x + \beta^{2^{i}})$
-\end{theorem}
-
-\begin{definition} {\bf Polinômio Gerador} \label{PolGer} \index{Polinômio Gerador} Seja $C:(m,k)$ um código cíclico sobre $\mathbb{GF}_q$. $\exists g(x)$ de grau $1$, tal que uma $m$-tupla $c \in C:(m,k)$ é uma palavra-código se, e somente se, $g(x)\ |\ c$ .
-\end{definition}
-
-\begin{property} O polinômio gerador é único. O grau do polinômio gerador é $m-k$. $g(x)$ é o polinômio código de menor grau entre todos os polinômios código. O polinômio gerador é um divisor de $x^m -1$.
-\end{property}
-
-\begin{definition} O polinômio gerador $g(x)$ é da forma $g[x]\ =\ 1\ +\ g_1x\ +\ g_2x^2\ + \ldots +\ g_{m-k}x^{m-k}$.
-\end{definition}
-
-\begin{proposition} Seja $a(x)= \ ao\ +\ a_1x\ +\ a_2x^2\ + \ldots +\ a_{k-1}x^{k-1}$. Então, $(a(x)g(x)\ mod\ (x^m -1)) \in C(m,k)$.
-\end{proposition}
-
-\begin{proof} $a(x)g(x)$ pode ser escrito da seguinte forma: 
-\begin{align*}
-\underbrace{a_og(x)}_{\in C} + \underbrace{a_1g(x)}_{\in C} + \ldots + \underbrace{a_{k-1}x^{k-1}g(x)}_{\in C}
-\end{align*}
-Portanto,  $a(x)g(x) \in C$.  
-\end{proof}
 
 É de especial interesse o caso de $\mathbb{GF}_q, q=2^m,\ m = 8$, quando cada símbolo representa 1 byte. Um byte representa 8 bits, que é a menor palavra de dados usualmente encontrada em sistemas de computadores.
 
