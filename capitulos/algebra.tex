@@ -125,7 +125,22 @@ Suponhamos que $MDC(a,m)\ =\ 1$. Pela proposição~\ref{primos}, $\exists b, c \in
 $\square$
 \end{proof}
 
-\section{Grupo, Anel e Corpo de Galois}
+\section{Espaço Vetorial, Grupo, Anel e Corpo de Galois}
+
+\begin{definition} {\bf Espaço Vetorial} \label{EspVet} \index{Espaço Vetorial} Um espaço vetorial $\mathbb{V}$ é um conjunto não vazio de objetos chamados vetores e as suas duas operações chamadas adição e multiplicação com números reais, que seguem 10 propriedades. As propriedades são válidas para $\forall u, v, w \in V$ e $a, b \in \mathbb{R}$.
+   \begin{enumerate}[1]
+      \item a soma $v + u \in V$ 
+      \item $u + v\ =\ v + u$
+      \item $(u + v) + w\ =\  u + (v + w)$
+      \item $\exists 0 \in V$ um vetor zero tal que $u + 0\ =\ u$
+      \item $\forall u \in V \exists -u \in V$ um vetor tal que $u + (-u)\ =\ 0$
+      \item $a.u \in V$
+      \item $a.(u + v)\ =\ a.u + a.v$
+      \item $(a+b).u\ =\ a.u + b.u$
+      \item $a(b.u)\ =\ (ab).u$
+      \item $1.u\ =\ u$
+   \end{enumerate}
+\end{definition}
 
 \begin{definition} $\mathbb{G}$ é um conjunto não vazio, $\phi$ : $\mathbb{G}\ X\ \mathbb{G} \rightarrow \mathbb{G}$, é uma função. $\phi$ é chamada operação binária tal que  $\phi(a,b)\ =\ a+b $ ou $\phi(a,b)\ =\ a.b$. Considere as seguintes propriedades:
   \begin{description}
@@ -197,22 +212,8 @@ Se $\mathbb{Z}_q$ é um corpo se, e somente se, todos os seus elementos $\bar{0},
 
 %	A operação $\bigoplus$ é chamada adição módulo 2. Portanto $G$ é fechado em $\bigoplus$ e $\bigoplus$ é comutativa. Também é possível demonstrar que $\bigoplus$ é associativa. O elemento $0$ é o elemento identidade. Os inversos de cada um dos elementos de $G$ também pertencem a $G$.
 
-\begin{definition} {\bf Espaço Vetorial} \label{EspVet} \index{Espaço Vetorial} Um espaço vetorial $\mathbb{V}$ é um conjunto não vazio de objetos chamados vetores e as suas duas operações chamadas adição e multiplicação com números reais, que seguem 10 propriedades. As propriedades são válidas para $\forall u, v, w \in V$ e $a, b \in \mathbb{R}$.
-   \begin{enumerate}[1]
-      \item a soma $v + u \in V$ 
-      \item $u + v\ =\ v + u$
-      \item $(u + v) + w\ =\  u + (v + w)$
-      \item $\exists 0 \in V$ um vetor zero tal que $u + 0\ =\ u$
-      \item $\forall u \in V \exists -u \in V$ um vetor tal que $u + (-u)\ =\ 0$
-      \item $a.u \in V$
-      \item $a.(u + v)\ =\ a.u + a.v$
-      \item $(a+b).u\ =\ a.u + b.u$
-      \item $a(b.u)\ =\ (ab).u$
-      \item $1.u\ =\ u$
-   \end{enumerate}
-\end{definition}
 
-\begin{theorem} Seja $\mathbb{GF}_q$ um corpo finito com $q$ elementos. Então:
+\begin{theorem} {\bf $\mathbb{GF}_q$} \label{GFq} \index{$\mathbb{GF}_q$} Seja $\mathbb{GF}_q$ um corpo finito com $q$ elementos. Então:
    \begin{enumerate}[(i)]
      \item $q = p^n$ para algum primo $p$ e para algum inteiro positivo $n$,
      \item $\mathbb{GF}_q$ contém o sub-campo $\mathbb{GF}_p$,
@@ -481,6 +482,34 @@ a_{m-1} \ldots a_1 a_0 \leftrightarrow a_{m-1}\alpha^{m-1}\ +\ \ldots +\ a_1\alp
 
 onde $a_i \in \mathbb{GF}_2$ e $P(\alpha)\ =\ 0$
 
+Na representação polinomial, o elemento primitivo $\alpha$ é a raiz do polinômio primitivo $p(x)$ de grau $m$. Essa representação é usada para a operação adição de dois elementos de $\mathbb{GF}_{2^m}$.
+
+\begin{example}
+Considere o campo $\mathbb{GF}_{2^4}$ definido pelo polinômio primitivo $p(x)=1 + x^3 + x^4$.  O campo tem $2^4=16$ elementos. Esses serão os símbolos usados pelo código. A representação binária é expressa pela pela tupla $(x^4, x^3, x^1, x^0)$. Na representação exponencial, o elemento nulo e os 4 primeiros elementos não nulos $\alpha, \alpha^2, \alpha^3, \alpha^4$ são expressos de forma trivial. Para obter a representação dos outros elementos $\alpha^5, \ldots , \alpha^{14}$ é necessário usar o polinômio primitivo. Para isso, define-se $\alpha$ raiz do polinômio primitivo: \footnote{Na aritmética binária, -1= +1.}
+\begin{align*}
+p(\alpha) = 0\\
+1 + \alpha + \alpha^4 = 0\\
+\alpha^4 = -1-\alpha = 1+\alpha
+\end{align*}
+Para se obter os elementos:
+\begin{align*}
+\alpha^5 = \alpha.\alpha^4 = \alpha.(1+ \alpha) = \alpha + \alpha^2\\
+\alpha^6 = \alpha.\alpha^5 = \alpha^2 + \alpha^3\\
+\alpha^7 = \alpha.\alpha^6 = \alpha^3 + \alpha^4 = 1 + \alpha + \alpha^3\\
+\alpha^8 = \alpha.\alpha^7 = \alpha + \alpha^2 + \alpha^4  = \alpha + \alpha^2 + 1 + \alpha = 1 + \alpha^2\\
+\alpha^9 = \alpha.\alpha^8 = \alpha + \alpha^3\\
+\alpha^{10} = \alpha.\alpha^9 = \alpha^2 + \alpha^4\\
+\alpha^{11} = \alpha.\alpha^{10} = \alpha + \alpha^2 + \alpha^3\\
+\alpha^{12} = \alpha.\alpha^{11} = \alpha^2 + \alpha^3 + \alpha^4 = 1 + \alpha + \alpha^2 + \alpha ^3\\
+\alpha^{13} = \alpha.\alpha^{12} = \alpha + \alpha^2 + \alpha^3 + \alpha^4 = \alpha + \alpha^2 + \alpha^3 + 1 + \alpha = 1 + \alpha^2 + \alpha^3\\
+\alpha^{14} = \alpha.\alpha^{13} = \alpha + \alpha^3 + \alpha^4 = \alpha + \alpha^3 + 1 + \alpha = 1 + \alpha^3\\
+\alpha^{15} = \alpha.\alpha^{14} = \alpha^0
+\end{align*}
+
+\input{tabelas/tabela-representacao-corpo-galois8}
+
+\end{example}
+
 O campo $\mathbb{GF}_{256}$ é um espaço vetorial sob $\mathbb{GF}_2$ de dimensão $8$ e é muito usado para construir códigos de bloco. A aritmética
 binária utiliza adição e multiplicação módulo-$2$. Um polinômio $F[x]$ definido sobre $\mathbb{GF}_2$ possui a forma:
 \begin{align*}
@@ -548,7 +577,10 @@ Figura 8.4: Codificação de canal
 
 \section{Construção de $\mathbb{GF}_q$}
 
-\begin{definition} Seja $\alpha$ um elemento primitivo em $\mathbb{GF}_q, q=2^m$. Então $\alpha$ tem ordem $q -1$ e as potências distintas de $\alpha$ geram todos os elementos diferentes de $0$ de $\mathbb{GF}_q$.
+\begin{definition} {\bf Representação Exponencial} \label{RepExp} \index{Representação Exponencial} Seja $\alpha$ um elemento primitivo em $\mathbb{GF}_q, q=2^m$. Então $\alpha$ tem ordem $q -1$ e as potências distintas de $\alpha$ $\{ 1, \alpha, \alpha^2, \ldots \alpha^{q-2}\}$ geram todos os elementos diferentes de $0$ de $\mathbb{GF}_q$.
+
+A representação exponencial é utilizada na operação multiplicação de dois elementos do $\mathbb{GF}_q$, pois $\alpha^i.\alpha^j=\alpha^{i+j}$.
+
 \end{definition}
 
 \begin{definition} Um polinômio $p(x)$ irredutível sobre $\mathbb{GF}_q$ de grau $m$ é um polinômio primitivo se suas raízes forem um elemento de $\mathbb{GF}_q$.
@@ -569,8 +601,28 @@ Figura 8.4: Codificação de canal
 \begin{theorem} Seja $\phi(x)$ o polinômio minimal de um elemento $\beta \in \mathbb{GF}_q$ e $e$ o menor inteiro tal que $\beta^{2^{e}}=\beta$. Então $\phi(x)= \displaystyle\prod\limits_{i=0}^{e-1} (x + \beta^{2^{i}})$
 \end{theorem}
 
-\begin{definition} {\bf Polinômio Gerador} \label{PolGer} \index{Polinômio Gerador}  
+\begin{definition} {\bf Polinômio Gerador} \label{PolGer} \index{Polinômio Gerador} Seja $C:(m,k)$ um código cíclico sobre $\mathbb{GF}_q$. $\exists g(x)$ de grau $1$, tal que uma $m$-tupla $c \in C:(m,k)$ é uma palavra-código se, e somente se, $g(x)\ |\ c$ .
 \end{definition}
+
+\begin{property} O polinômio gerador é único. O grau do polinômio gerador é $m-k$. $g(x)$ é o polinômio código de menor grau entre todos os polinômios código. O polinômio gerador é um divisor de $x^m -1$.
+\end{property}
+
+\begin{definition} O polinômio gerador $g(x)$ é da forma $g[x]\ =\ 1\ +\ g_1x\ +\ g_2x^2\ + \ldots +\ g_{m-k}x^{m-k}$.
+\end{definition}
+
+\begin{proposition} Seja $a(x)= \ ao\ +\ a_1x\ +\ a_2x^2\ + \ldots +\ a_{k-1}x^{k-1}$. Então, $(a(x)g(x)\ mod\ (x^m -1)) \in C(m,k)$.
+\end{proposition}
+
+\begin{proof} $a(x)g(x)$ pode ser escrito da seguinte forma: 
+\begin{align*}
+\underbrace{a_og(x)}_{\in C} + \underbrace{a_1g(x)}_{\in C} + \ldots + \underbrace{a_{k-1}x^{k-1}g(x)}_{\in C}
+\end{align*}
+Portanto,  $a(x)g(x) \in C$.  
+\end{proof}
+
+É de especial interesse o caso de $\mathbb{GF}_q, q=2^m,\ m = 8$, quando cada símbolo representa 1 byte. Um byte representa 8 bits, que é a menor palavra de dados usualmente encontrada em sistemas de computadores.
+
+Para $m$ grande, a determinação da representação polinomial de cada elemento de forma algébrica é inviável. O mapeamento dos elementos de $\mathbb{GF}_q$ da representação exponencial para representação polinomial pode ser realizado de forma mais genérica utilizando a idéia de um circuito com registradores de deslocamento com realimentação linear (Linear Feedback Shift Register, LFSR). Esse circuito consiste em $m$ flip-flops em cascata, com realimentação do bit mais significativo. 
 
 O campo $\mathbb{GF}_{2^8-1}$ usado para construir a codificação RS implementada no Hadoop consiste de polinômios $P[x]$ com coeficientes binários e grau até $7 ?$ e as operações de adição e multiplicação, calculadas módulo o polinômio irredutível $P[x]\ =\ x^8 + x^4 + x^3 + x^2 + 1$.
 
