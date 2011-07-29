@@ -38,7 +38,6 @@ também são chamados corpos de Galois, em homenagem ao matemático francês Évarist
 residual módulo $q$ do elemento $a \in \mathbb{Z}$ pode ser assim definida:
 
 \begin{align*}
-& \bar{a}\ =\ \{ x \in \mathbb{Z}\ tal\ que\ x \equiv a(mod\ q)\}\\
 & \bar{a}\ =\ \{ x \in \mathbb{Z}\ tal\ que\ x \equiv a(mod\ q)\}
 \end{align*}
 
@@ -60,7 +59,7 @@ Notemos que $\mathbb{Z}_q$ tem exatamente $q$ elementos, portanto $\mathbb{Z}_q$
 \begin{property} Se a$\ \equiv\ b(mod\ q)$, então $\bar{a} = \bar{b}$.
 \end{property}
 
-Com o objetivo de determinar quais são os $\mathbb{Z}_q$ que são corpos, vamos apresentar
+Com o objetivo de determinar quais são os $\mathbb{Z}_q$ que são corpos, vamos apresentar mais alguns conceitos em $\mathbb{Z}$.
 
 \begin{definition} {\bf Máximo Divisor Comum} \label{mdc} \index{Máximo Divisor Comum} Seja $a$ e $b \in \mathbb{Z}$ com $a \neq 0$ ou $b \neq 0$. O $MDC$ de $a$ e $b$ é $d \in \mathbb{Z}$, se as condições forem verdadeiras:
   \begin{enumerate}[(i)]
@@ -128,7 +127,7 @@ $\square$
 \section{Espaço Vetorial, Grupo, Anel e Corpo de Galois}
 
 \begin{definition} {\bf Espaço Vetorial} \label{EspVet} \index{Espaço Vetorial} Um espaço vetorial $\mathbb{V}$ é um conjunto não vazio de objetos chamados vetores e as suas duas operações chamadas adição e multiplicação com números reais, que seguem 10 propriedades. As propriedades são válidas para $\forall u, v, w \in V$ e $a, b \in \mathbb{R}$.
-   \begin{enumerate}[1]
+   \begin{enumerate}[(i)]
       \item a soma $v + u \in V$ 
       \item $u + v\ =\ v + u$
       \item $(u + v) + w\ =\  u + (v + w)$
@@ -477,7 +476,7 @@ Códigos de bloco são construídos com elementos de um corpo $\mathbb{GF}_q$ onde 
 O corpo $\mathbb{GF}_{2^m}$ consiste de todos os polinômios $P$ em $\alpha$ de grau $\leq m-1$ com coeficientes em $\mathbb{GF}_2$. Um elemento em $\mathbb{GF}_{2^m}$ é da forma: 
 
 \begin{align*}
-a_{m-1} \ldots a_1 a_0 \leftrightarrow a_{m-1}\alpha^{m-1}\ +\ \ldots +\ a_1\alpha\ +\ a_0
+a_0a_1 \ldots a_{m-1} \leftrightarrow a_0\ +\ a_1\alpha\ + \ldots +\ a_{m-1}\alpha^{m-1}
 \end{align*}
 
 onde $a_i \in \mathbb{GF}_2$ e $P(\alpha)\ =\ 0$
@@ -563,7 +562,105 @@ A representação exponencial é utilizada na operação multiplicação de dois elemen
 Portanto,  $a(x)g(x) \in C$.  
 \end{proof}
 
+\begin{definition} {\bf Código de Blocos Linear} \label{CodBlocLin} \index{Código de Blocos Linear} Um código de bloco de tamanho $m$ e $2^k$ palavras mensagem é denominado um código de blocos linear $C:(m,k)$, se as $2^k$ palavras código formam um sub-espaço vetorial $S$ de dimensão k, contido no espaço de vetores formado por todos os vetores de tamanho $m$, $V_m$, com componentes no $\mathbb{GF}_2$. Um código é linear, quando o elemento  nulo pertence ao código e a soma de duas palavras código também é uma palavra código.
+\end{definition}
+
+\begin{definition} {\bf Matriz Geradora Não Sistemática} \label{matger} \index{Matriz Geradora Não Sistemática} Seja $C:(m,k)$ um código de blocos linear. Existem $k$ vetores linearmente independentes tal que cada palavra código $c$ pode ser escrita como uma combinação linear deles.
+\begin{align*}
+c=v_0g_0 \oplus v_1g_1 \oplus \ldots \oplus v_{k-1}g_{k-1}
+\end{align*}
+Esses vetores podem ser organizados em um matriz geradora $G$
+\begin{align*}
+G=\left[\begin{array}{c}
+g_0\\
+g_1\\
+\vdots\\
+g_{k-1}
+\end{array}\right]=
+\left[\begin{array}{cccc}
+g_{0,0} & g_{0,1} & \ldots & g_{0,m-1}\\
+g_{1,0} & g_{1,1} & \ldots & g_{1,m-1}\\
+\vdots & \vdots & \vdots & \vdots\\
+g_{k-1,0} & g_{k-1,1} & \ldots & g_{k-1,m-1}\\
+\end{array}\right]
+\end{align*}
+Todo vetor $v$, a mensagem a ser enviada ou armazenada pode ser  obtido através da multiplicação de matrizes:
+\begin{align*}
+{\bf c} = {\bf vG} = (v_0, v_1, \ldots, v_{k-1})
+\left[\begin{array}{cccc}
+g_{0,0} & g_{0,1} & \ldots & g_{0,m-1}\\
+g_{1,0} & g_{1,1} & \ldots & g_{1,m-1}\\
+\vdots & \vdots & \vdots & \vdots\\
+g_{k-1,0} & g_{k-1,1} & \ldots & g_{k-1,m-1}\\
+\end{array}\right]
+\end{align*}
+\begin{align*}
+= (v_0, v_1, \ldots, v_{k-1})
+\left[\begin{array}{c}
+g_0\\
+g_1\\
+\vdots\\
+g_{k-1}
+\end{array}\right]=v_0g_0 \oplus v_1g_1 \oplus \ldots \oplus v_{k-1}g_{k-1}
+\end{align*}
+As linhas da matriz geradora $G$ geram o código de blocos linear $C:(m,k)$, ou seja, as $k$ linhas linearmente independentes de $G$ definem completamente o código.
+\end{definition}
+
+\begin{definition} {\bf Matriz Geradora Sistemática} \label{matger} \index{Matriz Geradora Sistemática}  Um código de blocos linear e sistemático $C:(m,k)$ é especificado de forma única por uma matriz geradora da forma:
+\begin{align*}
+G=\left[\begin{array}{c}
+g_0\\
+g_1\\
+\vdots\\
+g_{k-1}
+\end{array}\right]=
+\left[\begin{array}{ccccccccc}
+p_{0,0} & p_{0,1} & \ldots & p_{0,m-k-1} & 1 & 0 & 0 & \ldots & 0 \\
+p_{1,0} & p_{1,1} & \ldots & p_{1,m-k-1} & 0 & 1 & 0 & \ldots & 0\\
+\vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots\\
+p_{k-1,0} & p_{k-1,1} & \ldots & p_{k-1,m-k-1} & 0 & 0 & 0 & \ldots & 1
+\end{array}\right]
+\end{align*}
+ou, de uma forma mais compacta:
+\begin{align*}
+{\bf G} = \left[ {\bf P I_k} \right]
+\end{align*}
+onde {\bf $P$} é a matriz de paridade.
+\end{definition}
+
+\begin{definition} {\bf Matriz de Verificação de Paridade} \label{matverpar} \index{Matriz de Verificação de Paridade}  Em um código de blocos linear e sistemático $C:(m,k)$,  as $2^k$ palavras código formam um sub-espaço vetorial $S$ associado a um sub-espaço dual $S_d$ do mesmo espaço $V_m$ que é gerado pela matriz de verificação de paridade $H$. Cada vetor linha da matriz $G$ é ortogonal às linhas da matriz $H$ e vice-versa. Assim, cada código tem um dual que é o código gerado pela matriz $H$. Este código é um código $(n, n - k)$. A forma sistemática da matriz de paridade $H$ do código $C$, gerado pela matriz $G$ é:
+\begin{align*}
+{\bf H} =\left[\begin{array}{ccccccccc}
+1 & 0 & 0 & \ldots & 0 & p_{0,0} & p_{1,0} & \ldots & p_{k-1,0}\\
+0 & 1 & 0 & \ldots & 0 & p_{0,1} & p_{1,1} & \ldots & p_{k-1,1}\\
+\vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots\\
+0 & 0 & 0 & \ldots & 1 & p_{0,m-k-1} & p_{1,m-k-1} & \ldots & p_{k-1,m-k-1}\\
+\end{array}\right]=\left[ {\bf I_{n-k}P^T} \right]
+\end{align*}
+onde {\bf $P^T$} é a transposta da matriz de paridade {\bf $P$}. A matriz {\bf $H$} é construída tal que 
+\begin{align*}
+{\bf GH^T} = {\bf 0} 
+\end{align*}
+\end{definition}
+
+\begin{definition} {\bf Síndrome de Detecção de Erro} \label{sindrome} \index{Síndrome de Detecção de Erro} Após a recepção ou a leitura da palavra código $c$, temos o vetor $r=r_0r_1 \ldots r_{m-1} \in  \mathbb{GF}_2$. O vetor $r$ pode ser diferente do vetor $c$ transmitido ou armazenado. Seja o vetor $e=e_0e_1 \ldots e_{m-1} \in \mathbb{GF}_2$ tal que $e=r \oplus c$. Um mecanismo de detecção de erro pode ser implementado tal que {\bf $cH^T=0$}, o vetor síndrome:
+\begin{align*}
+S = rH^T = (s_os_1 \ldots s_{m-k-1}) = (c \oplus e)H^T=cH^T \oplus eH^T = e H^T
+\end{align*}
+Se o padrão de erro for igual a uma palavra código, o erro não será detectado. Existem $2^k -1$ padrões de erros não detectáveis. O vetor síndorme pode ser calculado da forma:
+\begin{align*}
+s_0=e0 \oplus e_{m-k} \otimes p_{0,0} \oplus e_{m-k+1} \otimes e_{1,0} \oplus \ldots \oplus  e_{m-1} \otimes p_{k-1,0}\\
+s_1=e1 \oplus e_{m-k} \otimes p_{0,1} \oplus e_{m-k+1} \otimes e_{1,1} \oplus \ldots \oplus  e_{m-1} \otimes p_{k-1,1}\\
+\vdots\\
+s_{n-k-1}=e_{m-k-1} \oplus e_{m-k} \otimes p_{0,m-k+1} \oplus e_{m-k+1} \otimes e_{1,m-k+1} \oplus \ldots \oplus  e_{m-1} \otimes p_{k-1,m-k+1}
+\end{align*}
+\end{definition}
+
+\begin{example}
+\end{example}
+
 \section{Construção de um Código Corretor de Erros}
+
 %		\subsection{Métrica de Hamming}
 %		página 4 - livro Hefez
 %		página 7 - Parâmetros fundamentais $[n, M, d]$
