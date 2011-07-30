@@ -3,6 +3,7 @@
 % sobre Stephen B. Weinstein http://jcn.or.kr/home/journal/bio/bio1.html
 % http://www.ie.cuhk.edu.hk/fileadmin/seminar/2009pdf/sem3509_Stephen%20B.%20Weinstein_051109%20(SCL).pdf
 
+
 {\small
 \begin{align*}
 && In\ Galois\ fields,\ full\ of\ flowers.\\
@@ -11,11 +12,11 @@
 \end{align*}
 }
 
+
 Essa capítulo tem por objetivo apresentar conceitos matemáticos fundamentais
 dentro do escopo de álgebra abstrata para entendimento de Códigos de Blocos~\cite{Hefez:2008}.
 
-Códigos BCH e RS são projetados através da aritmética de corpos finitos\footnote{In Galois fields, full of flowers.
-Primitive elements dance for hours $\ldots$ S.B. Weinstein}. Corpos finitos
+Códigos BCH e RS são projetados através da aritmética de corpos finitos. Corpos finitos
 também são chamados corpos de Galois, em homenagem ao matemático francês Évariste Galois~\cite{Connell:2004}.
 
 \section{Definições em $\mathbb{Z}$}
@@ -374,6 +375,8 @@ $\square$
 
 \section{Anéis de Polinômios}
 
+Os códigos cíclicos são uma classe importante de códigos de bloco lineares. Estes códigos são manipulados algebricamente através de polinômios, sem a utilização de matrizes, o que facilita tanto a codificação como a decodificação.
+
 \begin{definition} {\bf Anel de Polinômios} \label{AnelPol} \index{Anel de Polinômios} Dado um corpo $\mathbb{GF}_p$ definimos o anel comutativo com unidade $\mathbb{GF}_p[x]$ como sendo o conjunto das expressões da forma $P[x]\ =\ a_o\ +\ a_1x\ +\ a_2x^2\ + \ldots +\ a_{n-1}x^{n-1}\ +\ a_nx^n$, com $a_n \neq 0$ e $n \in \mathbb{Z}^+$ chamados de polinômios com coeficientes em $\mathbb{GF}_p$. Cada polinômio define uma função polinomial $p(c)\ :\ \mathbb{GF}_p \rightarrow \mathbb{GF}_p$, $c \longmapsto\ p(c)\ =\ a_o\ +\ a_1c\ +\ a_2c^2\ +\ \ldots +\ a_nc^n$. A distinção entre um polinômio e uma função polinomial é bem ilustrada pelo polinômio $x^p-x,\ x \in \mathbb{Z}$. Pelo teorema~\ref{Fermat}, a função polinomial $p(x)\ =\ x^p-x$ tem propriedades diferentes do polinômio equivalente, onde para $\forall x \in \mathbb{Z}$, temos que $P[x]\ =\ 0$.
 \end{definition}
 
@@ -473,6 +476,9 @@ Seja $F[x]$ um polinômio irredutível de grau $n$ em $GP_p[x]$. Então $GP_p[x]/F[
 
 Códigos de bloco são construídos com elementos de um corpo $\mathbb{GF}_q$ onde $q$ ou é primo $p$ ou uma potência de $p$. Os dados de sistemas de transmissão e armazenamento de dados podem ser facilmente codificados em códigos com símbolos gerados a partir de um corpo $\mathbb{GF}_2$ ou $\mathbb{GF}_{2^m}$ \cite{Lin:1983}.
 
+\begin{definition} {\bf Código Binário} \label{CodBin} \index{Código Binário} Código binário é um código em que o número de palavras de código é $2^m$, ou seja, $q = 2$.
+\end{definition}
+
 O corpo $\mathbb{GF}_{2^m}$ consiste de todos os polinômios $P$ em $\alpha$ de grau $\leq m-1$ com coeficientes em $\mathbb{GF}_2$. Um elemento em $\mathbb{GF}_{2^m}$ é da forma: 
 
 \begin{align*}
@@ -517,7 +523,7 @@ com\ a_i \in \{0, 1\}\ e\ n \in \{0, 1, 2, 3, 4, 5, 6, 7\}
 \end{align*}
 
 
-\section{Construção de $\mathbb{GF}_q$}
+\section{Construção de $\mathbb{GF}_q$ (Galois Estendido)}
 
 \begin{definition} {\bf Representação Exponencial} \label{RepExp} \index{Representação Exponencial} Seja $\alpha$ um elemento primitivo em $\mathbb{GF}_q, q=2^m$. Então $\alpha$ tem ordem $q -1$ e as potências distintas de $\alpha$ $\{ 1, \alpha, \alpha^2, \ldots \alpha^{q-2}\}$ geram todos os elementos diferentes de $0$ de $\mathbb{GF}_q$.
 
@@ -546,8 +552,15 @@ A representação exponencial é utilizada na operação multiplicação de dois elemen
 \begin{definition} {\bf Polinômio Gerador} \label{PolGer} \index{Polinômio Gerador} Seja $C:(m,k)$ um código cíclico sobre $\mathbb{GF}_q$. $\exists g(x)$ de grau $1$, tal que uma $m$-tupla $c \in C:(m,k)$ é uma palavra-código se, e somente se, $g(x)\ |\ c$ .
 \end{definition}
 
-\begin{property} O polinômio gerador é único. O grau do polinômio gerador é $m-k$. $g(x)$ é o polinômio código de menor grau entre todos os polinômios código. O polinômio gerador é um divisor de $x^m -1$.
+\begin{property} O polinômio gerador é único. O grau do polinômio gerador é $m-k$ e seu grau é igual ao número de bits de paridade. $g(x)$ é o polinômio código de menor grau entre todos os polinômios código. O polinômio gerador é um divisor de $x^m -1$. Todo polinómio código é um múltiplo do polinômio gerador.
 \end{property}
+
+\begin{proposition} O polinómio código não nulo de grau mínimo de um determinado código cíclico $C:(m,k)$ é único.
+\end{proposition}
+
+\begin{proof} Esse polinômio terá a forma $g(X) = g_0 + g_1X + \ldots + X^r$ . Se existir outro polinômio com grau mínimo, este polinômio será da forma $g1 (X) = g_{10} + g_{11} X + \ldots + X^r$ . No entanto, porque o código $C:(m,k)$  é um código de bloco linear, a soma destes dois códigos
+polinómios deverá pertencer ao código, e esta soma nos fornece um polinômio de grau $(r-1)$, o que contradiz a hipótese que o grau mínimo possível é $r$. logo, o polinômio código não nulo de grau mínimo de um determinado código cíclico $C:(m,k)$ é único. $\square$
+\end{proof}
 
 \begin{definition} O polinômio gerador $g(x)$ é da forma $g[x]\ =\ 1\ +\ g_1x\ +\ g_2x^2\ + \ldots +\ g_{m-k}x^{m-k}$.
 \end{definition}
@@ -647,7 +660,7 @@ onde {\bf $P^T$} é a transposta da matriz de paridade {\bf $P$}. A matriz {\bf $
 \begin{align*}
 S = rH^T = (s_os_1 \ldots s_{m-k-1}) = (c \oplus e)H^T=cH^T \oplus eH^T = e H^T
 \end{align*}
-Se o padrão de erro for igual a uma palavra código, o erro não será detectado. Existem $2^k -1$ padrões de erros não detectáveis. O vetor síndorme pode ser calculado da forma:
+Se o padrão de erro for igual a uma palavra código, o erro não será detectado. Existem $2^k -1$ padrões de erros não detectáveis. O vetor síndrome pode ser calculado da forma:
 \begin{align*}
 s_0=e0 \oplus e_{m-k} \otimes p_{0,0} \oplus e_{m-k+1} \otimes e_{1,0} \oplus \ldots \oplus  e_{m-1} \otimes p_{k-1,0}\\
 s_1=e1 \oplus e_{m-k} \otimes p_{0,1} \oplus e_{m-k+1} \otimes e_{1,1} \oplus \ldots \oplus  e_{m-1} \otimes p_{k-1,1}\\
@@ -656,8 +669,46 @@ s_{n-k-1}=e_{m-k-1} \oplus e_{m-k} \otimes p_{0,m-k+1} \oplus e_{m-k+1} \otimes 
 \end{align*}
 \end{definition}
 
-\begin{example}
+\begin{example} {\bf Código Hamming} \label{CodHamm} \index{Código Hamming}
+No seu artigo~\cite{Hamming:1950}, R. Hamming propôs uma codificação que levou o seu nome. Para $\forall m \geq 3$, $\exists\ CH:(n,k)$, um código hamming com as seguintes características: comprimento da palavra código é $n=2^m -1$, número de bits de dados na mensagem é $k=2^m-m-1$, número de bits de paridade é $m=n-k$, capacidade de correção de erros é $t=1$, distância mínima é $d_{min} = 3$ e capacidade de detecção de erros é $l=2$. Para $m=3$, $n=7$, $k=4$ e para a matriz geradora ${\bf G}$, a matriz ${\bf H}$ desse $CH:(7,4)$ é:
+\begin{align*}
+{\bf G} = {\bf PI_4} = \left[\begin{array}{ccccccc}
+1 & 1 & 0 & 1 & 0 & 0 & 0\\
+0 & 1 & 1 & 0 & 1 & 0 & 0\\
+1 & 1 & 1 & 0 & 0 & 1 & 0\\
+1 & 0 & 1 & 0 & 0 & 0 & 1
+\end{array}\right]
+{\bf H} = \left[ {\bf I_{n-k}P_T} \right] \left[\begin{array}{ccccccc}
+1 & 0 & 0 & 1 & 0 & 1 & 1\\
+0 & 1 & 0 & 1 & 1 & 1 & 0\\
+0 & 0 & 1 & 0 & 1 & 1 & 1
+\end{array}\right]
+\end{align*}
+O vetor síndrome $S=(s_0, s_1, s_2)= (e_0, e_1, e_2, e_3, e_4 e_5 e_6){\bf H^T}=$. Então
+\begin{align*}
+s_0=e_0 \oplus e_3 \oplus e_5 \oplus e_6\\
+s_0=e_1 \oplus e_3 \oplus e_4 \oplus e_5\\
+s_0=e_2 \oplus e_4 \oplus e_5 \oplus e_6
+\end{align*}
+Uma mensagem inicial $(1010)$ foi enviada ou armazenada como $c=(1010){\bf G}=(0011010)$ e foi recebida ou lida como $r=(0001010)$. O vetor síndrome é $S=(001)$. Existem $2^4$ padrões de erro que satisfazem esse sistema de equações que podem ser vistos na tabela ~\ref{tab8:map}.
+
+\input{tabelas/tabela-padroes-erros-codigo-hamming}
+
+Para canais como o canal simétrico binário (BSC), o padrão de erros com menor número de erros é considerado o padrão correto e ele segue uma distribuição binomial.
+
+\begin{align*}
+0=e_0 \oplus e_3 \oplus e_5 \oplus e_6\\
+0=e_1 \oplus e_3 \oplus e_4 \oplus e_5\\
+1=e_2 \oplus e_4 \oplus e_5 \oplus e_6
+\end{align*}
+
+Assim, podemos calcular $c=r \oplus e= (0001010) \oplus (0010000)=(0011010)$. Como utilizamos a matriz geradora sistemática, a mensagem inicial é $(1010)$.
+
 \end{example}
+
+\begin{definition} Um dado código de bloco linear é cíclico, se para cada um dos seus vetores de código a $i$-ésima rotação cíclica também é um vetor código.
+\end{definition}
+
 
 \section{Construção de um Código Corretor de Erros}
 

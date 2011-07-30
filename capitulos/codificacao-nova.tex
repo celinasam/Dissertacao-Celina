@@ -59,7 +59,7 @@ Corrigir erros é uma tarefa mais complexa que detectá-los. Detectar erros tem a 
 
 %Um dos principais parâmetros de um código para detecção de erros é a probabilidade de detecção de erro. Os modelos estudados por pesquisadores envolvem canais simétricos, assimétricos e outros, com ou sem memória.
 
-Em canais binários simétricos, assume-se que ambos os erros $0 \rightarrow 1$ e $1 \rightarrow 0$  ocorrem com igual probabilidade \cite{Weber:1985}. \index{Canal binário simétrico}
+Em canais binários simétricos (BSC), assume-se que ambos os erros $0 \rightarrow 1$ e $1 \rightarrow 0$  ocorrem com igual probabilidade \cite{Weber:1985}. \index{Canal binário simétrico}
 
 \vspace*{2cm}
 \begin{figure}[h]
@@ -204,7 +204,7 @@ da redundância é que a adição de \emph{bits} pode exigir uma largura
 de banda transmissão maior ou aumentar o atraso das mensagens (ou
 ambos).
 
-Um código C é linear se v e w são palavras código distintas de um código C, então v+w é também uma palavra código de C. Um código linear contém a palavra código zero, pois $v + v = 0$. Operação simples de decodificação, pouca memória e métodos simples para determinação de padrões de erros são algumas das vantagens de códigos lineares.
+% Um código C é linear se v e w são palavras código distintas de um código C, então v+w é também uma palavra código de C. Um código linear contém a palavra código zero, pois $v + v = 0$. Operação simples de decodificação, pouca memória e métodos simples para determinação de padrões de erros são algumas das vantagens de códigos lineares.
 
 Um código C é chamado de cíclico se o deslocamento cíclico (\emph{shift}) de qualquer palavra código gera uma nova palavra código. Por exemplo, $C1 = \{000, 110, 101, 011\}$ é um código cíclico. $C2 = \{000, 100, 011, 111\}$ não é um código cíclico.
 
@@ -235,8 +235,8 @@ Um código com $d_{min} = 1$ não tem capacidade de detectar erros.
 \end{align*}
 \end{definition}
 
-\begin{definition}
-Seja $u=u_0u_1 \ldots u_k \in {\mathbb{Z}_2}^k$. O tamanho de $u$ é dado por 
+\begin{definition} {\bf Peso Hamming} \label{PesoHamm} \index{Peso Hamming}
+Seja $u=u_0u_1 \ldots u_k \in {\mathbb{Z}_2}^k$. O peso Hamming  de $u$ é dado por 
 \begin{align*}
 \omega(u)=|\{i=0,1, \ldots k-1\ : u_i=1\}|
 \end{align*}
@@ -248,12 +248,12 @@ Seja $u=u_0u_1 \ldots u_k \in {\mathbb{Z}_2}^k$ e $v=v_0v_1 \ldots v_k \in {\mat
 Em outras palavras, a distância Hamming $\delta(u,v)$ é o número de pares de bits correspondentes de $u$ e $v$ em que um bit difere do outro.
 \end{definition}
 
-\begin{proposition} Suponha que $u, v \in {\mathbb{Z}_2}^k$. Então $\delta(u,v)=\omega(u+v)$.
+\begin{proposition} Suponha que $u, v \in {\mathbb{Z}_2}^k$. Então $\delta(u,v)=\omega(u \oplus v)$.
 \end{proposition}
 
-\begin{proof} Seja $P(n)$ a proposição que $\delta(u,v)=\omega(u+v)$ para $\forall u,v \in {\mathbb{Z}_2}^n$.
+\begin{proof} Seja $P(n)$ a proposição que $\delta(u,v)=\omega(u \oplus v)$ para $\forall u,v \in {\mathbb{Z}_2}^n$.
 
-Base: $P(1)$ é verdadeira, pois $\delta(0,0)=\omega(0+0)=0$, $\delta(0,1)=\omega(0+1)=1$, $\delta(1,0)=\omega(1+0)=1$ e $\delta(1,1)=\omega(1+1)=0$.
+Base: $P(1)$ é verdadeira, pois $\delta(0,0)=\omega(0 \oplus 0)=0$, $\delta(0,1)=\omega(0 \oplus 1)=1$, $\delta(1,0)=\omega(1 \oplus 0)=1$ e $\delta(1,1)=\omega(1 \oplus 1)=0$.
 
 Passo de indução: Suponhamos que P(k) é verdadeira $\forall (u,v) \in {\mathbb{Z}_2}^k$ e para $\forall k < n$.
 
@@ -262,10 +262,10 @@ Queremos provar, para $k+1$, que P(k+1) é verdadeira. Seja $u=u_0u_1 \ldots u_k 
 \begin{align*}
 \delta(u^{'},v^{'})=\delta(u,v)+\delta(u_{k+1},v_{k+1}).
 \end{align*}
-Sabemos calcular $\delta(u_{k+1},v_{k+1})$, pois $P(1)$ é verdadeira. Pela hipótese de indução, $\delta(u,v)=\omega(u+v)$. Então, $\delta(u^{'},v^{'})=\omega(u,v)+\omega(u_{k+1},v_{k+1})=\omega(u^{'},v^{'})$$\square$
+Sabemos calcular $\delta(u_{k+1},v_{k+1})$, pois $P(1)$ é verdadeira. Pela hipótese de indução, $\delta(u,v)=\omega(u \oplus v)$. Então, $\delta(u^{'},v^{'})=\omega(u,v) \oplus \omega(u_{k+1},v_{k+1})=\omega(u^{'},v^{'})$$\square$
 \end{proof}
 
-\begin{proposition} \label{somauns} Suponha que $u, v \in {\mathbb{Z}_2}^k$. Então $\omega(u+v) \leq \omega(u) + \omega(v)$
+\begin{proposition} \label{somauns} Suponha que $u, v \in {\mathbb{Z}_2}^k$. Então $\omega(u \oplus v) \leq \omega(u) + \omega(v)$
 \end{proposition}
 
 \begin{proof} Seja $P(n)$ a proposição que $\omega(u,v) \leq \omega(u) + \omega(v)$ para $\forall u,v \in {\mathbb{Z}_2}^n$.
@@ -273,7 +273,7 @@ Sabemos calcular $\delta(u_{k+1},v_{k+1})$, pois $P(1)$ é verdadeira. Pela hipót
 Base: $P(2)$ é verdadeira,
 $$
 \begin{array}{l}
-u,v\ \ \ \ u+v\ \ \ \ \omega (u+v)\ \leq \omega(u) + \omega(v)\\
+u,v\ \ \ \ u \oplus v\ \ \ \ \omega (u+v)\ \leq \omega(u) + \omega(v)\\
 00,00\ \ \ 00\ \ \ \ \ \ 0\ \ \ \ \ \ \ \ \ \ \ \ \  0\\
 00,01\ \ \ 01\ \ \ \ \ \ 1\ \ \ \ \ \ \ \ \ \ \ \ \ 0+1=1\\
 00,10\ \ \ 10\ \ \ \ \ \ 1\ \ \ \ \ \ \ \ \ \ \ \ \ 0+1=1\\
@@ -293,13 +293,13 @@ u,v\ \ \ \ u+v\ \ \ \ \omega (u+v)\ \leq \omega(u) + \omega(v)\\
 \end{array}
 $$
 Passo de indução: Suponhamos que P(k) é verdadeira $\forall (u,v) \in {\mathbb{Z}_2}^k$ e para $\forall k < n$.
-Queremos provar, para $k+1$, que P(k+1) é verdadeira. Seja $u=u_0u_1 \ldots u_k \in {\mathbb{Z}_2}^k$, $v=v_0v_1 \ldots v_k \in {\mathbb{Z}_2}^k$ e $z=u+v=z_0z_1 \ldots z_k \in {\mathbb{Z}_2}^k$ e $u^{'}=u_0u_1 \ldots u_ku_{k+1} \in {\mathbb{Z}_2}^k$, $v^{'}=v_0v_1 \ldots v_kv_{k+1} \in {\mathbb{Z}_2}^k$ e $z^{'}=u+v=z_0z_1 \ldots z_kz_{k+1} \in {\mathbb{Z}_2}^{k+1}$. Podemos escrever $\omega (u^{'}+v^{'})=\omega (z^{'})$ como
+Queremos provar, para $k+1$, que P(k+1) é verdadeira. Seja $u=u_0u_1 \ldots u_k \in {\mathbb{Z}_2}^k$, $v=v_0v_1 \ldots v_k \in {\mathbb{Z}_2}^k$ e $z=u \oplus v=z_0z_1 \ldots z_k \in {\mathbb{Z}_2}^k$ e $u^{'}=u_0u_1 \ldots u_ku_{k+1} \in {\mathbb{Z}_2}^k$, $v^{'}=v_0v_1 \ldots v_kv_{k+1} \in {\mathbb{Z}_2}^k$ e $z^{'}=u \oplus v=z_0z_1 \ldots z_kz_{k+1} \in {\mathbb{Z}_2}^{k+1}$. Podemos escrever $\omega (u^{'} \oplus v^{'})=\omega (z^{'})$ como
 \begin{align*}
-\omega (z^{'})=\omega(z)+\omega(u_{k+1}+v_{k+1})=\omega(u+v)+\omega(u_{k+1}+v_{k+1})
+\omega (z^{'})=\omega(z)+\omega(u_{k+1} \oplus v_{k+1})=\omega(u \oplus v)+\omega(u_{k+1} \oplus v_{k+1})
 \end{align*}
-Sabemos calcular $\omega(u_{k+1}+v_{k+1})$, pois $P(2)$ é verdadeira. Então $\omega(u_{k+1}+v_{k+1}) \leq \omega(u_{k+1})+\omega(v_{k+1})$. Pela hipótese de indução, $\omega(u+v) \leq \omega(u) + \omega(v)$. Então
+Sabemos calcular $\omega(u_{k+1} \oplus v_{k+1})$, pois $P(2)$ é verdadeira. Então $\omega(u_{k+1} \oplus v_{k+1}) \leq \omega(u_{k+1})+\omega(v_{k+1})$. Pela hipótese de indução, $\omega(u \oplus v) \leq \omega(u) + \omega(v)$. Então
 \begin{align*}
-\omega (z^{'}) =\omega(u+v)+\omega(u_{k+1}+v_{k+1}) \leq \omega(u) + \omega(v) + \omega(u_{k+1})+ \omega(v_{k+1})
+\omega (z^{'}) =\omega(u \oplus v)+\omega(u_{k+1} \oplus v_{k+1}) \leq \omega(u) + \omega(v) + \omega(u_{k+1})+ \omega(v_{k+1})
 \end{align*}
 $\square$
 \end{proof}
@@ -316,6 +316,16 @@ $\square$
 \begin{proof}
 \end{proof}
 
+\begin{definition} {\bf Distância Mínima} \label{DistMin} \index{Distância Mínima} Seja $C:(n,k)$ um código de blocos linear. A  distância mínima
+desse código é dada por 
+\begin{align*}
+d_{min} = min \{ \delta(u,v), u,v \in C:(n,k), u \neq v \}\\
+= min= \{ \omega(u), u \in C:(n,k), u \neq 0 \}
+\end{align*}
+o valor mínimo do peso das palavras código não nulas desse código.
+
+\end{definition}
+
 \begin{definition} Seja $k \in {\mathbb{Z}}^*$ e $u \in {\mathbb{Z}_2}^k$. O conjunto $B(u,k)=\{ v \in {\mathbb{Z}_2}^k : \delta(u,v) \leq k\}$
 \end{definition}
 
@@ -331,6 +341,15 @@ Seja $k, m \in {\mathbb{Z}}^*$ e $n > k$, a função de codificação $\alpha\ : {\m
 
 $(ii)$ Como (i) é verdadeira, $\forall c, d \in \zeta, d \neq c$, temos que, pela proposição~\ref{somauns}, $2k < \delta(c,d) \leq \delta(c,\tau(c)) + \delta(\tau(c),d)$. Sabemos que $\delta(c,\tau(c)) \leq k$ e que $\delta(d,\tau(c)) > k$, de modo que $\tau(c) \not\in B(c,k)$. Por isso sabemos exatamente qual elemento de $\zeta$ que originou $\tau(c)$.
 \end{proof}
+
+\begin{theorem} Seja $C:(n,k)$ um código de blocos linear e sua matriz de verificação de paridade ${\bf H}$. Para cada vetor código $u \in C:(n,k)$ e $l$ igual do seu peso $\omega(u)$, $\exists l$ colunas da matriz ${\bf H}$ tais que o vetor soma dessas $l$ colunas é igual ao vetor $0$. Da mesma forma, se o vetor soma de $l$ colunas da matriz ${\bf H}$ for o vetor $0$, então $\exists v \in C:(n,k)$ tal que $\omega(v)=l$.
+\end{theorem}
+
+\begin{proof}
+\end{proof}
+
+\begin{corollary} Seja $C:(n,k)$ um código de blocos linear e sua matriz de verificação de paridade ${\bf H}$. O peso mínimo ou a distância mínima de $C:(n,k)$ é igual ao menor número de colunas de ${\bf H}$ cuja soma é o vetor $0$.
+\end{corollary}
 
 Códigos Reed-Solomon são códigos de blocos, lineares e cíclicos. São códigos parametrizáveis, cuja capacidade de correção de erros pode ser alterada facilmente. \index{Codificação Reed-Solomon}
 
