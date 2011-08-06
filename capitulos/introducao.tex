@@ -1,56 +1,56 @@
-\chapter{IntroduÁ„o}
+\chapter{Introdu√ß√£o}
 
-A codificaÁ„o por apagamento (\emph{erasures codes}) introduz
-redund‚ncia em um sistema de transimiss„o ou armazenamento de dados de
-maneira a permitir a detecÁ„o e correÁ„o de erros. A codificaÁ„o por
-apagamento È, desde os anos 70, utilizada pela \emph{NASA's Deep Space
+A codifica√ß√£o por apagamento (\emph{erasures codes}) introduz
+redund√¢ncia em um sistema de transimiss√£o ou armazenamento de dados de
+maneira a permitir a detec√ß√£o e corre√ß√£o de erros. A codifica√ß√£o por
+apagamento √©, desde os anos 70, utilizada pela \emph{NASA's Deep Space
   Network} para receber sinais e dados de telemetria
-(\emph{downlinks}) vindos de veÌculos espaciais (\emph{very distant
+(\emph{downlinks}) vindos de ve√≠culos espaciais (\emph{very distant
   spacecrafts}) e para enviar telecomandos (\emph{uplinks}) para
-veÌculos espaciais \cite{Almeida:2007, STO:2010, TDD:2010}.
+ve√≠culos espaciais \cite{Almeida:2007, STO:2010, TDD:2010}.
 
-A tÈcnica de codificaÁ„o por apagamento pode ser combinada com a
-distribuiÁ„o de dados entre v·rios dispositivos de armazenamento, o
-que permite o aumento da largura de banda e a correÁ„o de
+A t√©cnica de codifica√ß√£o por apagamento pode ser combinada com a
+distribui√ß√£o de dados entre v√°rios dispositivos de armazenamento, o
+que permite o aumento da largura de banda e a corre√ß√£o de
 erros~\cite{Woitaszek:2007, Plank:1997}. Requisitos de confiabilidade
-e de reduÁ„o do tamanho do armazenamento podem ser observados em
+e de redu√ß√£o do tamanho do armazenamento podem ser observados em
 sistemas que tratam de: 
-%\emph{digital fountain} (\emph{multicasting} multimÌdia confi·vel)\cite{Byers:1998}; 
+%\emph{digital fountain} (\emph{multicasting} multim√≠dia confi√°vel)\cite{Byers:1998}; 
 \emph{Delay and Disruption Tolerant Networks}, redes de sensores e
 redes~\emph{peer-to-peer} \cite{Bhagwan:2004, Haeberlen:2005,
 Rodrigues:2005, RTAD:2007, Wilcox-O'Hearn:2008, Houri:2009} e
 armazenamento de grande volume de dados \cite{Anderson:1998,
 Kubiatowicz:2000, Schmuck:2002, Saito:2004, Xia:2006, Storer:2008,
-Storer:2009}, como tambÈm o sistema de arquivos distribuÌdo do
+Storer:2009}, como tamb√©m o sistema de arquivos distribu√≠do do
 Hadoop (HDFS)~\cite{HDFS-503:2010}.
 
-O HDFS, por padr„o, implementa alta disponibilidade dos dados via
-replicaÁ„o simples dos blocos de dados. Esta abordagem acarreta um
-alto custo de armazenamento para garantir que os dados estar„o sempre
-disponÌveis. O objetivo do uso da codificaÁ„o por apagamento no HDFS È
-permitir que o espaÁo de armazenamento possa ser reduzido sem
-prejudicar a disponibilidade dos dados. EsforÁos iniciais nessa linha
-foram feitos utilizando tÈcnicas de RAID~\cite{HDFS-503:2010} e mais
+O HDFS, por padr√£o, implementa alta disponibilidade dos dados via
+replica√ß√£o simples dos blocos de dados. Esta abordagem acarreta um
+alto custo de armazenamento para garantir que os dados estar√£o sempre
+dispon√≠veis. O objetivo do uso da codifica√ß√£o por apagamento no HDFS √©
+permitir que o espa√ßo de armazenamento possa ser reduzido sem
+prejudicar a disponibilidade dos dados. Esfor√ßos iniciais nessa linha
+foram feitos utilizando t√©cnicas de RAID~\cite{HDFS-503:2010} e mais
 recentemente do algoritmo Reed-Solomon~\cite{MR-1969:2010}.
 
-Este trabalho pretende avanÁar esta linha de pesquisa a partir dos
+Este trabalho pretende avan√ßar esta linha de pesquisa a partir dos
 seguintes passos:
 
 \begin{itemize}
-\item avaliaÁ„o de desempenho, ganhos, e custos de diferentes
-  estratÈgias de codificaÁ„o por apagamento;
+\item avalia√ß√£o de desempenho, ganhos, e custos de diferentes
+  estrat√©gias de codifica√ß√£o por apagamento;
 
-\item implementaÁ„o de otimizaÁıes ou extensıes para o cÛdigo que
+\item implementa√ß√£o de otimiza√ß√µes ou extens√µes para o c√≥digo que
   atualmente implementa Reed-Solomon, tentando melhorar,
-  principalmente, a parte de distribuiÁ„o de blocos;
+  principalmente, a parte de distribui√ß√£o de blocos;
 
-\item implementaÁ„o de novos algoritmos (e.g., Tornado codes) e
-  extenÁ„o da interface atual para aceit·-los;
+\item implementa√ß√£o de novos algoritmos (e.g., Tornado codes) e
+  exten√ß√£o da interface atual para aceit√°-los;
 
-\item integraÁ„o do cÛdigo atual com o HDFS.
+\item integra√ß√£o do c√≥digo atual com o HDFS.
 
 \end{itemize}
 
-O texto a seguir est· organizado da seguinte maneira: os CapÌtulos 2 e 3
-introduzem os conceitos b·sicos da ·lgebra abstrata e da codificaÁ„o por apagamento, respectivamente, o CapÌtulo 4 apresenta uma discuss„o sobre esquemas de redund‚ncia de dados, o CapÌtulo 5 comenta o \emph{framework} Hadoop e seu sistema de arquivos, o CapÌtulo 6 comenta as codificaÁıes Tornado e Turbo-\emph{Like} que foram implementadas em uma vers„o do Hadoop e o CapÌtulo 7 apresenta as contribuiÁıes e conclusıes deste trabalho.
+O texto a seguir est√° organizado da seguinte maneira: os Cap√≠tulos 2 e 3
+introduzem os conceitos b√°sicos da √°lgebra abstrata e da codifica√ß√£o por apagamento, respectivamente, o Cap√≠tulo 4 apresenta uma discuss√£o sobre esquemas de redund√¢ncia de dados, o Cap√≠tulo 5 comenta o \emph{framework} Hadoop e seu sistema de arquivos, o Cap√≠tulo 6 comenta as codifica√ß√µes Tornado e Turbo-\emph{Like} que foram implementadas em uma vers√£o do Hadoop e o Cap√≠tulo 7 apresenta as contribui√ß√µes e conclus√µes deste trabalho.
 

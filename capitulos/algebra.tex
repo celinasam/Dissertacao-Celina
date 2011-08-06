@@ -1,4 +1,4 @@
-\chapter{¡lgebra Abstrata}
+\chapter{√Ålgebra Abstrata}
 
 % sobre Stephen B. Weinstein http://jcn.or.kr/home/journal/bio/bio1.html
 % http://www.ie.cuhk.edu.hk/fileadmin/seminar/2009pdf/sem3509_Stephen%20B.%20Weinstein_051109%20(SCL).pdf
@@ -13,17 +13,17 @@
 }
 
 
-Essa capÌtulo tem por objetivo apresentar conceitos matem·ticos fundamentais
-dentro do escopo de ·lgebra abstrata para entendimento de CÛdigos de Blocos~\cite{Hefez:2008}.
+Essa cap√≠tulo tem por objetivo apresentar conceitos matem√°ticos fundamentais
+dentro do escopo de √°lgebra abstrata para entendimento de C√≥digos de Blocos~\cite{Hefez:2008}.
 
-CÛdigos BCH e RS s„o projetados atravÈs da aritmÈtica de corpos finitos. Corpos finitos
-tambÈm s„o chamados corpos de Galois, em homenagem ao matem·tico francÍs …variste Galois~\cite{Connell:2004}.
+C√≥digos BCH e RS s√£o projetados atrav√©s da aritm√©tica de corpos finitos. Corpos finitos
+tamb√©m s√£o chamados corpos de Galois, em homenagem ao matem√°tico franc√™s √âvariste Galois~\cite{Connell:2004}.
 
-\section{DefiniÁıes em $\mathbb{Z}$}
+\section{Defini√ß√µes em $\mathbb{Z}$}
 
-\begin{definition} {\bf CongruÍncia Linear} \index{CongruÍncia Linear} Seja $q \in \mathbb{Z}$. Dois inteiros $a$
- e $b$ dizem-se congruentes mÛdulo$-q$ se tiverem o mesmo resto na divis„o por
- $q$. A notaÁ„o È $a \equiv b(mod\ q)$. DaÌ temos que $a = qk + b$, para um $k \in \mathbb{Z}$.
+\begin{definition} {\bf Congru√™ncia Linear} \index{Congru√™ncia Linear} Seja $q \in \mathbb{Z}$. Dois inteiros $a$
+ e $b$ dizem-se congruentes m√≥dulo$-q$ se tiverem o mesmo resto na divis√£o por
+ $q$. A nota√ß√£o √© $a \equiv b(mod\ q)$. Da√≠ temos que $a = qk + b$, para um $k \in \mathbb{Z}$.
 \end{definition}
 
 \begin{example}
@@ -36,7 +36,7 @@ tambÈm s„o chamados corpos de Galois, em homenagem ao matem·tico francÍs …varist
 
 
 \begin{definition} {\bf Classe Residual} \index{Classe Residual} Seja $q \in \mathbb{Z}$ e $q > 1$. A classe
-residual mÛdulo $q$ do elemento $a \in \mathbb{Z}$ pode ser assim definida:
+residual m√≥dulo $q$ do elemento $a \in \mathbb{Z}$ pode ser assim definida:
 
 \begin{align*}
 & \bar{a}\ =\ \{ x \in \mathbb{Z}\ tal\ que\ x \equiv a(mod\ q)\}
@@ -52,44 +52,44 @@ residual mÛdulo $q$ do elemento $a \in \mathbb{Z}$ pode ser assim definida:
 \end{align*}
 \end{example}
 
-\begin{definition} {\bf Conjunto das Classes Residuais} \index{Conjunto das Classes Residuais} Seja $\mathbb{Z}_q = \{\bar{0}, \bar{1}, \ldots , \overline{q-1}\}$ o conjunto das classes residuais dos inteiros mÛdulo $q$. 
+\begin{definition} {\bf Conjunto das Classes Residuais} \index{Conjunto das Classes Residuais} Seja $\mathbb{Z}_q = \{\bar{0}, \bar{1}, \ldots , \overline{q-1}\}$ o conjunto das classes residuais dos inteiros m√≥dulo $q$. 
 \end{definition}
 
-Notemos que $\mathbb{Z}_q$ tem exatamente $q$ elementos, portanto $\mathbb{Z}_q$ È finito.
+Notemos que $\mathbb{Z}_q$ tem exatamente $q$ elementos, portanto $\mathbb{Z}_q$ √© finito.
 
-\begin{property} Se a$\ \equiv\ b(mod\ q)$, ent„o $\bar{a} = \bar{b}$.
+\begin{property} Se a$\ \equiv\ b(mod\ q)$, ent√£o $\bar{a} = \bar{b}$.
 \end{property}
 
-Com o objetivo de determinar quais s„o os $\mathbb{Z}_q$ que s„o corpos, vamos apresentar mais alguns conceitos em $\mathbb{Z}$.
+Com o objetivo de determinar quais s√£o os $\mathbb{Z}_q$ que s√£o corpos, vamos apresentar mais alguns conceitos em $\mathbb{Z}$.
 
-\begin{definition} {\bf M·ximo Divisor Comum} \label{mdc} \index{M·ximo Divisor Comum} Seja $a$ e $b \in \mathbb{Z}$ com $a \neq 0$ ou $b \neq 0$. O $MDC$ de $a$ e $b$ È $d \in \mathbb{Z}$, se as condiÁıes forem verdadeiras:
+\begin{definition} {\bf M√°ximo Divisor Comum} \label{mdc} \index{M√°ximo Divisor Comum} Seja $a$ e $b \in \mathbb{Z}$ com $a \neq 0$ ou $b \neq 0$. O $MDC$ de $a$ e $b$ √© $d \in \mathbb{Z}$, se as condi√ß√µes forem verdadeiras:
   \begin{enumerate}[(i)]
-     \item $d$ È um divisor comum de $a$ e $b$, ou seja, $d\ |\ a$ e $d\ |\ b$
-     \item $d$ È divisÌvel por todo divisor comum de $a$ e $b$, ou seja, $\exists c \in \mathbb{Z},\ c\ |\ a\ e\ c\ |\ b\ \Longrightarrow\ c\ |\ d$.
+     \item $d$ √© um divisor comum de $a$ e $b$, ou seja, $d\ |\ a$ e $d\ |\ b$
+     \item $d$ √© divis√≠vel por todo divisor comum de $a$ e $b$, ou seja, $\exists c \in \mathbb{Z},\ c\ |\ a\ e\ c\ |\ b\ \Longrightarrow\ c\ |\ d$.
   \end{enumerate}
 \end{definition}
 
-\begin{lemma} {\bf Divis„o Euclidiana} \label{DivEucli} \index{Divis„o Euclidiana} Dados $a \in \mathbb{Z}$, $b \in \mathbb{Z}$ e $b \neq 0$, $\exists c,\ \exists r$ inteiros ˙nicos $\in\ \mathbb{Z}$ tais que $a\ =\ bc\ +\ r$ e $0 \leq r < |b|$. Ent„o o $MDC(a,b)\ =\ MDC(b,r)$.
+\begin{lemma} {\bf Divis√£o Euclidiana} \label{DivEucli} \index{Divis√£o Euclidiana} Dados $a \in \mathbb{Z}$, $b \in \mathbb{Z}$ e $b \neq 0$, $\exists c,\ \exists r$ inteiros √∫nicos $\in\ \mathbb{Z}$ tais que $a\ =\ bc\ +\ r$ e $0 \leq r < |b|$. Ent√£o o $MDC(a,b)\ =\ MDC(b,r)$.
 \end{lemma}
 
-$c$ e $r$ s„o chamados, respectivamente, o quociente e resto da divis„o de a por b. O algoritmo euclidiano, um mÈtodo eficiente para calcular o MDC~\cite{Rosen:2003}, usa o lemma~\ref{DivEucli}. 
+$c$ e $r$ s√£o chamados, respectivamente, o quociente e resto da divis√£o de a por b. O algoritmo euclidiano, um m√©todo eficiente para calcular o MDC~\cite{Rosen:2003}, usa o lemma~\ref{DivEucli}. 
 
-\begin{theorem} {\bf Lema de Euclides} \label{euclides} \index{Lema de Euclides} Sejam $a$ e $b \in \mathbb{Z}$ n„o-nulos e seja $d\ =\ MDC(a,b)$. Ent„o, $\exists \lambda, \mu \in \mathbb{Z}$ tais que $d\ = \ \lambda a\ + \mu b$.
+\begin{theorem} {\bf Lema de Euclides} \label{euclides} \index{Lema de Euclides} Sejam $a$ e $b \in \mathbb{Z}$ n√£o-nulos e seja $d\ =\ MDC(a,b)$. Ent√£o, $\exists \lambda, \mu \in \mathbb{Z}$ tais que $d\ = \ \lambda a\ + \mu b$.
  \end{theorem}
 
-\begin{proposition} \label{primos} Dois inteiros $a$  e $b$ s„o primos entre si se, e somente se, $\exists \lambda, \exists \mu \in\ \mathbb{Z}$ tais que $\lambda a\ +\ \mu b\ =\ 1$.
+\begin{proposition} \label{primos} Dois inteiros $a$  e $b$ s√£o primos entre si se, e somente se, $\exists \lambda, \exists \mu \in\ \mathbb{Z}$ tais que $\lambda a\ +\ \mu b\ =\ 1$.
 \end{proposition}
 
 \begin{proof}
-Se $a$ e $b$ s„o primos entre si, ent„o $MDC(a,b)=1$ e pelo lema~\ref{euclides}, temos que  $\exists \lambda, \ \exists \mu \in\ \mathbb{Z}$ tais que $MDC(a,b)\ =\ \lambda a\ +\ \mu b$.  Ent„o: 
+Se $a$ e $b$ s√£o primos entre si, ent√£o $MDC(a,b)=1$ e pelo lema~\ref{euclides}, temos que  $\exists \lambda, \ \exists \mu \in\ \mathbb{Z}$ tais que $MDC(a,b)\ =\ \lambda a\ +\ \mu b$.  Ent√£o: 
 \begin{align*}
 & MDC(a,b)\ & =\ \lambda a\ +\ \mu b\ =\ 1\ (multiplica-se\ ambos\ os\ lados\ por\ d\ =\ MDC(a,b))\\
 & d(\lambda a\ +\ \mu b)\ =\ d
 \end{align*}
 
-Se $\lambda a\ +\ \mu b\ =\ 0$, ent„o $d\ =\ 0$, o que È um absurdo.
+Se $\lambda a\ +\ \mu b\ =\ 0$, ent√£o $d\ =\ 0$, o que √© um absurdo.
 
-Se $\lambda a\ +\ \mu b\ <\ 0$, ent„o  $d\ <\ 0$ e $\lambda a\ +\ \mu b\ >\ 0$, o que È um absurdo.
+Se $\lambda a\ +\ \mu b\ <\ 0$, ent√£o  $d\ <\ 0$ e $\lambda a\ +\ \mu b\ >\ 0$, o que √© um absurdo.
 
 Se $\lambda a\ +\ \mu b\ >\ 0$, vamos chamar esse resultado de $d^{'}$.
 
@@ -111,23 +111,23 @@ Sabemos que $MDC(a,b)\ |\ a$ e $MDC(a,b)\ |\ b$. Portanto, $\frac{a}{d}, \frac{b
 $$
 \lambda c\ +\ \mu d\ =\ \frac{1}{d}
 $$
-Pelo lema~\ref{euclides}, ent„o  $\frac{1}{d}$ È o $MDC(c, d) \in \mathbb{Z}$. Nesse caso, sabemos que $d\ =\ 1$. 
+Pelo lema~\ref{euclides}, ent√£o  $\frac{1}{d}$ √© o $MDC(c, d) \in \mathbb{Z}$. Nesse caso, sabemos que $d\ =\ 1$. 
 $\square$
 \end{proof}
 
-\begin{proposition} \label{invertivel} Para  $[a] \in \mathbb{Z}_q$  È invertÌvel se, e somente se, $MDC(a,q)=1$.
+\begin{proposition} \label{invertivel} Para  $[a] \in \mathbb{Z}_q$  √© invert√≠vel se, e somente se, $MDC(a,q)=1$.
 \end{proposition}
 
 \begin{proof}
-Suponhamos que $[a]$ seja inversÌvel. Assim, $\exists b \in \mathbb{Z}$ tal que $[a].[b]\ =\ 1$. Assim, $[a.b]\ =\ 1$ e $a.b \equiv 1\ mod\ q$. Isso implica que $\exists s$ tal que $ab\ +\ sq\ =\ 1$. Pela proposiÁ„o~\ref{primos}, implica que $MDC(a,q)\ =\ 1$.
+Suponhamos que $[a]$ seja invers√≠vel. Assim, $\exists b \in \mathbb{Z}$ tal que $[a].[b]\ =\ 1$. Assim, $[a.b]\ =\ 1$ e $a.b \equiv 1\ mod\ q$. Isso implica que $\exists s$ tal que $ab\ +\ sq\ =\ 1$. Pela proposi√ß√£o~\ref{primos}, implica que $MDC(a,q)\ =\ 1$.
 
-Suponhamos que $MDC(a,m)\ =\ 1$. Pela proposiÁ„o~\ref{primos}, $\exists b, c \in \mathbb{Z}$ tais que $ba\ +\ cm\ =\ 1$. Assim, $b.a \equiv 1\ mod\ q$. Portanto, $[a].[b]\ =\ [a.b]\ =\ 1$.
+Suponhamos que $MDC(a,m)\ =\ 1$. Pela proposi√ß√£o~\ref{primos}, $\exists b, c \in \mathbb{Z}$ tais que $ba\ +\ cm\ =\ 1$. Assim, $b.a \equiv 1\ mod\ q$. Portanto, $[a].[b]\ =\ [a.b]\ =\ 1$.
 $\square$
 \end{proof}
 
-\section{EspaÁo Vetorial, Grupo, Anel e Corpo de Galois}
+\section{Espa√ßo Vetorial, Grupo, Anel e Corpo de Galois}
 
-\begin{definition} {\bf EspaÁo Vetorial} \label{EspVet} \index{EspaÁo Vetorial} Um espaÁo vetorial $\mathbb{V}$ È um conjunto n„o vazio de objetos chamados vetores e as suas duas operaÁıes chamadas adiÁ„o e multiplicaÁ„o com n˙meros reais, que seguem 10 propriedades. As propriedades s„o v·lidas para $\forall u, v, w \in V$ e $a, b \in \mathbb{R}$.
+\begin{definition} {\bf Espa√ßo Vetorial} \label{EspVet} \index{Espa√ßo Vetorial} Um espa√ßo vetorial $\mathbb{V}$ √© um conjunto n√£o vazio de objetos chamados vetores e as suas duas opera√ß√µes chamadas adi√ß√£o e multiplica√ß√£o com n√∫meros reais, que seguem 10 propriedades. As propriedades s√£o v√°lidas para $\forall u, v, w \in V$ e $a, b \in \mathbb{R}$.
    \begin{enumerate}[(i)]
       \item a soma $v + u \in V$ 
       \item $u + v\ =\ v + u$
@@ -142,58 +142,58 @@ $\square$
    \end{enumerate}
 \end{definition}
 
-\begin{definition} $\mathbb{G}$ È um conjunto n„o vazio, $\phi$ : $\mathbb{G}\ X\ \mathbb{G} \rightarrow \mathbb{G}$, È uma funÁ„o. $\phi$ È chamada operaÁ„o bin·ria tal que  $\phi(a,b)\ =\ a+b $ ou $\phi(a,b)\ =\ a.b$. Considere as seguintes propriedades:
+\begin{definition} $\mathbb{G}$ √© um conjunto n√£o vazio, $\phi$ : $\mathbb{G}\ X\ \mathbb{G} \rightarrow \mathbb{G}$, √© uma fun√ß√£o. $\phi$ √© chamada opera√ß√£o bin√°ria tal que  $\phi(a,b)\ =\ a+b $ ou $\phi(a,b)\ =\ a.b$. Considere as seguintes propriedades:
   \begin{description}
-     \item [Associatividade] Se $a, b, c \in G$ ent„o $a+(b+c)\ =\ (a+b)+c$. Se $a, b, c \in G$ ent„o $a.(b.c)\ =\ (a.b).c$. 
+     \item [Associatividade] Se $a, b, c \in G$ ent√£o $a+(b+c)\ =\ (a+b)+c$. Se $a, b, c \in G$ ent√£o $a.(b.c)\ =\ (a.b).c$. 
      \item [Elemento Neutro] $\exists 0 \in G$ tal que se $a \in G$ $0\ +\ a\ =\ a\ +\ 0\ =\ a$. $\exists e \in G$ tal que se $a \in G$ $e.a\ =\ a.e =\ a$.
-     \item [Elemento Inverso]  Se $a \in G, \exists b \in G$ tal que $a + b = b + a = 0$. $b$ È escrito como $b = -a$. Se $a \in G, \exists b \in G$ tal que $a.b\ =\ b.a\ =\ e$. $b$ È escrito como $b = a^{-1}$.
-     \item [Comutatividade] Se $a, b \in G$ ent„o $a + b = b + a$. Se $a, b \in G$ ent„o $a . b = b . a$.
+     \item [Elemento Inverso]  Se $a \in G, \exists b \in G$ tal que $a + b = b + a = 0$. $b$ √© escrito como $b = -a$. Se $a \in G, \exists b \in G$ tal que $a.b\ =\ b.a\ =\ e$. $b$ √© escrito como $b = a^{-1}$.
+     \item [Comutatividade] Se $a, b \in G$ ent√£o $a + b = b + a$. Se $a, b \in G$ ent√£o $a . b = b . a$.
   \end{description}
 \end{definition}
 
-\begin{definition} {\bf Grupo} \label{grupo} \index{Grupo} Se $(G, \phi)$ È um grupo, ent„o satisfaz as propriedades associatividade, elemento neutro e elemento inverso. Se $\phi(a,b)\ =\ a+b$, ent„o $G$ È um grupo aditivo. Se $\phi(a,b)\ =\ a.b$, ent„o $G$ È um grupo multiplicativo. Se o grupo $(G, \phi)$ satisfaz a propriedade de comutatividade, ele È um grupo abeliano ou comutativo.
+\begin{definition} {\bf Grupo} \label{grupo} \index{Grupo} Se $(G, \phi)$ √© um grupo, ent√£o satisfaz as propriedades associatividade, elemento neutro e elemento inverso. Se $\phi(a,b)\ =\ a+b$, ent√£o $G$ √© um grupo aditivo. Se $\phi(a,b)\ =\ a.b$, ent√£o $G$ √© um grupo multiplicativo. Se o grupo $(G, \phi)$ satisfaz a propriedade de comutatividade, ele √© um grupo abeliano ou comutativo.
 \end{definition}
 
-\begin{definition} {\bf Classe de ConjugaÁ„o} \label{clconj} \index{Classe de ConjugaÁ„o} Dois elementos $a, b \in G$ s„o chamados conjugados, se $\exists g \in G$ tal que $gag^{-1}\ =\ b$. A classe de equivalÍncia que contÈm o elemento $a \in G$ È $Cl(a)\ =\ \{gag^{-1}:\ g \in G \}$ e È chamado a classe de conjugaÁ„o de $a$.
+\begin{definition} {\bf Classe de Conjuga√ß√£o} \label{clconj} \index{Classe de Conjuga√ß√£o} Dois elementos $a, b \in G$ s√£o chamados conjugados, se $\exists g \in G$ tal que $gag^{-1}\ =\ b$. A classe de equival√™ncia que cont√©m o elemento $a \in G$ √© $Cl(a)\ =\ \{gag^{-1}:\ g \in G \}$ e √© chamado a classe de conjuga√ß√£o de $a$.
 \end{definition}
 
-\begin{definition} $A$ È um grupo comutativo aditivo, n„o vazio, e $\exists \varphi$ um segunda operaÁ„o bin·ria $A\ X\ A \rightarrow A$ chamada multiplicaÁ„o. Considere as seguintes propriedades:
+\begin{definition} $A$ √© um grupo comutativo aditivo, n√£o vazio, e $\exists \varphi$ um segunda opera√ß√£o bin√°ria $A\ X\ A \rightarrow A$ chamada multiplica√ß√£o. Considere as seguintes propriedades:
   \begin{description}
-     \item [Associatividade] Se $a, b, c \in A$ ent„o $a.(b.c)\ =\ (a.b).c$.
-     \item [Distributividade da multiplicaÁ„o com relaÁ„o a adiÁ„o] Se $a, b, c \in A$ $a.(b+c)\ =\ (a.b)\ +\ (a.c)$ e $(b+c).a\ =\ (b.a)\ +\ (c.a)$.
+     \item [Associatividade] Se $a, b, c \in A$ ent√£o $a.(b.c)\ =\ (a.b).c$.
+     \item [Distributividade da multiplica√ß√£o com rela√ß√£o a adi√ß√£o] Se $a, b, c \in A$ $a.(b+c)\ =\ (a.b)\ +\ (a.c)$ e $(b+c).a\ =\ (b.a)\ +\ (c.a)$.
      \item [Elemento Neutro] $\exists 1 \in A$ tal que se $a \in G$ $1.a\ =\ a.1 =\ a$.
-     \item [Comutatividade] Se $a, b \in A$ ent„o $a . b = b . a$.
+     \item [Comutatividade] Se $a, b \in A$ ent√£o $a . b = b . a$.
   \end{description}
 \end{definition}
 
 \begin{example}
-Para um dado n˙mero primo $p$, o conjunto de n˙meros inteiros $\{0, 1, 2, . . . , p - 1\}$ È um grupo comutativo com relaÁ„o ‡ adiÁ„o mÛdulo-$p$. O conjunto de n˙meros inteiros $\{1, 2, . . . , p - 1\}$ È um grupo comutativo com relaÁ„o ‡ multiplicaÁ„o mÛdulo-$p$.
+Para um dado n√∫mero primo $p$, o conjunto de n√∫meros inteiros $\{0, 1, 2, . . . , p - 1\}$ √© um grupo comutativo com rela√ß√£o √† adi√ß√£o m√≥dulo-$p$. O conjunto de n√∫meros inteiros $\{1, 2, . . . , p - 1\}$ √© um grupo comutativo com rela√ß√£o √† multiplica√ß√£o m√≥dulo-$p$.
 \end{example}
 
-\begin{definition} {\bf Anel} \label{anel} \index{Anel} Se $(A, \phi, \varphi)$ È um anel, ent„o satisfaz as propriedades associatividade, distributividade da multiplicaÁ„o com relaÁ„o a adiÁ„o e elemento neutro. Se ele tambÈm satisfaz a propriedade comutatividade, $(A, \phi, \varphi)$ È um anel comutativo.
+\begin{definition} {\bf Anel} \label{anel} \index{Anel} Se $(A, \phi, \varphi)$ √© um anel, ent√£o satisfaz as propriedades associatividade, distributividade da multiplica√ß√£o com rela√ß√£o a adi√ß√£o e elemento neutro. Se ele tamb√©m satisfaz a propriedade comutatividade, $(A, \phi, \varphi)$ √© um anel comutativo.
 \end{definition}
 
 \begin{example}
-Como exemplos de anÈis comutativos, temos os conjuntos dos n˙meros racionais $\mathbb{Q}$, reais $\mathbb{R}$, complexos $\mathbb{C}$ e e inteiros $mod\ q$ ($q$ È primo) sob as operaÁıes de adiÁ„o e multiplicaÁ„o usuais.
+Como exemplos de an√©is comutativos, temos os conjuntos dos n√∫meros racionais $\mathbb{Q}$, reais $\mathbb{R}$, complexos $\mathbb{C}$ e e inteiros $mod\ q$ ($q$ √© primo) sob as opera√ß√µes de adi√ß√£o e multiplica√ß√£o usuais.
 \end{example}
 
-\begin{definition} {\bf DomÌnio de Integridade} \label{DomInt} \index{DomÌnio de Integridade} Um anel $A$ È chamado domÌnio de integridade, se possuir a propriedade: $\forall a,b, \in A\ e\ a\neq 0\ e\ b \neq 0 \Longrightarrow a.b \neq 0$
+\begin{definition} {\bf Dom√≠nio de Integridade} \label{DomInt} \index{Dom√≠nio de Integridade} Um anel $A$ √© chamado dom√≠nio de integridade, se possuir a propriedade: $\forall a,b, \in A\ e\ a\neq 0\ e\ b \neq 0 \Longrightarrow a.b \neq 0$
 \end{definition}
 
-\begin{example} Os anÈis $\mathbb{Z}$, $\mathbb{Q}$, reais $\mathbb{R}$, $\mathbb{C}$ s„o todos domÌnios de integridade. O anel $\mathbb{Z}_q$ È um domÌnio de integridade, quando $q$ È um n˙mero primo.
+\begin{example} Os an√©is $\mathbb{Z}$, $\mathbb{Q}$, reais $\mathbb{R}$, $\mathbb{C}$ s√£o todos dom√≠nios de integridade. O anel $\mathbb{Z}_q$ √© um dom√≠nio de integridade, quando $q$ √© um n√∫mero primo.
 \end{example}
 
-\begin{theorem} O anel $\mathbb{Z}_q$  È um corpo se, e somente se, $q$ È um n˙mero primo.
+\begin{theorem} O anel $\mathbb{Z}_q$  √© um corpo se, e somente se, $q$ √© um n√∫mero primo.
 \end{theorem}
 
 \begin{proof}
-Se $\mathbb{Z}_q$ È um corpo se, e somente se, todos os seus elementos $\bar{0}, \bar{1}, \ldots , \overline{q-1}$ s„o inversÌveis. Pela proposiÁ„o~\ref{invertivel}, significa que  $MDC(0,q)\ =\ MDC(1,q)\ =\ MDC(2,q)\ = \ldots \ =\ MDC(q-1,q)\ =\ 1$. Portanto, $q$ È primo. $\square$
+Se $\mathbb{Z}_q$ √© um corpo se, e somente se, todos os seus elementos $\bar{0}, \bar{1}, \ldots , \overline{q-1}$ s√£o invers√≠veis. Pela proposi√ß√£o~\ref{invertivel}, significa que  $MDC(0,q)\ =\ MDC(1,q)\ =\ MDC(2,q)\ = \ldots \ =\ MDC(q-1,q)\ =\ 1$. Portanto, $q$ √© primo. $\square$
 \end{proof}
 
-\begin{definition} {\bf Corpo} \label{corpo} \index{Corpo} Um anel onde todo elemento n„o nulo È invertÌvel È chamado de Corpo.
+\begin{definition} {\bf Corpo} \label{corpo} \index{Corpo} Um anel onde todo elemento n√£o nulo √© invert√≠vel √© chamado de Corpo.
 \end{definition}
 
-\begin{example} O Corpo de Galois $\mathbb{GF}_2$ È o conjunto $\mathbb{A}\ =\ \{0, 1\}$ e as operaÁıes $+$ e $.$. O $\mathbb{GF}_8$ ilustrado nas tabelas~\ref{tab5:comp} e~\ref{tab6:comp}.
+\begin{example} O Corpo de Galois $\mathbb{GF}_2$ √© o conjunto $\mathbb{A}\ =\ \{0, 1\}$ e as opera√ß√µes $+$ e $.$. O $\mathbb{GF}_8$ ilustrado nas tabelas~\ref{tab5:comp} e~\ref{tab6:comp}.
 
    \input{tabelas/tabela-operacoes-corpo-galois}
    \input{tabelas/tabela-operacoes-corpo-galois8}
@@ -201,33 +201,33 @@ Se $\mathbb{Z}_q$ È um corpo se, e somente se, todos os seus elementos $\bar{0},
 \end{example}
 
 %\section{Corpo}
-%	Um corpo È um conjunto $F$  que resume-se um espaÁo fechado com operaÁıes bin·rias, como "$.$" e "$+$", entre dois dos seus elementos, designados por operandos. O resultado da aplicaÁ„o de uma operaÁ„o resulta em um terceiro elemento tambÈm pertencente a $F$. As propriedades dessas operaÁıes s„o: associativa e comutativa e a operaÁ„o "$.$" È distributiva sobre a operaÁ„o "$+$" : $a.(b + c)\ =\ a.b\ +\ a.c,\ \forall a,\ \forall b,\ \forall c\ \in\ F$. Os elementos de $F$ apresentam essas propriedades: existÍncia de elemento identidade (neutro) em $F$ para a operaÁ„o "$.$" e para a operaÁ„o "$+$" e existÍncia de elemento um inverso da operaÁ„o "$+$" para cada elemento de $F$.
+%	Um corpo √© um conjunto $F$  que resume-se um espa√ßo fechado com opera√ß√µes bin√°rias, como "$.$" e "$+$", entre dois dos seus elementos, designados por operandos. O resultado da aplica√ß√£o de uma opera√ß√£o resulta em um terceiro elemento tamb√©m pertencente a $F$. As propriedades dessas opera√ß√µes s√£o: associativa e comutativa e a opera√ß√£o "$.$" √© distributiva sobre a opera√ß√£o "$+$" : $a.(b + c)\ =\ a.b\ +\ a.c,\ \forall a,\ \forall b,\ \forall c\ \in\ F$. Os elementos de $F$ apresentam essas propriedades: exist√™ncia de elemento identidade (neutro) em $F$ para a opera√ß√£o "$.$" e para a opera√ß√£o "$+$" e exist√™ncia de elemento um inverso da opera√ß√£o "$+$" para cada elemento de $F$.
 
-%	Os conjuntos como $F$ podem ter ordem (por exemplo, cardinalidade) infinita. Como exemplos de corpos infinitos, temos os conjuntos dos n˙meros racionais $\mathbb{Q}$, reais $\mathbb{R}$, complexos $\mathbb{C}$ e e inteiros $mod\ p$ ($p$ È primo) sob as operaÁıes de adiÁ„o e multiplicaÁ„o usuais.
+%	Os conjuntos como $F$ podem ter ordem (por exemplo, cardinalidade) infinita. Como exemplos de corpos infinitos, temos os conjuntos dos n√∫meros racionais $\mathbb{Q}$, reais $\mathbb{R}$, complexos $\mathbb{C}$ e e inteiros $mod\ p$ ($p$ √© primo) sob as opera√ß√µes de adi√ß√£o e multiplica√ß√£o usuais.
 
 %	\section{Corpo de Galois}
-%	Um Corpo de Galois È um corpo de ordem finita ou seja, sua cardinalidade È conhecida.
+%	Um Corpo de Galois √© um corpo de ordem finita ou seja, sua cardinalidade √© conhecida.
 
-%	Exemplo: Seja o conjunto $G = \{ 0, 1 \}$ e a operaÁ„o bin·ria $\bigoplus$ em $G$: $0 \bigoplus 0 = 0$, $0 \bigoplus 1 = 1$, $1 \bigoplus 0 = 1$, $1 \bigoplus 1 = 0$.
+%	Exemplo: Seja o conjunto $G = \{ 0, 1 \}$ e a opera√ß√£o bin√°ria $\bigoplus$ em $G$: $0 \bigoplus 0 = 0$, $0 \bigoplus 1 = 1$, $1 \bigoplus 0 = 1$, $1 \bigoplus 1 = 0$.
 
-%	A operaÁ„o $\bigoplus$ È chamada adiÁ„o mÛdulo 2. Portanto $G$ È fechado em $\bigoplus$ e $\bigoplus$ È comutativa. TambÈm È possÌvel demonstrar que $\bigoplus$ È associativa. O elemento $0$ È o elemento identidade. Os inversos de cada um dos elementos de $G$ tambÈm pertencem a $G$.
+%	A opera√ß√£o $\bigoplus$ √© chamada adi√ß√£o m√≥dulo 2. Portanto $G$ √© fechado em $\bigoplus$ e $\bigoplus$ √© comutativa. Tamb√©m √© poss√≠vel demonstrar que $\bigoplus$ √© associativa. O elemento $0$ √© o elemento identidade. Os inversos de cada um dos elementos de $G$ tamb√©m pertencem a $G$.
 
 
-\begin{theorem} {\bf $\mathbb{GF}_q$} \label{GFq} \index{$\mathbb{GF}_q$} Seja $\mathbb{GF}_q$ um corpo finito com $q$ elementos. Ent„o:
+\begin{theorem} {\bf $\mathbb{GF}_q$} \label{GFq} \index{$\mathbb{GF}_q$} Seja $\mathbb{GF}_q$ um corpo finito com $q$ elementos. Ent√£o:
    \begin{enumerate}[(i)]
      \item $q = p^n$ para algum primo $p$ e para algum inteiro positivo $n$,
-     \item $\mathbb{GF}_q$ contÈm o sub-campo $\mathbb{GF}_p$,
-     \item $\mathbb{GF}_q$ È um espaÁo vetorial sob $\mathbb{GF}_p$ de dimens„o $n$,
+     \item $\mathbb{GF}_q$ cont√©m o sub-campo $\mathbb{GF}_p$,
+     \item $\mathbb{GF}_q$ √© um espa√ßo vetorial sob $\mathbb{GF}_p$ de dimens√£o $n$,
      \item $p\alpha\ =\ 0$ para todo $\alpha \in \mathbb{GF}_q$ e
-     \item Isomorfismo: \index{Isomorfismo entre Corpos} Dados dois corpos finitos $C_q$ e $G_q$, ambos com $q$ elementos, existe uma ˙nica bijeÁ„o $f\ :\ C_q \rightarrow G_q$ com $f(a+b)=f(a)+f(b)$ e $f(a.b)=f(a).f(b)$ para $\forall a,b \in C_q$. Dizemos que  $C_q$ È isomorfo a $G_q$.
+     \item Isomorfismo: \index{Isomorfismo entre Corpos} Dados dois corpos finitos $C_q$ e $G_q$, ambos com $q$ elementos, existe uma √∫nica bije√ß√£o $f\ :\ C_q \rightarrow G_q$ com $f(a+b)=f(a)+f(b)$ e $f(a.b)=f(a).f(b)$ para $\forall a,b \in C_q$. Dizemos que  $C_q$ √© isomorfo a $G_q$.
    \end{enumerate}
 \end{theorem}
 
 
-\begin{theorem} \label{teorema1} Seja $\mathbb{GF}_q$ um corpo finito e $a \in \mathbb{GF}_q$ n„o nulo. Ent„o $a^{q-1}\ =\ 1$.
+\begin{theorem} \label{teorema1} Seja $\mathbb{GF}_q$ um corpo finito e $a \in \mathbb{GF}_q$ n√£o nulo. Ent√£o $a^{q-1}\ =\ 1$.
 \end{theorem}
 
-\begin{proof} Seja $b_1, b_2, \ldots , b_{q-1}$ os $q-1$ elementos n„o nulos de $\mathbb{GF}_q$. Os $q-1$ n˙meros  $a.b_1$, $a.b_2 \ldots  a.b_{q-1}$ s„o todos n„o nulos e distintos. Sabemos que pela operaÁ„o multiplicaÁ„o
+\begin{proof} Seja $b_1, b_2, \ldots , b_{q-1}$ os $q-1$ elementos n√£o nulos de $\mathbb{GF}_q$. Os $q-1$ n√∫meros  $a.b_1$, $a.b_2 \ldots  a.b_{q-1}$ s√£o todos n√£o nulos e distintos. Sabemos que pela opera√ß√£o multiplica√ß√£o
 
 $$
 \begin{array}{cl}
@@ -240,7 +240,7 @@ Como $a \neq 0$ e $(b_1.b_2 \ldots  b_{q-1}) \neq 0$, logo $a^{q-1}\ =\ 1$. $\sq
 \end{proof}
 
 
-\begin{definition} {\bf Ordem do Corpo} \label{OrdCorpo} \index{Ordem do Corpo} O n˙mero de elementos de um corpo finito $G$ È denominado ordem de $G$. Um corpo de Galois de ordem $q$ È representado por $\mathbb{GF}_q$. Um corpo finito G tem ordem $p^n$, onde $p$ È a caracterÌstica do corpo $G$ e $n = [K: Z_p]$.
+\begin{definition} {\bf Ordem do Corpo} \label{OrdCorpo} \index{Ordem do Corpo} O n√∫mero de elementos de um corpo finito $G$ √© denominado ordem de $G$. Um corpo de Galois de ordem $q$ √© representado por $\mathbb{GF}_q$. Um corpo finito G tem ordem $p^n$, onde $p$ √© a caracter√≠stica do corpo $G$ e $n = [K: Z_p]$.
 \end{definition}
 
 \begin{proposition}
@@ -258,7 +258,7 @@ Para cada primo $p$ e para cada  $n \in \mathbb{Z}^+$, existe um corpo com $p^n$
 \end{proof}
 
 \begin{proposition}
-Qualquer corpo com $p^i$ elementos È isomorfo ‡ extens„o de decomposiÁ„o de $x^q - x, q = p^i$ sobre $\mathbb{GF}_q$.
+Qualquer corpo com $p^i$ elementos √© isomorfo √† extens√£o de decomposi√ß√£o de $x^q - x, q = p^i$ sobre $\mathbb{GF}_q$.
 \end{proposition}
 
 \begin{proof}
@@ -273,13 +273,13 @@ Qualquer corpo com $p^i$ elementos È isomorfo ‡ extens„o de decomposiÁ„o de $x^q
 \end{align*}
 \end{example}
 
-\begin{definition} {\bf Ordem do Elemento} \label{OrdElem} \index{Ordem do Elemento} Seja $a \in \mathbb{GF}_q$ n„o nulo. A ordem de $a$, representada por $ord(a)$, È o menor inteiro positivo $o$ tal que $a^o\ =\ 1$.
+\begin{definition} {\bf Ordem do Elemento} \label{OrdElem} \index{Ordem do Elemento} Seja $a \in \mathbb{GF}_q$ n√£o nulo. A ordem de $a$, representada por $ord(a)$, √© o menor inteiro positivo $o$ tal que $a^o\ =\ 1$.
 \end{definition}
 
-\begin{property} Se elevarmos ambos os lados a potÍncia $q - 1$, temos que $(a^o)^{q - 1} = 1$. Multiplicando ambos os lados por $a^o$, temos que $(a^o)^q = a^o$ e substituindo $a^o$ por $x$, temos $x^q = x$. Portanto, todos os $a \in \mathbb{GF}_q$ satisfazem a equaÁ„o: $x^q - x = 0, q = p^n$.
+\begin{property} Se elevarmos ambos os lados a pot√™ncia $q - 1$, temos que $(a^o)^{q - 1} = 1$. Multiplicando ambos os lados por $a^o$, temos que $(a^o)^q = a^o$ e substituindo $a^o$ por $x$, temos $x^q = x$. Portanto, todos os $a \in \mathbb{GF}_q$ satisfazem a equa√ß√£o: $x^q - x = 0, q = p^n$.
 \end{property}
 
-\begin{theorem} \label{teorema2} Seja $\mathbb{GF}_q$ um corpo finito e $a \in \mathbb{GF}_q$ n„o nulo. Seja $o$ a ordem de $a$. Ent„o $o\ |\ q-1$.
+\begin{theorem} \label{teorema2} Seja $\mathbb{GF}_q$ um corpo finito e $a \in \mathbb{GF}_q$ n√£o nulo. Seja $o$ a ordem de $a$. Ent√£o $o\ |\ q-1$.
 \end{theorem}
 
 \begin{proof} Suponhamos que $o \nmid q-1$. Assim, $q-1\ =\ ko\ +\ r$, onde $0 < r < o$.
@@ -288,41 +288,41 @@ $$
 a^{q-1}\ =\ a^{ko+r}\ =\ a^{ko}.a^r\ =\ (a^o)^k.a^r
 \end{array}
 $$
-Pelo teorema~\ref{teorema1}, $a^{q-1}\ =\ 1$ e $a^o\ =\ 1$, ent„o $a^r\ =\ 1$. Isso È um absurdo, pois $0 < r < o$ e pela definiÁ„o~\ref{OrdElem}, $o$ È o menor inteiro positivo tal que $a^o\ =\ 1$. Portanto, $o\ |\ q-1$. $\square$
+Pelo teorema~\ref{teorema1}, $a^{q-1}\ =\ 1$ e $a^o\ =\ 1$, ent√£o $a^r\ =\ 1$. Isso √© um absurdo, pois $0 < r < o$ e pela defini√ß√£o~\ref{OrdElem}, $o$ √© o menor inteiro positivo tal que $a^o\ =\ 1$. Portanto, $o\ |\ q-1$. $\square$
 \end{proof}
 
-\begin{definition} {\bf AdiÁ„o mÛdulo-$m$} \label{AdicaoM} \index{AdiÁ„o mÛdulo-$m$} Seja $a,b  \in \mathbb{GF}_q$ n„o nulos. A operaÁ„o adiÁ„o mÛdulo-$m$ È definida  como:
+\begin{definition} {\bf Adi√ß√£o m√≥dulo-$m$} \label{AdicaoM} \index{Adi√ß√£o m√≥dulo-$m$} Seja $a,b  \in \mathbb{GF}_q$ n√£o nulos. A opera√ß√£o adi√ß√£o m√≥dulo-$m$ √© definida  como:
 \begin{align*}
 & a \oplus b\ =\ c\\
 & c\ =\ (a+b)(mod\ m)
 \end{align*}
-Isso È, a adiÁ„o de quaisquer dois elementos $a,b \in \mathbb{GF}_q$ È o resto da divis„o da adiÁ„o aritmÈtica $(a+b)$ por $m$.
+Isso √©, a adi√ß√£o de quaisquer dois elementos $a,b \in \mathbb{GF}_q$ √© o resto da divis√£o da adi√ß√£o aritm√©tica $(a+b)$ por $m$.
 \end{definition}
 
-\begin{definition} {\bf MultiplicaÁ„o mÛdulo-$m$} \label{MultiM} \index{MultiplicaÁ„o mÛdulo-$m$} Seja $a,b  \in \mathbb{GF}_q$ n„o nulos. A operaÁ„o multiplicaÁ„o mÛdulo-$m$ È definida  como:
+\begin{definition} {\bf Multiplica√ß√£o m√≥dulo-$m$} \label{MultiM} \index{Multiplica√ß√£o m√≥dulo-$m$} Seja $a,b  \in \mathbb{GF}_q$ n√£o nulos. A opera√ß√£o multiplica√ß√£o m√≥dulo-$m$ √© definida  como:
 \begin{align*}
 & a \otimes b\ =\ c\\
 & c\ =\ (a.b)(mod\ m)
 \end{align*}
-Isso È, a multiplicaÁ„o de quaisquer dois elementos $a,b \in \mathbb{GF}_q$ È o resto da divis„o da multiplicaÁ„o aritmÈtica $(a.b)$ por $m$.
+Isso √©, a multiplica√ß√£o de quaisquer dois elementos $a,b \in \mathbb{GF}_q$ √© o resto da divis√£o da multiplica√ß√£o aritm√©tica $(a.b)$ por $m$.
 \end{definition}
 
 \begin{definition} 
-Dado um campo $\mathbb{GF}_q$, as operaÁıes adiÁ„o e multiplicaÁ„o seguem as seguintes propriedades:
+Dado um campo $\mathbb{GF}_q$, as opera√ß√µes adi√ß√£o e multiplica√ß√£o seguem as seguintes propriedades:
 \begin{enumerate}[(i)]
-   \item $\mathbb{GF}_q$ È um anel comutativo com relaÁ„o a operaÁ„o de adiÁ„o. O elemento $0$ È o elemento neutro.
-   \item ${\mathbb{GF}_q}^*$ È um anel comutativo com relaÁ„o a operaÁ„o de multiplicaÁ„o. O elemento $1$ È o elemento neutro.
-   \item a operaÁ„o multiplicaÁ„o È distributiva com relaÁ„o a adiÁ„o:
+   \item $\mathbb{GF}_q$ √© um anel comutativo com rela√ß√£o a opera√ß√£o de adi√ß√£o. O elemento $0$ √© o elemento neutro.
+   \item ${\mathbb{GF}_q}^*$ √© um anel comutativo com rela√ß√£o a opera√ß√£o de multiplica√ß√£o. O elemento $1$ √© o elemento neutro.
+   \item a opera√ß√£o multiplica√ß√£o √© distributiva com rela√ß√£o a adi√ß√£o:
       \begin{align*}
          & a \otimes (b \oplus c)\ =\ (a \otimes b) \oplus (a \otimes c)
       \end{align*}
 \end{enumerate}
 \end{definition}
 
-\begin{definition} {\bf Elemento Primitivo} \label{ElemPrim} \index{Elemento Primitivo} Seja $a \in \mathbb{GF}_q$ n„o nulo. $a$ È chamado elemento primitivo se a ordem de $a$ È $q-1$. Todos os campos tem um elemento primitivo.
+\begin{definition} {\bf Elemento Primitivo} \label{ElemPrim} \index{Elemento Primitivo} Seja $a \in \mathbb{GF}_q$ n√£o nulo. $a$ √© chamado elemento primitivo se a ordem de $a$ √© $q-1$. Todos os campos tem um elemento primitivo.
 \end{definition}
 
-\begin{proposition} Todas potÍncias do elemento primitivo geram todos os elementos n„o nulos de $\mathbb{GF}_q$. 
+\begin{proposition} Todas pot√™ncias do elemento primitivo geram todos os elementos n√£o nulos de $\mathbb{GF}_q$. 
 \end{proposition}
 
 \begin{proof}
@@ -334,11 +334,11 @@ Dado um campo $\mathbb{GF}_q$, as operaÁıes adiÁ„o e multiplicaÁ„o seguem as seg
 \begin{proof}
 \end{proof}
 
-\begin{proposition}  Cada elemento $b \in \mathbb{GF}_q$ n„o nulo pode ser representado atravÈs de um conjunto com potÍncias de um elemento primitivo, com o expoente variando de $1$ atÈ $q-1$.
+\begin{proposition}  Cada elemento $b \in \mathbb{GF}_q$ n√£o nulo pode ser representado atrav√©s de um conjunto com pot√™ncias de um elemento primitivo, com o expoente variando de $1$ at√© $q-1$.
 \end{proposition}
 
 \begin{proof}
-Pela definiÁ„o~\ref{OrdElem}, $b^o\ =\ 1$, onde $o$ È a ordem de $b$. Pelo teorema~\ref{teorema2}, $o\ |\ q-1$. Pelo teorema~\ref{teorema2}, $b^{q-1}\ =\ 1$. Seja $\alpha$ o elemento primitivo de $\mathbb{GF}_q$. 
+Pela defini√ß√£o~\ref{OrdElem}, $b^o\ =\ 1$, onde $o$ √© a ordem de $b$. Pelo teorema~\ref{teorema2}, $o\ |\ q-1$. Pelo teorema~\ref{teorema2}, $b^{q-1}\ =\ 1$. Seja $\alpha$ o elemento primitivo de $\mathbb{GF}_q$. 
 $$
 \begin{array}{cl}
 a^i, i = 1, a = a\\
@@ -348,20 +348,20 @@ b^{q-1}.a^{q-1}\ =\ b^{q-1}\\
 $$
 \end{proof}
 
-%		\subsection{AritmÈtica de Corpo Bin·rio}
+%		\subsection{Aritm√©tica de Corpo Bin√°rio}
 
 \begin{theorem} {\bf Pequeno Teorema de Fermat} \label{Fermat} \index{Pequeno Teorema de Fermat}
-Se $p$ È um n˙mero primo e $p \nmid a$, ent„o $a^{p-1} \equiv 1(mod\ p)$ para $\forall a \in \mathbb{Z}$. AlÈm disso, $a^p \equiv a(mod\ p)$.
+Se $p$ √© um n√∫mero primo e $p \nmid a$, ent√£o $a^{p-1} \equiv 1(mod\ p)$ para $\forall a \in \mathbb{Z}$. Al√©m disso, $a^p \equiv a(mod\ p)$.
 Portanto, $p\ |\ a^p\ -\ a$. \cite{Rosen:2003}
 \end{theorem}
 
-\begin{proof} Seja $P(n)$ a proposiÁ„o que $p\ |\ n^p\ -\ n$ para $\forall n \in \mathbb{Z}$ e para $p$ primo.
+\begin{proof} Seja $P(n)$ a proposi√ß√£o que $p\ |\ n^p\ -\ n$ para $\forall n \in \mathbb{Z}$ e para $p$ primo.
 
-Base: em $P(1)$ È verdadeira, pois $1^p\ -\ 1$ È divisÌvel por $p$.
+Base: em $P(1)$ √© verdadeira, pois $1^p\ -\ 1$ √© divis√≠vel por $p$.
 
-Passo de induÁ„o: Suponhamos que P(k) È verdadeira $\forall k \in \mathbb{Z}$ e para $p$ primo.
+Passo de indu√ß√£o: Suponhamos que P(k) √© verdadeira $\forall k \in \mathbb{Z}$ e para $p$ primo.
 
-Queremos provar, para $k+1$, que P(k+1) È verdadeira. Podemos escrever $(k+1)^p$ da seguinte forma:
+Queremos provar, para $k+1$, que P(k+1) √© verdadeira. Podemos escrever $(k+1)^p$ da seguinte forma:
 $$
 (k+1)^p\ =\ k^p\ +\ ip\ +\ 1,\ para\ i \in \mathbb{Z}
 $$
@@ -369,27 +369,27 @@ Subtraindo $(k+1)$ em ambos os lados, temos que:
 $$
 (k+1)^p\ -\ (k+1)\ =\ ip\ +\ (k^p-k)
 $$
-Como $(k^p-k)$ È divisÌvel por $p$ por hipÛtese, temos que $(k+1)^p - (k+1)$ È divisÌvel por $p$.
+Como $(k^p-k)$ √© divis√≠vel por $p$ por hip√≥tese, temos que $(k+1)^p - (k+1)$ √© divis√≠vel por $p$.
 $\square$
 \end{proof}
 
-\section{AnÈis de PolinÙmios}
+\section{An√©is de Polin√¥mios}
 
-Os cÛdigos cÌclicos s„o uma classe importante de cÛdigos de bloco lineares. Estes cÛdigos s„o manipulados algebricamente atravÈs de polinÙmios, sem a utilizaÁ„o de matrizes, o que facilita tanto a codificaÁ„o como a decodificaÁ„o.
+Os c√≥digos c√≠clicos s√£o uma classe importante de c√≥digos de bloco lineares. Estes c√≥digos s√£o manipulados algebricamente atrav√©s de polin√¥mios, sem a utiliza√ß√£o de matrizes, o que facilita tanto a codifica√ß√£o como a decodifica√ß√£o.
 
-\begin{definition} {\bf Anel de PolinÙmios} \label{AnelPol} \index{Anel de PolinÙmios} Dado um corpo $\mathbb{GF}_p$ definimos o anel comutativo com unidade $\mathbb{GF}_p[x]$ como sendo o conjunto das expressıes da forma $P[x]\ =\ a_o\ +\ a_1x\ +\ a_2x^2\ + \ldots +\ a_{n-1}x^{n-1}\ +\ a_nx^n$, com $a_n \neq 0$ e $n \in \mathbb{Z}^+$ chamados de polinÙmios com coeficientes em $\mathbb{GF}_p$. Cada polinÙmio define uma funÁ„o polinomial $p(c)\ :\ \mathbb{GF}_p \rightarrow \mathbb{GF}_p$, $c \longmapsto\ p(c)\ =\ a_o\ +\ a_1c\ +\ a_2c^2\ +\ \ldots +\ a_nc^n$. A distinÁ„o entre um polinÙmio e uma funÁ„o polinomial È bem ilustrada pelo polinÙmio $x^p-x,\ x \in \mathbb{Z}$. Pelo teorema~\ref{Fermat}, a funÁ„o polinomial $p(x)\ =\ x^p-x$ tem propriedades diferentes do polinÙmio equivalente, onde para $\forall x \in \mathbb{Z}$, temos que $P[x]\ =\ 0$.
+\begin{definition} {\bf Anel de Polin√¥mios} \label{AnelPol} \index{Anel de Polin√¥mios} Dado um corpo $\mathbb{GF}_p$ definimos o anel comutativo com unidade $\mathbb{GF}_p[x]$ como sendo o conjunto das express√µes da forma $P[x]\ =\ a_o\ +\ a_1x\ +\ a_2x^2\ + \ldots +\ a_{n-1}x^{n-1}\ +\ a_nx^n$, com $a_n \neq 0$ e $n \in \mathbb{Z}^+$ chamados de polin√¥mios com coeficientes em $\mathbb{GF}_p$. Cada polin√¥mio define uma fun√ß√£o polinomial $p(c)\ :\ \mathbb{GF}_p \rightarrow \mathbb{GF}_p$, $c \longmapsto\ p(c)\ =\ a_o\ +\ a_1c\ +\ a_2c^2\ +\ \ldots +\ a_nc^n$. A distin√ß√£o entre um polin√¥mio e uma fun√ß√£o polinomial √© bem ilustrada pelo polin√¥mio $x^p-x,\ x \in \mathbb{Z}$. Pelo teorema~\ref{Fermat}, a fun√ß√£o polinomial $p(x)\ =\ x^p-x$ tem propriedades diferentes do polin√¥mio equivalente, onde para $\forall x \in \mathbb{Z}$, temos que $P[x]\ =\ 0$.
 \end{definition}
 
-%		\subsection{Propriedades dos PolinÙmios e suas RaÌzes}		
-%		$\mathbb{GF}_q[x]$ È um corpo de Galois que tem ordem $q$, sobre o qual s„o aplicados polinÙmios com coeficientes entre $0$ e $q - 1$. Um exemplo de um polinÙmio $P[x]$ pode ser apresentado na equaÁ„o: $P[x] = a_7.x^7 + a_5.x^5 + a_2.x^2 + ax + 1$. Os coeficientes de um polinÙmio $a_i$ pertencem ao $\mathbb{GF}_q[x]$.
+%		\subsection{Propriedades dos Polin√¥mios e suas Ra√≠zes}		
+%		$\mathbb{GF}_q[x]$ √© um corpo de Galois que tem ordem $q$, sobre o qual s√£o aplicados polin√¥mios com coeficientes entre $0$ e $q - 1$. Um exemplo de um polin√¥mio $P[x]$ pode ser apresentado na equa√ß√£o: $P[x] = a_7.x^7 + a_5.x^5 + a_2.x^2 + ax + 1$. Os coeficientes de um polin√¥mio $a_i$ pertencem ao $\mathbb{GF}_q[x]$.
 
 \begin{theorem}
-Sejam $f$ e $g$ dois polinÙmios n„o nulos em $\mathbb{GF}_p[x]$. Ent„o:
+Sejam $f$ e $g$ dois polin√¥mios n√£o nulos em $\mathbb{GF}_p[x]$. Ent√£o:
   \begin{enumerate}[(i)]
-     \item $fg$ È um polinÙmio n„o nulo
-     \item o grau de $f.g$ È igual a soma do grau de $f$ mais o grau de $g$
-     \item $fg$ È um polinÙmio de grau 1 se, e somente se, $f$ e $g$ s„o polinÙmios de grau 1
-     \item $fg$ È um polinÙmio de grau 0 se, e somente se, $f$ e $g$ s„o polinÙmios de grau 0
+     \item $fg$ √© um polin√¥mio n√£o nulo
+     \item o grau de $f.g$ √© igual a soma do grau de $f$ mais o grau de $g$
+     \item $fg$ √© um polin√¥mio de grau 1 se, e somente se, $f$ e $g$ s√£o polin√¥mios de grau 1
+     \item $fg$ √© um polin√¥mio de grau 0 se, e somente se, $f$ e $g$ s√£o polin√¥mios de grau 0
      \item se $f+g \neq 0$, $grau(f+g) \leq max (grau(f), grau(g))$
   \end{enumerate}
 \end{theorem}
@@ -399,7 +399,7 @@ Suponhamos que $f$ tenha grau $m$ e que $g$ tenha grau $n$. Se $k \in \mathbb{Z}
 $$
 (fg)_{m+n}\ = \displaystyle\sum_{i=0}^{m+n+k} f_i g_{m+n+k-i}
 $$
-Sabemos que $i \leq m$ e $m+n+k-i \leq n$. Assim È necess·rio que $m+k \leq i \leq m$, que implica que $k=0$ e $i=m$. Ent„o
+Sabemos que $i \leq m$ e $m+n+k-i \leq n$. Assim √© necess√°rio que $m+k \leq i \leq m$, que implica que $k=0$ e $i=m$. Ent√£o
 $$
 (fg)_{m+n}\ =\ f_m g_n
 $$
@@ -409,7 +409,7 @@ $$
 $$
 \end{proof}
 
-\begin{corollary} Suponhamos que f, g e h s„o polinÙmios em $\mathbb{GF}_p[x]$ tais que $f \neq 0$ e $fg\ =\ fh$. Ent„o $g\ =\ h$.
+\begin{corollary} Suponhamos que f, g e h s√£o polin√¥mios em $\mathbb{GF}_p[x]$ tais que $f \neq 0$ e $fg\ =\ fh$. Ent√£o $g\ =\ h$.
 \end{corollary}
 
 \begin{proof} Suponhamos que $fg\ =\ fh$.
@@ -419,7 +419,7 @@ $$
 Como $f \neq 0$, por (i) temos que $g\ -\ h\ =\ 0$. $\square$
 \end{proof}
 
-\begin{lemma} \label{lema1} Suponhamos que $f$ e $d$ sejam polinÙmios n„o nulos em $\mathbb{GF}_p[x]$ tais que $grau(d) \leq grau(f)$. Ent„o $\exists g$ polinÙmio em $\mathbb{GF}_p[x]$ tal que ou $f-dg\ =\ 0$ ou  $\ grau(f-dg) < grau(f)$
+\begin{lemma} \label{lema1} Suponhamos que $f$ e $d$ sejam polin√¥mios n√£o nulos em $\mathbb{GF}_p[x]$ tais que $grau(d) \leq grau(f)$. Ent√£o $\exists g$ polin√¥mio em $\mathbb{GF}_p[x]$ tal que ou $f-dg\ =\ 0$ ou  $\ grau(f-dg) < grau(f)$
 \end{lemma}
 
 \begin{proof} Suponhamos que
@@ -429,7 +429,7 @@ f\ =\ a_mx^m\ +\ \displaystyle\sum_{i=0}^{m-1} a_ix^i,\ a_m \neq 0\\\\
 d\ =\ b_nx^n\ +\ \displaystyle\sum_{i=0}^{n-1} b_ix^i,\ b_n \neq 0
 \end{array}
 $$
-Seja $m$ o grau de $f$ e $n$ o grau de $d$. Ent„o $m > n$. Suponhamos que $g\ =\ \frac{f}{d}$. Vamos tomar o polinÙmio $g^{'}$ igual ao termo de $g$ de maior grau:
+Seja $m$ o grau de $f$ e $n$ o grau de $d$. Ent√£o $m > n$. Suponhamos que $g\ =\ \frac{f}{d}$. Vamos tomar o polin√¥mio $g^{'}$ igual ao termo de $g$ de maior grau:
 $$
 \begin{array}{cl}
 g\ =\ \frac{a_m}{b_n}x^{m-n}\ +\ \ldots\\
@@ -446,40 +446,40 @@ $$
 $\square$
 \end{proof}
 
-Usando o lemma~\ref{lema1}, podemos mostrar que a operaÁ„o de divis„o de polinÙmios pode ser feita em $\mathbb{GF}_p[x]$.
+Usando o lemma~\ref{lema1}, podemos mostrar que a opera√ß√£o de divis√£o de polin√¥mios pode ser feita em $\mathbb{GF}_p[x]$.
 
-\begin{definition} Seja $f, g \in \mathbb{GF}_p[x]$, $f$ e $g$ polinÙmios e $g$ n„o nulo. Existem um par de polinÙmios ˙nicos $q$ e $r$ tal que $f(x)\ =\ q(x)g(x)\ +\ r(x)$, com $grau(r(x)) < grau(g(x))$.
+\begin{definition} Seja $f, g \in \mathbb{GF}_p[x]$, $f$ e $g$ polin√¥mios e $g$ n√£o nulo. Existem um par de polin√¥mios √∫nicos $q$ e $r$ tal que $f(x)\ =\ q(x)g(x)\ +\ r(x)$, com $grau(r(x)) < grau(g(x))$.
 \end{definition}
 
-\begin{definition} {\bf PolinÙmio IrredutÌvel} \label{PolIrred} \index{PolinÙmio IrredutÌvel} Seja $p(x)$ um polinÙmio de grau $m$ sobre $\mathbb{GF}_2$. Se $p(x)$ n„o for divisÌvel por nenhum polinÙmio de $grau \leq m-1$, ent„o $p(x)$ È irredutÌvel sobre $\mathbb{GF}_2$.
-\end{definition}
-
-\begin{proposition}
-$\forall$ polinÙmio irredutÌvel sobre $\mathbb{GF}_2$ de grau $m$ divide $x^{2^m-1} + 1$.
-\end{proposition}
-
-\begin{definition} {\bf PolinÙmio Primitivo} \label{PolPrim} \index{PolinÙmio Primitivo}
-Seja $p(x)$ um polinÙmio de grau $m$ sobre $\mathbb{GF}_2$. Se $2^m-1$ for o menor inteiro positivo para o qual $p(x)$ divide $x^{2^m-1} + 1$, ent„o $p(x)$ È um polinÙmio primitivo de grau $m$ sobre $\mathbb{GF}_2$.
-\end{definition}
-
-\begin{definition} {\bf PolinÙmio RedutÌvel e IrredutÌvel} \label{PolRedIrred} \index{PolinÙmio RedutÌvel e IrredutÌvel} Dado um corpo $\mathbb{GF}_p[x]$, um polinÙmio $f$  È redutÌvel em $\mathbb{GF}_p[x]$, se existem os polinÙmios $g, h$ em $\mathbb{GF}_p[x]$ de grau $\geq 1$ tais que $f\ =\ gh$ e $f$ e sen„o, $f$ È irredutÌvel em $\mathbb{GF}_p[x]$.
+\begin{definition} {\bf Polin√¥mio Irredut√≠vel} \label{PolIrred} \index{Polin√¥mio Irredut√≠vel} Seja $p(x)$ um polin√¥mio de grau $m$ sobre $\mathbb{GF}_2$. Se $p(x)$ n√£o for divis√≠vel por nenhum polin√¥mio de $grau \leq m-1$, ent√£o $p(x)$ √© irredut√≠vel sobre $\mathbb{GF}_2$.
 \end{definition}
 
 \begin{proposition}
-Seja $F[x]$ um polinÙmio irredutÌvel de grau $n$ em $GP_p[x]$. Ent„o $GP_p[x]/F[x]$ È um corpo finito com $p^n$ elementos.
+$\forall$ polin√¥mio irredut√≠vel sobre $\mathbb{GF}_2$ de grau $m$ divide $x^{2^m-1} + 1$.
 \end{proposition}
 
-\begin{theorem} Seja $P[x]$ um irredutÌvel polinÙmio sob $\mathbb{GP}_p$ e cujo grau È $m$. Ent„o o conjunto de todos os polinÙmios em $x$ de grau $m-1$ e coefientes $\in \mathbb{GP}_p$ com as operaÁıes adiÁ„o e multiplicaÁ„o mÛdulo-$2$ È um campo de ordem $p_m$.
+\begin{definition} {\bf Polin√¥mio Primitivo} \label{PolPrim} \index{Polin√¥mio Primitivo}
+Seja $p(x)$ um polin√¥mio de grau $m$ sobre $\mathbb{GF}_2$. Se $2^m-1$ for o menor inteiro positivo para o qual $p(x)$ divide $x^{2^m-1} + 1$, ent√£o $p(x)$ √© um polin√¥mio primitivo de grau $m$ sobre $\mathbb{GF}_2$.
+\end{definition}
+
+\begin{definition} {\bf Polin√¥mio Redut√≠vel e Irredut√≠vel} \label{PolRedIrred} \index{Polin√¥mio Redut√≠vel e Irredut√≠vel} Dado um corpo $\mathbb{GF}_p[x]$, um polin√¥mio $f$  √© redut√≠vel em $\mathbb{GF}_p[x]$, se existem os polin√¥mios $g, h$ em $\mathbb{GF}_p[x]$ de grau $\geq 1$ tais que $f\ =\ gh$ e $f$ e sen√£o, $f$ √© irredut√≠vel em $\mathbb{GF}_p[x]$.
+\end{definition}
+
+\begin{proposition}
+Seja $F[x]$ um polin√¥mio irredut√≠vel de grau $n$ em $GP_p[x]$. Ent√£o $GP_p[x]/F[x]$ √© um corpo finito com $p^n$ elementos.
+\end{proposition}
+
+\begin{theorem} Seja $P[x]$ um irredut√≠vel polin√¥mio sob $\mathbb{GP}_p$ e cujo grau √© $m$. Ent√£o o conjunto de todos os polin√¥mios em $x$ de grau $m-1$ e coefientes $\in \mathbb{GP}_p$ com as opera√ß√µes adi√ß√£o e multiplica√ß√£o m√≥dulo-$2$ √© um campo de ordem $p_m$.
 \end{theorem}
 
-\section{PolinÙmios sobre $\mathbb{GF}_q$}
+\section{Polin√¥mios sobre $\mathbb{GF}_q$}
 
-CÛdigos de bloco s„o construÌdos com elementos de um corpo $\mathbb{GF}_q$ onde $q$ ou È primo $p$ ou uma potÍncia de $p$. Os dados de sistemas de transmiss„o e armazenamento de dados podem ser facilmente codificados em cÛdigos com sÌmbolos gerados a partir de um corpo $\mathbb{GF}_2$ ou $\mathbb{GF}_{2^m}$ \cite{Lin:1983}.
+C√≥digos de bloco s√£o constru√≠dos com elementos de um corpo $\mathbb{GF}_q$ onde $q$ ou √© primo $p$ ou uma pot√™ncia de $p$. Os dados de sistemas de transmiss√£o e armazenamento de dados podem ser facilmente codificados em c√≥digos com s√≠mbolos gerados a partir de um corpo $\mathbb{GF}_2$ ou $\mathbb{GF}_{2^m}$ \cite{Lin:1983}.
 
-\begin{definition} {\bf CÛdigo Bin·rio} \label{CodBin} \index{CÛdigo Bin·rio} CÛdigo bin·rio È um cÛdigo em que o n˙mero de palavras de cÛdigo È $2^m$, ou seja, $q = 2$.
+\begin{definition} {\bf C√≥digo Bin√°rio} \label{CodBin} \index{C√≥digo Bin√°rio} C√≥digo bin√°rio √© um c√≥digo em que o n√∫mero de palavras de c√≥digo √© $2^m$, ou seja, $q = 2$.
 \end{definition}
 
-O corpo $\mathbb{GF}_{2^m}$ consiste de todos os polinÙmios $P$ em $\alpha$ de grau $\leq m-1$ com coeficientes em $\mathbb{GF}_2$. Um elemento em $\mathbb{GF}_{2^m}$ È da forma: 
+O corpo $\mathbb{GF}_{2^m}$ consiste de todos os polin√¥mios $P$ em $\alpha$ de grau $\leq m-1$ com coeficientes em $\mathbb{GF}_2$. Um elemento em $\mathbb{GF}_{2^m}$ √© da forma: 
 
 \begin{align*}
 a_0a_1 \ldots a_{m-1} \leftrightarrow a_0\ +\ a_1\alpha\ + \ldots +\ a_{m-1}\alpha^{m-1}
@@ -487,10 +487,10 @@ a_0a_1 \ldots a_{m-1} \leftrightarrow a_0\ +\ a_1\alpha\ + \ldots +\ a_{m-1}\alp
 
 onde $a_i \in \mathbb{GF}_2$ e $P(\alpha)\ =\ 0$
 
-Na representaÁ„o polinomial, o elemento primitivo $\alpha$ È a raiz do polinÙmio primitivo $p(x)$ de grau $m$. Essa representaÁ„o È usada para a operaÁ„o adiÁ„o de dois elementos de $\mathbb{GF}_{2^m}$.
+Na representa√ß√£o polinomial, o elemento primitivo $\alpha$ √© a raiz do polin√¥mio primitivo $p(x)$ de grau $m$. Essa representa√ß√£o √© usada para a opera√ß√£o adi√ß√£o de dois elementos de $\mathbb{GF}_{2^m}$.
 
 \begin{example}
-Considere o campo $\mathbb{GF}_{2^4}$ definido pelo polinÙmio primitivo $p(x)=1 + x^3 + x^4$.  O campo tem $2^4=16$ elementos. Esses ser„o os sÌmbolos usados pelo cÛdigo. A representaÁ„o bin·ria È expressa pela pela tupla $(x^4, x^3, x^1, x^0)$. Na representaÁ„o exponencial, o elemento nulo e os 4 primeiros elementos n„o nulos $\alpha, \alpha^2, \alpha^3, \alpha^4$ s„o expressos de forma trivial. Para obter a representaÁ„o dos outros elementos $\alpha^5, \ldots , \alpha^{14}$ È necess·rio usar o polinÙmio primitivo. Para isso, define-se $\alpha$ raiz do polinÙmio primitivo: \footnote{Na aritmÈtica bin·ria, -1= +1.}
+Considere o campo $\mathbb{GF}_{2^4}$ definido pelo polin√¥mio primitivo $p(x)=1 + x^3 + x^4$.  O campo tem $2^4=16$ elementos. Esses ser√£o os s√≠mbolos usados pelo c√≥digo. A representa√ß√£o bin√°ria √© expressa pela pela tupla $(x^4, x^3, x^1, x^0)$. Na representa√ß√£o exponencial, o elemento nulo e os 4 primeiros elementos n√£o nulos $\alpha, \alpha^2, \alpha^3, \alpha^4$ s√£o expressos de forma trivial. Para obter a representa√ß√£o dos outros elementos $\alpha^5, \ldots , \alpha^{14}$ √© necess√°rio usar o polin√¥mio primitivo. Para isso, define-se $\alpha$ raiz do polin√¥mio primitivo: \footnote{Na aritm√©tica bin√°ria, -1= +1.}
 \begin{align*}
 p(\alpha) = 0\\
 1 + \alpha + \alpha^4 = 0\\
@@ -515,57 +515,57 @@ Para se obter os elementos:
 
 \end{example}
 
-O campo $\mathbb{GF}_{256}$ È um espaÁo vetorial sob $\mathbb{GF}_2$ de dimens„o $8$ e È muito usado para construir cÛdigos de bloco. A aritmÈtica
-bin·ria utiliza adiÁ„o e multiplicaÁ„o mÛdulo-$2$. Um polinÙmio $F[x]$ definido sobre $\mathbb{GF}_2$ possui a forma:
+O campo $\mathbb{GF}_{256}$ √© um espa√ßo vetorial sob $\mathbb{GF}_2$ de dimens√£o $8$ e √© muito usado para construir c√≥digos de bloco. A aritm√©tica
+bin√°ria utiliza adi√ß√£o e multiplica√ß√£o m√≥dulo-$2$. Um polin√¥mio $F[x]$ definido sobre $\mathbb{GF}_2$ possui a forma:
 \begin{align*}
 P[x]\ =\ a_o\ +\ a_1x\ +\ a_2x^2\ + \ldots +\ a_{n-1}x^{n-1}\ +\ a_nx^n\\
 com\ a_i \in \{0, 1\}\ e\ n \in \{0, 1, 2, 3, 4, 5, 6, 7\}
 \end{align*}
 
 
-\section{ConstruÁ„o de $\mathbb{GF}_q$ (Galois Estendido)}
+\section{Constru√ß√£o de $\mathbb{GF}_q$ (Galois Estendido)}
 
-\begin{definition} {\bf RepresentaÁ„o Exponencial} \label{RepExp} \index{RepresentaÁ„o Exponencial} Seja $\alpha$ um elemento primitivo em $\mathbb{GF}_q, q=2^m$. Ent„o $\alpha$ tem ordem $q -1$ e as potÍncias distintas de $\alpha$ $\{ 1, \alpha, \alpha^2, \ldots \alpha^{q-2}\}$ geram todos os elementos diferentes de $0$ de $\mathbb{GF}_q$.
+\begin{definition} {\bf Representa√ß√£o Exponencial} \label{RepExp} \index{Representa√ß√£o Exponencial} Seja $\alpha$ um elemento primitivo em $\mathbb{GF}_q, q=2^m$. Ent√£o $\alpha$ tem ordem $q -1$ e as pot√™ncias distintas de $\alpha$ $\{ 1, \alpha, \alpha^2, \ldots \alpha^{q-2}\}$ geram todos os elementos diferentes de $0$ de $\mathbb{GF}_q$.
 
-A representaÁ„o exponencial È utilizada na operaÁ„o multiplicaÁ„o de dois elementos do $\mathbb{GF}_q$, pois $\alpha^i.\alpha^j=\alpha^{i+j}$.
+A representa√ß√£o exponencial √© utilizada na opera√ß√£o multiplica√ß√£o de dois elementos do $\mathbb{GF}_q$, pois $\alpha^i.\alpha^j=\alpha^{i+j}$.
 
 \end{definition}
 
-\begin{definition} Um polinÙmio $p(x)$ irredutÌvel sobre $\mathbb{GF}_q$ de grau $m$ È um polinÙmio primitivo se suas raÌzes forem um elemento de $\mathbb{GF}_q$.
+\begin{definition} Um polin√¥mio $p(x)$ irredut√≠vel sobre $\mathbb{GF}_q$ de grau $m$ √© um polin√¥mio primitivo se suas ra√≠zes forem um elemento de $\mathbb{GF}_q$.
 \end{definition}
 
-\begin{definition} Seja $p(x)$ um polinÙmio com coeficientes em $\mathbb{GF}_2$. Seja $\beta \in \mathbb{GF}_q$. Se $\beta$ È uma raiz de $p(x)$, ent„o $\forall l \geq 0,\ \beta^{2^{l}}$ È tambÈm uma raiz de $p(x)$. O elemento $\beta^{2^{l}}$ È chamado conjugado de $\beta$.
+\begin{definition} Seja $p(x)$ um polin√¥mio com coeficientes em $\mathbb{GF}_2$. Seja $\beta \in \mathbb{GF}_q$. Se $\beta$ √© uma raiz de $p(x)$, ent√£o $\forall l \geq 0,\ \beta^{2^{l}}$ √© tamb√©m uma raiz de $p(x)$. O elemento $\beta^{2^{l}}$ √© chamado conjugado de $\beta$.
 \end{definition}
 
-\begin{theorem} {\bf RaÌzes do PolinÙmio} \label{RaiPol} \index{RaÌzes do PolinÙmio} Os $2^m -1$ elementos diferentes de $0 \in \mathbb{GF}_q$ s„o as raÌzes do polinÙmio $x^{2^{m}-1} + 1$.
+\begin{theorem} {\bf Ra√≠zes do Polin√¥mio} \label{RaiPol} \index{Ra√≠zes do Polin√¥mio} Os $2^m -1$ elementos diferentes de $0 \in \mathbb{GF}_q$ s√£o as ra√≠zes do polin√¥mio $x^{2^{m}-1} + 1$.
 \end{theorem}
 
-\begin{corollary} Para todos os elementos $ \in \mathbb{GF}_q$, incluindo o elemento $0$, esses s„o as raÌzes do polinÙmio $x^{2^{m}-1} + x$.
+\begin{corollary} Para todos os elementos $ \in \mathbb{GF}_q$, incluindo o elemento $0$, esses s√£o as ra√≠zes do polin√¥mio $x^{2^{m}-1} + x$.
 \end{corollary}
 
-\begin{definition} {\bf PolinÙmio Minimal} \label{PolMinimal} \index{PolinÙmio Minimal}  Seja $\beta \in \mathbb{GF}_q$. O polinÙmio minimal $\phi(x)$ de $\beta$ È o polinÙmio de menor grau com coeficientes em $\mathbb{GF}_2$ tal que $\phi(\beta)=0$.
+\begin{definition} {\bf Polin√¥mio Minimal} \label{PolMinimal} \index{Polin√¥mio Minimal}  Seja $\beta \in \mathbb{GF}_q$. O polin√¥mio minimal $\phi(x)$ de $\beta$ √© o polin√¥mio de menor grau com coeficientes em $\mathbb{GF}_2$ tal que $\phi(\beta)=0$.
 \end{definition}
 
-\begin{theorem} Seja $\phi(x)$ o polinÙmio minimal de um elemento $\beta \in \mathbb{GF}_q$ e $e$ o menor inteiro tal que $\beta^{2^{e}}=\beta$. Ent„o $\phi(x)= \displaystyle\prod\limits_{i=0}^{e-1} (x + \beta^{2^{i}})$
+\begin{theorem} Seja $\phi(x)$ o polin√¥mio minimal de um elemento $\beta \in \mathbb{GF}_q$ e $e$ o menor inteiro tal que $\beta^{2^{e}}=\beta$. Ent√£o $\phi(x)= \displaystyle\prod\limits_{i=0}^{e-1} (x + \beta^{2^{i}})$
 \end{theorem}
 
-\begin{definition} {\bf PolinÙmio Gerador} \label{PolGer} \index{PolinÙmio Gerador} Seja $C:(m,k)$ um cÛdigo cÌclico sobre $\mathbb{GF}_q$. $\exists g(x)$ de grau $1$, tal que uma $m$-tupla $c \in C:(m,k)$ È uma palavra-cÛdigo se, e somente se, $g(x)\ |\ c$ .
+\begin{definition} {\bf Polin√¥mio Gerador} \label{PolGer} \index{Polin√¥mio Gerador} Seja $C:(m,k)$ um c√≥digo c√≠clico sobre $\mathbb{GF}_q$. $\exists g(x)$ de grau $1$, tal que uma $m$-tupla $c \in C:(m,k)$ √© uma palavra-c√≥digo se, e somente se, $g(x)\ |\ c$ .
 \end{definition}
 
-\begin{property} O polinÙmio gerador È ˙nico. O grau do polinÙmio gerador È $m-k$ e seu grau È igual ao n˙mero de bits de paridade. $g(x)$ È o polinÙmio cÛdigo de menor grau entre todos os polinÙmios cÛdigo. O polinÙmio gerador È um divisor de $x^m -1$. Todo polinÛmio cÛdigo È um m˙ltiplo do polinÙmio gerador.
+\begin{property} O polin√¥mio gerador √© √∫nico. O grau do polin√¥mio gerador √© $m-k$ e seu grau √© igual ao n√∫mero de bits de paridade. $g(x)$ √© o polin√¥mio c√≥digo de menor grau entre todos os polin√¥mios c√≥digo. O polin√¥mio gerador √© um divisor de $x^m -1$. Todo polin√≥mio c√≥digo √© um m√∫ltiplo do polin√¥mio gerador.
 \end{property}
 
-\begin{proposition} O polinÛmio cÛdigo n„o nulo de grau mÌnimo de um determinado cÛdigo cÌclico $C:(m,k)$ È ˙nico.
+\begin{proposition} O polin√≥mio c√≥digo n√£o nulo de grau m√≠nimo de um determinado c√≥digo c√≠clico $C:(m,k)$ √© √∫nico.
 \end{proposition}
 
-\begin{proof} Esse polinÙmio ter· a forma $g(X) = g_0 + g_1X + \ldots + X^r$ . Se existir outro polinÙmio com grau mÌnimo, este polinÙmio ser· da forma $g1 (X) = g_{10} + g_{11} X + \ldots + X^r$ . No entanto, porque o cÛdigo $C:(m,k)$  È um cÛdigo de bloco linear, a soma destes dois cÛdigos
-polinÛmios dever· pertencer ao cÛdigo, e esta soma nos fornece um polinÙmio de grau $(r-1)$, o que contradiz a hipÛtese que o grau mÌnimo possÌvel È $r$. logo, o polinÙmio cÛdigo n„o nulo de grau mÌnimo de um determinado cÛdigo cÌclico $C:(m,k)$ È ˙nico. $\square$
+\begin{proof} Esse polin√¥mio ter√° a forma $g(X) = g_0 + g_1X + \ldots + X^r$ . Se existir outro polin√¥mio com grau m√≠nimo, este polin√¥mio ser√° da forma $g1 (X) = g_{10} + g_{11} X + \ldots + X^r$ . No entanto, porque o c√≥digo $C:(m,k)$  √© um c√≥digo de bloco linear, a soma destes dois c√≥digos
+polin√≥mios dever√° pertencer ao c√≥digo, e esta soma nos fornece um polin√¥mio de grau $(r-1)$, o que contradiz a hip√≥tese que o grau m√≠nimo poss√≠vel √© $r$. logo, o polin√¥mio c√≥digo n√£o nulo de grau m√≠nimo de um determinado c√≥digo c√≠clico $C:(m,k)$ √© √∫nico. $\square$
 \end{proof}
 
-\begin{definition} O polinÙmio gerador $g(x)$ È da forma $g[x]\ =\ 1\ +\ g_1x\ +\ g_2x^2\ + \ldots +\ g_{m-k}x^{m-k}$.
+\begin{definition} O polin√¥mio gerador $g(x)$ √© da forma $g[x]\ =\ 1\ +\ g_1x\ +\ g_2x^2\ + \ldots +\ g_{m-k}x^{m-k}$.
 \end{definition}
 
-\begin{proposition} Seja $a(x)= \ ao\ +\ a_1x\ +\ a_2x^2\ + \ldots +\ a_{k-1}x^{k-1}$. Ent„o, $(a(x)g(x)\ mod\ (x^m -1)) \in C(m,k)$.
+\begin{proposition} Seja $a(x)= \ ao\ +\ a_1x\ +\ a_2x^2\ + \ldots +\ a_{k-1}x^{k-1}$. Ent√£o, $(a(x)g(x)\ mod\ (x^m -1)) \in C(m,k)$.
 \end{proposition}
 
 \begin{proof} $a(x)g(x)$ pode ser escrito da seguinte forma: 
@@ -575,10 +575,10 @@ polinÛmios dever· pertencer ao cÛdigo, e esta soma nos fornece um polinÙmio de g
 Portanto,  $a(x)g(x) \in C$.  
 \end{proof}
 
-\begin{definition} {\bf CÛdigo de Blocos Linear} \label{CodBlocLin} \index{CÛdigo de Blocos Linear} Um cÛdigo de bloco de tamanho $m$ e $2^k$ palavras mensagem È denominado um cÛdigo de blocos linear $C:(m,k)$, se as $2^k$ palavras cÛdigo formam um sub-espaÁo vetorial $S$ de dimens„o k, contido no espaÁo de vetores formado por todos os vetores de tamanho $m$, $V_m$, com componentes no $\mathbb{GF}_2$. Um cÛdigo È linear, quando o elemento  nulo pertence ao cÛdigo e a soma de duas palavras cÛdigo tambÈm È uma palavra cÛdigo.
+\begin{definition} {\bf C√≥digo de Blocos Linear} \label{CodBlocLin} \index{C√≥digo de Blocos Linear} Um c√≥digo de bloco de tamanho $m$ e $2^k$ palavras mensagem √© denominado um c√≥digo de blocos linear $C:(m,k)$, se as $2^k$ palavras c√≥digo formam um sub-espa√ßo vetorial $S$ de dimens√£o k, contido no espa√ßo de vetores formado por todos os vetores de tamanho $m$, $V_m$, com componentes no $\mathbb{GF}_2$. Um c√≥digo √© linear, quando o elemento  nulo pertence ao c√≥digo e a soma de duas palavras c√≥digo tamb√©m √© uma palavra c√≥digo.
 \end{definition}
 
-\begin{definition} {\bf Matriz Geradora N„o Sistem·tica} \label{matger} \index{Matriz Geradora N„o Sistem·tica} Seja $C:(m,k)$ um cÛdigo de blocos linear. Existem $k$ vetores linearmente independentes tal que cada palavra cÛdigo $c$ pode ser escrita como uma combinaÁ„o linear deles.
+\begin{definition} {\bf Matriz Geradora N√£o Sistem√°tica} \label{matger} \index{Matriz Geradora N√£o Sistem√°tica} Seja $C:(m,k)$ um c√≥digo de blocos linear. Existem $k$ vetores linearmente independentes tal que cada palavra c√≥digo $c$ pode ser escrita como uma combina√ß√£o linear deles.
 \begin{align*}
 c=v_0g_0 \oplus v_1g_1 \oplus \ldots \oplus v_{k-1}g_{k-1}
 \end{align*}
@@ -597,7 +597,7 @@ g_{1,0} & g_{1,1} & \ldots & g_{1,m-1}\\
 g_{k-1,0} & g_{k-1,1} & \ldots & g_{k-1,m-1}\\
 \end{array}\right]
 \end{align*}
-Todo vetor $v$, a mensagem a ser enviada ou armazenada pode ser  obtido atravÈs da multiplicaÁ„o de matrizes:
+Todo vetor $v$, a mensagem a ser enviada ou armazenada pode ser  obtido atrav√©s da multiplica√ß√£o de matrizes:
 \begin{align*}
 {\bf c} = {\bf vG} = (v_0, v_1, \ldots, v_{k-1})
 \left[\begin{array}{cccc}
@@ -616,10 +616,10 @@ g_1\\
 g_{k-1}
 \end{array}\right]=v_0g_0 \oplus v_1g_1 \oplus \ldots \oplus v_{k-1}g_{k-1}
 \end{align*}
-As linhas da matriz geradora $G$ geram o cÛdigo de blocos linear $C:(m,k)$, ou seja, as $k$ linhas linearmente independentes de $G$ definem completamente o cÛdigo.
+As linhas da matriz geradora $G$ geram o c√≥digo de blocos linear $C:(m,k)$, ou seja, as $k$ linhas linearmente independentes de $G$ definem completamente o c√≥digo.
 \end{definition}
 
-\begin{definition} {\bf Matriz Geradora Sistem·tica} \label{matger} \index{Matriz Geradora Sistem·tica}  Um cÛdigo de blocos linear e sistem·tico $C:(m,k)$ È especificado de forma ˙nica por uma matriz geradora da forma:
+\begin{definition} {\bf Matriz Geradora Sistem√°tica} \label{matger} \index{Matriz Geradora Sistem√°tica}  Um c√≥digo de blocos linear e sistem√°tico $C:(m,k)$ √© especificado de forma √∫nica por uma matriz geradora da forma:
 \begin{align*}
 G=\left[\begin{array}{c}
 g_0\\
@@ -638,10 +638,10 @@ ou, de uma forma mais compacta:
 \begin{align*}
 {\bf G} = \left[ {\bf P I_k} \right]
 \end{align*}
-onde {\bf $P$} È a matriz de paridade.
+onde {\bf $P$} √© a matriz de paridade.
 \end{definition}
 
-\begin{definition} {\bf Matriz de VerificaÁ„o de Paridade} \label{matverpar} \index{Matriz de VerificaÁ„o de Paridade}  Em um cÛdigo de blocos linear e sistem·tico $C:(m,k)$,  as $2^k$ palavras cÛdigo formam um sub-espaÁo vetorial $S$ associado a um sub-espaÁo dual $S_d$ do mesmo espaÁo $V_m$ que È gerado pela matriz de verificaÁ„o de paridade $H$. Cada vetor linha da matriz $G$ È ortogonal ‡s linhas da matriz $H$ e vice-versa. Assim, cada cÛdigo tem um dual que È o cÛdigo gerado pela matriz $H$. Este cÛdigo È um cÛdigo $(n, n - k)$. A forma sistem·tica da matriz de paridade $H$ do cÛdigo $C$, gerado pela matriz $G$ È:
+\begin{definition} {\bf Matriz de Verifica√ß√£o de Paridade} \label{matverpar} \index{Matriz de Verifica√ß√£o de Paridade}  Em um c√≥digo de blocos linear e sistem√°tico $C:(m,k)$,  as $2^k$ palavras c√≥digo formam um sub-espa√ßo vetorial $S$ associado a um sub-espa√ßo dual $S_d$ do mesmo espa√ßo $V_m$ que √© gerado pela matriz de verifica√ß√£o de paridade $H$. Cada vetor linha da matriz $G$ √© ortogonal √†s linhas da matriz $H$ e vice-versa. Assim, cada c√≥digo tem um dual que √© o c√≥digo gerado pela matriz $H$. Este c√≥digo √© um c√≥digo $(n, n - k)$. A forma sistem√°tica da matriz de paridade $H$ do c√≥digo $C$, gerado pela matriz $G$ √©:
 \begin{align*}
 {\bf H} =\left[\begin{array}{ccccccccc}
 1 & 0 & 0 & \ldots & 0 & p_{0,0} & p_{1,0} & \ldots & p_{k-1,0}\\
@@ -650,17 +650,17 @@ onde {\bf $P$} È a matriz de paridade.
 0 & 0 & 0 & \ldots & 1 & p_{0,m-k-1} & p_{1,m-k-1} & \ldots & p_{k-1,m-k-1}\\
 \end{array}\right]=\left[ {\bf I_{n-k}P^T} \right]
 \end{align*}
-onde {\bf $P^T$} È a transposta da matriz de paridade {\bf $P$}. A matriz {\bf $H$} È construÌda tal que 
+onde {\bf $P^T$} √© a transposta da matriz de paridade {\bf $P$}. A matriz {\bf $H$} √© constru√≠da tal que 
 \begin{align*}
 {\bf GH^T} = {\bf 0} 
 \end{align*}
 \end{definition}
 
-\begin{definition} {\bf SÌndrome de DetecÁ„o de Erro} \label{sindrome} \index{SÌndrome de DetecÁ„o de Erro} ApÛs a recepÁ„o ou a leitura da palavra cÛdigo $c$, temos o vetor $r=r_0r_1 \ldots r_{m-1} \in  \mathbb{GF}_2$. O vetor $r$ pode ser diferente do vetor $c$ transmitido ou armazenado. Seja o vetor $e=e_0e_1 \ldots e_{m-1} \in \mathbb{GF}_2$ tal que $e=r \oplus c$. Um mecanismo de detecÁ„o de erro pode ser implementado tal que {\bf $cH^T=0$}, o vetor sÌndrome:
+\begin{definition} {\bf S√≠ndrome de Detec√ß√£o de Erro} \label{sindrome} \index{S√≠ndrome de Detec√ß√£o de Erro} Ap√≥s a recep√ß√£o ou a leitura da palavra c√≥digo $c$, temos o vetor $r=r_0r_1 \ldots r_{m-1} \in  \mathbb{GF}_2$. O vetor $r$ pode ser diferente do vetor $c$ transmitido ou armazenado. Seja o vetor $e=e_0e_1 \ldots e_{m-1} \in \mathbb{GF}_2$ tal que $e=r \oplus c$. Um mecanismo de detec√ß√£o de erro pode ser implementado tal que {\bf $cH^T=0$}, o vetor s√≠ndrome:
 \begin{align*}
 S = rH^T = (s_os_1 \ldots s_{m-k-1}) = (c \oplus e)H^T=cH^T \oplus eH^T = e H^T
 \end{align*}
-Se o padr„o de erro for igual a uma palavra cÛdigo, o erro n„o ser· detectado. Existem $2^k -1$ padrıes de erros n„o detect·veis. O vetor sÌndrome pode ser calculado da forma:
+Se o padr√£o de erro for igual a uma palavra c√≥digo, o erro n√£o ser√° detectado. Existem $2^k -1$ padr√µes de erros n√£o detect√°veis. O vetor s√≠ndrome pode ser calculado da forma:
 \begin{align*}
 s_0=e0 \oplus e_{m-k} \otimes p_{0,0} \oplus e_{m-k+1} \otimes e_{1,0} \oplus \ldots \oplus  e_{m-1} \otimes p_{k-1,0}\\
 s_1=e1 \oplus e_{m-k} \otimes p_{0,1} \oplus e_{m-k+1} \otimes e_{1,1} \oplus \ldots \oplus  e_{m-1} \otimes p_{k-1,1}\\
@@ -669,8 +669,8 @@ s_{n-k-1}=e_{m-k-1} \oplus e_{m-k} \otimes p_{0,m-k+1} \oplus e_{m-k+1} \otimes 
 \end{align*}
 \end{definition}
 
-\begin{example} {\bf CÛdigo Hamming} \label{CodHamm} \index{CÛdigo Hamming}
-No seu artigo~\cite{Hamming:1950}, R. Hamming propÙs uma codificaÁ„o que levou o seu nome. Para $\forall m \geq 3$, $\exists\ CH:(n,k)$, um cÛdigo hamming com as seguintes caracterÌsticas: comprimento da palavra cÛdigo È $n=2^m -1$, n˙mero de bits de dados na mensagem È $k=2^m-m-1$, n˙mero de bits de paridade È $m=n-k$, capacidade de correÁ„o de erros È $t=1$, dist‚ncia mÌnima È $d_{min} = 3$ e capacidade de detecÁ„o de erros È $l=2$. Para $m=3$, $n=7$, $k=4$ e para a matriz geradora ${\bf G}$, a matriz ${\bf H}$ desse $CH:(7,4)$ È:
+\begin{example} {\bf C√≥digo Hamming} \label{CodHamm} \index{C√≥digo Hamming}
+No seu artigo~\cite{Hamming:1950}, R. Hamming prop√¥s uma codifica√ß√£o que levou o seu nome. Para $\forall m \geq 3$, $\exists\ CH:(n,k)$, um c√≥digo hamming com as seguintes caracter√≠sticas: comprimento da palavra c√≥digo √© $n=2^m -1$, n√∫mero de bits de dados na mensagem √© $k=2^m-m-1$, n√∫mero de bits de paridade √© $m=n-k$, capacidade de corre√ß√£o de erros √© $t=1$, dist√¢ncia m√≠nima √© $d_{min} = 3$ e capacidade de detec√ß√£o de erros √© $l=2$. Para $m=3$, $n=7$, $k=4$ e para a matriz geradora ${\bf G}$, a matriz ${\bf H}$ desse $CH:(7,4)$ √©:
 \begin{align*}
 {\bf G} = {\bf PI_4} = \left[\begin{array}{ccccccc}
 1 & 1 & 0 & 1 & 0 & 0 & 0\\
@@ -684,17 +684,17 @@ No seu artigo~\cite{Hamming:1950}, R. Hamming propÙs uma codificaÁ„o que levou o
 0 & 0 & 1 & 0 & 1 & 1 & 1
 \end{array}\right]
 \end{align*}
-O vetor sÌndrome $S=(s_0, s_1, s_2)= (e_0, e_1, e_2, e_3, e_4 e_5 e_6){\bf H^T}=$. Ent„o
+O vetor s√≠ndrome $S=(s_0, s_1, s_2)= (e_0, e_1, e_2, e_3, e_4 e_5 e_6){\bf H^T}=$. Ent√£o
 \begin{align*}
 s_0=e_0 \oplus e_3 \oplus e_5 \oplus e_6\\
 s_0=e_1 \oplus e_3 \oplus e_4 \oplus e_5\\
 s_0=e_2 \oplus e_4 \oplus e_5 \oplus e_6
 \end{align*}
-Uma mensagem inicial $(1010)$ foi enviada ou armazenada como $c=(1010){\bf G}=(0011010)$ e foi recebida ou lida como $r=(0001010)$. O vetor sÌndrome È $S=(001)$. Existem $2^4$ padrıes de erro que satisfazem esse sistema de equaÁıes que podem ser vistos na tabela ~\ref{tab8:map}.
+Uma mensagem inicial $(1010)$ foi enviada ou armazenada como $c=(1010){\bf G}=(0011010)$ e foi recebida ou lida como $r=(0001010)$. O vetor s√≠ndrome √© $S=(001)$. Existem $2^4$ padr√µes de erro que satisfazem esse sistema de equa√ß√µes que podem ser vistos na tabela ~\ref{tab8:map}.
 
 \input{tabelas/tabela-padroes-erros-codigo-hamming}
 
-Para canais como o canal simÈtrico bin·rio (BSC), o padr„o de erros com menor n˙mero de erros È considerado o padr„o correto e ele segue uma distribuiÁ„o binomial.
+Para canais como o canal sim√©trico bin√°rio (BSC), o padr√£o de erros com menor n√∫mero de erros √© considerado o padr√£o correto e ele segue uma distribui√ß√£o binomial.
 
 \begin{align*}
 0=e_0 \oplus e_3 \oplus e_5 \oplus e_6\\
@@ -702,25 +702,25 @@ Para canais como o canal simÈtrico bin·rio (BSC), o padr„o de erros com menor n˙
 1=e_2 \oplus e_4 \oplus e_5 \oplus e_6
 \end{align*}
 
-Assim, podemos calcular $c=r \oplus e= (0001010) \oplus (0010000)=(0011010)$. Como utilizamos a matriz geradora sistem·tica, a mensagem inicial È $(1010)$.
+Assim, podemos calcular $c=r \oplus e= (0001010) \oplus (0010000)=(0011010)$. Como utilizamos a matriz geradora sistem√°tica, a mensagem inicial √© $(1010)$.
 
 \end{example}
 
-\begin{definition} Um dado cÛdigo de bloco linear È cÌclico, se para cada um dos seus vetores de cÛdigo a $i$-Èsima rotaÁ„o cÌclica tambÈm È um vetor cÛdigo.
+\begin{definition} Um dado c√≥digo de bloco linear √© c√≠clico, se para cada um dos seus vetores de c√≥digo a $i$-√©sima rota√ß√£o c√≠clica tamb√©m √© um vetor c√≥digo.
 \end{definition}
 
 
-\section{ConstruÁ„o de um CÛdigo Corretor de Erros}
+\section{Constru√ß√£o de um C√≥digo Corretor de Erros}
 
-%		\subsection{MÈtrica de Hamming}
-%		p·gina 4 - livro Hefez
-%		p·gina 7 - Par‚metros fundamentais $[n, M, d]$
-
-
+%		\subsection{M√©trica de Hamming}
+%		p√°gina 4 - livro Hefez
+%		p√°gina 7 - Par√¢metros fundamentais $[n, M, d]$
 
 
-O objetivo da codificaÁ„o de canal È aumentar a resistÍncia do sistema de comunicaÁıes digital face aos efeitos do ruÌdo de canal. No caso particular dos cÛdigos de bloco, a cada bloco de k bits da sequÍncia bin·ria gerada pela fonte faz-se corresponder um bloco de $m$ bits (palavra de cÛdigo) com $m > k$. Este processo de codificaÁ„o deve ser concebido de modo que a decodificaÁ„o tenha soluÁ„o ˙nica. Note-se que do universo de $2m$ blocos bin·rios de comprimento $m$ apenas $2k$ s„o palavras de cÛdigo (as que correspondem numa relaÁ„o de um para um aos blocos bin·rios de comprimento $k$ gerados pela fonte). Este esquema est· representado simbolicamente na Figura~\ref{fig3:cod}. 8.4. No caso de a transmiss„o se efetivar sem erros, o processo de decodificaÁ„o conduz ao bloco de comprimento $k$ que havia sido gerado pela fonte. Quando ocorrem erros de transmiss„o, a palavra de comprimento $m$ recebida pode n„o ser uma palavra de cÛdigo e o erro È detectado e/ou corrigido.
-Figura 8.4: CodificaÁ„o de canal
+
+
+O objetivo da codifica√ß√£o de canal √© aumentar a resist√™ncia do sistema de comunica√ß√µes digital face aos efeitos do ru√≠do de canal. No caso particular dos c√≥digos de bloco, a cada bloco de k bits da sequ√™ncia bin√°ria gerada pela fonte faz-se corresponder um bloco de $m$ bits (palavra de c√≥digo) com $m > k$. Este processo de codifica√ß√£o deve ser concebido de modo que a decodifica√ß√£o tenha solu√ß√£o √∫nica. Note-se que do universo de $2m$ blocos bin√°rios de comprimento $m$ apenas $2k$ s√£o palavras de c√≥digo (as que correspondem numa rela√ß√£o de um para um aos blocos bin√°rios de comprimento $k$ gerados pela fonte). Este esquema est√° representado simbolicamente na Figura~\ref{fig3:cod}. 8.4. No caso de a transmiss√£o se efetivar sem erros, o processo de decodifica√ß√£o conduz ao bloco de comprimento $k$ que havia sido gerado pela fonte. Quando ocorrem erros de transmiss√£o, a palavra de comprimento $m$ recebida pode n√£o ser uma palavra de c√≥digo e o erro √© detectado e/ou corrigido.
+Figura 8.4: Codifica√ß√£o de canal
 
                 \vspace*{2cm}
 		\begin{figure}[h]
@@ -728,7 +728,7 @@ Figura 8.4: CodificaÁ„o de canal
 			\begin{picture}(6, 4)
 				\put(2, 2){\circle{2}}
 				\put(1.7, 2){$2^k$}
-				\put(1, 0.8){codificaÁ„o}
+				\put(1, 0.8){codifica√ß√£o}
 				\put(2.3, 1.8){\circle*{0.1}}
 				\put(4.5, 2){\circle{2}}
 				\put(4.2, 2){$2^k$}
@@ -750,7 +750,7 @@ Figura 8.4: CodificaÁ„o de canal
 				\put(4.6,1.8){\vector(4,0){5}}
 				\put(12.5, 2){\circle{2}}
 				\put(12.2, 2){$2^k$}
-				\put(12,0.8){decodificaÁ„o}
+				\put(12,0.8){decodifica√ß√£o}
 				\put(12.8, 1.8){\circle*{0.1}}
 				% Ellipse: u = 10.0 v = 2.5 a = 1.5 b = 1.5 phi = 0.0 Grad
 				\qbezier(11.5, 2.5)(11.5, 3.1213)(11.0607, 3.5607)
@@ -764,19 +764,19 @@ Figura 8.4: CodificaÁ„o de canal
 				\put(10, 3.5){$2^m$}
 				\put(9.7, 3.2){\circle*{0.1}}
   	 		\end{picture}
-   			\caption{CodificaÁ„o de canal}
+   			\caption{Codifica√ß√£o de canal}
    			\label{fig3:cod}
 		\end{figure}
 
-… de especial interesse o caso de $\mathbb{GF}_q, q=2^m,\ m = 8$, quando cada sÌmbolo representa 1 byte. Um byte representa 8 bits, que È a menor palavra de dados usualmente encontrada em sistemas de computadores.
+√â de especial interesse o caso de $\mathbb{GF}_q, q=2^m,\ m = 8$, quando cada s√≠mbolo representa 1 byte. Um byte representa 8 bits, que √© a menor palavra de dados usualmente encontrada em sistemas de computadores.
 
-Para $m$ grande, a determinaÁ„o da representaÁ„o polinomial de cada elemento de forma algÈbrica È invi·vel. O mapeamento dos elementos de $\mathbb{GF}_q$ da representaÁ„o exponencial para representaÁ„o polinomial pode ser realizado de forma mais genÈrica utilizando a idÈia de um circuito com registradores de deslocamento com realimentaÁ„o linear (Linear Feedback Shift Register, LFSR). Esse circuito consiste em $m$ flip-flops em cascata, com realimentaÁ„o do bit mais significativo. 
+Para $m$ grande, a determina√ß√£o da representa√ß√£o polinomial de cada elemento de forma alg√©brica √© invi√°vel. O mapeamento dos elementos de $\mathbb{GF}_q$ da representa√ß√£o exponencial para representa√ß√£o polinomial pode ser realizado de forma mais gen√©rica utilizando a id√©ia de um circuito com registradores de deslocamento com realimenta√ß√£o linear (Linear Feedback Shift Register, LFSR). Esse circuito consiste em $m$ flip-flops em cascata, com realimenta√ß√£o do bit mais significativo. 
 
-O campo $\mathbb{GF}_{2^8-1}$ usado para construir a codificaÁ„o RS implementada no Hadoop consiste de polinÙmios $P[x]$ com coeficientes bin·rios e grau atÈ $7 ?$ e as operaÁıes de adiÁ„o e multiplicaÁ„o, calculadas mÛdulo o polinÙmio irredutÌvel $P[x]\ =\ x^8 + x^4 + x^3 + x^2 + 1$.
+O campo $\mathbb{GF}_{2^8-1}$ usado para construir a codifica√ß√£o RS implementada no Hadoop consiste de polin√¥mios $P[x]$ com coeficientes bin√°rios e grau at√© $7 ?$ e as opera√ß√µes de adi√ß√£o e multiplica√ß√£o, calculadas m√≥dulo o polin√¥mio irredut√≠vel $P[x]\ =\ x^8 + x^4 + x^3 + x^2 + 1$.
 
-%Teoria da InformaÁ„o: Capacidade do Canal de Transmiss„o
+%Teoria da Informa√ß√£o: Capacidade do Canal de Transmiss√£o
 
-%CodificaÁ„o de Canal: CÛdigos de Bloco Lineares
+%Codifica√ß√£o de Canal: C√≥digos de Bloco Lineares
 
 
 

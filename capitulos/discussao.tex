@@ -1,97 +1,97 @@
-\chapter{Discuss„o sobre esquemas adequados de redund‚ncia de dados}
+\chapter{Discuss√£o sobre esquemas adequados de redund√¢ncia de dados}
 
-Pode-se encontrar na literatura um n˙mero significativo de projetos que propıem sistemas de armazenamento distribuÌdo, sistemas de arquivos distribuÌdos, ou sistemas de backup. Apesar da disso, nenhum esquema de redund‚ncia de dados tem sido amplamente aceito para esses sistemas e nenhuma regra f·cil foi criada para se encontrar um esquema adequado de redund‚ncia de dados.
+Pode-se encontrar na literatura um n√∫mero significativo de projetos que prop√µem sistemas de armazenamento distribu√≠do, sistemas de arquivos distribu√≠dos, ou sistemas de backup. Apesar da disso, nenhum esquema de redund√¢ncia de dados tem sido amplamente aceito para esses sistemas e nenhuma regra f√°cil foi criada para se encontrar um esquema adequado de redund√¢ncia de dados.
 
-Para implementar redund‚ncia de dados em sistemas, s„o utilizadas
-v·rias tÈcnicas: codificaÁ„o por apagamento, replicaÁ„o, espelhamento,
+Para implementar redund√¢ncia de dados em sistemas, s√£o utilizadas
+v√°rias t√©cnicas: codifica√ß√£o por apagamento, replica√ß√£o, espelhamento,
 \emph{Cyclic redundancy check} (CRC), \emph{bits} de paridade,
 \emph{checksum} e assinatura digital. Esquemas de
-redund‚ncia podem implementar um conjunto destas
-tÈcnicas~\cite{Fan:2009}.
+redund√¢ncia podem implementar um conjunto destas
+t√©cnicas~\cite{Fan:2009}.
 
-Os autores em \cite{Duminoco:2009} estudaram redund‚ncia de dados em sistemas \emph{peer-to-peer} para \emph{backup} e propuseram um esquema hÌdrido para implementar redund‚ncia (replicaÁ„o e codificaÁ„o) de dados. Em \cite{Storer:2008}, foi proposto um sistema de armazenamento de dados baseado em discos que usa dois nÌveis de codificaÁ„o. Nesses textos, encontramos uma comparaÁ„o entre alguns sistemas de armazenamento, avaliando-se algumas de suas caracterÌsticas. Podemos observar que os tipos de esquema de redund‚ncia de dados s„o replicaÁ„o, codificaÁ„o por apagamento e hÌbrido, sendo a replicaÁ„o, a estratÈgia mais utilizada nos sistemas comparados por \cite{Duminoco:2009} e a codificaÁ„o por apagamento, para os sistemas comparados por \cite{Storer:2008}.
+Os autores em \cite{Duminoco:2009} estudaram redund√¢ncia de dados em sistemas \emph{peer-to-peer} para \emph{backup} e propuseram um esquema h√≠drido para implementar redund√¢ncia (replica√ß√£o e codifica√ß√£o) de dados. Em \cite{Storer:2008}, foi proposto um sistema de armazenamento de dados baseado em discos que usa dois n√≠veis de codifica√ß√£o. Nesses textos, encontramos uma compara√ß√£o entre alguns sistemas de armazenamento, avaliando-se algumas de suas caracter√≠sticas. Podemos observar que os tipos de esquema de redund√¢ncia de dados s√£o replica√ß√£o, codifica√ß√£o por apagamento e h√≠brido, sendo a replica√ß√£o, a estrat√©gia mais utilizada nos sistemas comparados por \cite{Duminoco:2009} e a codifica√ß√£o por apagamento, para os sistemas comparados por \cite{Storer:2008}.
 
-Redund‚ncia de dados È necess·ria para prevenir perda de dados, mas n„o È suficiente. A avaliaÁ„o de esquemas de redund‚ncia È muitas vezes baseada na suposiÁ„o de que as rÈplicas falham de forma independente. Na pr·tica, as falhas n„o s„o t„o independentes, segundo \cite{Weatherspoon:2002:02,Baker:2006}. Esse trabalho n„o tratar· a independÍncia das rÈplicas.
+Redund√¢ncia de dados √© necess√°ria para prevenir perda de dados, mas n√£o √© suficiente. A avalia√ß√£o de esquemas de redund√¢ncia √© muitas vezes baseada na suposi√ß√£o de que as r√©plicas falham de forma independente. Na pr√°tica, as falhas n√£o s√£o t√£o independentes, segundo \cite{Weatherspoon:2002:02,Baker:2006}. Esse trabalho n√£o tratar√° a independ√™ncia das r√©plicas.
 
-Cada esquema de redund‚ncia estabelece (i) como criar os dados redundantes e (ii) como reconstruir os dados quando houver falha. Essas duas operaÁıes geram custos que diferem de um esquema para outro. Esse trabalho comentar· os mais amplamente usados esquemas de redund‚ncia: replicaÁ„o e codificaÁ„o por apagamento, que chamaremos de codificaÁ„o.
+Cada esquema de redund√¢ncia estabelece (i) como criar os dados redundantes e (ii) como reconstruir os dados quando houver falha. Essas duas opera√ß√µes geram custos que diferem de um esquema para outro. Esse trabalho comentar√° os mais amplamente usados esquemas de redund√¢ncia: replica√ß√£o e codifica√ß√£o por apagamento, que chamaremos de codifica√ß√£o.
 
-\section{Esquemas de redund‚ncia de dados para sistema de armazenamento}
+\section{Esquemas de redund√¢ncia de dados para sistema de armazenamento}
 
-Esquemas de redund‚ncia de dados s„o utilizados em sistemas de armazenamento (exemplo: sistemas RAID) para prover disponibilidade, toler‚ncia a falhas e durabilidade de dados e em sistemas de comunicaÁ„o (exemplo, sistemas \emph{peer-to-peer}) para prover uma entrega confi·vel e segura de dados.
+Esquemas de redund√¢ncia de dados s√£o utilizados em sistemas de armazenamento (exemplo: sistemas RAID) para prover disponibilidade, toler√¢ncia a falhas e durabilidade de dados e em sistemas de comunica√ß√£o (exemplo, sistemas \emph{peer-to-peer}) para prover uma entrega confi√°vel e segura de dados.
 
-A Figura~\ref{fig4:srp} apresenta um sistema de armazenamento com um arquivo de dados particionado em 8 blocos. O fator de replicaÁ„o È 4. Os clientes precisam que, para cada um dos 8 distintos blocos, uma das quatro cÛpias esteja disponÌvel. A Figura~\ref{fig5:crs} apresenta o mesmo sistema que a Figura~\ref{fig4:srp}, mas utilizando cÛdigos RS. O arquivo est· particionado em 8 blocos e 32 blocos codificados foram gerados. Os clientes podem utilizar quaisquer 8 blocos para obter o arquivo inicial. A Figura~\ref{fig5:crs} tambÈm se aplica a cÛdigos Tornado.
+A Figura~\ref{fig4:srp} apresenta um sistema de armazenamento com um arquivo de dados particionado em 8 blocos. O fator de replica√ß√£o √© 4. Os clientes precisam que, para cada um dos 8 distintos blocos, uma das quatro c√≥pias esteja dispon√≠vel. A Figura~\ref{fig5:crs} apresenta o mesmo sistema que a Figura~\ref{fig4:srp}, mas utilizando c√≥digos RS. O arquivo est√° particionado em 8 blocos e 32 blocos codificados foram gerados. Os clientes podem utilizar quaisquer 8 blocos para obter o arquivo inicial. A Figura~\ref{fig5:crs} tamb√©m se aplica a c√≥digos Tornado.
 
    \begin{figure}[h]
      \centering
      \includegraphics[scale=.6]{figuras/replicacao-pura.jpg}
-     \caption{Sistema com replicaÁ„o pura \cite{Plank:2004}}
+     \caption{Sistema com replica√ß√£o pura \cite{Plank:2004}}
      \label{fig4:srp}
    \end{figure}
 
    \begin{figure}[h]
      \centering
      \includegraphics[scale=.6]{figuras/codigos-RS.jpg}
-     \caption{Sistema com cÛdigos RS \cite{Plank:2004}}
+     \caption{Sistema com c√≥digos RS \cite{Plank:2004}}
      \label{fig5:crs}
    \end{figure}
 
-\subsection{ReplicaÁ„o}
+\subsection{Replica√ß√£o}
 
-ReplicaÁ„o È o esquema de redund‚ncia mais simples. A maioria dos sistemas, que utiliza redund‚ncia de dados, È baseada em replicaÁ„o, mas esse esquema consume mais espaÁo que a codificaÁ„o por apagamento, pois uma cÛpia completa de cada arquivo È armazenada em cada um dos servidores de dados.
+Replica√ß√£o √© o esquema de redund√¢ncia mais simples. A maioria dos sistemas, que utiliza redund√¢ncia de dados, √© baseada em replica√ß√£o, mas esse esquema consume mais espa√ßo que a codifica√ß√£o por apagamento, pois uma c√≥pia completa de cada arquivo √© armazenada em cada um dos servidores de dados.
 
-A principal desvantagem da replicaÁ„o È que ela requer uma grande sobrecarga de armazenamento para pouco ganho em disponibilidade e toler‚ncia a falhas. Garantir que os dados permaneÁam disponÌveis quando todos os $n$ dispositivos falham exige que, pelo menos, $n + 1$ cÛpias existam \cite{Woitaszek:2007}. Por exemplo, no artigo sobre o sistema Glacier \cite{Haeberlen:2005}, os autores argumentam que o armazenamento aumenta de 11 vezes a quantidade de dados armazenados utilizando apenas replicaÁ„o para conseguir 0.999999 (\emph{six nines}) de confiabilidade num cen·rio com 60\% de indisponibilidade dos nÛs.
+A principal desvantagem da replica√ß√£o √© que ela requer uma grande sobrecarga de armazenamento para pouco ganho em disponibilidade e toler√¢ncia a falhas. Garantir que os dados permane√ßam dispon√≠veis quando todos os $n$ dispositivos falham exige que, pelo menos, $n + 1$ c√≥pias existam \cite{Woitaszek:2007}. Por exemplo, no artigo sobre o sistema Glacier \cite{Haeberlen:2005}, os autores argumentam que o armazenamento aumenta de 11 vezes a quantidade de dados armazenados utilizando apenas replica√ß√£o para conseguir 0.999999 (\emph{six nines}) de confiabilidade num cen√°rio com 60\% de indisponibilidade dos n√≥s.
 
-Os autores em \cite{Dabek:2004} afirmam que dados replicados permitem leituras de baixa latÍncia, porque h· muitas opÁıes para a seleÁ„o de servidores, enquanto que dados codificados reduzem o consumo de largura de banda para escritas, em detrimento do aumento da latÍncia de leituras.
+Os autores em \cite{Dabek:2004} afirmam que dados replicados permitem leituras de baixa lat√™ncia, porque h√° muitas op√ß√µes para a sele√ß√£o de servidores, enquanto que dados codificados reduzem o consumo de largura de banda para escritas, em detrimento do aumento da lat√™ncia de leituras.
 
-A replicaÁ„o È usada no Google File System \cite{Ghemawat:2003} (GFS), no Hadoop Distributed File System \cite{Hadoop:2010} (HDFS) e no Kosmos distributed file system \cite{TKDFS:2011} (KFS), sistemas de arquivos distribuÌdos que apresentam caracterÌsticas semelhantes. Um \emph{cluster} do GFS ou do HDFS ou do KFS È formado por um ˙nico servidor, master (GFS) ou namenode (HDFS) ou Meta server (KFS), que mantÈm os metadados e muitos servidores de dados, os chunkservers (GFS e KFS) ou os datanodes (HDFS) e È acessado por v·rios clientes. Os arquivos de dados s„o armazenados nos chunkservers (GFS e KFS) ou datanodes (HDFS) e s„o particionados em blocos de igual tamanho. GFS, HDFS e KFS foram projetados para aplicaÁıes que processam grande volume de dados. 
+A replica√ß√£o √© usada no Google File System \cite{Ghemawat:2003} (GFS), no Hadoop Distributed File System \cite{Hadoop:2010} (HDFS) e no Kosmos distributed file system \cite{TKDFS:2011} (KFS), sistemas de arquivos distribu√≠dos que apresentam caracter√≠sticas semelhantes. Um \emph{cluster} do GFS ou do HDFS ou do KFS √© formado por um √∫nico servidor, master (GFS) ou namenode (HDFS) ou Meta server (KFS), que mant√©m os metadados e muitos servidores de dados, os chunkservers (GFS e KFS) ou os datanodes (HDFS) e √© acessado por v√°rios clientes. Os arquivos de dados s√£o armazenados nos chunkservers (GFS e KFS) ou datanodes (HDFS) e s√£o particionados em blocos de igual tamanho. GFS, HDFS e KFS foram projetados para aplica√ß√µes que processam grande volume de dados. 
 
-Seus projetos consideram \emph{clusters} de (\emph{commodity hardware}), uma vers„o do \emph{kernel} linux como sistema operacional para as m·quinas e uma arquitetura de rede com dois nÌveis: v·rios \emph{racks} interligados por um comutador e cada \emph{rack} È formado por v·rias m·quinas e seus discos, estes tambÈm interligados por um comutador. A estratÈgia de inserÁ„o de dados cria rÈplicas em \emph{racks} distintos do \emph{rack} onde est· a 1$^a$ rÈplica, assim, falhas que comprometam um \emph{rack} n„o provocam a indisponibilidade de dados. Os arquivos de dados s„o alterados por concatenaÁıes ao invÈs de sobrescrever dados existentes. ApÛs a criaÁ„o, os arquivos de dados s„o usados apenas para leitura e esta leitura ocorre sequencialmente. O KFS permite escrever em posiÁıes randÙmicas nos arquivos. As APIs do cliente fornecidas pelo GFS, pelo HDFS e pelo KFS suportam operaÁıes de criaÁ„o, leitura, escrita, remoÁ„o de arquivos, mas n„o implementam a interface POSIX.
+Seus projetos consideram \emph{clusters} de (\emph{commodity hardware}), uma vers√£o do \emph{kernel} linux como sistema operacional para as m√°quinas e uma arquitetura de rede com dois n√≠veis: v√°rios \emph{racks} interligados por um comutador e cada \emph{rack} √© formado por v√°rias m√°quinas e seus discos, estes tamb√©m interligados por um comutador. A estrat√©gia de inser√ß√£o de dados cria r√©plicas em \emph{racks} distintos do \emph{rack} onde est√° a 1$^a$ r√©plica, assim, falhas que comprometam um \emph{rack} n√£o provocam a indisponibilidade de dados. Os arquivos de dados s√£o alterados por concatena√ß√µes ao inv√©s de sobrescrever dados existentes. Ap√≥s a cria√ß√£o, os arquivos de dados s√£o usados apenas para leitura e esta leitura ocorre sequencialmente. O KFS permite escrever em posi√ß√µes rand√¥micas nos arquivos. As APIs do cliente fornecidas pelo GFS, pelo HDFS e pelo KFS suportam opera√ß√µes de cria√ß√£o, leitura, escrita, remo√ß√£o de arquivos, mas n√£o implementam a interface POSIX.
 
-O GFS est· disponÌvel para linux sob uma licenÁa de software propriet·rio. O HDFS \footnote{http://hadoop.apache.org/}  e o KFS \footnote{http://code.google.com/p/kosmosfs/} est„o disponÌveis para linux sob uma licenÁa Apache. 
+O GFS est√° dispon√≠vel para linux sob uma licen√ßa de software propriet√°rio. O HDFS \footnote{http://hadoop.apache.org/}  e o KFS \footnote{http://code.google.com/p/kosmosfs/} est√£o dispon√≠veis para linux sob uma licen√ßa Apache. 
 
-O Farsite, que utiliza apenas replicaÁ„o, È um sistema de arquivos distribuÌdos, particionados em namespaces, explorando os desktops presentes dentro da Microsoft, sem servidor mestre, disponÌvel para Windows sob uma licenÁa de software propriet·rio. A escolha da replicaÁ„o foi, pelos autores, considerada uma opÁ„o mais simples para disponibilidade, j· que a codificaÁ„o poderia significar latÍncia adicional nas leituras dos arquivos. Ainda segundo os autores, estudos com experimentos j· mostraram que a codificaÁ„o pode apresentar um bom desempenho e seria possÌvel, ent„o, alterar no futuro o esquema de redund‚ncia do Farsite.
+O Farsite, que utiliza apenas replica√ß√£o, √© um sistema de arquivos distribu√≠dos, particionados em namespaces, explorando os desktops presentes dentro da Microsoft, sem servidor mestre, dispon√≠vel para Windows sob uma licen√ßa de software propriet√°rio. A escolha da replica√ß√£o foi, pelos autores, considerada uma op√ß√£o mais simples para disponibilidade, j√° que a codifica√ß√£o poderia significar lat√™ncia adicional nas leituras dos arquivos. Ainda segundo os autores, estudos com experimentos j√° mostraram que a codifica√ß√£o pode apresentar um bom desempenho e seria poss√≠vel, ent√£o, alterar no futuro o esquema de redund√¢ncia do Farsite.
 
-Big Table (construÌdo sob o GFS) e Dynamo (construÌdo para Amazon.com) s„o dois sistemas de armazenamento que gravam e recuperaram dados atravÈs de uma chave e executam em um \emph{pool} compartilhado de m·quinas, utilizam apenas replicaÁ„o. 
+Big Table (constru√≠do sob o GFS) e Dynamo (constru√≠do para Amazon.com) s√£o dois sistemas de armazenamento que gravam e recuperaram dados atrav√©s de uma chave e executam em um \emph{pool} compartilhado de m√°quinas, utilizam apenas replica√ß√£o. 
 
-Ceph \cite{Weil:2006} È um sistema de arquivos \emph{open source} que possui trÍs principais componentes: um \emph{cluster} de servidores de metadados (que gerencia o namespace, nomes de arquivos e diretÛrios), um \emph{cluster} de OSDs (dispositivos de armazenamento de objetos) que armazenam dados e metadados e os clientes que utilizam uma interface do sistema de arquivos. O Ceph agrupa dados em PGs (grupos de colocaÁ„o) e usa uma funÁ„o \emph{hash} para distribuir os PGs nos OSDs, cujo algoritmo CRUSH È $O(log n)$ e usa uma ·rvore-B para indexar os PGs. Existe um mÛdulo em desenvolvimento que permite usar o Ceph como armazenamento para uma inst‚ncia do Hadoop. O Ceph utiliza apenas replicaÁ„o, implementa parcialmente a interface POSIX e est· disponÌvel para linux sob LGPL \footnote{http://ceph.newdream.net/}.
+Ceph \cite{Weil:2006} √© um sistema de arquivos \emph{open source} que possui tr√™s principais componentes: um \emph{cluster} de servidores de metadados (que gerencia o namespace, nomes de arquivos e diret√≥rios), um \emph{cluster} de OSDs (dispositivos de armazenamento de objetos) que armazenam dados e metadados e os clientes que utilizam uma interface do sistema de arquivos. O Ceph agrupa dados em PGs (grupos de coloca√ß√£o) e usa uma fun√ß√£o \emph{hash} para distribuir os PGs nos OSDs, cujo algoritmo CRUSH √© $O(log n)$ e usa uma √°rvore-B para indexar os PGs. Existe um m√≥dulo em desenvolvimento que permite usar o Ceph como armazenamento para uma inst√¢ncia do Hadoop. O Ceph utiliza apenas replica√ß√£o, implementa parcialmente a interface POSIX e est√° dispon√≠vel para linux sob LGPL \footnote{http://ceph.newdream.net/}.
 
-Lustre \footnote{git://git.lustre.org/prime/lustre.git} tem na sua arquitetura os metadata server (disponibiliza os metadados para clientes), o metadata target (um por sistema de arquivos, armazena os metadados), object storage servers (armazena os dados), object storage target (armazena os objetos que contÈm os arquivos de dados) e clientes.
+Lustre \footnote{git://git.lustre.org/prime/lustre.git} tem na sua arquitetura os metadata server (disponibiliza os metadados para clientes), o metadata target (um por sistema de arquivos, armazena os metadados), object storage servers (armazena os dados), object storage target (armazena os objetos que cont√©m os arquivos de dados) e clientes.
 
-Moosefs \footnote{http://www.moosefs.org/} tambÈm foi projetado com uma arquitetura que se assemelha a do GFS, HDFS e KFS: master server (que armazena os metadados), chunk servers (que armazenam os dados), metalogger server (podem substituir algumas funÁıes do master server, se ele falhar) e clientes (que solicitam dados e se comunicam com o master server e o chunk servers. 
+Moosefs \footnote{http://www.moosefs.org/} tamb√©m foi projetado com uma arquitetura que se assemelha a do GFS, HDFS e KFS: master server (que armazena os metadados), chunk servers (que armazenam os dados), metalogger server (podem substituir algumas fun√ß√µes do master server, se ele falhar) e clientes (que solicitam dados e se comunicam com o master server e o chunk servers. 
 
-Ambos, Lustre e Moosefs, usam replicaÁ„o, implementam a interface POSIX e est„o disponÌveis para linux sob uma licenÁa GPL.
+Ambos, Lustre e Moosefs, usam replica√ß√£o, implementam a interface POSIX e est√£o dispon√≠veis para linux sob uma licen√ßa GPL.
 
-Com exceÁ„o do Farsite, os sistemas de armazenamento apresentados consideram \emph{clusters} de (\emph{commodity hardware}) e uma vers„o do \emph{kernel} linux como sistema operacional para as m·quinas.
+Com exce√ß√£o do Farsite, os sistemas de armazenamento apresentados consideram \emph{clusters} de (\emph{commodity hardware}) e uma vers√£o do \emph{kernel} linux como sistema operacional para as m√°quinas.
 
-\subsection{CodificaÁ„o por Apagamento}
+\subsection{Codifica√ß√£o por Apagamento}
 
-Uma vantagem de codificaÁ„o por apagamento È um custo menor de armazenamento se comparado a replicaÁ„o, no caso de grande volume de dados. Outra vantagem com relaÁ„o a replicaÁ„o foi comentada em \cite{Weatherspoon:2002:01}: para um mesmo espaÁo de armazenamento, o tempo mÈdio entre falhas (\emph{mean time to failure}) È maior.
+Uma vantagem de codifica√ß√£o por apagamento √© um custo menor de armazenamento se comparado a replica√ß√£o, no caso de grande volume de dados. Outra vantagem com rela√ß√£o a replica√ß√£o foi comentada em \cite{Weatherspoon:2002:01}: para um mesmo espa√ßo de armazenamento, o tempo m√©dio entre falhas (\emph{mean time to failure}) √© maior.
 
 \input{tabelas/tabela-comp-sistemas-armazenamento}
 
-HDFS, Total Recall e OceanStore usam codificaÁ„o para reduzir o tamanho do armazenamento de dados e todos os outros sistemas usam codificaÁ„o para prover disponibilidade e confiabilidade.
+HDFS, Total Recall e OceanStore usam codifica√ß√£o para reduzir o tamanho do armazenamento de dados e todos os outros sistemas usam codifica√ß√£o para prover disponibilidade e confiabilidade.
 
-Os sistemas que foram comparados na tabela ~\ref{tab1:comp}, est„o disponÌveis para uma vers„o de sistema operacional linux ou unix. AlÈm da codificaÁ„o, todos eles implementam replicaÁ„o.
+Os sistemas que foram comparados na tabela ~\ref{tab1:comp}, est√£o dispon√≠veis para uma vers√£o de sistema operacional linux ou unix. Al√©m da codifica√ß√£o, todos eles implementam replica√ß√£o.
 
-Vamos avaliar algumas das mÈtricas utilizadas em literatura para comparar redund‚ncia de dados em sistemas de armazenamento: sobrecarga de armazenamento, disponibilidade dos nÛs, corrupÁ„o de um dado e operaÁıes de criaÁ„o, leitura, atualizaÁ„o consistente e remoÁ„o de dados redundantes. Inicialmente vamos definir alguns conceitos adaptados de \cite{Duminoco:2009, Chiola:2005, Rodrigues:2005, Williams:2007} para esses dois esquemas de redund‚ncia.
+Vamos avaliar algumas das m√©tricas utilizadas em literatura para comparar redund√¢ncia de dados em sistemas de armazenamento: sobrecarga de armazenamento, disponibilidade dos n√≥s, corrup√ß√£o de um dado e opera√ß√µes de cria√ß√£o, leitura, atualiza√ß√£o consistente e remo√ß√£o de dados redundantes. Inicialmente vamos definir alguns conceitos adaptados de \cite{Duminoco:2009, Chiola:2005, Rodrigues:2005, Williams:2007} para esses dois esquemas de redund√¢ncia.
 
-\section{CaracterizaÁ„o da replicaÁ„o e da codificaÁ„o}
+\section{Caracteriza√ß√£o da replica√ß√£o e da codifica√ß√£o}
 
-A confiabilidade de um esquema de redund‚ncia È medida pelo n˙mero de falhas simult‚neas que ele pode tolerar sem comprometer a capacidade de reconstruir os dados originais. Assim esta propriedade pode ser expressada como a {\bf probabilidade de perda de dados, dado que ocorreram $l$ falhas}, $P(l)$.
+A confiabilidade de um esquema de redund√¢ncia √© medida pelo n√∫mero de falhas simult√¢neas que ele pode tolerar sem comprometer a capacidade de reconstruir os dados originais. Assim esta propriedade pode ser expressada como a {\bf probabilidade de perda de dados, dado que ocorreram $l$ falhas}, $P(l)$.
 
-Para avaliar o armazenamento, vamos definir {\bf fator de redund‚ncia} $B$, uma raz„o entre tamanho dos dados originais mais a redund‚ncia $|dado\ +\ red|$ e o tamanho dos dados originais $|dado|$ e tambÈm vamos definir grau de reparaÁ„o.
+Para avaliar o armazenamento, vamos definir {\bf fator de redund√¢ncia} $B$, uma raz√£o entre tamanho dos dados originais mais a redund√¢ncia $|dado\ +\ red|$ e o tamanho dos dados originais $|dado|$ e tamb√©m vamos definir grau de repara√ß√£o.
 
-O {\bf grau de reparaÁ„o} mede o que deve ser feito apÛs parte da redund‚ncia ser perdida. Para isso, È feita uma leitura de dados disponÌveis para produzir novos. O custo dessa leitura em um sistema de armazenamento distribuÌdo inclue volume do tr·fego da rede, polÌtica de reparaÁ„o, algoritmo de coordenaÁ„o. Nesse estudo vamos apenas avaliar a contribuiÁ„o do esquema de redund‚ncia: a quantidade de dados a serem lidos para que dados novos sejam criados para reparar o dado corrompido, definido por $d$.
+O {\bf grau de repara√ß√£o} mede o que deve ser feito ap√≥s parte da redund√¢ncia ser perdida. Para isso, √© feita uma leitura de dados dispon√≠veis para produzir novos. O custo dessa leitura em um sistema de armazenamento distribu√≠do inclue volume do tr√°fego da rede, pol√≠tica de repara√ß√£o, algoritmo de coordena√ß√£o. Nesse estudo vamos apenas avaliar a contribui√ß√£o do esquema de redund√¢ncia: a quantidade de dados a serem lidos para que dados novos sejam criados para reparar o dado corrompido, definido por $d$.
 
-Definimos $p$ como a probabilidade de um nÛ estar disponÌvel e  $q\ =\ 1\ -\ p$ como a probabilidade de um nÛ n„o estar disponÌvel. Nesse estudo, assumimos que elas s„o iguais para todos os nÛs.
+Definimos $p$ como a probabilidade de um n√≥ estar dispon√≠vel e  $q\ =\ 1\ -\ p$ como a probabilidade de um n√≥ n√£o estar dispon√≠vel. Nesse estudo, assumimos que elas s√£o iguais para todos os n√≥s.
 
-Vamos definir as operaÁıes de acesso a dados redundantes como uma tupla $(r, w, a)$, onde $r$ È o n˙mero mÌnimo de nÛs disponÌveis que armazenam dados redundantes, $w$ È o n˙mero mÌnimo de nÛs disponÌveis que armazenam dados redundantes que devem ser acessados para armazenar novos valores e $a$ È n˙mero de nÛs (provavelmente outros) que devem estar disponÌveis para completar a operaÁ„o.
+Vamos definir as opera√ß√µes de acesso a dados redundantes como uma tupla $(r, w, a)$, onde $r$ √© o n√∫mero m√≠nimo de n√≥s dispon√≠veis que armazenam dados redundantes, $w$ √© o n√∫mero m√≠nimo de n√≥s dispon√≠veis que armazenam dados redundantes que devem ser acessados para armazenar novos valores e $a$ √© n√∫mero de n√≥s (provavelmente outros) que devem estar dispon√≠veis para completar a opera√ß√£o.
 
-\subsection{ReplicaÁ„o}
+\subsection{Replica√ß√£o}
 
-Para as definiÁıes, $n$ È o n˙mero de rÈplicas dos dados.
+Para as defini√ß√µes, $n$ √© o n√∫mero de r√©plicas dos dados.
 
-{\bf n˙mero de falhas suportadas} $l\ =\ n\ -\ 1$
+{\bf n√∫mero de falhas suportadas} $l\ =\ n\ -\ 1$
 
 {\bf probabilidade de perda de dados, dado que ocorreram $l$ falhas}
 
@@ -104,12 +104,12 @@ P(l) = \left\{
 \right.
 $$
 
-{\bf fator de redund‚ncia}
+{\bf fator de redund√¢ncia}
 $$
 B\ =\ \frac{|dado + red|}{|dado|}\ =\ n
 $$
 
-{\bf grau de reparaÁ„o}
+{\bf grau de repara√ß√£o}
 $$
 d\ =\ 1
 $$
@@ -119,7 +119,7 @@ $$
 1 - q^n
 $$
 
-{\bf corrupÁ„o de um dado}
+{\bf corrup√ß√£o de um dado}
 $$
 e = q^n
 $$
@@ -131,20 +131,20 @@ $$
         {\bf acesso} & {\bf tupla $(r, w, a)$}\\ \hline
         criar & $(0, 0, n)$\\ \hline
         apenas leitura & $(1, 0, 0)$\\ \hline
-        atualizaÁ„o consistente & $(1, n, 0)$\\ \hline
+        atualiza√ß√£o consistente & $(1, n, 0)$\\ \hline
         apagar & $(0, n, 0)$\\ \hline
     \end{tabular}}
-    \caption{OperaÁıes sobre dados redundantes na replicaÁ„o}
+    \caption{Opera√ß√µes sobre dados redundantes na replica√ß√£o}
     \label{tab2:comp}
 \end{table}
 
-Comparando as tuplas (1, 0, 0) e (1, n, 0) da tabela ~\ref{tab2:comp}, podemos observar que a disponibilidade da operaÁ„o "atualizaÁ„o consistente" È menor que a disponibilidade da operaÁ„o "apenas leitura", quando o n˙mero de rÈplicas $n > 1$ È aplicado.
+Comparando as tuplas (1, 0, 0) e (1, n, 0) da tabela ~\ref{tab2:comp}, podemos observar que a disponibilidade da opera√ß√£o "atualiza√ß√£o consistente" √© menor que a disponibilidade da opera√ß√£o "apenas leitura", quando o n√∫mero de r√©plicas $n > 1$ √© aplicado.
 
-\subsection{CodificaÁ„o por Apagamento}
+\subsection{Codifica√ß√£o por Apagamento}
 
-Na CodificaÁ„o (m, k), $k$ È o n˙mero de blocos originais do dado, $m$ È o n˙mero de blocos codificados  e $m\ -\ k$ È o n˙mero de blocos adicionados pela codificaÁ„o.
+Na Codifica√ß√£o (m, k), $k$ √© o n√∫mero de blocos originais do dado, $m$ √© o n√∫mero de blocos codificados  e $m\ -\ k$ √© o n√∫mero de blocos adicionados pela codifica√ß√£o.
 
-{\bf n˙mero de falhas suportadas} $l\ =\ m\ -\ k$
+{\bf n√∫mero de falhas suportadas} $l\ =\ m\ -\ k$
 
 {\bf probabilidade de perda de dados, dado que ocorreram $l$ falhas}
 $$
@@ -156,12 +156,12 @@ P(l) = \left\{
 \right.
 $$
 
-{\bf fator de redund‚ncia}
+{\bf fator de redund√¢ncia}
 $$
 B\ =\ \frac{m}{k}
 $$
 
-{\bf grau de reparaÁ„o}
+{\bf grau de repara√ß√£o}
 $$
 d\ =\ k
 $$
@@ -171,7 +171,7 @@ $$
 B(k, m, p)\ =\ \sum_{i=k}^{m}{m \choose i}p^{i}q^{m-i}
 $$
 
-{\bf corrupÁ„o de um dado}
+{\bf corrup√ß√£o de um dado}
 $$
 e = q^{m-k}
 $$
@@ -183,23 +183,23 @@ $$
        {\bf acesso} & {\bf tupla $(r, w, a)$}\\ \hline
        criar & $(0, 0, n)$\\ \hline
        apenas leitura & $(k, 0, 0)$\\ \hline
-       atualizaÁ„o consistente & $(k, m-k+1, k-1)$\\ \hline
+       atualiza√ß√£o consistente & $(k, m-k+1, k-1)$\\ \hline
        apagar & $(0, m-k+1, 0)$\\ \hline
     \end{tabular}}
-    \caption{OperaÁıes sobre dados redundantes na codificaÁ„o por apagamento}
+    \caption{Opera√ß√µes sobre dados redundantes na codifica√ß√£o por apagamento}
     \label{tab3:comp}
 \end{table}
 
-Por outro lado, comparando-se as tuplas $(k, 0, 0)$ e $(k, m-k+1, k-1)$ da tabela ~\ref{tab3:comp}, podemos observar que existe um caso no qual as operaÁıes "apenas leitura" e "atualizaÁ„o consistente" podem ter a mesma disponibilidade. Isto ocorre quando $m = 2k-1$ (assumindo-se tambÈm que n˙mero total de nÛs disponÌveis È maior ou igual a $m$), obtendo-se a tupla $(k, k, k-1)$.
+Por outro lado, comparando-se as tuplas $(k, 0, 0)$ e $(k, m-k+1, k-1)$ da tabela ~\ref{tab3:comp}, podemos observar que existe um caso no qual as opera√ß√µes "apenas leitura" e "atualiza√ß√£o consistente" podem ter a mesma disponibilidade. Isto ocorre quando $m = 2k-1$ (assumindo-se tamb√©m que n√∫mero total de n√≥s dispon√≠veis √© maior ou igual a $m$), obtendo-se a tupla $(k, k, k-1)$.
 
 
 \section{Sobrecarga de armazenamento}
 
-Em \cite{Weatherspoon:2002:01, Dabek:2004}, os autores afirmam que a codificaÁ„o obtem o mesmo nÌvel de disponibilidade como a replicaÁ„o, usando muito menos espaÁo de armazenamento.
+Em \cite{Weatherspoon:2002:01, Dabek:2004}, os autores afirmam que a codifica√ß√£o obtem o mesmo n√≠vel de disponibilidade como a replica√ß√£o, usando muito menos espa√ßo de armazenamento.
 
-Em \cite{Bhagwan:2004}, concluiu-se que se a disponibilidade do nÛ for 0.5, ent„o isso requer 10 cÛpias de cada arquivo para garantir a disponibilidade de 0.999 dos arquivos.
+Em \cite{Bhagwan:2004}, concluiu-se que se a disponibilidade do n√≥ for 0.5, ent√£o isso requer 10 c√≥pias de cada arquivo para garantir a disponibilidade de 0.999 dos arquivos.
 
-No esquema da replicaÁ„o, para um objetivo de probabilidade de indisponibilidade de um dado $e = 0.0001$, dado uma probabilidade de um nÛ estar indisponÌvel $q = 0.05$, obtemos o valor de $n = 3$ rÈplicas.
+No esquema da replica√ß√£o, para um objetivo de probabilidade de indisponibilidade de um dado $e = 0.0001$, dado uma probabilidade de um n√≥ estar indispon√≠vel $q = 0.05$, obtemos o valor de $n = 3$ r√©plicas.
 
 $$
 \begin{array}{cl}
@@ -209,7 +209,7 @@ n\ \approx 3
 \end{array}
 $$
 
-No esquema da codificaÁ„o, para o mesmo objetivo, para as mesmas probabilidades $e$ e $q$, obtemos um valor de 4 blocos de paridade para uma codificaÁ„o $(2k-1, k)$.
+No esquema da codifica√ß√£o, para o mesmo objetivo, para as mesmas probabilidades $e$ e $q$, obtemos um valor de 4 blocos de paridade para uma codifica√ß√£o $(2k-1, k)$.
  
 $$
 \begin{array}{cl}
@@ -226,36 +226,36 @@ k\ \approx\ 4
 \end{array}
 $$
 
-Para uma mesma probabilidade de indisponibilidade de um dado $e = 0.0001$ e uma mesma probabilidade de um nÛ estar indisponÌvel $q = 0.05$, obtemos o valor de $n = 3$ rÈplicas para a replicaÁ„o e um valor de $k=4$ blocos iniciais para a codificaÁ„o (2k-1,k). O fator de redund‚ncia È $B\ =\ 3$ para a replicaÁ„o e $B\ =\ \frac{m}{k}\ =\ \frac{2k-1}{k}\ =\ \frac{7}{4}\ =\ 1.75$ para a codificaÁ„o.
+Para uma mesma probabilidade de indisponibilidade de um dado $e = 0.0001$ e uma mesma probabilidade de um n√≥ estar indispon√≠vel $q = 0.05$, obtemos o valor de $n = 3$ r√©plicas para a replica√ß√£o e um valor de $k=4$ blocos iniciais para a codifica√ß√£o (2k-1,k). O fator de redund√¢ncia √© $B\ =\ 3$ para a replica√ß√£o e $B\ =\ \frac{m}{k}\ =\ \frac{2k-1}{k}\ =\ \frac{7}{4}\ =\ 1.75$ para a codifica√ß√£o.
 
-Na figura ~\ref{fig1:sarc}, podemos observar o gr·fico das funÁıes $y = 2x$, $y = 3x$ e $y = \frac{2x-1}{x}$, para $x>0$,  representando a sobrecarga de armazenamento na replicaÁ„o $2n$ e na $3n$ e na codificaÁ„o $(2k-1,k)$, respectivamente. O eixo x representa o tamanho de um dado e o eixo y, a sobrecarga de armazenamento desse dado.
+Na figura ~\ref{fig1:sarc}, podemos observar o gr√°fico das fun√ß√µes $y = 2x$, $y = 3x$ e $y = \frac{2x-1}{x}$, para $x>0$,  representando a sobrecarga de armazenamento na replica√ß√£o $2n$ e na $3n$ e na codifica√ß√£o $(2k-1,k)$, respectivamente. O eixo x representa o tamanho de um dado e o eixo y, a sobrecarga de armazenamento desse dado.
 
     \vspace*{2cm}
     \begin{figure}[h]
       \centering
       \includegraphics[scale=0.69]{figuras/gnuplot-replicacao-codificacao-3.png}
-      \caption{Sobrecarga de armazenamento para replicaÁ„o $3n$, $2n$ e codificaÁ„o $(2k-1,k)$ representadas, respectivamente, pelas funÁıes $y = 3x$, $y = 2x$ e $y = \frac{2x-1}{x}$, para $x>0$}
+      \caption{Sobrecarga de armazenamento para replica√ß√£o $3n$, $2n$ e codifica√ß√£o $(2k-1,k)$ representadas, respectivamente, pelas fun√ß√µes $y = 3x$, $y = 2x$ e $y = \frac{2x-1}{x}$, para $x>0$}
       \label{fig1:sarc}
     \end{figure}
 
-Neste estudo, concluÌmos que a codificaÁ„o por apagamento acarreta uma sobrecarga de armazenamento menor que a replicaÁ„o para o mesmo n˙mero de falhas toleradas. 
+Neste estudo, conclu√≠mos que a codifica√ß√£o por apagamento acarreta uma sobrecarga de armazenamento menor que a replica√ß√£o para o mesmo n√∫mero de falhas toleradas. 
 
-Nas m·quinas do Facebook, a codificaÁ„o RS È (13, 10) com sobrecarga de ($B=1.3$) e tolera atÈ 3 falhas por \emph{stripe}. A codificaÁ„o XOR (RAID-5) È (11, 10) com sobrecarga de ($B=1.1$). Outro exemplo È a codificaÁ„o RS(255, 223), utilizada pela DSN \cite{TDD:2010}, que È padr„o CCSDS \footnote{http://public.ccsds.org/} e tolera 32 falhas com sobrecarga de $B=1.1435$. Uma codificaÁ„o BCH(63, 56), tambÈm padr„o CCSDS, pode tolerar atÈ 7 falhas, dependendo do polinÙmio gerador da sÌndrome \cite{Almeida:2007} . 
+Nas m√°quinas do Facebook, a codifica√ß√£o RS √© (13, 10) com sobrecarga de ($B=1.3$) e tolera at√© 3 falhas por \emph{stripe}. A codifica√ß√£o XOR (RAID-5) √© (11, 10) com sobrecarga de ($B=1.1$). Outro exemplo √© a codifica√ß√£o RS(255, 223), utilizada pela DSN \cite{TDD:2010}, que √© padr√£o CCSDS \footnote{http://public.ccsds.org/} e tolera 32 falhas com sobrecarga de $B=1.1435$. Uma codifica√ß√£o BCH(63, 56), tamb√©m padr√£o CCSDS, pode tolerar at√© 7 falhas, dependendo do polin√¥mio gerador da s√≠ndrome \cite{Almeida:2007} . 
 
-\section{Disponibilidade dos nÛs}
+\section{Disponibilidade dos n√≥s}
 
-\section{Leitura ou AtualizaÁ„o dos dados redundantes}
+\section{Leitura ou Atualiza√ß√£o dos dados redundantes}
 
 Em \cite{Chiola:2005}, os autores concluem que:
 
 \begin{itemize}
-  \item o acesso somente de leitura pode ser suportado tanto por replicaÁ„o de dados simples como por codificaÁ„o
-  \item para privilegiar atualizaÁ„o consistente, uma codificaÁ„o de alta disponibilidade È necess·ria que se caracteriza por fracionamento do original dados em pedaÁos $k$ e adicionando exatamente $k-1$ pedaÁos
-  \item se ler e a disponibilidade de atualizaÁ„o consistente s„o de igual import‚ncia, isso requer codificaÁ„o $(2k-1, k)$
+  \item o acesso somente de leitura pode ser suportado tanto por replica√ß√£o de dados simples como por codifica√ß√£o
+  \item para privilegiar atualiza√ß√£o consistente, uma codifica√ß√£o de alta disponibilidade √© necess√°ria que se caracteriza por fracionamento do original dados em peda√ßos $k$ e adicionando exatamente $k-1$ peda√ßos
+  \item se ler e a disponibilidade de atualiza√ß√£o consistente s√£o de igual import√¢ncia, isso requer codifica√ß√£o $(2k-1, k)$
 \end{itemize}
 
-Os autores tambÈm concluÌram que usar apenas a replicaÁ„o tem sentido apenas em poucos casos.
+Os autores tamb√©m conclu√≠ram que usar apenas a replica√ß√£o tem sentido apenas em poucos casos.
 
-ConcluÌmos que, apenas avaliando a contribuiÁ„o do esquema de redund‚ncia, a codificaÁ„o por apagamento 
+Conclu√≠mos que, apenas avaliando a contribui√ß√£o do esquema de redund√¢ncia, a codifica√ß√£o por apagamento 
 
-Podemos tambÈm concluir que a replicaÁ„o È um caso onde $k = 1$ e $l\ =\ m - k\ = \ n\ -\ 1$, portanto $m\ =\ n$. 
+Podemos tamb√©m concluir que a replica√ß√£o √© um caso onde $k = 1$ e $l\ =\ m - k\ = \ n\ -\ 1$, portanto $m\ =\ n$. 

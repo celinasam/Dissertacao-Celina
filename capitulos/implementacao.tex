@@ -1,20 +1,20 @@
-\chapter{ImplementaÁ„o das CodificaÁıes}
+\chapter{Implementa√ß√£o das Codifica√ß√µes}
 
-Uma boa escolha de codificaÁ„o para um canal depende da sobrecarga de armazenamento, do tamanho do bloco, da complexidade dos algoritmos de codificaÁ„o e de decodificaÁ„o e se uma eventual n„o detecÁ„o de erros È aceit·vel. CÛdigos LDPC e Tornado s„o vers·teis para serem projetados para muitas opÁıes de tamanho do bloco e de sobrecarga de armazenamento e segundo muitos estudos, cÛdigos LDPC s„o a codificaÁ„o que mais se aproxima do limite de Shannon (quantidade m·xima de dados transmitidos em um canal em bytes por segundo).
+Uma boa escolha de codifica√ß√£o para um canal depende da sobrecarga de armazenamento, do tamanho do bloco, da complexidade dos algoritmos de codifica√ß√£o e de decodifica√ß√£o e se uma eventual n√£o detec√ß√£o de erros √© aceit√°vel. C√≥digos LDPC e Tornado s√£o vers√°teis para serem projetados para muitas op√ß√µes de tamanho do bloco e de sobrecarga de armazenamento e segundo muitos estudos, c√≥digos LDPC s√£o a codifica√ß√£o que mais se aproxima do limite de Shannon (quantidade m√°xima de dados transmitidos em um canal em bytes por segundo).
 
-\section{CodificaÁ„o Tornado}
+\section{Codifica√ß√£o Tornado}
 
-A idÈia b·sica deste algoritmo da codificaÁ„o Tornado est· descrita em \cite{Woitaszek:2007,Stoten:2011}.
+A id√©ia b√°sica deste algoritmo da codifica√ß√£o Tornado est√° descrita em \cite{Woitaszek:2007,Stoten:2011}.
 
-O c·lculo do checksum de 64 bits foi feito para cada 100 bytes. Para um bloco de 64MB, o checksum È de 5.12MB.
+O c√°lculo do checksum de 64 bits foi feito para cada 100 bytes. Para um bloco de 64MB, o checksum √© de 5.12MB.
 
-A sobrecarga de armazenamento de checksum È $\frac{864}{800} = 1.08$. A sobrecarga da paridade È $\frac{2n}{n} = 2$. Portanto, a  sobrecarga total de armazenamento È $1.08*2 = 2.16$.
+A sobrecarga de armazenamento de checksum √© $\frac{864}{800} = 1.08$. A sobrecarga da paridade √© $\frac{2n}{n} = 2$. Portanto, a  sobrecarga total de armazenamento √© $1.08*2 = 2.16$.
 
-O n˙mero de falhas suportadas È $l\ =\ numero\ de\ blocos\ da\ stripe\ =\ s$.
+O n√∫mero de falhas suportadas √© $l\ =\ numero\ de\ blocos\ da\ stripe\ =\ s$.
 
-A operaÁ„o mais custosa dos algoritmos È o c·lculo do $XOR$ entre 2 blocos de 64M. S„o $\frac{s}{2}$ operaÁıes, no caso de $s$ par e $\frac{n}{2}-1$ operaÁıes, no caso de $s$ Ìmpar. Nesse caso, podemos afirmar que os algoritmos s„o lineares no tamanho da entrada, ou seja, $O(s)$.
+A opera√ß√£o mais custosa dos algoritmos √© o c√°lculo do $XOR$ entre 2 blocos de 64M. S√£o $\frac{s}{2}$ opera√ß√µes, no caso de $s$ par e $\frac{n}{2}-1$ opera√ß√µes, no caso de $s$ √≠mpar. Nesse caso, podemos afirmar que os algoritmos s√£o lineares no tamanho da entrada, ou seja, $O(s)$.
 
-O grafo da codificaÁ„o para uma \emph{stripe} de tamanho 10 blocos È:
+O grafo da codifica√ß√£o para uma \emph{stripe} de tamanho 10 blocos √©:
 
 \begin{verbatim}
 1 0 0 0 0 0 0 0 0 0
@@ -30,56 +30,56 @@ O grafo da codificaÁ„o para uma \emph{stripe} de tamanho 10 blocos È:
 \end{verbatim}
 
 
-\subsection{Algoritmo de CodificaÁ„o}
+\subsection{Algoritmo de Codifica√ß√£o}
 
-Apresentamos o algoritmo de codificaÁ„o para uma \emph{stripe} de tamanho $s$ blocos e que gera $s$ blocos de paridade. 
+Apresentamos o algoritmo de codifica√ß√£o para uma \emph{stripe} de tamanho $s$ blocos e que gera $s$ blocos de paridade. 
 
 \begin{verbatim}
 // Ler o arquivo /a/arquivo.txt
-para i de 0 atÈ s-1:
-   bloco[i] = i-Èsimo bloco da stripe
+para i de 0 at√© s-1:
+   bloco[i] = i-√©simo bloco da stripe
 
-para i de 0 atÈ s-1:
+para i de 0 at√© s-1:
    se i = 0
-   ent„o
+   ent√£o
       bloco_paridade[i] = bloco[i]
-   sen„o
+   sen√£o
       bloco_paridade[i] = bloco[i-1] xor bloco[i]
    i++
 
-para i de 0 atÈ s-1:
+para i de 0 at√© s-1:
    escreva bloco_paridade[i] no arquivo /tor/a/arquivo.txt
 \end{verbatim}
 
-\subsection{Algoritmo de DecodificaÁ„o}
+\subsection{Algoritmo de Decodifica√ß√£o}
 
-O algoritmo de decodificaÁ„o faz o seguinte:
+O algoritmo de decodifica√ß√£o faz o seguinte:
 
 \begin{verbatim}
 // Ler  o arquivo  /tor/a/arquivo.txt
-para i de 0 atÈ s-1:
-   bloco_paridade[i] = i-Èsimo bloco de paridade da stripe
+para i de 0 at√© s-1:
+   bloco_paridade[i] = i-√©simo bloco de paridade da stripe
 
-para i de 0 atÈ s-1:
+para i de 0 at√© s-1:
    se i = 0
-   ent„o
+   ent√£o
       bloco[i] = bloco_paridade[i]
-   sen„o
+   sen√£o
       bloco$[i] = bloco_paridade[i] xor bloco[i-1]
    i++
 \end{verbatim}
 
-\section{CodificaÁ„o Simples Turbo-\emph{Like}}
+\section{Codifica√ß√£o Simples Turbo-\emph{Like}}
 
-Esse algoritmo foi baseado nos estudos de \cite{Divsalar:1998,MacKay:2003} e È muito simples de entender. 
+Esse algoritmo foi baseado nos estudos de \cite{Divsalar:1998,MacKay:2003} e √© muito simples de entender. 
 
-A sobrecarga total de armazenamento È $\frac{2n}{n}=2$.
+A sobrecarga total de armazenamento √© $\frac{2n}{n}=2$.
 
-O n˙mero de falhas suportadas È $l\ =\ numero\ de\ blocos\ da\ stripe\ =\ s$.
+O n√∫mero de falhas suportadas √© $l\ =\ numero\ de\ blocos\ da\ stripe\ =\ s$.
 
-A operaÁ„o mais custosa dos algoritmos È o c·lculo do $XOR$ entre 2 blocos de 64M. S„o $s$ operaÁıes. Nesse caso, podemos afirmar que os algoritmos s„o lineares no tamanho da entrada, ou seja, $O(s)$.
+A opera√ß√£o mais custosa dos algoritmos √© o c√°lculo do $XOR$ entre 2 blocos de 64M. S√£o $s$ opera√ß√µes. Nesse caso, podemos afirmar que os algoritmos s√£o lineares no tamanho da entrada, ou seja, $O(s)$.
 
-O grafo da codificaÁ„o para uma \emph{stripe} de tamanho 10 blocos na sequÍncia $7, 1, 4, 8, 2, 5, 9, 3, 0, 6$:
+O grafo da codifica√ß√£o para uma \emph{stripe} de tamanho 10 blocos na sequ√™ncia $7, 1, 4, 8, 2, 5, 9, 3, 0, 6$:
 
 \begin{verbatim}
 0 0 0 0 0 0 0 1 0 0
@@ -95,51 +95,51 @@ O grafo da codificaÁ„o para uma \emph{stripe} de tamanho 10 blocos na sequÍncia 
 \end{verbatim}
 
 
-\subsection{Algoritmo de CodificaÁ„o}
+\subsection{Algoritmo de Codifica√ß√£o}
 
-Apresentamos o algoritmo de codificaÁ„o para uma \emph{stripe} de tamanho $s$ blocos e que gera $s$ blocos de paridade.
+Apresentamos o algoritmo de codifica√ß√£o para uma \emph{stripe} de tamanho $s$ blocos e que gera $s$ blocos de paridade.
 
 \begin{verbatim}
 // Ler o arquivo /a/arquivo.txt
-para i de 0 atÈ s-1:
-   bloco[i] = i-Èsimo bloco da stripe
+para i de 0 at√© s-1:
+   bloco[i] = i-√©simo bloco da stripe
 
-Gerar uma permutaÁ„o dos Ìndices dos blocos da stripe: p = [b_0,
+Gerar uma permuta√ß√£o dos √≠ndices dos blocos da stripe: p = [b_0,
 b_1, b_2, b_3, ..., b_{s-2}, b_{s-1}]
 
-para i de 0 atÈ s-1:
+para i de 0 at√© s-1:
    se i = 0
-   ent„o
+   ent√£o
       bloco_paridade[i] = bloco[p[i]]
-   sen„o
+   sen√£o
       bloco_paridade[i] = bloco_paridade[i-1] xor bloco[p[i]]
    i++
 
-para i de 0 atÈ s-1:
+para i de 0 at√© s-1:
    escreva bloco_paridade[i] no arquivo /turbo/a/arquivo.txt
 \end{verbatim}
 
-\subsection{Algoritmo de DecodificaÁ„o}
+\subsection{Algoritmo de Decodifica√ß√£o}
 
-O algoritmo de decodificaÁ„o faz o seguinte:
+O algoritmo de decodifica√ß√£o faz o seguinte:
 
 \begin{verbatim}
-Ler a permutaÁ„o do Ìndices dos blocos da stripe: p =  [b_0,
+Ler a permuta√ß√£o do √≠ndices dos blocos da stripe: p =  [b_0,
 b_1, b_2, b_3, ..., b_{s-2}, b_{s-1}]
 
 // Ler  o arquivo  /turbo/a/arquivo.txt
-para i de 0 atÈ s-1:
-   bloco_paridade[i] = i-Èsimo bloco de paridade da stripe
+para i de 0 at√© s-1:
+   bloco_paridade[i] = i-√©simo bloco de paridade da stripe
 
-para i de 0 atÈ s-1:
+para i de 0 at√© s-1:
    se i = 0
-   ent„o
+   ent√£o
       bloco[p[i]] = bloco_paridade[i]
-   sen„o
+   sen√£o
       bloco[p[i]] = bloco_paridade[i-1] xor bloco_paridade[i]
    i++
 \end{verbatim}
 
-\section{ComparaÁ„o entre as CodificaÁıes}
+\section{Compara√ß√£o entre as Codifica√ß√µes}
 \input{tabelas/tabela-comp-codificacoes-hadoop}
 

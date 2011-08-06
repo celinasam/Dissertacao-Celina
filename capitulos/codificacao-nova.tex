@@ -1,4 +1,4 @@
-\chapter{CodificaÁ„o por Apagamento}
+\chapter{Codifica√ß√£o por Apagamento}
 
 {\small
 \begin{align*}
@@ -8,66 +8,66 @@ D.\ J.\ Costello,\ J.\ Hagenauer,\ H,\ Imai,\ S.\ B.\ Wicker~\cite{Costello:1998
 \end{align*}
 }
 
-A transmiss„o e o armazenamento de dados tem muito em comum. Ambos transferem dados da fonte para o destino. Para garantir confiabilidade nessas operaÁıes, È utilizada codificaÁ„o por apagamento ou cÛdigos corretores de erros. A Teoria dos CÛdigos tem sido estudada h· dÈcadas: por matem·ticos nas dÈcadas de 50 e 60 e a partir da dÈcada de 70 por engenheiros \cite{Ritter:2009, Hefez:2008}.
+A transmiss√£o e o armazenamento de dados tem muito em comum. Ambos transferem dados da fonte para o destino. Para garantir confiabilidade nessas opera√ß√µes, √© utilizada codifica√ß√£o por apagamento ou c√≥digos corretores de erros. A Teoria dos C√≥digos tem sido estudada h√° d√©cadas: por matem√°ticos nas d√©cadas de 50 e 60 e a partir da d√©cada de 70 por engenheiros \cite{Ritter:2009, Hefez:2008}.
 
-Com a popularizaÁ„o dos computadores e as pesquisas espaciais, os cÛdigos corretores tornaram-se parte comum de comunicaÁıes por satÈlite, de redes de computadores, de armazenamento em discos Ûticos e outros meios magnÈticos. A presenÁa dos cÛdigos corretores de erros È frequente em nosso cotidiano: quando se assiste a um programa de televis„o, quando se ouve m˙sica a partir de um CD, quando se faz um telefonema, quando se assiste um filme gravado em DVD, quando se navega pela internet.
+Com a populariza√ß√£o dos computadores e as pesquisas espaciais, os c√≥digos corretores tornaram-se parte comum de comunica√ß√µes por sat√©lite, de redes de computadores, de armazenamento em discos √≥ticos e outros meios magn√©ticos. A presen√ßa dos c√≥digos corretores de erros √© frequente em nosso cotidiano: quando se assiste a um programa de televis√£o, quando se ouve m√∫sica a partir de um CD, quando se faz um telefonema, quando se assiste um filme gravado em DVD, quando se navega pela internet.
 
-A codificaÁ„o de mensagens no emissor antes da transmiss„o e a
-decodificaÁ„o das mensagens (possivelmente danificadas) que chegam ao
-receptor, possibilita reparar os efeitos de um canal fÌsico com ruÌdos
-\cite{Shannon:1948} sem sobrecarregar a taxa de transmiss„o de
-informaÁ„o ou o \emph{overhead} de armazenamento \cite{Lin:1983}.
+A codifica√ß√£o de mensagens no emissor antes da transmiss√£o e a
+decodifica√ß√£o das mensagens (possivelmente danificadas) que chegam ao
+receptor, possibilita reparar os efeitos de um canal f√≠sico com ru√≠dos
+\cite{Shannon:1948} sem sobrecarregar a taxa de transmiss√£o de
+informa√ß√£o ou o \emph{overhead} de armazenamento \cite{Lin:1983}.
 
-% A idÈia b·sica da codificaÁ„o Ûtima por apagamento È que o objeto
-% original possa ser reconstruÌdo a partir de quaisquer $k$ ˙nicos
-% fragmentos que s„o aproximadamente do mesmo tamanho do objeto original
+% A id√©ia b√°sica da codifica√ß√£o √≥tima por apagamento √© que o objeto
+% original possa ser reconstru√≠do a partir de quaisquer $k$ √∫nicos
+% fragmentos que s√£o aproximadamente do mesmo tamanho do objeto original
 % \cite{Weatherspoon:2002:01}.
-%Para uma codificaÁ„o quase Ûtima, s„o
-% necess·rios $(1+e) \times m$ fragmentos, onde $e \geq 1$
+%Para uma codifica√ß√£o quase √≥tima, s√£o
+% necess√°rios $(1+e) \times m$ fragmentos, onde $e \geq 1$
 % \cite{EC:2010}.
 
-Um dos principais par‚metros de um cÛdigo para detecÁ„o de erros È a
-probabilidade de detecÁ„o de erro.
+Um dos principais par√¢metros de um c√≥digo para detec√ß√£o de erros √© a
+probabilidade de detec√ß√£o de erro.
 
  A probabilidade de erro no canal determina a capacidade de
- transferÍncia de informaÁ„o no canal. Os modelos estudados por
- pesquisadores envolvem canais simÈtricos, assimÈtricos e outros, com
- ou sem memÛria~\cite{Weber:1985}. 
+ transfer√™ncia de informa√ß√£o no canal. Os modelos estudados por
+ pesquisadores envolvem canais sim√©tricos, assim√©tricos e outros, com
+ ou sem mem√≥ria~\cite{Weber:1985}. 
 
-%Em canais bin·rios simÈtricos, assume-se que ambos os erros $0 \rightarrow 1$ e $1 \rightarrow 0$ ocorrem com igual probabilidade.
+%Em canais bin√°rios sim√©tricos, assume-se que ambos os erros $0 \rightarrow 1$ e $1 \rightarrow 0$ ocorrem com igual probabilidade.
 
 \section{Shannon: conceitos e teoremas fundamentais}
 
-Shannon introduziu dois conceitos fundamentais sobre informaÁ„o que È transmitida em um sistema de comunicaÁ„o \cite{Yeung:2008}:
+Shannon introduziu dois conceitos fundamentais sobre informa√ß√£o que √© transmitida em um sistema de comunica√ß√£o \cite{Yeung:2008}:
 
 \begin{description}
-   \item [a incerteza da informaÁ„o] se o dado que nos interessa È determinÌstico, ent„o ele n„o tem valor algum. Por exemplo, a transmiss„o contÌnua de uma imagem em um sistema de televis„o È supÈrflua. Desta forma, a fonte de informaÁ„o È modelada por uma vari·vel ou processo aleatÛrio e uma probabilidade È utilizada para se desenvolver a teoria da informaÁ„o.
-   \item [a informaÁ„o transmitida È digital] o dado que nos interessa deve ser convertido em \emph{bits} e ser entregue no destino corretamente, sem referÍncia ao seu significado inicial. O trabalho do Shannon \cite{Shannon:1948} parece ser o primeiro trabalho publicado que usa o termo \emph{bit}.
+   \item [a incerteza da informa√ß√£o] se o dado que nos interessa √© determin√≠stico, ent√£o ele n√£o tem valor algum. Por exemplo, a transmiss√£o cont√≠nua de uma imagem em um sistema de televis√£o √© sup√©rflua. Desta forma, a fonte de informa√ß√£o √© modelada por uma vari√°vel ou processo aleat√≥rio e uma probabilidade √© utilizada para se desenvolver a teoria da informa√ß√£o.
+   \item [a informa√ß√£o transmitida √© digital] o dado que nos interessa deve ser convertido em \emph{bits} e ser entregue no destino corretamente, sem refer√™ncia ao seu significado inicial. O trabalho do Shannon \cite{Shannon:1948} parece ser o primeiro trabalho publicado que usa o termo \emph{bit}.
 \end{description}
 
-Nesse mesmo trabalho, Shannon demonstrou dois importantes teoremas que s„o fundamentais na comunicaÁ„o ponto-a-ponto:
+Nesse mesmo trabalho, Shannon demonstrou dois importantes teoremas que s√£o fundamentais na comunica√ß√£o ponto-a-ponto:
 
 \begin{description}
-   \item [\emph{source coding theorem}] introduz a entropia como medida da informaÁ„o que, nesse caso, È caracterizada por a taxa mÌnima de cÛdigo que representa uma informaÁ„o livre de erros. Este teorema È a base tÈorica para compress„o de dados.
-   \item [\emph{channel coding theorem}] fala da capacidade de um canal com ruÌdos, na qual a informaÁ„o È transmitida de forma confi·vel, desde que ritmo de transferÍncia de dados seja menor que a capacidade do canal. 
+   \item [\emph{source coding theorem}] introduz a entropia como medida da informa√ß√£o que, nesse caso, √© caracterizada por a taxa m√≠nima de c√≥digo que representa uma informa√ß√£o livre de erros. Este teorema √© a base t√©orica para compress√£o de dados.
+   \item [\emph{channel coding theorem}] fala da capacidade de um canal com ru√≠dos, na qual a informa√ß√£o √© transmitida de forma confi√°vel, desde que ritmo de transfer√™ncia de dados seja menor que a capacidade do canal. 
 \end{description}
 
-A probabilidade de erro no canal determina a capacidade de transferÍncia de informaÁ„o no canal.
+A probabilidade de erro no canal determina a capacidade de transfer√™ncia de informa√ß√£o no canal.
 
 \section{Canais: modelos e erros}
 
-O cÛdigo da fonte È o conjunto de elementos que definem forma como a informaÁ„o ser· transmitida, por exemplo, em termos de \emph{bits} e o cÛdigo do canal inclui o cÛdigo da fonte e a redund‚ncia (por exemplo, em termos de \emph{bits}) introduzida para garantir a correÁ„o de erros.
+O c√≥digo da fonte √© o conjunto de elementos que definem forma como a informa√ß√£o ser√° transmitida, por exemplo, em termos de \emph{bits} e o c√≥digo do canal inclui o c√≥digo da fonte e a redund√¢ncia (por exemplo, em termos de \emph{bits}) introduzida para garantir a corre√ß√£o de erros.
 
-Uma dificuldade encontrada por quem estuda cÛdigos corretores de erros È que n„o existe uma nomenclatura unificada \cite{Plank:2009}. TambÈm segundo \cite{CS540:2010}, existem poucos pesquisadores que s„o programadores de sistemas e que fazem propostas neste tema.
+Uma dificuldade encontrada por quem estuda c√≥digos corretores de erros √© que n√£o existe uma nomenclatura unificada \cite{Plank:2009}. Tamb√©m segundo \cite{CS540:2010}, existem poucos pesquisadores que s√£o programadores de sistemas e que fazem propostas neste tema.
 
-A idÈia b·sica da cÛdigo Ûtimo È que o objeto original possa ser reconstruÌdo a partir de quaisquer $k$ ˙nicos fragmentos que s„o aproximadamente do mesmo tamanho do objeto original \cite{Weatherspoon:2002:01}.
-%Para uma codificaÁ„o quase Ûtima, s„o necess·rios $ \approx  (1+e)k$ fragmentos, onde $e \geq 1$ \cite{EC:2010}.
+A id√©ia b√°sica da c√≥digo √≥timo √© que o objeto original possa ser reconstru√≠do a partir de quaisquer $k$ √∫nicos fragmentos que s√£o aproximadamente do mesmo tamanho do objeto original \cite{Weatherspoon:2002:01}.
+%Para uma codifica√ß√£o quase √≥tima, s√£o necess√°rios $ \approx  (1+e)k$ fragmentos, onde $e \geq 1$ \cite{EC:2010}.
 
-Corrigir erros È uma tarefa mais complexa que detect·-los. Detectar erros tem a mesma complexidade que a operaÁ„o de codificar, que pode ser linear no tamanho das palavras cÛdigo. A operaÁ„o de decodificar para uma correÁ„o de erros Ûtima È um problema NP-difÌcil e s„o conhecidos apenas algoritmos eficientes para algumas classes de cÛdigos. Novas classes de cÛdigos com eficientes decodificadores e novos algoritmos para decodificaÁ„o para cÛdigos conhecidos s„o promissoras pesquisas \cite{Klove:2007}.
+Corrigir erros √© uma tarefa mais complexa que detect√°-los. Detectar erros tem a mesma complexidade que a opera√ß√£o de codificar, que pode ser linear no tamanho das palavras c√≥digo. A opera√ß√£o de decodificar para uma corre√ß√£o de erros √≥tima √© um problema NP-dif√≠cil e s√£o conhecidos apenas algoritmos eficientes para algumas classes de c√≥digos. Novas classes de c√≥digos com eficientes decodificadores e novos algoritmos para decodifica√ß√£o para c√≥digos conhecidos s√£o promissoras pesquisas \cite{Klove:2007}.
 
-%Um dos principais par‚metros de um cÛdigo para detecÁ„o de erros È a probabilidade de detecÁ„o de erro. Os modelos estudados por pesquisadores envolvem canais simÈtricos, assimÈtricos e outros, com ou sem memÛria.
+%Um dos principais par√¢metros de um c√≥digo para detec√ß√£o de erros √© a probabilidade de detec√ß√£o de erro. Os modelos estudados por pesquisadores envolvem canais sim√©tricos, assim√©tricos e outros, com ou sem mem√≥ria.
 
-Em canais bin·rios simÈtricos (BSC), assume-se que ambos os erros $0 \rightarrow 1$ e $1 \rightarrow 0$  ocorrem com igual probabilidade \cite{Weber:1985}. \index{Canal bin·rio simÈtrico}
+Em canais bin√°rios sim√©tricos (BSC), assume-se que ambos os erros $0 \rightarrow 1$ e $1 \rightarrow 0$  ocorrem com igual probabilidade \cite{Weber:1985}. \index{Canal bin√°rio sim√©trico}
 
 \vspace*{2cm}
 \begin{figure}[h]
@@ -86,16 +86,16 @@ Em canais bin·rios simÈtricos (BSC), assume-se que ambos os erros $0 \rightarrow
     \put(4.4,0){1}
     \put(2,0.2){{\scriptsize 1 - $\rho$}}
     \put(1,1.2){{\scriptsize $\rho$}} 
-    \put(0,-2){{\scriptsize $\rho$ = probabilidade da ocorrÍncia de um erro}}
+    \put(0,-2){{\scriptsize $\rho$ = probabilidade da ocorr√™ncia de um erro}}
    \end{picture}
    \end{center}
-   \caption{Canal bin·rio simÈtrico \cite{Weber:1985}}
+   \caption{Canal bin√°rio sim√©trico \cite{Weber:1985}}
    \label{fig0:bsc}
 \end{figure}
 \vspace*{2cm}
 
 
-Em algumas aplicaÁıes como comunicaÁıes Ûticas, os erros tem uma natureza assimÈtrica. Canais, onde esse tipo de erro ocorrem, podem ser modelados para canais bin·rios assimÈtricos ou canal-Z, onde apenas erros com $1$'s ocorrem. Um exemplo disso s„o sistemas que utilizam \emph{photons} para transmitir informaÁ„o \cite{Weber:1985}. \index{Canal bin·rio assimÈtrico}
+Em algumas aplica√ß√µes como comunica√ß√µes √≥ticas, os erros tem uma natureza assim√©trica. Canais, onde esse tipo de erro ocorrem, podem ser modelados para canais bin√°rios assim√©tricos ou canal-Z, onde apenas erros com $1$'s ocorrem. Um exemplo disso s√£o sistemas que utilizam \emph{photons} para transmitir informa√ß√£o \cite{Weber:1985}. \index{Canal bin√°rio assim√©trico}
 
 \vspace*{4cm}
 \begin{figure}[h]
@@ -112,55 +112,55 @@ Em algumas aplicaÁıes como comunicaÁıes Ûticas, os erros tem uma natureza assimÈ
     \put(4.4,0){1}
     \put(2,0.2){{\scriptsize 1 - $\rho$}}
     \put(1,1.2){{\scriptsize $\rho$}} 
-    \put(0,-2){{\scriptsize $\rho$ = probabilidade da ocorrÍncia de um erro}}
+    \put(0,-2){{\scriptsize $\rho$ = probabilidade da ocorr√™ncia de um erro}}
    \end{picture}
    \end{center}
-   \caption{Canal bin·rio assimÈtrico \cite{Weber:1985}}
+   \caption{Canal bin√°rio assim√©trico \cite{Weber:1985}}
    \label{fig00:bac}
 \end{figure}
 \vspace*{2cm}
 
-Existem dois mÈtodos b·sicos para tratar erros em comunicaÁ„o e ambos
-envolvem a codificaÁ„o de mensagens. A diferenÁa est· em como esses
-cÛdigos s„o utilizados. Em um \emph{Automatic Repeat reQuest}, os cÛdigos
-s„o utilizados para detectar erros e se estes existirem, È feito um
-pedido de retransmiss„o. Com \emph{Forward Error Correction}, os
-cÛdigos s„o usados para detectar e corrigir erros e n„o È necess·rio
+Existem dois m√©todos b√°sicos para tratar erros em comunica√ß√£o e ambos
+envolvem a codifica√ß√£o de mensagens. A diferen√ßa est√° em como esses
+c√≥digos s√£o utilizados. Em um \emph{Automatic Repeat reQuest}, os c√≥digos
+s√£o utilizados para detectar erros e se estes existirem, √© feito um
+pedido de retransmiss√£o. Com \emph{Forward Error Correction}, os
+c√≥digos s√£o usados para detectar e corrigir erros e n√£o √© necess√°rio
 um caminho de retorno.
 
 \subsection{\emph{Automatic Repeat reQuest} - ARQ}
 
-ARQ utiliza redund‚ncia para detectar erros em mensagens e, apÛs a detecÁ„o, o destinat·rio solicita uma repetiÁ„o da transmiss„o. Um caminho de retorno È necess·rio. S„o sistemas de \emph{two-way transmission}. Exemplos de sistemas que utilizam ARQ s„o linhas telefÙnicas e alguns sistemas de satÈlite \cite{Lin:1983}.
+ARQ utiliza redund√¢ncia para detectar erros em mensagens e, ap√≥s a detec√ß√£o, o destinat√°rio solicita uma repeti√ß√£o da transmiss√£o. Um caminho de retorno √© necess√°rio. S√£o sistemas de \emph{two-way transmission}. Exemplos de sistemas que utilizam ARQ s√£o linhas telef√¥nicas e alguns sistemas de sat√©lite \cite{Lin:1983}.
 
-Se existe um grande atraso de propagaÁ„o, uma grande dist‚ncia entre emissor e destinat·rio, este mÈtodo pode ser muito ineficiente. Podem existir casos em que a retransmiss„o n„o È possÌvel, quando n„o existe \emph{backup}.
+Se existe um grande atraso de propaga√ß√£o, uma grande dist√¢ncia entre emissor e destinat√°rio, este m√©todo pode ser muito ineficiente. Podem existir casos em que a retransmiss√£o n√£o √© poss√≠vel, quando n√£o existe \emph{backup}.
 
-TÈcnicas ARQ incluem repetiÁ„o seletiva, \emph{Go-back N} e sistemas de reconhecimento positivo ou negativo \cite{Kurose:2010}.
+T√©cnicas ARQ incluem repeti√ß√£o seletiva, \emph{Go-back N} e sistemas de reconhecimento positivo ou negativo \cite{Kurose:2010}.
 
 \subsection{\emph{Forward Correction Code} - FEC}
 
-TÈcnicas FEC representam um \emph{one-way system}. A transmiss„o ou gravaÁ„o È restrita a uma direÁ„o: da fonte para o sumidouro (destino). Sistemas de armazenamento de fita magnÈtica e sistemas da \emph{NASA's Deep Space Network} utilizam tÈcnicas FEC \cite{Lin:1983}.
+T√©cnicas FEC representam um \emph{one-way system}. A transmiss√£o ou grava√ß√£o √© restrita a uma dire√ß√£o: da fonte para o sumidouro (destino). Sistemas de armazenamento de fita magn√©tica e sistemas da \emph{NASA's Deep Space Network} utilizam t√©cnicas FEC \cite{Lin:1983}.
 
-O destinat·rio corrige a mensagem recebida atravÈs da codificaÁ„o por apagamento. Este procedimento geralmente È chamado de correÁ„o de erros de repasse e pode ser implementado em \emph{hardware} de propÛsito especial.
+O destinat√°rio corrige a mensagem recebida atrav√©s da codifica√ß√£o por apagamento. Este procedimento geralmente √© chamado de corre√ß√£o de erros de repasse e pode ser implementado em \emph{hardware} de prop√≥sito especial.
 
-FEC utiliza redund‚ncia, assim o decodificador pode corrigir os erros de mensagens no destinat·rio. Uma analogia pode ser feita com uma pessoa que fala devagar e repetidamente, em uma linha telefÙnica com ruÌdos, acrescentando mais redund‚ncia para o ouvinte entender a mensagem correta.
+FEC utiliza redund√¢ncia, assim o decodificador pode corrigir os erros de mensagens no destinat√°rio. Uma analogia pode ser feita com uma pessoa que fala devagar e repetidamente, em uma linha telef√¥nica com ru√≠dos, acrescentando mais redund√¢ncia para o ouvinte entender a mensagem correta.
 
 \subsubsection{Como FEC funcionam}
 
-TÈcnicas FEC incluem cÛdigos de blocos (\emph{block codes}), que s„o cÛdigos sem memÛria e cÛdigos convolacionais, que s„o cÛdigos com memÛria \cite{Berlekamp:1987}. 
+T√©cnicas FEC incluem c√≥digos de blocos (\emph{block codes}), que s√£o c√≥digos sem mem√≥ria e c√≥digos convolacionais, que s√£o c√≥digos com mem√≥ria \cite{Berlekamp:1987}. 
 
-\section{CÛdigos de Blocos}
+\section{C√≥digos de Blocos}
 
-Na Figura~\ref{fig3:fec}, vemos um sistema que utiliza cÛdigo de
-blocos. A fonte envia uma sequÍncia de dados para o codificador. O
-codificador divide esta sequÍncia em blocos de $k$ \emph{bits}
-cada chamados mensagens.  Uma mensagem È representada por uma
-$k$-tupla bin·ria $u = u_1, u_2,\dots, u_k$. O codificador insere
+Na Figura~\ref{fig3:fec}, vemos um sistema que utiliza c√≥digo de
+blocos. A fonte envia uma sequ√™ncia de dados para o codificador. O
+codificador divide esta sequ√™ncia em blocos de $k$ \emph{bits}
+cada chamados mensagens.  Uma mensagem √© representada por uma
+$k$-tupla bin√°ria $u = u_1, u_2,\dots, u_k$. O codificador insere
 \emph{bits} redundantes (ou de paridade) para cada mensagem $u$,
-gerando uma sequÍncia de saÌda de $m$ \emph{bits} chamada
-\emph{codeword} ou palavra cÛdigo representada por uma $m$-tupla de
-sÌmbolos discretos $v = v_1, v_2, \dots, v_m$.  Os $m - k$ bits s„o os
-bits redundantes que provÍm ‡ codificaÁ„o a capacidade de tratar os
-ruÌdos do canal.
+gerando uma sequ√™ncia de sa√≠da de $m$ \emph{bits} chamada
+\emph{codeword} ou palavra c√≥digo representada por uma $m$-tupla de
+s√≠mbolos discretos $v = v_1, v_2, \dots, v_m$.  Os $m - k$ bits s√£o os
+bits redundantes que prov√™m √† codifica√ß√£o a capacidade de tratar os
+ru√≠dos do canal.
 
 \begin{figure}[htb]
   \setlength{\unitlength}{1cm}
@@ -174,7 +174,7 @@ ruÌdos do canal.
     \put(10,2.6){v}
     \put(11,2.5){\vector(0,-1){2}}
     \put(9.5,-0.5){\framebox(3,1){Canal}}
-    \put(6.8,-0.1){ruÌdos}
+    \put(6.8,-0.1){ru√≠dos}
     \put(8,-0){\vector(1,0){1.5}}
     \put(11,-0.5){\line(0,-1){2}}
     \put(11,-2.5){\vector(-1,0){2}}
@@ -185,100 +185,100 @@ ruÌdos do canal.
     \put(5,-3){\framebox(4,1){{Decodificador (m,k)}}}
    \end{picture}}
   \end{center}
-  \caption{CÛdigos de bloco}
+  \caption{C√≥digos de bloco}
   \label{fig3:fec}
 \end{figure}
 \vspace*{2cm}
 
-CÛdigos de blocos s„o identificados pela notaÁ„o ($m$, $k$), de acordo com o n˙mero de \emph{bits} de saÌda $m$ e o n˙mero de \emph{bits} $k$ de cada um dos  blocos de entrada.
+C√≥digos de blocos s√£o identificados pela nota√ß√£o ($m$, $k$), de acordo com o n√∫mero de \emph{bits} de sa√≠da $m$ e o n√∫mero de \emph{bits} $k$ de cada um dos  blocos de entrada.
 
-Todas as palavras cÛdigo de um cÛdigo de blocos tem tamanho fixo, que È um certo n˙mero de blocos de  $k$ \emph{bits}. 
+Todas as palavras c√≥digo de um c√≥digo de blocos tem tamanho fixo, que √© um certo n√∫mero de blocos de  $k$ \emph{bits}. 
 
-A geraÁ„o de uma palavra cÛdigo depende apenas de um c·lculo algÈbrico entre os $k$ bits, portanto, um codificador pode ser implementado como um circuito lÛgico combinacional. O codificador executa o mapeamento: $T :  U \rightarrow V$ onde $U$ È um conjunto de palavras de dados de tamanho $k$ e $V$ È um conjunto de palavras cÛdigo de tamanho $m$ onde $m > k$. Cada uma das $2^k$ palavras de dados È mapeada para uma ˙nica palavra cÛdigo.
+A gera√ß√£o de uma palavra c√≥digo depende apenas de um c√°lculo alg√©brico entre os $k$ bits, portanto, um codificador pode ser implementado como um circuito l√≥gico combinacional. O codificador executa o mapeamento: $T :  U \rightarrow V$ onde $U$ √© um conjunto de palavras de dados de tamanho $k$ e $V$ √© um conjunto de palavras c√≥digo de tamanho $m$ onde $m > k$. Cada uma das $2^k$ palavras de dados √© mapeada para uma √∫nica palavra c√≥digo.
 
-A taxa de codificaÁ„o e a sobrecarga de armazenamento s„o
+A taxa de codifica√ß√£o e a sobrecarga de armazenamento s√£o
 calculados a partir de $k$ blocos originais \cite{RTAD:2007,
-  CMSC:2010}. S„o gerados $m$ sÌmbolos pelo algoritmo de
-codificaÁ„o. $R = \frac{k}{m}$ È a taxa de codificaÁ„o que pode ser
-interpretada como o n˙mero de bits de informaÁ„o por palavra cÛdigo
-transmitida e $O = \frac{1}{R}$ È a sobrecarga de armazenamento.
+  CMSC:2010}. S√£o gerados $m$ s√≠mbolos pelo algoritmo de
+codifica√ß√£o. $R = \frac{k}{m}$ √© a taxa de codifica√ß√£o que pode ser
+interpretada como o n√∫mero de bits de informa√ß√£o por palavra c√≥digo
+transmitida e $O = \frac{1}{R}$ √© a sobrecarga de armazenamento.
 
-Se $k \leq m$, mais bits redundantes podem ser adicionados, com aumento do tamanho da palavra cÛdigo, mantendo $R = \frac{k}{m}$ constante. Como escolher este n˙mero $m - k$ de bits redundantes para obter transmiss„o confi·vel em cima de um canal com ruÌdos È o problema principal do projeto do codificador. No destino, o decodificador extrai a sequÍncia original de dados.
+Se $k \leq m$, mais bits redundantes podem ser adicionados, com aumento do tamanho da palavra c√≥digo, mantendo $R = \frac{k}{m}$ constante. Como escolher este n√∫mero $m - k$ de bits redundantes para obter transmiss√£o confi√°vel em cima de um canal com ru√≠dos √© o problema principal do projeto do codificador. No destino, o decodificador extrai a sequ√™ncia original de dados.
 
-Outra mÈtrica utilizada È a redund‚ncia que pode ser definida por
-$\frac{(m - k)}{m}$. A alta redund‚ncia reduz a possibilidade de
-todos os dados serem enviados em uma ˙nica transmiss„o. A desvantagem
-da redund‚ncia È que a adiÁ„o de \emph{bits} pode exigir uma largura
-de banda transmiss„o maior ou aumentar o atraso das mensagens (ou
+Outra m√©trica utilizada √© a redund√¢ncia que pode ser definida por
+$\frac{(m - k)}{m}$. A alta redund√¢ncia reduz a possibilidade de
+todos os dados serem enviados em uma √∫nica transmiss√£o. A desvantagem
+da redund√¢ncia √© que a adi√ß√£o de \emph{bits} pode exigir uma largura
+de banda transmiss√£o maior ou aumentar o atraso das mensagens (ou
 ambos).
 
-% Um cÛdigo C È linear se v e w s„o palavras cÛdigo distintas de um cÛdigo C, ent„o v+w È tambÈm uma palavra cÛdigo de C. Um cÛdigo linear contÈm a palavra cÛdigo zero, pois $v + v = 0$. OperaÁ„o simples de decodificaÁ„o, pouca memÛria e mÈtodos simples para determinaÁ„o de padrıes de erros s„o algumas das vantagens de cÛdigos lineares.
+% Um c√≥digo C √© linear se v e w s√£o palavras c√≥digo distintas de um c√≥digo C, ent√£o v+w √© tamb√©m uma palavra c√≥digo de C. Um c√≥digo linear cont√©m a palavra c√≥digo zero, pois $v + v = 0$. Opera√ß√£o simples de decodifica√ß√£o, pouca mem√≥ria e m√©todos simples para determina√ß√£o de padr√µes de erros s√£o algumas das vantagens de c√≥digos lineares.
 
-Um cÛdigo C È chamado de cÌclico se o deslocamento cÌclico (\emph{shift}) de qualquer palavra cÛdigo gera uma nova palavra cÛdigo. Por exemplo, $C1 = \{000, 110, 101, 011\}$ È um cÛdigo cÌclico. $C2 = \{000, 100, 011, 111\}$ n„o È um cÛdigo cÌclico.
+Um c√≥digo C √© chamado de c√≠clico se o deslocamento c√≠clico (\emph{shift}) de qualquer palavra c√≥digo gera uma nova palavra c√≥digo. Por exemplo, $C1 = \{000, 110, 101, 011\}$ √© um c√≥digo c√≠clico. $C2 = \{000, 100, 011, 111\}$ n√£o √© um c√≥digo c√≠clico.
 
-Existem v·rios cÛdigos de blocos \cite{Byers:1998, Kubiatowicz:2000}. Alguns dos mais utilizados s„o cÛdigos Reed-Solomon (RS), cÛdigos Low-Density Parity-Check (LDPC) e cÛdigos Tornado \cite{Mitzenmacher:2004, RTAD:2007}.
+Existem v√°rios c√≥digos de blocos \cite{Byers:1998, Kubiatowicz:2000}. Alguns dos mais utilizados s√£o c√≥digos Reed-Solomon (RS), c√≥digos Low-Density Parity-Check (LDPC) e c√≥digos Tornado \cite{Mitzenmacher:2004, RTAD:2007}.
 
-%Segundo \cite{Almeida:2007}, cÛdigos Reed-Solomon (RS) s„o
-%particularmente ˙teis para correÁ„o de erros em rajada (seq¸Íncia
-%sÌmbolos consecutivos, nenhum desses recebidos corretamente, chamados
-%\emph{burst errors}). TambÈm podem ser usados eficientemente em canais
-%em que o conjunto de sÌmbolos de entrada È consideravelmente grande.
+%Segundo \cite{Almeida:2007}, c√≥digos Reed-Solomon (RS) s√£o
+%particularmente √∫teis para corre√ß√£o de erros em rajada (seq√º√™ncia
+%s√≠mbolos consecutivos, nenhum desses recebidos corretamente, chamados
+%\emph{burst errors}). Tamb√©m podem ser usados eficientemente em canais
+%em que o conjunto de s√≠mbolos de entrada √© consideravelmente grande.
 
 
-Segundo \cite{AF:2010}, as principais caracterÌsticas de cÛdigos de blocos s„o:
+Segundo \cite{AF:2010}, as principais caracter√≠sticas de c√≥digos de blocos s√£o:
 
 \begin{description}
-   \item [taxa de codificaÁ„o] $R = \frac{k}{m}$ È a medida da eficiÍncia do cÛdigo, pois È o quociente do n˙mero de \emph{bits} da palavra de dados sobre o n˙mero de \emph{bits} total da palavra transmitida
-   \item [dist‚ncia mÌnima] $(d_{min})$ È a menor dist‚ncia de Hamming \footnote{A dist‚ncia de Hamming (dH) entre duas palavras cÛdigo $v_i$ e $v_j$  È o n˙mero de \emph{bits} que s„o diferentes nessas duas palavras.} entre duas quaisquer palavras do cÛdigo; ela depende do n˙mero de \emph{bits} redundantes $q = m - k$, tal que  $(d_{min} \leq q + 1)$
-   \item [capacidade de detecÁ„o] detecta atÈ $l$ erros, onde $l \leq d_{min} - 1$
-   \item [capacidade de correÁ„o] corrige os erros atÈ $t$ erros, onde $ t \leq \lfloor \frac{d_{min} - 1}{2} \rfloor$
-   \item [capacidade de detecÁ„o e correÁ„o] detecta atÈ $l$ erros e corrige os erros atÈ $t$ erros, onde $d_{min} \geq l + t + 1$ e $l > t$
+   \item [taxa de codifica√ß√£o] $R = \frac{k}{m}$ √© a medida da efici√™ncia do c√≥digo, pois √© o quociente do n√∫mero de \emph{bits} da palavra de dados sobre o n√∫mero de \emph{bits} total da palavra transmitida
+   \item [dist√¢ncia m√≠nima] $(d_{min})$ √© a menor dist√¢ncia de Hamming \footnote{A dist√¢ncia de Hamming (dH) entre duas palavras c√≥digo $v_i$ e $v_j$  √© o n√∫mero de \emph{bits} que s√£o diferentes nessas duas palavras.} entre duas quaisquer palavras do c√≥digo; ela depende do n√∫mero de \emph{bits} redundantes $q = m - k$, tal que  $(d_{min} \leq q + 1)$
+   \item [capacidade de detec√ß√£o] detecta at√© $l$ erros, onde $l \leq d_{min} - 1$
+   \item [capacidade de corre√ß√£o] corrige os erros at√© $t$ erros, onde $ t \leq \lfloor \frac{d_{min} - 1}{2} \rfloor$
+   \item [capacidade de detec√ß√£o e corre√ß√£o] detecta at√© $l$ erros e corrige os erros at√© $t$ erros, onde $d_{min} \geq l + t + 1$ e $l > t$
 \end{description}
 
-Um cÛdigo com $d_{min} = 1$ n„o tem capacidade de detectar erros.
+Um c√≥digo com $d_{min} = 1$ n√£o tem capacidade de detectar erros.
 
-\begin{definition} Seja uma sequÍncia de bits $w=w_0w_1 \ldots w_{k-1} \in \{0, 1\}^k$. Podemos definir $w$ como sendo um elemento $w=(w_0w_2 \ldots w_{k-1})$ do produto cartesiano:
+\begin{definition} Seja uma sequ√™ncia de bits $w=w_0w_1 \ldots w_{k-1} \in \{0, 1\}^k$. Podemos definir $w$ como sendo um elemento $w=(w_0w_2 \ldots w_{k-1})$ do produto cartesiano:
 \begin{align*}
 {\mathbb{Z}_2}^k=\underbrace{\mathbb{Z}_2 \times \ldots \times \mathbb{Z}_2}_{k}
 \end{align*}
 \end{definition}
 
 \begin{definition} {\bf Peso Hamming} \label{PesoHamm} \index{Peso Hamming}
-Seja $u=u_0u_1 \ldots u_k \in {\mathbb{Z}_2}^k$. O peso Hamming  de $u$ È dado por 
+Seja $u=u_0u_1 \ldots u_k \in {\mathbb{Z}_2}^k$. O peso Hamming  de $u$ √© dado por 
 \begin{align*}
 \omega(u)=|\{i=0,1, \ldots k-1\ : u_i=1\}|
 \end{align*}
-Em outras palavras, $\omega(u)$ È o n˙mero de $1$'s entre os bits de $u$.
+Em outras palavras, $\omega(u)$ √© o n√∫mero de $1$'s entre os bits de $u$.
 \end{definition}
 
-\begin{definition} {\bf Dist‚ncia Hamming} \label{DistHamm} \index{Dist‚ncia Hamming}
-Seja $u=u_0u_1 \ldots u_k \in {\mathbb{Z}_2}^k$ e $v=v_0v_1 \ldots v_k \in {\mathbb{Z}_2}^k$. A dist‚ncia entre $u$ e $v$ È dada por $\delta(u,v)=|\{i=0,1, \ldots k-1\ : u_j \neq v_j\}|$
-Em outras palavras, a dist‚ncia Hamming $\delta(u,v)$ È o n˙mero de pares de bits correspondentes de $u$ e $v$ em que um bit difere do outro.
+\begin{definition} {\bf Dist√¢ncia Hamming} \label{DistHamm} \index{Dist√¢ncia Hamming}
+Seja $u=u_0u_1 \ldots u_k \in {\mathbb{Z}_2}^k$ e $v=v_0v_1 \ldots v_k \in {\mathbb{Z}_2}^k$. A dist√¢ncia entre $u$ e $v$ √© dada por $\delta(u,v)=|\{i=0,1, \ldots k-1\ : u_j \neq v_j\}|$
+Em outras palavras, a dist√¢ncia Hamming $\delta(u,v)$ √© o n√∫mero de pares de bits correspondentes de $u$ e $v$ em que um bit difere do outro.
 \end{definition}
 
-\begin{proposition} Suponha que $u, v \in {\mathbb{Z}_2}^k$. Ent„o $\delta(u,v)=\omega(u \oplus v)$.
+\begin{proposition} Suponha que $u, v \in {\mathbb{Z}_2}^k$. Ent√£o $\delta(u,v)=\omega(u \oplus v)$.
 \end{proposition}
 
-\begin{proof} Seja $P(n)$ a proposiÁ„o que $\delta(u,v)=\omega(u \oplus v)$ para $\forall u,v \in {\mathbb{Z}_2}^n$.
+\begin{proof} Seja $P(n)$ a proposi√ß√£o que $\delta(u,v)=\omega(u \oplus v)$ para $\forall u,v \in {\mathbb{Z}_2}^n$.
 
-Base: $P(1)$ È verdadeira, pois $\delta(0,0)=\omega(0 \oplus 0)=0$, $\delta(0,1)=\omega(0 \oplus 1)=1$, $\delta(1,0)=\omega(1 \oplus 0)=1$ e $\delta(1,1)=\omega(1 \oplus 1)=0$.
+Base: $P(1)$ √© verdadeira, pois $\delta(0,0)=\omega(0 \oplus 0)=0$, $\delta(0,1)=\omega(0 \oplus 1)=1$, $\delta(1,0)=\omega(1 \oplus 0)=1$ e $\delta(1,1)=\omega(1 \oplus 1)=0$.
 
-Passo de induÁ„o: Suponhamos que P(k) È verdadeira $\forall (u,v) \in {\mathbb{Z}_2}^k$ e para $\forall k < n$.
+Passo de indu√ß√£o: Suponhamos que P(k) √© verdadeira $\forall (u,v) \in {\mathbb{Z}_2}^k$ e para $\forall k < n$.
 
-Queremos provar, para $k+1$, que P(k+1) È verdadeira. Seja $u=u_0u_1 \ldots u_k \in {\mathbb{Z}_2}^k$, $v=v_0v_1 \ldots v_k \in {\mathbb{Z}_2}^k$, $u^{'}=u_0u_1 \ldots u_ku_{k+1} \in {\mathbb{Z}_2}^{k+1}$ e $v^{'}=v_0v_1 \ldots v_kv_{k+1} \in {\mathbb{Z}_2}^{k+1}$. Podemos escrever $\delta(u^{'},v^{'})$ como:
+Queremos provar, para $k+1$, que P(k+1) √© verdadeira. Seja $u=u_0u_1 \ldots u_k \in {\mathbb{Z}_2}^k$, $v=v_0v_1 \ldots v_k \in {\mathbb{Z}_2}^k$, $u^{'}=u_0u_1 \ldots u_ku_{k+1} \in {\mathbb{Z}_2}^{k+1}$ e $v^{'}=v_0v_1 \ldots v_kv_{k+1} \in {\mathbb{Z}_2}^{k+1}$. Podemos escrever $\delta(u^{'},v^{'})$ como:
 
 \begin{align*}
 \delta(u^{'},v^{'})=\delta(u,v)+\delta(u_{k+1},v_{k+1}).
 \end{align*}
-Sabemos calcular $\delta(u_{k+1},v_{k+1})$, pois $P(1)$ È verdadeira. Pela hipÛtese de induÁ„o, $\delta(u,v)=\omega(u \oplus v)$. Ent„o, $\delta(u^{'},v^{'})=\omega(u,v) \oplus \omega(u_{k+1},v_{k+1})=\omega(u^{'},v^{'})$$\square$
+Sabemos calcular $\delta(u_{k+1},v_{k+1})$, pois $P(1)$ √© verdadeira. Pela hip√≥tese de indu√ß√£o, $\delta(u,v)=\omega(u \oplus v)$. Ent√£o, $\delta(u^{'},v^{'})=\omega(u,v) \oplus \omega(u_{k+1},v_{k+1})=\omega(u^{'},v^{'})$$\square$
 \end{proof}
 
-\begin{proposition} \label{somauns} Suponha que $u, v \in {\mathbb{Z}_2}^k$. Ent„o $\omega(u \oplus v) \leq \omega(u) + \omega(v)$
+\begin{proposition} \label{somauns} Suponha que $u, v \in {\mathbb{Z}_2}^k$. Ent√£o $\omega(u \oplus v) \leq \omega(u) + \omega(v)$
 \end{proposition}
 
-\begin{proof} Seja $P(n)$ a proposiÁ„o que $\omega(u,v) \leq \omega(u) + \omega(v)$ para $\forall u,v \in {\mathbb{Z}_2}^n$.
+\begin{proof} Seja $P(n)$ a proposi√ß√£o que $\omega(u,v) \leq \omega(u) + \omega(v)$ para $\forall u,v \in {\mathbb{Z}_2}^n$.
 
-Base: $P(2)$ È verdadeira,
+Base: $P(2)$ √© verdadeira,
 $$
 \begin{array}{l}
 u,v\ \ \ \ u \oplus v\ \ \ \ \omega (u+v)\ \leq \omega(u) + \omega(v)\\
@@ -300,19 +300,19 @@ u,v\ \ \ \ u \oplus v\ \ \ \ \omega (u+v)\ \leq \omega(u) + \omega(v)\\
 11,11\ \ \ 00\ \ \ \ \ \ 0\ \ \ \ \ \ \ \ \ \ \ \ \ 0+0=0
 \end{array}
 $$
-Passo de induÁ„o: Suponhamos que P(k) È verdadeira $\forall (u,v) \in {\mathbb{Z}_2}^k$ e para $\forall k < n$.
-Queremos provar, para $k+1$, que P(k+1) È verdadeira. Seja $u=u_0u_1 \ldots u_k \in {\mathbb{Z}_2}^k$, $v=v_0v_1 \ldots v_k \in {\mathbb{Z}_2}^k$ e $z=u \oplus v=z_0z_1 \ldots z_k \in {\mathbb{Z}_2}^k$ e $u^{'}=u_0u_1 \ldots u_ku_{k+1} \in {\mathbb{Z}_2}^k$, $v^{'}=v_0v_1 \ldots v_kv_{k+1} \in {\mathbb{Z}_2}^k$ e $z^{'}=u \oplus v=z_0z_1 \ldots z_kz_{k+1} \in {\mathbb{Z}_2}^{k+1}$. Podemos escrever $\omega (u^{'} \oplus v^{'})=\omega (z^{'})$ como
+Passo de indu√ß√£o: Suponhamos que P(k) √© verdadeira $\forall (u,v) \in {\mathbb{Z}_2}^k$ e para $\forall k < n$.
+Queremos provar, para $k+1$, que P(k+1) √© verdadeira. Seja $u=u_0u_1 \ldots u_k \in {\mathbb{Z}_2}^k$, $v=v_0v_1 \ldots v_k \in {\mathbb{Z}_2}^k$ e $z=u \oplus v=z_0z_1 \ldots z_k \in {\mathbb{Z}_2}^k$ e $u^{'}=u_0u_1 \ldots u_ku_{k+1} \in {\mathbb{Z}_2}^k$, $v^{'}=v_0v_1 \ldots v_kv_{k+1} \in {\mathbb{Z}_2}^k$ e $z^{'}=u \oplus v=z_0z_1 \ldots z_kz_{k+1} \in {\mathbb{Z}_2}^{k+1}$. Podemos escrever $\omega (u^{'} \oplus v^{'})=\omega (z^{'})$ como
 \begin{align*}
 \omega (z^{'})=\omega(z)+\omega(u_{k+1} \oplus v_{k+1})=\omega(u \oplus v)+\omega(u_{k+1} \oplus v_{k+1})
 \end{align*}
-Sabemos calcular $\omega(u_{k+1} \oplus v_{k+1})$, pois $P(2)$ È verdadeira. Ent„o $\omega(u_{k+1} \oplus v_{k+1}) \leq \omega(u_{k+1})+\omega(v_{k+1})$. Pela hipÛtese de induÁ„o, $\omega(u \oplus v) \leq \omega(u) + \omega(v)$. Ent„o
+Sabemos calcular $\omega(u_{k+1} \oplus v_{k+1})$, pois $P(2)$ √© verdadeira. Ent√£o $\omega(u_{k+1} \oplus v_{k+1}) \leq \omega(u_{k+1})+\omega(v_{k+1})$. Pela hip√≥tese de indu√ß√£o, $\omega(u \oplus v) \leq \omega(u) + \omega(v)$. Ent√£o
 \begin{align*}
 \omega (z^{'}) =\omega(u \oplus v)+\omega(u_{k+1} \oplus v_{k+1}) \leq \omega(u) + \omega(v) + \omega(u_{k+1})+ \omega(v_{k+1})
 \end{align*}
 $\square$
 \end{proof}
 
-\begin{proposition} A dist‚ncia $\delta : {\mathbb{Z}_2}^k \times {\mathbb{Z}_2}^k \rightarrow {\mathbb{Z}}^*$ tem as seguintes propriedades para $\forall u,v,z \in {\mathbb{Z}_2}^k$:
+\begin{proposition} A dist√¢ncia $\delta : {\mathbb{Z}_2}^k \times {\mathbb{Z}_2}^k \rightarrow {\mathbb{Z}}^*$ tem as seguintes propriedades para $\forall u,v,z \in {\mathbb{Z}_2}^k$:
   \begin{enumerate}[(i)]
      \item $\delta(u,v) \geq 0$
      \item $\delta(u,v)=0,\ se,\ e\ somente\ se,\ u=v$
@@ -324,13 +324,13 @@ $\square$
 \begin{proof}
 \end{proof}
 
-\begin{definition} {\bf Dist‚ncia MÌnima} \label{DistMin} \index{Dist‚ncia MÌnima} Seja $C:(n,k)$ um cÛdigo de blocos linear. A  dist‚ncia mÌnima
-desse cÛdigo È dada por 
+\begin{definition} {\bf Dist√¢ncia M√≠nima} \label{DistMin} \index{Dist√¢ncia M√≠nima} Seja $C:(n,k)$ um c√≥digo de blocos linear. A  dist√¢ncia m√≠nima
+desse c√≥digo √© dada por 
 \begin{align*}
 d_{min} = min \{ \delta(u,v), u,v \in C:(n,k), u \neq v \}\\
 = min= \{ \omega(u), u \in C:(n,k), u \neq 0 \}
 \end{align*}
-o valor mÌnimo do peso das palavras cÛdigo n„o nulas desse cÛdigo.
+o valor m√≠nimo do peso das palavras c√≥digo n√£o nulas desse c√≥digo.
 
 \end{definition}
 
@@ -338,56 +338,56 @@ o valor mÌnimo do peso das palavras cÛdigo n„o nulas desse cÛdigo.
 \end{definition}
 
 \begin{theorem}
-Seja $k, m \in {\mathbb{Z}}^*$ e $n > k$, a funÁ„o de codificaÁ„o $\alpha\ : {\mathbb{Z}_2}^k \rightarrow {\mathbb{Z}_2}^m$, $\zeta=\alpha({\mathbb{Z}_2}^k)$ e $\tau(c)=\ sequ\hat{e}ncia\ de\ bits\ de\ c\ ap\acute{o}s\ a\ leitura\ ou\ a\ transmiss\tilde{a}o\ de\ c$
+Seja $k, m \in {\mathbb{Z}}^*$ e $n > k$, a fun√ß√£o de codifica√ß√£o $\alpha\ : {\mathbb{Z}_2}^k \rightarrow {\mathbb{Z}_2}^m$, $\zeta=\alpha({\mathbb{Z}_2}^k)$ e $\tau(c)=\ sequ\hat{e}ncia\ de\ bits\ de\ c\ ap\acute{o}s\ a\ leitura\ ou\ a\ transmiss\tilde{a}o\ de\ c$
   \begin{enumerate}[(i)]
-     \item Suponhamos que $\delta(c,d) > k$ para $\forall c, d \in \zeta, c \neq d$. Ent„o a transmiss„o ou o armazenamento de $\delta(c,\tau(c)) \leq k$ pode ser sempre detectada, ou seja, atÈ $k$ erros podem ser detectados;
-     \item Suponhamos que $\delta(u,v) > 2k$ para $\forall c, d \in \zeta, c \neq d$. Ent„o a transmiss„o ou o armazenamento de $\delta(c,\tau(c)) \leq k$ pode ser sempre detectada e corrigida, ou seja, atÈ $2k$ erros podem ser detectados e corrigidos.
+     \item Suponhamos que $\delta(c,d) > k$ para $\forall c, d \in \zeta, c \neq d$. Ent√£o a transmiss√£o ou o armazenamento de $\delta(c,\tau(c)) \leq k$ pode ser sempre detectada, ou seja, at√© $k$ erros podem ser detectados;
+     \item Suponhamos que $\delta(u,v) > 2k$ para $\forall c, d \in \zeta, c \neq d$. Ent√£o a transmiss√£o ou o armazenamento de $\delta(c,\tau(c)) \leq k$ pode ser sempre detectada e corrigida, ou seja, at√© $2k$ erros podem ser detectados e corrigidos.
   \end{enumerate}
 \end{theorem}
 
-\begin{proof} $(i)$ J· que $\delta(c,d) > k$  para $\forall c, d \in \zeta, c \neq d$, ent„o $\forall c \in \zeta$, $B(c,k) \cap \zeta = {c}$. Assim, com a transmiss„o ou a leitura de no mÌnimo 1 e no m·ximo k erros de $c$, temos que $\tau(c) \neq c$ e $\tau(c) \in B(c,k)$. Logo, $\tau(c) \not\in \zeta$.
+\begin{proof} $(i)$ J√° que $\delta(c,d) > k$  para $\forall c, d \in \zeta, c \neq d$, ent√£o $\forall c \in \zeta$, $B(c,k) \cap \zeta = {c}$. Assim, com a transmiss√£o ou a leitura de no m√≠nimo 1 e no m√°ximo k erros de $c$, temos que $\tau(c) \neq c$ e $\tau(c) \in B(c,k)$. Logo, $\tau(c) \not\in \zeta$.
 
-$(ii)$ Como (i) È verdadeira, $\forall c, d \in \zeta, d \neq c$, temos que, pela proposiÁ„o~\ref{somauns}, $2k < \delta(c,d) \leq \delta(c,\tau(c)) + \delta(\tau(c),d)$. Sabemos que $\delta(c,\tau(c)) \leq k$ e que $\delta(d,\tau(c)) > k$, de modo que $\tau(c) \not\in B(c,k)$. Por isso sabemos exatamente qual elemento de $\zeta$ que originou $\tau(c)$.
+$(ii)$ Como (i) √© verdadeira, $\forall c, d \in \zeta, d \neq c$, temos que, pela proposi√ß√£o~\ref{somauns}, $2k < \delta(c,d) \leq \delta(c,\tau(c)) + \delta(\tau(c),d)$. Sabemos que $\delta(c,\tau(c)) \leq k$ e que $\delta(d,\tau(c)) > k$, de modo que $\tau(c) \not\in B(c,k)$. Por isso sabemos exatamente qual elemento de $\zeta$ que originou $\tau(c)$.
 \end{proof}
 
-\begin{theorem} Seja $C:(n,k)$ um cÛdigo de blocos linear e sua matriz de verificaÁ„o de paridade ${\bf H}$. Para cada vetor cÛdigo $u \in C:(n,k)$ e $l$ igual do seu peso $\omega(u)$, $\exists l$ colunas da matriz ${\bf H}$ tais que o vetor soma dessas $l$ colunas È igual ao vetor $0$. Da mesma forma, se o vetor soma de $l$ colunas da matriz ${\bf H}$ for o vetor $0$, ent„o $\exists v \in C:(n,k)$ tal que $\omega(v)=l$.
+\begin{theorem} Seja $C:(n,k)$ um c√≥digo de blocos linear e sua matriz de verifica√ß√£o de paridade ${\bf H}$. Para cada vetor c√≥digo $u \in C:(n,k)$ e $l$ igual do seu peso $\omega(u)$, $\exists l$ colunas da matriz ${\bf H}$ tais que o vetor soma dessas $l$ colunas √© igual ao vetor $0$. Da mesma forma, se o vetor soma de $l$ colunas da matriz ${\bf H}$ for o vetor $0$, ent√£o $\exists v \in C:(n,k)$ tal que $\omega(v)=l$.
 \end{theorem}
 
 \begin{proof}
 \end{proof}
 
-\begin{corollary} Seja $C:(n,k)$ um cÛdigo de blocos linear e sua matriz de verificaÁ„o de paridade ${\bf H}$. O peso mÌnimo ou a dist‚ncia mÌnima de $C:(n,k)$ È igual ao menor n˙mero de colunas de ${\bf H}$ cuja soma È o vetor $0$.
+\begin{corollary} Seja $C:(n,k)$ um c√≥digo de blocos linear e sua matriz de verifica√ß√£o de paridade ${\bf H}$. O peso m√≠nimo ou a dist√¢ncia m√≠nima de $C:(n,k)$ √© igual ao menor n√∫mero de colunas de ${\bf H}$ cuja soma √© o vetor $0$.
 \end{corollary}
 
 
-CÛdigos Reed-Solomon s„o cÛdigos de blocos, lineares e cÌclicos. S„o cÛdigos parametriz·veis, cuja capacidade de correÁ„o de erros pode ser alterada facilmente. \index{CodificaÁ„o Reed-Solomon}
+C√≥digos Reed-Solomon s√£o c√≥digos de blocos, lineares e c√≠clicos. S√£o c√≥digos parametriz√°veis, cuja capacidade de corre√ß√£o de erros pode ser alterada facilmente. \index{Codifica√ß√£o Reed-Solomon}
 
 %Definition. A Reed-Solomon (or RS) code over GF(q) is a BCH (BOSE-CHAUDHURI-HOCQUENGHEM) code of length N = q - 1. Of course q is never 2. Thus the length is the number of nonzero elements in the ground field. We shall use N , K and D to denote the length, dimension, and minimum distance (using capital letters to distinguish them from the parameters of the binary codes which will be constructed later). RS codes are important in concatenated codes and burst correction.
 
-%Em \cite{Plank:1997}, o autor apresenta uma especificaÁ„o completa do problema e do algoritmo da codificaÁ„o e detalhes de sua implementaÁ„o. O modelo estudado È formado por $n$ dispositivos de armazenamento  $D_1, D_2, ..., D_n$ (\emph{data devices}) e outros $m$ dispositivos de armazenamento  $C_1, C_2, ..., C_m$ (\emph{checksum devices}). O conte˙do de cada um dos $m$ \emph{checksum devices} È calculado a partir do conte˙do dos $n$ \emph{data devices}. O objetivo do c·lculo dos $C_i$ para $1 \leq i \leq m$ È tal que para quaisquer $m$ dispositivos que falhem dos $D_1, D_2, ..., D_n, C_1, C_2, ..., C_m$, o conte˙do dos dispositivos que falharam possa ser reconstituÌdo a partir dos dispositivos que n„o falharam.
+%Em \cite{Plank:1997}, o autor apresenta uma especifica√ß√£o completa do problema e do algoritmo da codifica√ß√£o e detalhes de sua implementa√ß√£o. O modelo estudado √© formado por $n$ dispositivos de armazenamento  $D_1, D_2, ..., D_n$ (\emph{data devices}) e outros $m$ dispositivos de armazenamento  $C_1, C_2, ..., C_m$ (\emph{checksum devices}). O conte√∫do de cada um dos $m$ \emph{checksum devices} √© calculado a partir do conte√∫do dos $n$ \emph{data devices}. O objetivo do c√°lculo dos $C_i$ para $1 \leq i \leq m$ √© tal que para quaisquer $m$ dispositivos que falhem dos $D_1, D_2, ..., D_n, C_1, C_2, ..., C_m$, o conte√∫do dos dispositivos que falharam possa ser reconstitu√≠do a partir dos dispositivos que n√£o falharam.
 
-Segundo \cite{Almeida:2007}, cÛdigos RS s„o particularmente ˙teis para correÁ„o de erros em rajada (seq¸Íncia sÌmbolos consecutivos, nenhum desses recebidos corretamente, chamados \emph{burst errors}). TambÈm podem ser usados eficientemente em canais onde o conjunto de sÌmbolos de entrada È consideravelmente grande.
+Segundo \cite{Almeida:2007}, c√≥digos RS s√£o particularmente √∫teis para corre√ß√£o de erros em rajada (seq√º√™ncia s√≠mbolos consecutivos, nenhum desses recebidos corretamente, chamados \emph{burst errors}). Tamb√©m podem ser usados eficientemente em canais onde o conjunto de s√≠mbolos de entrada √© consideravelmente grande.
 
-%Uma implementaÁ„o de biblioteca em C/C++ para o algoritmo RS foi apresentada em \cite{Plank:2007}.
+%Uma implementa√ß√£o de biblioteca em C/C++ para o algoritmo RS foi apresentada em \cite{Plank:2007}.
 
-O sistema de armazenamento OceanStore \cite{Kubiatowicz:2000} e o protocolo BitTorrent (aplicaÁ„o da camada de rede da internet) usam uma codificaÁ„o RS.
+O sistema de armazenamento OceanStore \cite{Kubiatowicz:2000} e o protocolo BitTorrent (aplica√ß√£o da camada de rede da internet) usam uma codifica√ß√£o RS.
 
-\emph{Redundant Arrays of Inexpensive [Independent] Disks} (RAID) È uma classe de cÛdigos RS. RAID È um mÈtodo para prover toler‚ncia a falhas ou alto desempenho em sistemas de armazenagem utilizando para isso uma codificaÁ„o de correÁ„o de erros ou paridade. RAID foi introduzido por D. A. Patterson na Universidade da California, Berkeley (UC Berkeley) em 1988 \cite{Patterson:1988}. \index{RAID}
+\emph{Redundant Arrays of Inexpensive [Independent] Disks} (RAID) √© uma classe de c√≥digos RS. RAID √© um m√©todo para prover toler√¢ncia a falhas ou alto desempenho em sistemas de armazenagem utilizando para isso uma codifica√ß√£o de corre√ß√£o de erros ou paridade. RAID foi introduzido por D. A. Patterson na Universidade da California, Berkeley (UC Berkeley) em 1988 \cite{Patterson:1988}. \index{RAID}
 
 Segundo \cite{Woitaszek:2007}, para sistemas de armazenamento, a
-codificaÁ„o por apagamento baseada em operaÁıes simples, tais como XOR
-RAID, s„o preferÌveis. Embora um mecanismo externo deva ser utilizado
-para detectar erros, as operaÁıes de XOR podem ser realizadas
-rapidamente e resultar em alto \emph{throughput} das operaÁıes de
-codificaÁ„o e decodificaÁ„o.
+codifica√ß√£o por apagamento baseada em opera√ß√µes simples, tais como XOR
+RAID, s√£o prefer√≠veis. Embora um mecanismo externo deva ser utilizado
+para detectar erros, as opera√ß√µes de XOR podem ser realizadas
+rapidamente e resultar em alto \emph{throughput} das opera√ß√µes de
+codifica√ß√£o e decodifica√ß√£o.
 
-S„o conceitos b·sicos \cite{Vadala:2002}:
+S√£o conceitos b√°sicos \cite{Vadala:2002}:
 
 \begin{description}
 
-   \item [data striping] È uma tÈcnica para segmentar dados sequÍnciais, como um arquivo, de maneira que o acesso a segmentos sequÍnciais seja feito por diferentes dispositivos de armazenamento. Esta tÈcnica È ˙til quando se quer processar mais rapidamente os pedidos de acesso a dados que os dispositivos de armazenamento permitem. Diferentes segmentos de dados s„o mantidos em diferentes dispositivos de armazenamento. A falha de um dos dispositivos torna toda a sequÍncia de dados indisponÌvel. Essa desvantagem È superada pelo armazenamento de informaÁıes redundantes (custo de armazenamento extra), como a paridade, com o objetivo de correÁ„o de erros. As configuraÁıes de RAID que utilizam paridade s„o RAID-2, RAID-3, RAID-4, RAID-5 e RAID-6 \cite{DS:2010}.
+   \item [data striping] √© uma t√©cnica para segmentar dados sequ√™nciais, como um arquivo, de maneira que o acesso a segmentos sequ√™nciais seja feito por diferentes dispositivos de armazenamento. Esta t√©cnica √© √∫til quando se quer processar mais rapidamente os pedidos de acesso a dados que os dispositivos de armazenamento permitem. Diferentes segmentos de dados s√£o mantidos em diferentes dispositivos de armazenamento. A falha de um dos dispositivos torna toda a sequ√™ncia de dados indispon√≠vel. Essa desvantagem √© superada pelo armazenamento de informa√ß√µes redundantes (custo de armazenamento extra), como a paridade, com o objetivo de corre√ß√£o de erros. As configura√ß√µes de RAID que utilizam paridade s√£o RAID-2, RAID-3, RAID-4, RAID-5 e RAID-6 \cite{DS:2010}.
 
-   \item [stripe] s„o segmentos consecutivos ou faixas que s„o escritos sequencialmente atravÈs de cada um dos discos de um \emph{array} ou conjunto. Cada segmento tem um tamanho definido em blocos.
+   \item [stripe] s√£o segmentos consecutivos ou faixas que s√£o escritos sequencialmente atrav√©s de cada um dos discos de um \emph{array} ou conjunto. Cada segmento tem um tamanho definido em blocos.
 
 \end{description}
 
@@ -397,7 +397,7 @@ S„o conceitos b·sicos \cite{Vadala:2002}:
 
 \vspace{0.5cm}
 
-Esta configuraÁ„o divide os dados a nivel de \emph{bit} e usa cÛdigos Hamming para correÁ„o de erros. Por exemplo, o cÛdigo Hamming(7,4) (quatro \emph{bits} de dados e tres \emph{bits} de paridade) permite usar 7 discos em RAID 2, sendo 4 usados para armazenar dados e 3 usados para correÁ„o de erros. Esta codificaÁ„o tornou-se padr„o para \emph{hard drives} e tornou-se desnecess·ria, assim deixou de ser vantajosa.
+Esta configura√ß√£o divide os dados a nivel de \emph{bit} e usa c√≥digos Hamming para corre√ß√£o de erros. Por exemplo, o c√≥digo Hamming(7,4) (quatro \emph{bits} de dados e tres \emph{bits} de paridade) permite usar 7 discos em RAID 2, sendo 4 usados para armazenar dados e 3 usados para corre√ß√£o de erros. Esta codifica√ß√£o tornou-se padr√£o para \emph{hard drives} e tornou-se desnecess√°ria, assim deixou de ser vantajosa.
 
 \vspace{1cm}
 
@@ -405,7 +405,7 @@ Esta configuraÁ„o divide os dados a nivel de \emph{bit} e usa cÛdigos Hamming pa
 
 \vspace{0.5cm}
 
-Esta configuraÁ„o divide os dados a nivel de \emph{byte} com um disco apenas para paridade. Isto requer que todos os discos operem em \emph{lockstep} (rotaÁ„o de todos os discos em sincronismo). Assim como RAID-2, tornou-se obsoleta.
+Esta configura√ß√£o divide os dados a nivel de \emph{byte} com um disco apenas para paridade. Isto requer que todos os discos operem em \emph{lockstep} (rota√ß√£o de todos os discos em sincronismo). Assim como RAID-2, tornou-se obsoleta.
 
 \vspace{1cm}
 
@@ -413,7 +413,7 @@ Esta configuraÁ„o divide os dados a nivel de \emph{byte} com um disco apenas par
 
 \vspace{0.5cm}
 
-Esta configuraÁ„o divide os dados a nivel de bloco com um disco apenas para paridade. Se o controlador de disco permitir, um conjunto RAID 4 pode atender v·rias solicitaÁıes de leitura ao mesmo tempo. Todos os \emph{bits} de paridade est„o em um ˙nico disco, o que pode se tornar um gargalo. RAID-5 substituiu esta configuraÁ„o.
+Esta configura√ß√£o divide os dados a nivel de bloco com um disco apenas para paridade. Se o controlador de disco permitir, um conjunto RAID 4 pode atender v√°rias solicita√ß√µes de leitura ao mesmo tempo. Todos os \emph{bits} de paridade est√£o em um √∫nico disco, o que pode se tornar um gargalo. RAID-5 substituiu esta configura√ß√£o.
 
 \vspace{1cm}
 
@@ -421,7 +421,7 @@ Esta configuraÁ„o divide os dados a nivel de bloco com um disco apenas para pari
 
 \vspace{0.5cm}
 
-Esta configuraÁ„o divide os dados a nivel de bloco com um ˙nico bloco de paridade por \emph{stripe} e os blocos de paridade ficam distribuÌdos por todos os discos. Esta configuraÁ„o privilegia a leitura. Uma sÌndrome È computada para permitir a perda de uma unidade. Essa sÌndrome P pode ser um simples XOR de dados pelos \emph{stripes}.
+Esta configura√ß√£o divide os dados a nivel de bloco com um √∫nico bloco de paridade por \emph{stripe} e os blocos de paridade ficam distribu√≠dos por todos os discos. Esta configura√ß√£o privilegia a leitura. Uma s√≠ndrome √© computada para permitir a perda de uma unidade. Essa s√≠ndrome P pode ser um simples XOR de dados pelos \emph{stripes}.
 
 \vspace{1cm}
 
@@ -429,122 +429,121 @@ Esta configuraÁ„o divide os dados a nivel de bloco com um ˙nico bloco de paridad
 
 \vspace{0.5cm}
 
-Esta configuraÁ„o divide os dados a nivel de bloco com dois blocos de paridade por \emph{stripe} e os blocos de paridade distribuÌdos por todos os discos. Duas sÌndromes diferentes precisam ser computadas para permitir a perda de quaisquer duas unidades. Uma delas, P pode ser um simples XOR de dados pelos \emph{stripes}, como em RAID 5. A outra, Q pode ser um XOR de um \emph{linear feedback shift register} de cada \emph{stripe} \cite{Anvin:2009}.
+Esta configura√ß√£o divide os dados a nivel de bloco com dois blocos de paridade por \emph{stripe} e os blocos de paridade distribu√≠dos por todos os discos. Duas s√≠ndromes diferentes precisam ser computadas para permitir a perda de quaisquer duas unidades. Uma delas, P pode ser um simples XOR de dados pelos \emph{stripes}, como em RAID 5. A outra, Q pode ser um XOR de um \emph{linear feedback shift register} de cada \emph{stripe} \cite{Anvin:2009}.
 
-CÛdigos Low-Density Parity-Check e Tornado s„o cÛdigos de blocos, lineares e acÌclicos. \index{CodificaÁ„o LPDC}
+C√≥digos Low-Density Parity-Check e Tornado s√£o c√≥digos de blocos, lineares e ac√≠clicos. \index{Codifica√ß√£o LPDC}
 
-CÛdigo Low-Density Parity-Check (LPDC) È  uma codificaÁ„o baseada em grafos regulares \cite{Gallager:1963}. CÛdigos LDPC s„o conhecidos tambÈm como cÛdigos Gallager \cite{LDPCC:2010}. Uma aplicaÁ„o dessa codificaÁ„o È a rede \emph{wireless} WMAN WiMAX (IEEE 802.16e \emph{standard for microwave communications}) para internet mÛvel \cite{wimax:2010}.
+C√≥digo Low-Density Parity-Check (LPDC) √©  uma codifica√ß√£o baseada em grafos regulares \cite{Gallager:1963}. C√≥digos LDPC s√£o conhecidos tamb√©m como c√≥digos Gallager \cite{LDPCC:2010}. Uma aplica√ß√£o dessa codifica√ß√£o √© a rede \emph{wireless} WMAN WiMAX (IEEE 802.16e \emph{standard for microwave communications}) para internet m√≥vel \cite{wimax:2010}.
 
-%CÛdigos Tornado s„o uma classe de cÛdigos LDPC \cite{Woitaszek:2007}. Segundo \cite{Kubiatowicz:2000}, s„o mais r·pidos para codificar e decodificar e necessitam de um pouco mais de $m$ fragmentos para reconstruir a informaÁ„o. 
+%C√≥digos Tornado s√£o uma classe de c√≥digos LDPC \cite{Woitaszek:2007}. Segundo \cite{Kubiatowicz:2000}, s√£o mais r√°pidos para codificar e decodificar e necessitam de um pouco mais de $m$ fragmentos para reconstruir a informa√ß√£o. 
 
-CÛdigos Tornado s„o uma classe de cÛdigos LDPC (Low Density Parity
+C√≥digos Tornado s√£o uma classe de c√≥digos LDPC (Low Density Parity
 Check) que utiliza grafos irregulares e que foi proposta por
-M. Luby~\cite{Woitaszek:2007}. Segundo~\cite{Kubiatowicz:2000}, s„o
-mais r·pidos para codificar e decodificar e necessitam de um pouco
-mais de $k$ fragmentos para reconstruir a informaÁ„o. Em
-\cite{Byers:1998}, o autor comentou o tempo de decodificaÁ„o para
-cÛdigos RS e Tornado. CÛdigos Tornado usam equaÁıes com um n˙mero
-pequeno de vari·veis em contraste com cÛdigos RS. \index{CodificaÁ„o Tornado}
+M. Luby~\cite{Woitaszek:2007}. Segundo~\cite{Kubiatowicz:2000}, s√£o
+mais r√°pidos para codificar e decodificar e necessitam de um pouco
+mais de $k$ fragmentos para reconstruir a informa√ß√£o. Em
+\cite{Byers:1998}, o autor comentou o tempo de decodifica√ß√£o para
+c√≥digos RS e Tornado. C√≥digos Tornado usam equa√ß√µes com um n√∫mero
+pequeno de vari√°veis em contraste com c√≥digos RS. \index{Codifica√ß√£o Tornado}
 
 
-Em \cite{Luby:1998}, os autores apresentam cÛdigos Tornado baseados em grafos irregulares. Segundo \cite{CS540:2010}, as implicaÁıes pr·ticas desses cÛdigos ainda n„o foram bem estudadas.
+Em \cite{Luby:1998}, os autores apresentam c√≥digos Tornado baseados em grafos irregulares. Segundo \cite{CS540:2010}, as implica√ß√µes pr√°ticas desses c√≥digos ainda n√£o foram bem estudadas.
 
-\subsection{Capacidade de CorreÁ„o de Erros}
+\subsection{Capacidade de Corre√ß√£o de Erros}
 
-ApÛs a transmiss„o ou armazenamento de um vetor cÛdigo $v$, um padr„o de $l$ erros resultar· em um vetor recebido ou lido $r$ que difere do vetor $v$ em $l$ bits, ou seja, $\delta(v,r)=l$. Se a dist‚ncia mÌnima de $C:(n,k)$ È $d_{min}$, nenhum padr„o de erro de $d_{min}-1$ ou menos pode trocar um vetor cÛdigo por outro. Ou seja, todo padr„o de erro de $d_{min}-1$ ou menos ir· resultar em um vetor $r$ que n„o È um vetor cÛdigo de $C$. Quando o receptor detecta que o vetor recebido n„o È um vetor cÛdigo de $C$, os erros s„o detectados. Por esse motivo, um cÛdigo de bloco com dist‚ncia mÌnima $d_{min}$ È capaz de detectar todos os padrıes de erro com $d_{min}-1$ ou menos. Esse mesmo cÛdigo n„o È capaz de detectar todos os padrıes de erro com $d_{min}$ ou mais, pois existe pelo menos um par de vetores cÛdigo que diferem de $d_{min}$ bits.
+Ap√≥s a transmiss√£o ou armazenamento de um vetor c√≥digo $v$, um padr√£o de $l$ erros resultar√° em um vetor recebido ou lido $r$ que difere do vetor $v$ em $l$ bits, ou seja, $\delta(v,r)=l$. Se a dist√¢ncia m√≠nima de $C:(n,k)$ √© $d_{min}$, nenhum padr√£o de erro de $d_{min}-1$ ou menos pode trocar um vetor c√≥digo por outro. Ou seja, todo padr√£o de erro de $d_{min}-1$ ou menos ir√° resultar em um vetor $r$ que n√£o √© um vetor c√≥digo de $C$. Quando o receptor detecta que o vetor recebido n√£o √© um vetor c√≥digo de $C$, os erros s√£o detectados. Por esse motivo, um c√≥digo de bloco com dist√¢ncia m√≠nima $d_{min}$ √© capaz de detectar todos os padr√µes de erro com $d_{min}-1$ ou menos. Esse mesmo c√≥digo n√£o √© capaz de detectar todos os padr√µes de erro com $d_{min}$ ou mais, pois existe pelo menos um par de vetores c√≥digo que diferem de $d_{min}$ bits.
 
-\begin{proposition} Seja um cÛdigo de bloco $C:(n,k)$. O cÛdigo $C$ È capaz de detectar $2^n - 2^k$ padrıes de erro de tamanho $n$.
+\begin{proposition} Seja um c√≥digo de bloco $C:(n,k)$. O c√≥digo $C$ √© capaz de detectar $2^n - 2^k$ padr√µes de erro de tamanho $n$.
 \end{proposition}
 
-\begin{proof} Existem $2^n -1$ padrıes de erro n„o nulos e desses $2^k-1$ padrıes de erro s„o idÍnticos aos $2^k-1$ vetores cÛdigo n„o nulos. Se um desses padrıes ocorre, um vetor cÛdigo $v$ È recebido ou lido como $w$. A sÌndrome ser· igual a $0$. O decodificador aceita $w$ e confirma uma decodificaÁ„o incorreta. Portanto existem $2^k-1$ padrıes de erro n„o detect·veis. Assim, existem $2^n -1 - (2^k-1)=2^n - 2^k$ padrıes de erro detect·veis, isso inclue o vetor $0$.
+\begin{proof} Existem $2^n -1$ padr√µes de erro n√£o nulos e desses $2^k-1$ padr√µes de erro s√£o id√™nticos aos $2^k-1$ vetores c√≥digo n√£o nulos. Se um desses padr√µes ocorre, um vetor c√≥digo $v$ √© recebido ou lido como $w$. A s√≠ndrome ser√° igual a $0$. O decodificador aceita $w$ e confirma uma decodifica√ß√£o incorreta. Portanto existem $2^k-1$ padr√µes de erro n√£o detect√°veis. Assim, existem $2^n -1 - (2^k-1)=2^n - 2^k$ padr√µes de erro detect√°veis, isso inclue o vetor $0$.
 \end{proof}
 
-Podemos acrescentar que um cÛdigo de bloco $C:(n,k)$ corrige $2^{n-k}$ padrıes de erro de tamanho $n$.
+Podemos acrescentar que um c√≥digo de bloco $C:(n,k)$ corrige $2^{n-k}$ padr√µes de erro de tamanho $n$.
 
-\begin{definition} {\bf DistribuiÁ„o Peso} \label{DistPeso} \index{DistribuiÁ„o Peso} Seja um cÛdigo de bloco $C:(n,k)$. Seja $A_i$ o n˙mero de vetores cÛdigo de $C$ com peso $i$. A sequÍncia $A_o, A_1, \ldots A_n$ È a distribuiÁ„o peso de $C$. No caso de canal bin·rio simÈtrico, a probabilidade que o decodificador falhe em detectar erros pode ser expressada:
+\begin{definition} {\bf Distribui√ß√£o Peso} \label{DistPeso} \index{Distribui√ß√£o Peso} Seja um c√≥digo de bloco $C:(n,k)$. Seja $A_i$ o n√∫mero de vetores c√≥digo de $C$ com peso $i$. A sequ√™ncia $A_o, A_1, \ldots A_n$ √© a distribui√ß√£o peso de $C$. No caso de canal bin√°rio sim√©trico, a probabilidade que o decodificador falhe em detectar erros pode ser expressada:
 \begin{align*}
 P_u(E)=\displaystyle\sum_{i=1}^{n} A_i p^i(1 -p)^{n-i}
 \end{align*}
-onde $p$ È probabilidade da ocorrÍncia de um erro no canal. Se a dist‚ncia mÌnima de $C$ È $d_{min}$, $A_1=A_{d_{min}-1} =0$.
+onde $p$ √© probabilidade da ocorr√™ncia de um erro no canal. Se a dist√¢ncia m√≠nima de $C$ √© $d_{min}$, $A_1=A_{d_{min}-1} =0$.
 \end{definition}
 
-\begin{example} Para o cÛdigo $CH(7,4)$ do exemplo~\ref{CodHamm}, a distribuiÁ„o peso È $A_0=1, A_1=A_2=0, A_3=7, A_5=A_6=0$ e $A_7=1$. A probabilidade de n„o detectar erros È:
+\begin{example} Para o c√≥digo $CH(7,4)$ do exemplo~\ref{CodHamm}, a distribui√ß√£o peso √© $A_0=1, A_1=A_2=0, A_3=7, A_5=A_6=0$ e $A_7=1$. A probabilidade de n√£o detectar erros √©:
 \begin{align*}
 P_u(E)=0+0+7p^3(1-p)^4+7p^4(1-p)^3+0+0+p^7=7p^3(1-p)^4+7p^4(1-p)^3+p^7
 \end{align*}
-Mesmo para $p \ll 1$, $p=10^{-2}$, $P_u(E) \approx 7 \times 10^{-6}$. Esse resultado pode ser assim interpretado: a cada 1 milh„o de palavras cÛdigo, 7 erros n„o s„o detectados pelo decodificador do cÛdigo $CH(7,4)$. Devido a sua simplicidade, os cÛdigos Hamming s„o usados em memÛrias RAM, onde a taxa de erros È baixa e s„o conhecidos pelo nome SECDED (\emph{Single Error Correction, Double Error Detection}).
+Mesmo para $p \ll 1$, $p=10^{-2}$, $P_u(E) \approx 7 \times 10^{-6}$. Esse resultado pode ser assim interpretado: a cada 1 milh√£o de palavras c√≥digo, 7 erros n√£o s√£o detectados pelo decodificador do c√≥digo $CH(7,4)$. Devido a sua simplicidade, os c√≥digos Hamming s√£o usados em mem√≥rias RAM, onde a taxa de erros √© baixa e s√£o conhecidos pelo nome SECDED (\emph{Single Error Correction, Double Error Detection}).
 \end{example}
 
-Vamos determinar a capacidade de correÁ„o de erros de um cÛdigo de bloco linear $C:(n,k)$. 
+Vamos determinar a capacidade de corre√ß√£o de erros de um c√≥digo de bloco linear $C:(n,k)$. 
 
-\begin{proposition} {\bf Capacidade de correÁ„o de erros de um cÛdigo de bloco linear $C:(n,k)$} \label{CapCorrErros} \index{Capacidade de CorreÁ„o de erros de um cÛdigo de bloco linear $C:(n,k)$} Seja $C:(n,k)$ um cÛdigo de bloco linear. Seja $t$ o n˙mero de bits que pode ser corrigido e $d_{min}$ a dist‚ncia mÌnima de $C$. Como $d_{min}$ È um inteiro, vamos escrever $t$ na seguinte condiÁ„o:
+\begin{proposition} {\bf Capacidade de corre√ß√£o de erros de um c√≥digo de bloco linear $C:(n,k)$} \label{CapCorrErros} \index{Capacidade de Corre√ß√£o de erros de um c√≥digo de bloco linear $C:(n,k)$} Seja $C:(n,k)$ um c√≥digo de bloco linear. Seja $t$ o n√∫mero de bits que pode ser corrigido e $d_{min}$ a dist√¢ncia m√≠nima de $C$. Como $d_{min}$ √© um inteiro, vamos escrever $t$ na seguinte condi√ß√£o:
 \begin{align*}
 2t+1 \leq d_{min} \leq 2t + 2
 \end{align*}
-Ent„o, $C$ È capaz de detectar todos os padrıes de $t$ erros. 
+Ent√£o, $C$ √© capaz de detectar todos os padr√µes de $t$ erros. 
 \end{proposition}
 
-\begin{proof} Seja $v$ o vetor cÛdigo transmitido ou armazenado e $r$ o vetor recebido ou lido. Seja $w \in C$. As dist‚ncias hamming dos vetores satisfazem a inequaÁ„o:
+\begin{proof} Seja $v$ o vetor c√≥digo transmitido ou armazenado e $r$ o vetor recebido ou lido. Seja $w \in C$. As dist√¢ncias hamming dos vetores satisfazem a inequa√ß√£o:
 \begin{align*}
 \delta(v,r)+\delta(w,r) \geq \delta(v,w)
 \end{align*}
-Suponhamos que ocorram $t^{'}$ erros na transmiss„o ou armazenagem de $v$, ent„o $\delta(v,r)=t^{'}$. Como $v, w \in C$, $\delta(v,w) \geq d_{min} \geq 2t+1$. Assim, reescrevendo a inequaÁ„o:
+Suponhamos que ocorram $t^{'}$ erros na transmiss√£o ou armazenagem de $v$, ent√£o $\delta(v,r)=t^{'}$. Como $v, w \in C$, $\delta(v,w) \geq d_{min} \geq 2t+1$. Assim, reescrevendo a inequa√ß√£o:
 \begin{align*}
 \delta(v,r)+\delta(w,r) \geq \delta(v,w)\\
 t^{'}+\delta(w,r) \geq 2t+1\\
 \delta(w,r) \geq 2t+1 - t^{'}
 \end{align*}
-Se $t^{'} \leq t$, ent„o
+Se $t^{'} \leq t$, ent√£o
 \begin{align*}
 \delta(w,r) > t
 \end{align*}
-Isso mostra que na ocorrÍncia de de $t$ erros ou menos, o vetor $r$ È muito prÛximo do vetor $v$ que qualquer outra palavra $w$ no cÛdigo $C$.
+Isso mostra que na ocorr√™ncia de de $t$ erros ou menos, o vetor $r$ √© muito pr√≥ximo do vetor $v$ que qualquer outra palavra $w$ no c√≥digo $C$.
 
-O cÛdigo $C$ n„o È capaz de corrigir todos os padrıes de erros com $l > t$.
-Um cÛdigo de bloco linear com dist‚ncia mÌnima $d_{min}$ garante corrigir todos os padrıes de erros $t=\lfloor \frac{(d_{min}-1)}{2} \rfloor$ ou menos. O par‚metro $t$ È chamado capacidade de correÁ„o de erros aleatÛrios de um cÛdigo.
+O c√≥digo $C$ n√£o √© capaz de corrigir todos os padr√µes de erros com $l > t$.
+Um c√≥digo de bloco linear com dist√¢ncia m√≠nima $d_{min}$ garante corrigir todos os padr√µes de erros $t=\lfloor \frac{(d_{min}-1)}{2} \rfloor$ ou menos. O par√¢metro $t$ √© chamado capacidade de corre√ß√£o de erros aleat√≥rios de um c√≥digo.
 \end{proof}
 
-Se um cÛdigo de bloco linear $C:(n,k)$, capaz de corrigir todos os padrıes de erro de peso $t$ ou menor, È usado na transmiss„o ou armazenamento em um canal bin·rio simÈtrico com probabilidade de erro $p$, a probabilidade do decodificador falhe em detectar erros tem limite superior dado por:
+Se um c√≥digo de bloco linear $C:(n,k)$, capaz de corrigir todos os padr√µes de erro de peso $t$ ou menor, √© usado na transmiss√£o ou armazenamento em um canal bin√°rio sim√©trico com probabilidade de erro $p$, a probabilidade do decodificador falhe em detectar erros tem limite superior dado por:
 \begin{align*}
 P_u(E)=\displaystyle\sum_{i=t+1}^{n} \binom {n}{i} p^i(1 -p)^{n-i}
 \end{align*}
 
-Esses cÛdigos s„o usados de tal forma que os padrıes de erro de peso $\lambda$ s„o corrigidos e os padrıes de erro de peso $l > \lambda$ s„o detectados. Isto È possÌvel se $d_{min} \geq l + \lambda + 1$.
+Esses c√≥digos s√£o usados de tal forma que os padr√µes de erro de peso $\lambda$ s√£o corrigidos e os padr√µes de erro de peso $l > \lambda$ s√£o detectados. Isto √© poss√≠vel se $d_{min} \geq l + \lambda + 1$.
 
-\begin{theorem} {\bf Limite de Singleton} \label{LimSingle} \index{Limite de Singleton} A dist‚ncia mÌnima de um cÛdigo de blocos $C:(n,k)$ tem  limite superior dado por $d_{min} \leq n - k + 1$. 
+\begin{theorem} {\bf Limite de Singleton} \label{LimSingle} \index{Limite de Singleton} A dist√¢ncia m√≠nima de um c√≥digo de blocos $C:(n,k)$ tem  limite superior dado por $d_{min} \leq n - k + 1$. 
 \end{theorem}
 
-\begin{proof}  O vetor cÛdigo n„o nulo com menor peso tem peso $d_{min}$, por definiÁ„o. Existem vetores cÛdigo com apenas um sÌmbolo de informaÁ„o n„o-nulo + $(n - k)$ sÌmbolos de paridade. Tal vetor cÛdigo n„o pode ter peso maior que $1+(n-k)$. Logo, o peso mÌnimo do cÛdigo - isto È, $d_{min}$, n„o
+\begin{proof}  O vetor c√≥digo n√£o nulo com menor peso tem peso $d_{min}$, por defini√ß√£o. Existem vetores c√≥digo com apenas um s√≠mbolo de informa√ß√£o n√£o-nulo + $(n - k)$ s√≠mbolos de paridade. Tal vetor c√≥digo n√£o pode ter peso maior que $1+(n-k)$. Logo, o peso m√≠nimo do c√≥digo - isto √©, $d_{min}$, n√£o
 pode ser maior do que $1 + (n - k)$.
 \end{proof}
 
-CÛdigos de bloco que alcanÁam o limite de Singleton s„o chamados cÛdigos MDS. Com cÛdigos bin·rios, a igualdade sÛ se atinge com cÛdigos de repetiÁ„o. Nesse caso, a sobrecarga de armazenamento È grande ($k = 1$, $O = n/k = n$).
+C√≥digos de bloco que alcan√ßam o limite de Singleton s√£o chamados c√≥digos MDS. Com c√≥digos bin√°rios, a igualdade s√≥ se atinge com c√≥digos de repeti√ß√£o. Nesse caso, a sobrecarga de armazenamento √© grande ($k = 1$, $O = n/k = n$).
 
+\subsection{Matriz Padr√£o e Detec√ß√£o de S√≠ndrome}
 
-\subsection{Matriz Padr„o e DetecÁ„o de SÌndrome}
-
-\begin{theorem} {\bf Limite de Hamming} \label{LimHamm} \index{Limite de Hamming}  O n˙mero de bits de verificaÁ„o de paridade de qualquer cÛdigo linear bin·rio (n,k) com dist‚ncia mÌnima $dmin \geq 2t + 1$ satisfaz o limite de Hamming
+\begin{theorem} {\bf Limite de Hamming} \label{LimHamm} \index{Limite de Hamming}  O n√∫mero de bits de verifica√ß√£o de paridade de qualquer c√≥digo linear bin√°rio (n,k) com dist√¢ncia m√≠nima $dmin \geq 2t + 1$ satisfaz o limite de Hamming
 \begin{align*}
 2^{n-k} \geq  1 + \binom {n}{1} + \binom {n}{2} + \ldots + \binom {n}{t}=\displaystyle\sum_{i=0}^{t} \binom {n}{t}
 \end{align*}
 \end{theorem}
 
-\begin{proof}  Pela proposiÁ„o~\ref{CapCorrErros}, $d_{min} \geq 2t + 1$, ent„o todos os vetores cÛdigo de peso $t$ ou menos (isto È, padrıes de $t$ erros ou menos) podem ser usados como \emph{coset leaders} de uma matriz padr„o. Se o cÛdigo corrige $t$ ou menos erros por vetor cÛdigo, o conjunto de todos os padrıes de $t$ ou menos erros (incluindo o padr„o nulo)
+\begin{proof}  Pela proposi√ß√£o~\ref{CapCorrErros}, $d_{min} \geq 2t + 1$, ent√£o todos os vetores c√≥digo de peso $t$ ou menos (isto √©, padr√µes de $t$ erros ou menos) podem ser usados como \emph{coset leaders} de uma matriz padr√£o. Se o c√≥digo corrige $t$ ou menos erros por vetor c√≥digo, o conjunto de todos os padr√µes de $t$ ou menos erros (incluindo o padr√£o nulo)
 \begin{align*}
 \binom{n}{0} + \binom {n}{1} + \binom {n}{2} + \ldots + \binom {n}{t}
 \end{align*}
-deve ser menor ou igual ao n˙mero de \emph{cosets leaders} $2^{n-k}$.
+deve ser menor ou igual ao n√∫mero de \emph{cosets leaders} $2^{n-k}$.
 \end{proof}
 
-O limite de Hamming estabelece um valor m·ximo para a capacidade de correÁ„o de erros $t$ de um cÛdigo. A igualdade verifica-se nos cÛdigos perfeitos, onde n„o h· nenhum vetor cÛdigo de $n$ bits a uma dist‚ncia maior que $t$ de outro vetor cÛdigo.
+O limite de Hamming estabelece um valor m√°ximo para a capacidade de corre√ß√£o de erros $t$ de um c√≥digo. A igualdade verifica-se nos c√≥digos perfeitos, onde n√£o h√° nenhum vetor c√≥digo de $n$ bits a uma dist√¢ncia maior que $t$ de outro vetor c√≥digo.
 
-Temos um limitante menor para a capacidade de correÁ„o de erros de um cÛdigo, o limite de Plotkin.
+Temos um limitante menor para a capacidade de corre√ß√£o de erros de um c√≥digo, o limite de Plotkin.
 
-\begin{theorem} {\bf Limite de Plotkin} \label{LimPlot} \index{Limite de Plotkin} Se dispormos em as $2k$ vetores cÛdigo de um cÛdigo $C(n,k)$, obteremos uma matriz de $2^k$ linhas e $n$ colunas. Em cada uma dessas colunas, metade dos bits (isto È, $\frac{2^k}{2}$) È $0$ e a outra metade È $1$. Logo, o n˙mero total de $1$'s que existem em todos os vetores cÛdigo È
+\begin{theorem} {\bf Limite de Plotkin} \label{LimPlot} \index{Limite de Plotkin} Se dispormos em as $2k$ vetores c√≥digo de um c√≥digo $C(n,k)$, obteremos uma matriz de $2^k$ linhas e $n$ colunas. Em cada uma dessas colunas, metade dos bits (isto √©, $\frac{2^k}{2}$) √© $0$ e a outra metade √© $1$. Logo, o n√∫mero total de $1$'s que existem em todos os vetores c√≥digo √©
 \begin{align*}
 n\frac{2^k}{2}=n2^{k-1}
 \end{align*}
-Como existem $2^k-1$ vetores n„o nulos em $C(n,k)$, o peso mÈdio dos vetores cÛdigo È
+Como existem $2^k-1$ vetores n√£o nulos em $C(n,k)$, o peso m√©dio dos vetores c√≥digo √©
 \begin{align*}
 \frac{n2^{k-1}}{2^k-1}
 \end{align*}
@@ -558,43 +557,41 @@ ou
 \end{align*}
 \end{theorem}
 
+\subsection{Exemplos de C√≥digos de Blocos}
 
-
-\subsection{Exemplos de CÛdigos de Blocos}
-
-\begin{definition} Seja uma sequÍncia de bits $w=w_0w_1 \ldots w_{m-1} \in \{0, 1\}^m$. Podemos definir $w$ como sendo um elemento $w=(w_0w_2 \ldots w_{m-1})$ do produto cartesiano:
+\begin{definition} Seja uma sequ√™ncia de bits $w=w_0w_1 \ldots w_{m-1} \in \{0, 1\}^m$. Podemos definir $w$ como sendo um elemento $w=(w_0w_2 \ldots w_{m-1})$ do produto cartesiano:
 \begin{align*}
 {\mathbb{Z}_2}^m=\underbrace{\mathbb{Z}_2 \times \ldots \times \mathbb{Z}_2}_{m}
 \end{align*}
 \end{definition}
 
-\begin{example} Considere o cÛdigo de bloco (6,5). A funÁ„o de codificaÁ„o $\alpha\ :\ {\mathbb{Z}_2}^5 \rightarrow {\mathbb{Z}_2}^6$ È definida da seguinte forma: para cada $w \in {\mathbb{Z}_2}^5$, seja $c=\alpha(w)=w_0w_1 \ldots w_4w_5 \in {\mathbb{Z}_2}^6$ e $w5=w_0+w_1+ \ldots +w_4\ (mod\ 2)$. Cada $c \in {\mathbb{Z}_2}^6$, o n˙mero de bits $1$ È sempre par. Desta forma, um erro (de transmiss„o ou de armazenamento) ser· detectado, mas sem a possibilidade de correÁ„o.
+\begin{example} Considere o c√≥digo de bloco (6,5). A fun√ß√£o de codifica√ß√£o $\alpha\ :\ {\mathbb{Z}_2}^5 \rightarrow {\mathbb{Z}_2}^6$ √© definida da seguinte forma: para cada $w \in {\mathbb{Z}_2}^5$, seja $c=\alpha(w)=w_0w_1 \ldots w_4w_5 \in {\mathbb{Z}_2}^6$ e $w5=w_0+w_1+ \ldots +w_4\ (mod\ 2)$. Cada $c \in {\mathbb{Z}_2}^6$, o n√∫mero de bits $1$ √© sempre par. Desta forma, um erro (de transmiss√£o ou de armazenamento) ser√° detectado, mas sem a possibilidade de corre√ß√£o.
 \end{example}
 
-\begin{example} Considere o cÛdigo de bloco (21,7). A funÁ„o de codificaÁ„o $\alpha\ :\ {\mathbb{Z}_2}^7 \rightarrow {\mathbb{Z}_2}^{21}$ È definida da seguinte forma: para cada $w=w_0w_1 \ldots w_7 \in {\mathbb{Z}_2}^7$, seja $c=\alpha(w)=w_0w_1 \ldots w_7w_0w_1 \ldots w_7w_0w_1 \ldots w_7$, ou seja, repetimos mais 2 vezes a mesma sequÍncia. Depois da transmiss„o ou do armazenamento, suponhamos que a sequÍncia
+\begin{example} Considere o c√≥digo de bloco (21,7). A fun√ß√£o de codifica√ß√£o $\alpha\ :\ {\mathbb{Z}_2}^7 \rightarrow {\mathbb{Z}_2}^{21}$ √© definida da seguinte forma: para cada $w=w_0w_1 \ldots w_7 \in {\mathbb{Z}_2}^7$, seja $c=\alpha(w)=w_0w_1 \ldots w_7w_0w_1 \ldots w_7w_0w_1 \ldots w_7$, ou seja, repetimos mais 2 vezes a mesma sequ√™ncia. Depois da transmiss√£o ou do armazenamento, suponhamos que a sequ√™ncia
 
 \begin{align*}
 \tau(c)=v_0v_1 \ldots v_7{v_0}^{'}{v_1}^{'} \ldots {v_7}^{'} \ldots v_7{v_0}^{''}{v_1}^{''} \ldots {v_7}^{''}
 \end{align*}
-È recebida ou lida. Vamos definir a funÁ„o de decodificaÁ„o $\sigma\ :\ {\mathbb{Z}_2}^{21} \rightarrow {\mathbb{Z}_2}^7$ dessa forma:
+√© recebida ou lida. Vamos definir a fun√ß√£o de decodifica√ß√£o $\sigma\ :\ {\mathbb{Z}_2}^{21} \rightarrow {\mathbb{Z}_2}^7$ dessa forma:
 
 \begin{align*}
 \sigma(v_0v_1 \ldots v_7{v_0}^{'}{v_1}^{'} \ldots {v_7}^{'} \ldots v_7{v_0}^{''}{v_1}^{''} \ldots {v_7}^{''})=u_0u_1 \ldots u_7
 \end{align*}
 
-onde cada $u_j$ È igual ao valor de maior ocorrÍncia entre $v_j$, ${v_j}^{'}$ e ${v_j}^{''}$. Nesse caso, se no m·ximo um bit entre $v_j$, ${v_j}^{'}$ e ${v_j}^{''}$ for diferente de $w_j$, ent„o ainda teremos $u_j=w_j$. Assim, nesse caso, atÈ um erro para cada $w_j$ pode ser detectado e corrigido.
+onde cada $u_j$ √© igual ao valor de maior ocorr√™ncia entre $v_j$, ${v_j}^{'}$ e ${v_j}^{''}$. Nesse caso, se no m√°ximo um bit entre $v_j$, ${v_j}^{'}$ e ${v_j}^{''}$ for diferente de $w_j$, ent√£o ainda teremos $u_j=w_j$. Assim, nesse caso, at√© um erro para cada $w_j$ pode ser detectado e corrigido.
 
 \end{example}
 
 
-\section{CÛdigos Convolacionais}
+\section{C√≥digos Convolacionais}
 
-P. Elias introduziu cÛdigos convolucionais em 1955. Um cÛdigo convulacional È um dispositivo com memÛria. Apesar de aceitar uma mensagem de entrada de tamanho fixo e produzir uma saÌda codificada, seus c·lculos n„o dependem somente da entrada atual, mas tambÈm das entradas e saÌdas anteriores.
+P. Elias introduziu c√≥digos convolucionais em 1955. Um c√≥digo convulacional √© um dispositivo com mem√≥ria. Apesar de aceitar uma mensagem de entrada de tamanho fixo e produzir uma sa√≠da codificada, seus c√°lculos n√£o dependem somente da entrada atual, mas tamb√©m das entradas e sa√≠das anteriores.
 
-Um codificador para um cÛdigo convolucional tambÈm aceita blocos de $k$ bits da sequÍncia de dados $u$ e gera uma sequÍncia de saÌda $v$ de $m$ \emph{bits} chamada \emph{codeword} ou palavra cÛdigo. Cada bloco da palavra cÛdigo n„o depende apenas dos $k$ bits do bloco da sequÍncia de dados correspondente, mas tambÈm de $M$ blocos anteriores. Dizemos que o codificador tem memÛria de ordem $M$, onde $M$ È o n˙mero de registradores de memÛria. Esse conjunto de blocos de $k$ bits, o codificador das palavras cÛdigo de tamanho $m$ e de memÛria de ordem $M$ È chamado de ($m$, $k$, $M$) cÛdigo convolucional. $R = \frac{k}{m}$  È a taxa de codificaÁ„o. Como o codificador tem memÛria, ele pode ser implementado como circuito lÛgico sequÍncial \cite{Lin:1983}.
+Um codificador para um c√≥digo convolucional tamb√©m aceita blocos de $k$ bits da sequ√™ncia de dados $u$ e gera uma sequ√™ncia de sa√≠da $v$ de $m$ \emph{bits} chamada \emph{codeword} ou palavra c√≥digo. Cada bloco da palavra c√≥digo n√£o depende apenas dos $k$ bits do bloco da sequ√™ncia de dados correspondente, mas tamb√©m de $M$ blocos anteriores. Dizemos que o codificador tem mem√≥ria de ordem $M$, onde $M$ √© o n√∫mero de registradores de mem√≥ria. Esse conjunto de blocos de $k$ bits, o codificador das palavras c√≥digo de tamanho $m$ e de mem√≥ria de ordem $M$ √© chamado de ($m$, $k$, $M$) c√≥digo convolucional. $R = \frac{k}{m}$  √© a taxa de codifica√ß√£o. Como o codificador tem mem√≥ria, ele pode ser implementado como circuito l√≥gico sequ√™ncial \cite{Lin:1983}.
 
-Em um cÛdigo convolucional, os $m - k$ bits redundantes, que provem ‡ codificaÁ„o a capacidade de tratar os ruÌdos do canal, podem ser adicionados quando $k < m$. Para uma mesma taxa de codificaÁ„o $R$, pode-se adicionar redund‚ncia, aumentando a ordem da memÛria $M$ do codificador. Como usar a memÛria para obter uma transmiss„o confi·vel sob um canal com ruÌdo È o principal problema do projeto do codificador.
+Em um c√≥digo convolucional, os $m - k$ bits redundantes, que provem √† codifica√ß√£o a capacidade de tratar os ru√≠dos do canal, podem ser adicionados quando $k < m$. Para uma mesma taxa de codifica√ß√£o $R$, pode-se adicionar redund√¢ncia, aumentando a ordem da mem√≥ria $M$ do codificador. Como usar a mem√≥ria para obter uma transmiss√£o confi√°vel sob um canal com ru√≠do √© o principal problema do projeto do codificador.
 
-CÛdigos convolucionais podem ser usados para melhorar o desempenho da comunicaÁ„o por r·dio e satÈlites. CÛdigos convolucionais s„o utilizados nas tecnologias CDMA (\emph{Code division multiple access}) e GSM (\emph{Global System for Mobile Communications}) para telefones celulares, \emph{dial-up modems}, satÈlites, \emph{NASA's Deep Space Network} deep-space communications e na rede WLAN Wi-Fi IEEE 802.11.
+C√≥digos convolucionais podem ser usados para melhorar o desempenho da comunica√ß√£o por r√°dio e sat√©lites. C√≥digos convolucionais s√£o utilizados nas tecnologias CDMA (\emph{Code division multiple access}) e GSM (\emph{Global System for Mobile Communications}) para telefones celulares, \emph{dial-up modems}, sat√©lites, \emph{NASA's Deep Space Network} deep-space communications e na rede WLAN Wi-Fi IEEE 802.11.
 
 
