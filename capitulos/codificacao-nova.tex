@@ -214,7 +214,6 @@ ambos).
 
 % Um código C é linear se v e w são palavras código distintas de um código C, então v+w é também uma palavra código de C. Um código linear contém a palavra código zero, pois $v + v = 0$. Operação simples de decodificação, pouca memória e métodos simples para determinação de padrões de erros são algumas das vantagens de códigos lineares.
 
-Um código C é chamado de cíclico se o deslocamento cíclico (\emph{shift}) de qualquer palavra código gera uma nova palavra código. Por exemplo, $C1 = \{000, 110, 101, 011\}$ é um código cíclico. $C2 = \{000, 100, 011, 111\}$ não é um código cíclico.
 
 Existem vários códigos de blocos \cite{Byers:1998, Kubiatowicz:2000}. Alguns dos mais utilizados são códigos Reed-Solomon (RS), códigos Low-Density Parity-Check (LDPC) e códigos Tornado \cite{Mitzenmacher:2004, RTAD:2007}.
 
@@ -612,11 +611,38 @@ Seja $D_j$ a $j$-ésima coluna da matriz padrão da forma: $D_j=\{ c_j,\ e_2 \op
 
 Seja $x$ um padrão de erro do canal da forma $x=e_l \oplus c_i$ com $2 \leq l \leq 2^{n-k}$ e $2 \leq i \leq 2^k$. Assim, o vetor recebido $r$ pode ser escrito como $r=c_j \oplus x=e_j \oplus (c_i \oplus c_j)=e_l \oplus c_s$. O vetor $r \in D_s$ e é decodificado para $c_s$, que não é o vetor $c_j$. Isso resulta em erro. Portanto, a decodificação é correta se, e somente se, o padrão de erro obtido no canal é um \emph{coset} líder.
 
-Para minimizar a probabilidade de erro, todos os padrões de erro que se podem corrigir, que são os \emph{cosets} líderes, terão de ser os padrões mais prováveis. Em caso de transmissão sobre um canal BSC, os padrões mais prováveis são os que possuem os menores pesos possíveis. Portanto, para construir a matriz padrão, os \emph{cosets} líderes são escolhidos entre os vetores de menor peso que estão disponíveis.
-
+Para minimizar a probabilidade de erro, todos os padrões de erro que se podem corrigir, que são os \emph{cosets} líderes, terão de ser os padrões mais prováveis. Em caso de transmissão sobre um canal BSC, os padrões mais prováveis são os que possuem os menores pesos possíveis. Portanto, para construir a matriz padrão, os \emph{cosets} líderes são escolhidos entre os vetores de menor peso que estão disponíveis. A decodificação nesse caso é a decodificação de distância mínima: o vetor código decodificado está à distância mínima com relação ao vetor recebido.
 
 \begin{theorem} Todo código linear $C:(n,k)$ é capaz de corrigir $2^{n-k}$ padrões de erro.
 \end{theorem}
+
+\begin{theorem} Para um código de bloco linear $C:(n,k)$ com distância mínima $d_{min}$, todos os vetores de peso $t=\lfloor \frac{d_{min}-1}{2}\rfloor$ ou menos, podem ser líderes do \emph{coset} da matriz padrão de $C$. Se todos os vetores de peso $t$ forem usados como líderes do \emph{coset}, existe pelo menos um vetor de peso $t+1$ que não pode ser usado como líder do \emph{coset}.
+\end{theorem}
+
+\begin{theorem} Todos os $2^k$ vetores de um \emph{coset} tem a a mesma síndrome. As síndromes de diferentes  \emph{cosets} são distintas.
+\end{theorem}
+
+\begin{proof}
+Tomando um líder do \emph{coset} como o vetor $e_i$, todos os outros vetores desse \emph{coset} são a soma do líder do \emph{coset} e do vetor código $c_i$. Para esse caso, a síndrome é calculada como
+\begin{align*}
+S = (c_i \oplus e_i)H^T = c_i H^T \oplus e_i H^T = e_i H^T
+\end{align*}
+Assim, podemos afirmar que a síndrome de qualquer vetor do \emph{coset} é igual à síndrome do líder desse \emph{coset}.
+\end{proof}
+
+Síndromes são vetores com $(n-k)$ componentes que possuem bijeção com os \emph{cosets}. Para cada padrão de erro corrigível, existe um vetor
+síndrome diferente. Isto permite-nos implementar uma decodificação simples através da construção de uma tabela onde os padrões de erro e os seus vetores
+síndrome correspondentes estão organizados de tal forma que, quando o decodificador realiza o cálculo de um vetor síndrome, pode reconhecer o padrão de erro correspondente. Assim, o decodificador é capaz de corrigir o vetor recebido, adicionando o padrão de erro ao vetor recebido.
+
+A decodificação das síndromes consiste dos seguintes passos:
+
+\begin{enumerate}
+   \item Computar $S=rH^T$
+   \item Uma tabela que mapea a bijeção entre $S$ e $e_l$ é usada para identificar o padrão de erro $e_l$. Então, $e_l$ é o padrão de erro obtido no canal.
+   \item Decodificar o vetor $r$ no vetor $v \in C$, tal que $v=r \oplus e_l$ 
+\end{enumerate}
+
+Para $n-k$ grande, esse esquema de decodificação é impraticável.
 
 \begin{theorem} {\bf Limite de Hamming} \label{LimHamm} \index{Limite de Hamming}  O número de bits de verificação de paridade de qualquer código linear binário (n,k) com distância mínima $dmin \geq 2t + 1$ satisfaz o limite de Hamming
 \begin{align*}
@@ -682,6 +708,25 @@ onde cada $u_j$ é igual ao valor de maior ocorrência entre $v_j$, ${v_j}^{'}$ 
 \begin{example} {\bf Códigos Reed-Solomon} veja \cite{Hefez:2008}, página 100
 \end{example}
 
+\section{Códigos Cíclicos}
+
+Os códigos cíclicos são uma classe importante de códigos de bloco lineares. Estes códigos são manipulados algebricamente através de polinômios, sem a utilização de matrizes, o que facilita tanto a codificação como a decodificação.
+
+\begin{definition} Um dado código de bloco linear é cíclico, se para cada um dos seus vetores de código, o $i$-ésimo deslocamento cíclico (\emph{shift}) também é um vetor código.
+\end{definition}
+
+\begin{example}
+$C1 = \{000, 110, 101, 011\}$ é um código cíclico. $C2 = \{000, 100, 011, 111\}$ não é um código cíclico.
+
+O código $CH:(7,4)$, descrito no exemplo~\ref{CodHamm}, também é um código cíclico.
+\end{example}
+
+\begin{definition} {\bf Representação Polinomial} \label{RepPol} \index{Representação Polinomial} 
+\end{definition}
+
+A representação polinomial é utilizada na operação 
+
+Para $m$ grande, a determinação da representação polinomial de cada elemento de forma algébrica é inviável. O mapeamento dos elementos de $\mathbb{GF}_q$ da representação exponencial para representação polinomial pode ser realizado de forma mais genérica utilizando a idéia de um circuito com registradores de deslocamento com realimentação linear (\emph{Linear Feedback Shift Register}, LFSR). Esse circuito consiste em $m$ \emph{flip-flops} em cascata, com realimentação do bit mais significativo. 
 
 \section{Códigos Convolacionais}
 
