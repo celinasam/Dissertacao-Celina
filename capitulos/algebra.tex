@@ -144,7 +144,24 @@ $\square$
    \end{enumerate}
 \end{definition}
 
-\begin{definition} $\mathbb{G}$ é um conjunto não vazio, $\phi$ : $\mathbb{G}\ X\ \mathbb{G} \rightarrow \mathbb{G}$, é uma função. $\phi$ é chamada operação binária tal que  $\phi(a,b)\ =\ a+b $ ou $\phi(a,b)\ =\ a.b$. Considere as seguintes propriedades:
+\begin{definition} {\bf Subespaço Vetorial} \label{SubEspVet} \index{Subespaço Vetorial} Dado um espaço vetorial $\mathbb{V}$, um subconjunto $W$ não vazio é um subespaço vetorial de $V$ se:
+   \begin{enumerate}[(i)]
+      \item $\forall u,v \in W$, temos que $u + v \in W$
+      \item $\forall a \in \mathbb{R}, \forall u \in W$, temos que $a.u \in W$
+   \end{enumerate}
+\end{definition}
+
+\begin{definition} {\bf Independência Linear} \label{IndepLin} \index{Independência Linear} Sejam $V$ um espaço vetorial e $v_1, \ldots, v_n \in V$. Dizemos que o conjunto $\{ v_1, \ldots, v_n\}$ é linearmente independente, se a equação $a_1v_1 + \ldots + a_nv_n=0$ implica que $a_1=a_2= \ldots =a_n=0$. Se $\exists a_i \neq 0$, dizemos que $\{ v_1, \ldots, v_n\}$ é linearmente dependente.
+\end{definition}
+
+
+\begin{definition} {\bf Combinação Linear} \label{CombLin} \index{Combinação Linear}  Sejam $V$ um espaço vetorial, $v_1, \ldots, v_n \in V$ e $a_1, \ldots a_n \in \mathbb{Z}$. O vetor da forma $v=a_1v_1 + \ldots + a_nv_n$ é um elemento de $V$ e o chamamos de combinação linear de $v_1, \ldots, v_n$.
+\end{definition}
+
+\begin{theorem} {\bf Dependência Linear} \label{DepLin} \index{Dependência Linear}  O conjunto $\{ v_1, \ldots, v_n\}$ é linearmente dependente se, e somente se, $\exists v_i$ tal que $v_i$ é uma combinação linear de $v_j, j \neq i, 1 \leq j \leq n$.
+\end{theorem}
+
+\begin{definition} {\bf Operação Binária} \label{OperBin} \index{Operação Binária} $\mathbb{G}$ é um conjunto não vazio, $\phi$ : $\mathbb{G}\ X\ \mathbb{G} \rightarrow \mathbb{G}$, é uma função. $\phi$ é chamada operação binária tal que  $\phi(a,b)\ =\ a+b $ ou $\phi(a,b)\ =\ a.b$. Considere as seguintes propriedades:
   \begin{description}
      \item [Associatividade] Se $a, b, c \in G$ então $a+(b+c)\ =\ (a+b)+c$. Se $a, b, c \in G$ então $a.(b.c)\ =\ (a.b).c$. 
      \item [Elemento Neutro] $\exists 0 \in G$ tal que se $a \in G$ $0\ +\ a\ =\ a\ +\ 0\ =\ a$. $\exists e \in G$ tal que se $a \in G$ $e.a\ =\ a.e =\ a$.
@@ -576,7 +593,7 @@ polinómios deverá pertencer ao código, e esta soma nos fornece um polinômio 
 Portanto,  $a(x)g(x) \in C$.  
 \end{proof}
 
-\begin{definition} {\bf Código de Blocos Linear} \label{CodBlocLin} \index{Código de Blocos Linear} Um código de bloco de tamanho $m$ e $2^k$ palavras mensagem é denominado um código de blocos linear $C:(m,k)$, se as $2^k$ palavras código formam um sub-espaço vetorial $S$ de dimensão k, contido no espaço de vetores formado por todos os vetores de tamanho $m$, $V_m$, com componentes no $\mathbb{GF}_2$. Um código é linear, quando o elemento  nulo pertence ao código e a soma de duas palavras código também é uma palavra código.
+\begin{definition} {\bf Código de Blocos Linear} \label{CodBlocLin} \index{Código de Blocos Linear} Um código de bloco de tamanho $m$ e $2^k$ palavras mensagem é denominado um código de blocos linear $C:(m,k)$, se as $2^k$ palavras código formam um subespaço vetorial $S$ de dimensão k, contido no espaço de vetores formado por todos os vetores de tamanho $m$, $V_m$, com componentes no $\mathbb{GF}_2$. Um código é linear, quando o elemento  nulo pertence ao código e a soma de duas palavras código também é uma palavra código.
 \end{definition}
 
 \begin{definition} {\bf Matriz Geradora Não Sistemática} \label{matger} \index{Matriz Geradora Não Sistemática} Seja $C:(m,k)$ um código de blocos linear. Existem $k$ vetores linearmente independentes tal que cada palavra código $c$ pode ser escrita como uma combinação linear deles.
@@ -642,7 +659,7 @@ ou, de uma forma mais compacta:
 onde {\bf $P$} é a matriz de paridade.
 \end{definition}
 
-\begin{definition} {\bf Matriz de Verificação de Paridade} \label{matverpar} \index{Matriz de Verificação de Paridade}  Em um código de blocos linear e sistemático $C:(m,k)$,  as $2^k$ palavras código formam um sub-espaço vetorial $S$ associado a um sub-espaço dual $S_d$ do mesmo espaço $V_m$ que é gerado pela matriz de verificação de paridade $H$. Cada vetor linha da matriz $G$ é ortogonal às linhas da matriz $H$ e vice-versa. Assim, cada código tem um dual que é o código gerado pela matriz $H$. Este código é um código $(n, n - k)$. A forma sistemática da matriz de paridade $H$ do código $C$, gerado pela matriz $G$ é:
+\begin{definition} {\bf Matriz de Verificação de Paridade} \label{matverpar} \index{Matriz de Verificação de Paridade}  Em um código de blocos linear e sistemático $C:(m,k)$,  as $2^k$ palavras código formam um subespaço vetorial $S$ associado a um subespaço dual $S_d$ do mesmo espaço $V_m$ que é gerado pela matriz de verificação de paridade $H$. Cada vetor linha da matriz $G$ é ortogonal às linhas da matriz $H$ e vice-versa. Assim, cada código tem um dual que é o código gerado pela matriz $H$. Este código é um código $(n, n - k)$. A forma sistemática da matriz de paridade $H$ do código $C$, gerado pela matriz $G$ é:
 \begin{align*}
 {\bf H} =\left[\begin{array}{ccccccccc}
 1 & 0 & 0 & \ldots & 0 & p_{0,0} & p_{1,0} & \ldots & p_{k-1,0}\\
