@@ -2,12 +2,12 @@
 %\singlespacing
     \centerline{
     \begin{tabular}{ccc}\\ \hline
-representação binária & representação polinomial & representação exponencial\\ \hline
-$0000$ & $0$ & $0$\\
-$1000$ & $1$ & $1$\\
-$0100$ & $\alpha$ & $\alpha$\\
-$0010$ & $\alpha^2$ & $\alpha^2$\\
-$0001$ & $\alpha^3$ & $\alpha^3$\\
+mensagem & vetor código & polinômios código\\ \hline
+$0000$ & $0000000$ & $0=0.p(x)$\\
+$1000$ & $1001100$ & $1+x^3+x^4=1.p(x)$\\
+$0100$ & $0100110$ & $x+x^4+x^5=x.g(x)$\\
+$0010$ & $0010011$ & $x^2+x^5+x^6=x^2.g(x)$\\
+$0001$ & $1100001$ & $1+x+x^6=x^3+x^6+(1+x+x^3)=x^3+x^6+x^7=x^3.g(x)$\\
 $1100$ & $\alpha + 1$ & $\alpha^4$\\
 $0110$ & $\alpha + \alpha^2$ & $\alpha^5$\\
 $0011$ & $\alpha^2 + \alpha^3$ & $\alpha^6$\\
@@ -20,7 +20,7 @@ $1111$ & $1 + \alpha + \alpha^2 + \alpha ^3$ & $\alpha^{12}$\\
 $1011$ & $1 + \alpha^2 + \alpha^3$ & $\alpha^{13}$\\
 $1001$ & $1 + \alpha^3$ & $\alpha^{14}$\\
     \end{tabular}}
-    \caption{Mapeamento dos elementos do corpo $\mathbb{GF}_4$ gerado pelo polinômio $1 + x^3 + x^4$}
-    \label{tab7:comp}
+    \caption{Código cíclico $CH:(7,4)$ gerado pelo polinômio $p(x)\ =\ 1 + x^3 + x^4$}
+    \label{tab9:cod}
 \end{table}
 

@@ -505,8 +505,8 @@ onde $a_i \in \mathbb{GF}_2$ e $P(\alpha)\ =\ 0$
 
 Na representação polinomial, o elemento primitivo $\alpha$ é a raiz do polinômio primitivo $p(x)$ de grau $m$. Essa representação é usada para a operação adição de dois elementos de $\mathbb{GF}_{2^m}$.
 
-\begin{example}
-Considere o campo $\mathbb{GF}_{2^4}$ definido pelo polinômio primitivo $p(x)=1 + x^3 + x^4$.  O campo tem $2^4=16$ elementos. Esses serão os símbolos usados pelo código. A representação binária é expressa pela pela tupla $(x^4, x^3, x^1, x^0)$. Na representação exponencial, o elemento nulo e os 4 primeiros elementos não nulos $\alpha, \alpha^2, \alpha^3, \alpha^4$ são expressos de forma trivial. Para obter a representação dos outros elementos $\alpha^5, \ldots , \alpha^{14}$ é necessário usar o polinômio primitivo. Para isso, define-se $\alpha$ raiz do polinômio primitivo: \footnote{Na aritmética binária, -1= +1.}
+\begin{example} {\bf Representação Polinomial do Corpo $\mathbb{GF}_{2^4}$} \label{RepPolCorpo} \index{Representação Polinomial do Corpo $\mathbb{GF}_{2^4}$}
+Considere o corpo $\mathbb{GF}_{2^4}$ definido pelo polinômio primitivo $p(x)=1 + x^3 + x^4$.  O campo tem $2^4=16$ elementos. Esses serão os símbolos usados pelo código. A representação binária é expressa pela pela tupla $(x^4, x^3, x^1, x^0)$. Na representação exponencial, o elemento nulo e os 4 primeiros elementos não nulos $\alpha, \alpha^2, \alpha^3, \alpha^4$ são expressos de forma trivial. Para obter a representação dos outros elementos $\alpha^5, \ldots , \alpha^{14}$ é necessário usar o polinômio primitivo. Para isso, define-se $\alpha$ raiz do polinômio primitivo: \footnote{Na aritmética binária, -1= +1.}
 \begin{align*}
 p(\alpha) = 0\\
 1 + \alpha + \alpha^4 = 0\\
@@ -519,7 +519,7 @@ Para se obter os elementos:
 \alpha^7 = \alpha.\alpha^6 = \alpha^3 + \alpha^4 = 1 + \alpha + \alpha^3\\
 \alpha^8 = \alpha.\alpha^7 = \alpha + \alpha^2 + \alpha^4  = \alpha + \alpha^2 + 1 + \alpha = 1 + \alpha^2\\
 \alpha^9 = \alpha.\alpha^8 = \alpha + \alpha^3\\
-\alpha^{10} = \alpha.\alpha^9 = \alpha^2 + \alpha^4\\
+\alpha^{10} = \alpha.\alpha^9 = \alpha^2 + \alpha^4\ =\ \alpha^2 + 1 + \alpha\ =\ 1 + \alpha + \alpha^2\\
 \alpha^{11} = \alpha.\alpha^{10} = \alpha + \alpha^2 + \alpha^3\\
 \alpha^{12} = \alpha.\alpha^{11} = \alpha^2 + \alpha^3 + \alpha^4 = 1 + \alpha + \alpha^2 + \alpha ^3\\
 \alpha^{13} = \alpha.\alpha^{12} = \alpha + \alpha^2 + \alpha^3 + \alpha^4 = \alpha + \alpha^2 + \alpha^3 + 1 + \alpha = 1 + \alpha^2 + \alpha^3\\
