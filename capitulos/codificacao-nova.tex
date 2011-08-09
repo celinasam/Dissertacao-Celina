@@ -54,7 +54,7 @@ Nesse mesmo trabalho, Shannon demonstrou dois importantes teoremas que são fund
 
 A probabilidade de erro no canal determina a capacidade de transferência de informação no canal.
 
-\section{Canais: modelos e erros}
+\section{Canais: modelos e erros} \label{canais}
 
 O código da fonte é o conjunto de elementos que definem forma como a informação será transmitida, por exemplo, em termos de \emph{bits} e o código do canal inclui o código da fonte e a redundância (por exemplo, em termos de \emph{bits}) introduzida para garantir a correção de erros.
 
@@ -224,24 +224,87 @@ Existem vários códigos de blocos \cite{Byers:1998, Kubiatowicz:2000}. Alguns d
 %\emph{burst errors}). Também podem ser usados eficientemente em canais
 %em que o conjunto de símbolos de entrada é consideravelmente grande.
 
-
-Segundo \cite{AF:2010}, as principais características de códigos de blocos são:
+Segundo \cite{AF:2010}, as principais características de códigos de blocos são, resumidamente:
 
 \begin{description}
    \item [taxa de codificação] $R = \frac{k}{m}$ é a medida da eficiência do código, pois é o quociente do número de \emph{bits} da palavra de dados sobre o número de \emph{bits} total da palavra transmitida
-   \item [distância mínima] $(d_{min})$ é a menor distância de Hamming \footnote{A distância de Hamming (dH) entre duas palavras código $v_i$ e $v_j$  é o número de \emph{bits} que são diferentes nessas duas palavras.} entre duas quaisquer palavras do código; ela depende do número de \emph{bits} redundantes $q = m - k$, tal que  $(d_{min} \leq q + 1)$
+   \item [distância mínima] $(d_{min})$ é a menor distância de Hamming (definição~\ref{DistHamm}) entre duas quaisquer palavras do código; ela depende do número de \emph{bits} redundantes $q = m - k$, tal que  $(d_{min} \leq q + 1)$; um código com $d_{min} = 1$ não tem capacidade de detectar erros
    \item [capacidade de detecção] detecta até $l$ erros, onde $l \leq d_{min} - 1$
    \item [capacidade de correção] corrige os erros até $t$ erros, onde $ t \leq \lfloor \frac{d_{min} - 1}{2} \rfloor$
    \item [capacidade de detecção e correção] detecta até $l$ erros e corrige os erros até $t$ erros, onde $d_{min} \geq l + t + 1$ e $l > t$
 \end{description}
-
-Um código com $d_{min} = 1$ não tem capacidade de detectar erros.
 
 \begin{definition} Seja uma sequência de bits $w=w_0w_1 \ldots w_{k-1} \in \{0, 1\}^k$. Podemos definir $w$ como sendo um elemento $w=(w_0w_2 \ldots w_{k-1})$ do produto cartesiano:
 \begin{align*}
 {\mathbb{Z}_2}^k=\underbrace{\mathbb{Z}_2 \times \ldots \times \mathbb{Z}_2}_{k}
 \end{align*}
 \end{definition}
+
+Um código $C$ sobre o alfabeto $\mathbb{Z}$ possui três parâmetros fundamentais: $[n,M,d]$, onde $n$ é seu comprimento no espaço vetorial $\mathbb{Z}^n$, $M$ é o número de elementos de $C$ e $d$ é a distância mínima (definição~\ref{DistHamm}) entre os elementos de $C$~\cite{Hefez:2008}.
+
+O conceito de equivalência de códigos também é importante na construção de um código.
+
+\begin{definition} {\bf Isometria} \label{Isometria} \index{Isometria} Seja $A$ um alfabeto e $n \in \mathbb{Z}^{*}$ não nulo. Dizemos que uma função $F: A^n \rightarrow A^n$ é uma isometria de $A^n$, se ela preserva as distâncias de Hamming (definição~\ref{DistHamm}) dos elementos de $A^n$, ou seja, $d(F(u),F(v))\ =\ d(u,v),\ \forall u,v \in A^n$.
+\end{definition}
+
+\begin{proposition} Toda isometria de $A^n$ é uma bijeção de $A^n$.
+\end{proposition}
+
+\begin{proof}
+\end{proof}
+
+\begin{proposition} 
+   \begin{enumerate}[(i)]
+      \item A função identidade de $A^n$ é uma isometria.
+      \item Se $F$ é uma isometria de $A^n$, então $F^{-1}$ é uma isometria de $A^n$.
+      \item Se $F$ e $G$ são isometrias de $A^n$, então $F \circ G$ é uma isometria de $A^n$.
+   \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\end{proof}
+
+\begin{definition} Dados dois corpos $C$ e $C^{'}$ em $\mathbb{A}^n$, dizemos que $C^{'}$ é equivalente a $C$ se $\exists F$ isometria de $A^n$ tal que $F(C)=C^{'}$.
+\end{definition}
+
+A equivalência de códigos é uma relação de equivalência , portanto possui as seguintes propriedades:
+
+\begin{property}
+   \begin{enumerate}[(i)]
+      \item Reflexividade: todo código é equivalente a si próprio
+      \item Simetria: se $C^{'}$ é equivalente a $C$, então $C$ é equivalente a $C^{'}$.
+      \item Transitividade: se $C^{''}$ é equivalente a $C^{'}$ e $C^{'}$ é equivalente a $C$, então $C^{''}$ é equivalente a $C$.
+   \end{enumerate}
+\end{property}
+
+Algumas importantes isometrias para construção de códigos são as que apresentamos como exemplo:
+
+\begin{example} Se $f: A \rightarrow A$ é uma bijeção e dado um número $i \in \mathbb{Z}$ não nulo tal que $1 \leq i \leq n$, então
+   \begin{align*}
+      {T_f}^i: A^n \rightarrow A^n\\
+      (a_1, \ldots, a_i, \ldots , a_n) \mapsto (a_1, \ldots , f(a_i), \ldots, a_n) 
+   \end{align*}
+é uma isometria.
+\end{example}
+
+\begin{example} Se $\pi$ é uma bijeção do conjunto $\{ 1, \ldots , n\}$ nele próprio (permutação), a aplicação de $\pi$ dada por
+   \begin{align*}
+      T_{\pi}: A^n \rightarrow A^n\\
+      (a_1, \ldots , a_n) \mapsto (a_{\pi(1)},  \ldots, a_{\pi(n)}) 
+   \end{align*}
+\end{example}
+é uma isometria.
+
+Apresentamos também um teorema sobre isometria relativa a métrica de Hamming (definição~\ref{DistHamm}), importante para a construção do código da fonte e do código do canal, ambos citados na seção~\ref{canais}. 
+
+\begin{theorem} Seja $F: A^n \rightarrow A^n$ uma isometria, então $\exists \pi$ uma permutação do conjunto $\{ 1, \ldots , n\}$ e $\exists f_i$ bijeções de $A,\ i=1, \ldots n$ tais que $F\ =\ T_{\pi} \circ T_{f_{1}}^1 \circ \ldots \circ T_{f_{n}}^n$.
+\end{theorem}
+
+\begin{corollary} Sejam $C$ e $C^{'}$ dois códigos em $A^n$. Temos que $C$ e $C^{'}$ são equivalentes se, e somente se, $\exists \pi$ uma permutação do conjunto $\{ 1, \ldots , n\}$ e $\exists f_i$ bijeções de $A,\ i=1, \ldots n$ tais que
+   \begin{align*}
+      C^{'}\ =\ \{ (f_{\pi(1)}(x_{\pi(1)}), \ldots,  f_{\pi(n)}(x_{\pi(n)})), (x_1, \ldots, x_n) \in C\}
+   \end{align*}
+\end{corollary}
 
 \begin{definition} {\bf Peso Hamming} \label{PesoHamm} \index{Peso Hamming}
 Seja $u=u_0u_1 \ldots u_k \in {\mathbb{Z}_2}^k$. O peso Hamming  de $u$ é dado por 
@@ -251,9 +314,9 @@ Seja $u=u_0u_1 \ldots u_k \in {\mathbb{Z}_2}^k$. O peso Hamming  de $u$ é dado 
 Em outras palavras, $\omega(u)$ é o número de $1$'s entre os bits de $u$.
 \end{definition}
 
-\begin{definition} {\bf Distância Hamming} \label{DistHamm} \index{Distância Hamming}
+\begin{definition} {\bf Distância de Hamming} \label{DistHamm} \index{Distância de Hamming}
 Seja $u=u_0u_1 \ldots u_k \in {\mathbb{Z}_2}^k$ e $v=v_0v_1 \ldots v_k \in {\mathbb{Z}_2}^k$. A distância entre $u$ e $v$ é dada por $\delta(u,v)=|\{i=0,1, \ldots k-1\ : u_j \neq v_j\}|$
-Em outras palavras, a distância Hamming $\delta(u,v)$ é o número de pares de bits correspondentes de $u$ e $v$ em que um bit difere do outro.
+Em outras palavras, a distância de Hamming $\delta(u,v)$ é o número de pares de bits correspondentes de $u$ e $v$ em que um bit difere do outro.
 \end{definition}
 
 \begin{proposition} Suponha que $u, v \in {\mathbb{Z}_2}^k$. Então $\delta(u,v)=\omega(u \oplus v)$.
@@ -484,7 +547,7 @@ Vamos determinar a capacidade de correção de erros de um código de bloco line
 Então, $C$ é capaz de detectar todos os padrões de $t$ erros. 
 \end{proposition}
 
-\begin{proof} Seja $v$ o vetor código transmitido ou armazenado e $r$ o vetor recebido ou lido. Seja $w \in C$. As distâncias hamming dos vetores satisfazem a inequação:
+\begin{proof} Seja $v$ o vetor código transmitido ou armazenado e $r$ o vetor recebido ou lido. Seja $w \in C$. As distâncias de Hamming dos vetores satisfazem a inequação:
 \begin{align*}
 \delta(v,r)+\delta(w,r) \geq \delta(v,w)
 \end{align*}
@@ -520,7 +583,40 @@ pode ser maior do que $1 + (n - k)$.
 
 Códigos de bloco que alcançam o limite de Singleton são chamados códigos MDS. Com códigos binários, a igualdade só se atinge com códigos de repetição. Nesse caso, a sobrecarga de armazenamento é grande ($k = 1$, $O = n/k = n$).
 
-\subsection{Matriz Padrão e Detecção de Síndrome}
+\subsection{Matriz Padrão e Detecção da Síndrome}
+
+Um código de bloco linear $C:(n,k)$ é construído como uma bijeção entre os $2^k$ vetores mensagem (código da fonte) e o conjunto $c_1 , c_2 , \ldots c_{2k}$ (código do canal). Cada um desses vetores é transmitido através de um canal e convertido no vetor recebido $r$ que pode ser qualquer vetor dos $2^n$ vetores do espaço vetorial $V^n$ definido sobre o corpo binário $GF_{2}$. Toda decodificação é essencialmente uma regra de decisão, baseada no espaço vetorial $V^n$ particionado em $2^k$ conjuntos disjuntos $D_1 , D_2 , \ldots , D_{2^k}$ tal que o vetor $c_i \in D_i$. Existe uma correspondência única entre o conjunto $D_i$ e o vetor $c_i$. Se o vetor recebido $r \in D_i$, ele será decodificado para $c_i$.
+
+A construção da matriz Padrão é o método para executar a decodificação. A matriz é construída da seguinte forma:
+
+\begin{enumerate}
+   \item A primeira linha é uma palavra código que começa com o vetor $0$. Essa linha contém $2^k$ vetores do conjunto dos $2^n$ e tem a forma: $c_1=(0,0, \ldots,0)c_2c_3 \ldots c_{2^k}$.
+   \item A segunda linha começa com um padrão de erro $e_2$, selecionado dos $2^n-2k$ vetores restantes. Essa linha contém a soma dos $2^k$ vetores com $e_2$, ou seja, $c_i \oplus e_2,\ \forall i=2 \ldots 2^k$.
+   \item O processo é repetido para cada uma das $2^{n-k}$ linhas da matriz padrão, selecionando $2^{n-k}$ padrões de erro dos vetores restantes.
+\end{enumerate}
+
+Assim, a matriz apresenta a forma:
+
+\begin{align*}
+\left[\begin{array}{cccccc}
+c_1=(0,0 \ldots 0) & c_2 & \ldots & c_i & \ldots & c_{2^k}\\
+e_2 & c_2 \oplus e_2 & \ldots & c_i \oplus e_2 & \ldots & c_{2^k} \oplus e_2\\
+\vdots & \vdots & \vdots & \vdots & \vdots & \vdots\\
+e_{2^{n-k}} & c_2 \oplus e_{2^{n-k}} & \ldots & c_i \oplus e_{2^{n-k}} & \ldots & c_{2^k} \oplus e_{2^{n-k}}
+\end{array}\right]
+\end{align*}
+
+Nessa matriz, a soma de quaisquer dois vetores da mesma linha é um vetor código. Existem  $2^{n-k}$ linhas distintas nessa matriz. Essas linhas são chamadas de \emph{cosets} do código de bloco linear $C:(n,k)$. O vetor que começa cada um dos \emph{cosets} é denominado o líder do \emph{coset}, e pode ser qualquer vetor da linha.
+
+Seja $D_j$ a $j$-ésima coluna da matriz padrão da forma: $D_j=\{ c_j,\ e_2 \oplus c_j,\ e_3 \oplus c_j, \ldots\ e_{2^{n-k}} \oplus c_j\}$ onde $c_j$ é um vetor código de $C$ e $e_2, e_3, \ldots e_{2^{n-k}}$ são \emph{cosets} líderes. As $2^k$ colunas distintas $D_1, D_2, \ldots D_{2^{k}}$ podem ser usadas para decodificar um vetor $r$. Se o vetor $c_j$ for transmitido pelo canal, pela definição de $D_j$, o vetor $c_j \in D_j$ se o padrão de erro obtido no canal é um \emph{coset} líder. Dessa forma, o vetor $r$ pode ser decodificado corretamente para o vetor $c_j$. Em outras palavras, se um padrão de erro do canal não é um \emph{coset} líder, a decodificação resultará em erro.
+
+Seja $x$ um padrão de erro do canal da forma $x=e_l \oplus c_i$ com $2 \leq l \leq 2^{n-k}$ e $2 \leq i \leq 2^k$. Assim, o vetor recebido $r$ pode ser escrito como $r=c_j \oplus x=e_j \oplus (c_i \oplus c_j)=e_l \oplus c_s$. O vetor $r \in D_s$ e é decodificado para $c_s$, que não é o vetor $c_j$. Isso resulta em erro. Portanto, a decodificação é correta se, e somente se, o padrão de erro obtido no canal é um \emph{coset} líder.
+
+Para minimizar a probabilidade de erro, todos os padrões de erro que se podem corrigir, que são os \emph{cosets} líderes, terão de ser os padrões mais prováveis. Em caso de transmissão sobre um canal BSC, os padrões mais prováveis são os que possuem os menores pesos possíveis. Portanto, para construir a matriz padrão, os \emph{cosets} líderes são escolhidos entre os vetores de menor peso que estão disponíveis.
+
+
+\begin{theorem} Todo código linear $C:(n,k)$ é capaz de corrigir $2^{n-k}$ padrões de erro.
+\end{theorem}
 
 \begin{theorem} {\bf Limite de Hamming} \label{LimHamm} \index{Limite de Hamming}  O número de bits de verificação de paridade de qualquer código linear binário (n,k) com distância mínima $dmin \geq 2t + 1$ satisfaz o limite de Hamming
 \begin{align*}
@@ -581,6 +677,9 @@ ou
 
 onde cada $u_j$ é igual ao valor de maior ocorrência entre $v_j$, ${v_j}^{'}$ e ${v_j}^{''}$. Nesse caso, se no máximo um bit entre $v_j$, ${v_j}^{'}$ e ${v_j}^{''}$ for diferente de $w_j$, então ainda teremos $u_j=w_j$. Assim, nesse caso, até um erro para cada $w_j$ pode ser detectado e corrigido.
 
+\end{example}
+
+\begin{example} {\bf Códigos Reed-Solomon} veja \cite{Hefez:2008}, página 100
 \end{example}
 
 
