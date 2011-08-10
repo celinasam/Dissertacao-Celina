@@ -712,7 +712,7 @@ onde cada $u_j$ é igual ao valor de maior ocorrência entre $v_j$, ${v_j}^{'}$ 
 
 Os códigos cíclicos são uma classe importante de códigos de bloco lineares. Estes códigos são manipulados algebricamente através de polinômios, sem a utilização de matrizes, o que facilita tanto a codificação como a decodificação.
 
-\begin{definition} Um dado código de bloco linear é cíclico, se para cada um dos seus vetores de código, o $i$-ésimo deslocamento cíclico (\emph{shift}) também é um vetor código.
+\begin{definition} Um dado código de bloco linear é cíclico, se para cada um dos seus vetores de código, o $i$-ésimo deslocamento cíclico (LFSR) também é um vetor código.
 \end{definition}
 
 \begin{example}
@@ -722,14 +722,16 @@ O código $CH:(7,4)$, descrito no exemplo~\ref{CodHamm}, também é um código c
 \end{example}
 
 \begin{definition} {\bf Representação Polinomial} \label{RepPol} \index{Representação Polinomial}
-Usaremos o corpo $\mathbb{GF}_{2^4}$ do exemplo~\ref{RepPolCorpo}.
 \end{definition}
 
+\begin{example}
+Usaremos o corpo $\mathbb{GF}_{2^4}$ do exemplo~\ref{RepPolCorpo}. Na tabela~\ref{tab9:cod}, temos os vetores código desse código e como eles foram gerados a partir da representação polinomial e representação exponencial dos elementos do corpo $\mathbb{GF}_4$ (tabela~\ref{tab7:comp}).
 \input{tabelas/tabela-representacao-codigo-ciclico}
+\end{example}
 
 A representação polinomial é utilizada na operação 
 
-Para $m$ grande, a determinação da representação polinomial de cada elemento de forma algébrica é inviável. O mapeamento dos elementos de $\mathbb{GF}_q$ da representação exponencial para representação polinomial pode ser realizado de forma mais genérica utilizando a idéia de um circuito com registradores de deslocamento com realimentação linear (\emph{Linear Feedback Shift Register}, LFSR). Esse circuito consiste em $m$ \emph{flip-flops} em cascata, com realimentação do bit mais significativo. 
+Para $m$ grande, a determinação da representação polinomial de cada elemento de forma algébrica é inviável. O mapeamento dos elementos de $\mathbb{GF}_q$ da representação exponencial para representação polinomial pode ser realizado de forma mais genérica utilizando a idéia de um circuito com registradores de deslocamento com realimentação linear (LFSR). Esse circuito consiste em $m$ \emph{flip-flops} em cascata, com realimentação do bit mais significativo. 
 
 \section{Códigos Convolacionais}
 
