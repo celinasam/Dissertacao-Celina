@@ -130,7 +130,7 @@ A versão atual do Hadoop não utiliza apenas a técnica de replicação
 \cite{White:2009} para obter disponibilidade e confiabilidade de
 dados. Ela pode ser configurada para usar também  codicação XOR (RAID-5) e RS.
 
-No HDFS, a codificação RS \emph{default} é (8, 5) e a XOR \emph{default} é (6, 5).  Logo, toleram até $l=3$ e até $l=1$ falhas, respectivamente, por \emph{stripe} de 5 blocos ($k=5$) com sobrecarga de $B=1.6$ e de $B=1.2$, respectivamente. Ambas foram projetadas sob o corpo $GF(8)$. O polinômio primitivo dessa codificação RS é $x^8\ +\ x^4\ +\ x^3\ +\ x^2\ +\ 1$.
+No HDFS, a codificação RS \emph{default} é (8, 5) e a XOR \emph{default} é (6, 5).  Logo, toleram até $l=3$ e até $l=1$ falhas, respectivamente, por \emph{stripe} de 5 blocos ($k=5$) com sobrecarga de $B=1.6$ e de $B=1.2$, respectivamente. Ambas foram projetadas sob o corpo $GF(2^8)$. O polinômio primitivo dessa codificação RS é $x^8\ +\ x^4\ +\ x^3\ +\ x^2\ +\ 1$.
 
 Na codificação XOR, é possível configurar o número de blocos por \emph{stripe}. Já na codificação RS, tanto o número de blocos por \emph{stripe} e como o número de blocos de paridade são configuráveis.
 

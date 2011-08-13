@@ -721,17 +721,67 @@ $C1 = \{000, 110, 101, 011\}$ é um código cíclico. $C2 = \{000, 100, 011, 111
 O código $CH:(7,4)$, descrito no exemplo~\ref{CodHamm}, também é um código cíclico.
 \end{example}
 
-\begin{definition} {\bf Representação Polinomial} \label{RepPol} \index{Representação Polinomial}
+\begin{definition} {\bf Representação Polinomial} \label{RepPol} \index{Representação Polinomial} Uma representação polinomial de um vetor código $c=(c_0,c_1, \ldots, c_{n-1})$ é da forma:
+
+\begin{align*}
+c(X)=c_0 + c_1X + c_2X^2 + \ldots + c_{n-1}X^{n-1}, c_i \in \mathbb{GF}_{2^m}
+\end{align*}
+
 \end{definition}
 
 \begin{example}
-Usaremos o corpo $\mathbb{GF}_{2^4}$ do exemplo~\ref{RepPolCorpo}. Na tabela~\ref{tab9:cod}, temos os vetores código desse código e como eles foram gerados a partir da representação polinomial e representação exponencial dos elementos do corpo $\mathbb{GF}_4$ (tabela~\ref{tab7:comp}).
+Para esse exemplo, usaremos o corpo $\mathbb{GF}_{2^4}$ do exemplo~\ref{RepPolCorpo}. Na tabela~\ref{tab9:cod}, temos os vetores código desse código e como eles foram gerados a partir da representação polinomial e representação exponencial dos elementos do corpo $\mathbb{GF}_4$ (tabela~\ref{tab7:comp}).
 \input{tabelas/tabela-representacao-codigo-ciclico}
 \end{example}
 
-A representação polinomial é utilizada na operação 
+A representação polinomial é utilizada em todas as operações ($\oplus, \otimes, \div$) entre os elementos de um código cíclico. Códigos cíclicos podem utilizar um esquema com  o corpo $\mathbb{GF}_{2^8}$ e com  os coeficientes do polinômio gerador com elementos do corpo $\mathbb{GF}_{2}$.
 
-Para $m$ grande, a determinação da representação polinomial de cada elemento de forma algébrica é inviável. O mapeamento dos elementos de $\mathbb{GF}_q$ da representação exponencial para representação polinomial pode ser realizado de forma mais genérica utilizando a idéia de um circuito com registradores de deslocamento com realimentação linear (LFSR). Esse circuito consiste em $m$ \emph{flip-flops} em cascata, com realimentação do bit mais significativo. 
+Para $m$ grande, a determinação da representação polinomial de cada elemento de forma algébrica é inviável. O mapeamento dos elementos de $\mathbb{GF}_q$ da representação exponencial para representação polinomial pode ser realizado de forma mais genérica utilizando a idéia de um circuito com registradores de deslocamento com realimentação linear (LFSR). Esse circuito consiste em $m$ \emph{flip-flops} em cascata, com realimentação do bit mais significativo.
+
+As operações ($\oplus, \times, \div$) entre polinômios sobre um corpo são usualmente definidas em sistemas de computadores sob o corpo $\mathbb{GF}_{2}$.
+
+\begin{definition} Sejam dois polinômios
+\begin{align*}
+c_1=c_{01}+c_{11}X+ \ldots +c_{n-1,1}X^{n-1}\\
+c_2=c_{02}+c_{12}X+ \ldots +c_{n-1,2}X^{n-1},
+\end{align*}
+com $c_{i1}, c_{i2} \in \mathbb{GF}_{2^m}$.
+A adição de $c_1$ e $c_2$ é realizada pela adição módulo $2$ dos coeficientes correspondentes ao termo $X^i$:
+\begin{align*}
+c_1(X) \oplus c_2(X)=c_{01} \oplus c_{02} \oplus (c_{11} \oplus c_{12})X+ \ldots \oplus (c_{n-1,1} \oplus c_{n-1,2})X^{n-1}
+\end{align*}
+A multiplicação é realizada usando a multiplicação e a adição módulo $2$, como segue:
+\begin{align*}
+c_1(X) \times c_2(X)=(c_{01} \otimes c_{02}) \oplus (c_{01} \otimes c_{12} \oplus c_{02} \otimes c_{12})X \oplus  \ldots \oplus (c_{n-1,1} \oplus c_{n-1,2})X^{2(n-1)}
+\end{align*}
+A divisão é definida para $c_2 \neq 0$ e pela existência de dois polinômios $q(X), r(X)$ únicos sob o corpo $\mathbb{GF}_{2^m}$tal que:
+\begin{align*}
+c_1(X)=q(X) \otimes c_2(X) \oplus r(X)
+\end{align*}
+\end{definition}
+
+\begin{definition} {\bf Matriz Geradora Sistemática} \label{matgerclic} \index{Matriz Geradora Sistemática para Códigos Cíclicos} Um código de blocos cíclico e sistemático $C:(m,k)$ com seu polinômio gerador $g(X)$ e com polinômio mensagem da forma: $m(X)=m_0+m_1X+ \ldots +m_{k-1}X^{k-1}$ pode ser obtido através das seguintes operações:
+\begin{enumerate}
+  \item Calcula-se o polinômio $X^{n-k}m(X)=m_0X^{n-k}+m_1X^{n-k+1}+ \ldots +m_{k-1}X^{n-1}$
+  \item Divide-se $X^{n-k}m(X)$ pelo polinômio gerador $g(X)$
+   \begin{align*}
+     X^{n-k}m(X)=q(X)g(X)+p(X)
+   \end{align*}
+sendo $p(X)$ o polinômio resto da divisão com grau igual ou menor a $n-k-1$.
+  \item Reordenando os termos
+     \begin{align*}
+     p(X)+X^{n-k}m(X)=q(X)g(X)
+   \end{align*}
+\end{enumerate}
+Nesse formato, observamos que o polinômio $p(X)+X^{n-k}m(X)$ é um polinômio código, pois é múltiplo de $g(X)$. Podemos ver que o termo $X^{n-k}m(X)$ é o polinômio mensagem deslocado à direita em $n-k$ posições e o polinômio resto da divisão é a paridade, ocupando os termos de menor grau do polinômio. Assim, o polinômio código na forma sistemática fica:
+    \begin{align*}
+     c(X)=p(X)+X^{n-k}m(X)=p_0+p_1X+ \ldots +p_{n-k-1}X{n-k-1}+m_0X^{n-k}+ \ldots +m_{k-1}X^{n-1}
+    \end{align*}
+que pode ser expresso na forma de vetor código
+    \begin{align*}
+     c=(p_0,p_1, \ldots, p_{n-k-1},m_0,m_1, \ldots, m_{k-1})
+    \end{align*}
+\end{definition}
 
 \section{Códigos Convolacionais}
 

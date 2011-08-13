@@ -234,7 +234,7 @@ Se $\mathbb{Z}_q$ é um corpo se, e somente se, todos os seus elementos $\bar{0}
 \begin{theorem} {\bf $\mathbb{GF}_q$} \label{GFq} \index{$\mathbb{GF}_q$} Seja $\mathbb{GF}_q$ um corpo finito com $q$ elementos. Então:
    \begin{enumerate}[(i)]
      \item $q = p^n$ para algum primo $p$ e para algum inteiro positivo $n$,
-     \item $\mathbb{GF}_q$ contém o sub-campo $\mathbb{GF}_p$,
+     \item $\mathbb{GF}_q$ contém o sub-corpo $\mathbb{GF}_p$,
      \item $\mathbb{GF}_q$ é um espaço vetorial sob $\mathbb{GF}_p$ de dimensão $n$,
      \item $p\alpha\ =\ 0$ para todo $\alpha \in \mathbb{GF}_q$ e
      \item Isomorfismo: \index{Isomorfismo entre Corpos} Dados dois corpos finitos $C_q$ e $G_q$, ambos com $q$ elementos, existe uma única bijeção $f\ :\ C_q \rightarrow G_q$ com $f(a+b)=f(a)+f(b)$ e $f(a.b)=f(a).f(b)$ para $\forall a,b \in C_q$. Dizemos que  $C_q$ é isomorfo a $G_q$.
@@ -326,7 +326,7 @@ Isso é, a multiplicação de quaisquer dois elementos $a,b \in \mathbb{GF}_q$ �
 \end{definition}
 
 \begin{definition} 
-Dado um campo $\mathbb{GF}_q$, as operações adição e multiplicação seguem as seguintes propriedades:
+Dado um corpo $\mathbb{GF}_q$, as operações adição e multiplicação seguem as seguintes propriedades:
 \begin{enumerate}[(i)]
    \item $\mathbb{GF}_q$ é um anel comutativo com relação a operação de adição. O elemento $0$ é o elemento neutro.
    \item ${\mathbb{GF}_q}^*$ é um anel comutativo com relação a operação de multiplicação. O elemento $1$ é o elemento neutro.
@@ -337,7 +337,7 @@ Dado um campo $\mathbb{GF}_q$, as operações adição e multiplicação seguem 
 \end{enumerate}
 \end{definition}
 
-\begin{definition} {\bf Elemento Primitivo} \label{ElemPrim} \index{Elemento Primitivo} Seja $a \in \mathbb{GF}_q$ não nulo. $a$ é chamado elemento primitivo se a ordem de $a$ é $q-1$. Todos os campos tem um elemento primitivo.
+\begin{definition} {\bf Elemento Primitivo} \label{ElemPrim} \index{Elemento Primitivo} Seja $a \in \mathbb{GF}_q$ não nulo. $a$ é chamado elemento primitivo se a ordem de $a$ é $q-1$. Todos os corpos tem um elemento primitivo.
 \end{definition}
 
 \begin{proposition} Todas potências do elemento primitivo geram todos os elementos não nulos de $\mathbb{GF}_q$. 
@@ -346,7 +346,7 @@ Dado um campo $\mathbb{GF}_q$, as operações adição e multiplicação seguem 
 \begin{proof}
 \end{proof}
 
-\begin{proposition} Todos os campos tem pelo menos um elemento primitivo.
+\begin{proposition} Todos os  corpos tem pelo menos um elemento primitivo.
 \end{proposition}
 
 \begin{proof}
@@ -485,7 +485,7 @@ Seja $p(x)$ um polinômio de grau $m$ sobre $\mathbb{GF}_2$. Se $2^m-1$ for o me
 Seja $F[x]$ um polinômio irredutível de grau $n$ em $GP_p[x]$. Então $GP_p[x]/F[x]$ é um corpo finito com $p^n$ elementos.
 \end{proposition}
 
-\begin{theorem} Seja $P[x]$ um irredutível polinômio sob $\mathbb{GP}_p$ e cujo grau é $m$. Então o conjunto de todos os polinômios em $x$ de grau $m-1$ e coefientes $\in \mathbb{GP}_p$ com as operações adição e multiplicação módulo-$2$ é um campo de ordem $p_m$.
+\begin{theorem} Seja $P[x]$ um irredutível polinômio sob $\mathbb{GP}_p$ e cujo grau é $m$. Então o conjunto de todos os polinômios em $x$ de grau $m-1$ e coefientes $\in \mathbb{GP}_p$ com as operações adição e multiplicação módulo-$2$ é um corpo de ordem $p_m$.
 \end{theorem}
 
 \section{Polinômios sobre $\mathbb{GF}_q$}
@@ -506,7 +506,7 @@ onde $a_i \in \mathbb{GF}_2$ e $P(\alpha)\ =\ 0$
 Na representação polinomial, o elemento primitivo $\alpha$ é a raiz do polinômio primitivo $p(x)$ de grau $m$. Essa representação é usada para a operação adição de dois elementos de $\mathbb{GF}_{2^m}$.
 
 \begin{example} {\bf Representação Polinomial do Corpo $\mathbb{GF}_{2^4}$} \label{RepPolCorpo} \index{Representação Polinomial do Corpo $\mathbb{GF}_{2^4}$}
-Considere o corpo $\mathbb{GF}_{2^4}$ definido pelo polinômio primitivo $p(x)=1 + x^3 + x^4$.  O campo tem $2^4=16$ elementos. Esses serão os símbolos usados pelo código. A representação binária é expressa pela pela tupla $(x^4, x^3, x^1, x^0)$. Na representação exponencial, o elemento nulo e os 4 primeiros elementos não nulos $\alpha, \alpha^2, \alpha^3, \alpha^4$ são expressos de forma trivial. Para obter a representação dos outros elementos $\alpha^5, \ldots , \alpha^{14}$ é necessário usar o polinômio primitivo. Para isso, define-se $\alpha$ raiz do polinômio primitivo: \footnote{Na aritmética binária, -1= +1.}
+Considere o corpo $\mathbb{GF}_{2^4}$ definido pelo polinômio primitivo $p(x)=1 + x^3 + x^4$.  O corpo tem $2^4=16$ elementos. Esses serão os símbolos usados pelo código. A representação binária é expressa pela pela tupla $(x^4, x^3, x^1, x^0)$. Na representação exponencial, o elemento nulo e os 4 primeiros elementos não nulos $\alpha, \alpha^2, \alpha^3, \alpha^4$ são expressos de forma trivial. Para obter a representação dos outros elementos $\alpha^5, \ldots , \alpha^{14}$ é necessário usar o polinômio primitivo. Para isso, define-se $\alpha$ raiz do polinômio primitivo: \footnote{Na aritmética binária, -1= +1.}
 \begin{align*}
 p(\alpha) = 0\\
 1 + \alpha + \alpha^4 = 0\\
@@ -531,7 +531,7 @@ Para se obter os elementos:
 
 \end{example}
 
-O campo $\mathbb{GF}_{256}$ é um espaço vetorial sob $\mathbb{GF}_2$ de dimensão $8$ e é muito usado para construir códigos de bloco. A aritmética
+O corpo $\mathbb{GF}_{256}$ é um espaço vetorial sob $\mathbb{GF}_2$ de dimensão $8$ e é muito usado para construir códigos de bloco. A aritmética
 binária utiliza adição e multiplicação módulo-$2$. Um polinômio $F[x]$ definido sobre $\mathbb{GF}_2$ possui a forma:
 \begin{align*}
 P[x]\ =\ a_o\ +\ a_1x\ +\ a_2x^2\ + \ldots +\ a_{n-1}x^{n-1}\ +\ a_nx^n\\
@@ -594,7 +594,7 @@ Portanto,  $a(x)g(x) \in C$.
 \begin{definition} {\bf Código de Blocos Linear} \label{CodBlocLin} \index{Código de Blocos Linear} Um código de bloco de tamanho $m$ e $2^k$ palavras mensagem é denominado um código de blocos linear $C:(m,k)$, se as $2^k$ palavras código formam um subespaço vetorial $S$ de dimensão k, contido no espaço de vetores formado por todos os vetores de tamanho $m$, $V_m$, com componentes no $\mathbb{GF}_2$. Um código é linear, quando o elemento  nulo pertence ao código e a soma de duas palavras código também é uma palavra código.
 \end{definition}
 
-\begin{definition} {\bf Matriz Geradora Não Sistemática} \label{matger} \index{Matriz Geradora Não Sistemática} Seja $C:(m,k)$ um código de blocos linear. Existem $k$ vetores linearmente independentes tal que cada palavra código $c$ pode ser escrita como uma combinação linear deles.
+\begin{definition} {\bf Matriz Geradora Não Sistemática} \label{matger} \index{Matriz Geradora Não Sistemática para Códigos de Blocos} Seja $C:(m,k)$ um código de blocos linear. Existem $k$ vetores linearmente independentes tal que cada palavra código $c$ pode ser escrita como uma combinação linear deles.
 \begin{align*}
 c=v_0g_0 \oplus v_1g_1 \oplus \ldots \oplus v_{k-1}g_{k-1}
 \end{align*}
@@ -635,7 +635,7 @@ g_{k-1}
 As linhas da matriz geradora $G$ geram o código de blocos linear $C:(m,k)$, ou seja, as $k$ linhas linearmente independentes de $G$ definem completamente o código.
 \end{definition}
 
-\begin{definition} {\bf Matriz Geradora Sistemática} \label{matger} \index{Matriz Geradora Sistemática}  Um código de blocos linear e sistemático $C:(m,k)$ é especificado de forma única por uma matriz geradora da forma:
+\begin{definition} {\bf Matriz Geradora Sistemática} \label{matger} \index{Matriz Geradora Sistemática para Códigos Lineares}  Um código de blocos linear e sistemático $C:(m,k)$ é especificado de forma única por uma matriz geradora da forma:
 \begin{align*}
 G=\left[\begin{array}{c}
 g_0\\
@@ -783,7 +783,7 @@ Figura 8.4: Codificação de canal
 É de especial interesse o caso de $\mathbb{GF}_q, q=2^m,\ m = 8$, quando cada símbolo representa 1 byte. Um byte representa 8 bits, que é a menor palavra de dados usualmente encontrada em sistemas de computadores.
 
 
-O campo $\mathbb{GF}_{2^8-1}$ usado para construir a codificação RS implementada no Hadoop consiste de polinômios $P[x]$ com coeficientes binários e grau até $7 ?$ e as operações de adição e multiplicação, calculadas módulo o polinômio irredutível $P[x]\ =\ x^8 + x^4 + x^3 + x^2 + 1$.
+O corpo $\mathbb{GF}_{2^8-1}$ usado para construir a codificação RS implementada no Hadoop consiste de polinômios $P[x]$ com coeficientes binários e grau até $7 ?$ e as operações de adição e multiplicação, calculadas módulo o polinômio irredutível $P[x]\ =\ x^8 + x^4 + x^3 + x^2 + 1$.
 
 %Teoria da Informação: Capacidade do Canal de Transmissão
 
