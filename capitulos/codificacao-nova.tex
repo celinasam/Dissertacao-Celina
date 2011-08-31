@@ -58,7 +58,7 @@ A probabilidade de erro no canal determina a capacidade de transferência de inf
 
 O código da fonte é o conjunto de elementos que definem forma como a informação será transmitida, por exemplo, em termos de \emph{bits} e o código do canal inclui o código da fonte e a redundância (por exemplo, em termos de \emph{bits}) introduzida para garantir a correção de erros.
 
-Uma dificuldade encontrada por quem estuda códigos corretores de erros é que não existe uma nomenclatura unificada \cite{Plank:2009}. Também segundo \cite{CS540:2010}, existem poucos pesquisadores que são programadores de sistemas e que fazem propostas neste tema.
+Uma dificuldade encontrada por quem estuda códigos corretores de erros é que não existe uma nomenclatura unificada \cite{Plank:2009}. Também segundo \cite{CS540:2010}, existem poucos pesquisadores que são programadores de sistemas e que fazem propostas nesse tema.
 
 A idéia básica da código ótimo é que o objeto original possa ser reconstruído a partir de quaisquer $k$ únicos fragmentos que são aproximadamente do mesmo tamanho do objeto original \cite{Weatherspoon:2002:01}.
 %Para uma codificação quase ótima, são necessários $ \approx  (1+e)k$ fragmentos, onde $e \geq 1$ \cite{EC:2010}.
@@ -148,7 +148,7 @@ FEC utiliza redundância, assim o decodificador pode corrigir os erros de mensag
 
 Técnicas FEC incluem códigos de blocos (\emph{block codes}), que são códigos sem memória e códigos convolacionais, que são códigos com memória \cite{Berlekamp:1987}. 
 
-\section{Códigos de Blocos}
+\section{Códigos de Blocos Lineares}
 
 Na Figura~\ref{fig3:fec}, vemos um sistema que utiliza código de
 blocos. A fonte envia uma sequência de dados para o codificador. O
@@ -215,7 +215,7 @@ ambos).
 % Um código C é linear se v e w são palavras código distintas de um código C, então v+w é também uma palavra código de C. Um código linear contém a palavra código zero, pois $v + v = 0$. Operação simples de decodificação, pouca memória e métodos simples para determinação de padrões de erros são algumas das vantagens de códigos lineares.
 
 
-Existem vários códigos de blocos \cite{Byers:1998, Kubiatowicz:2000}. Alguns dos mais utilizados são códigos Reed-Solomon (RS), códigos Low-Density Parity-Check (LDPC) e códigos Tornado \cite{Mitzenmacher:2004, RTAD:2007}.
+Existem vários códigos de blocos \cite{Byers:1998, Kubiatowicz:2000} que são utilizados em redes e em sistemas de computadores. Alguns deles são códigos Reed-Solomon (RS), códigos Low-Density Parity-Check (LDPC) e códigos Tornado \cite{Mitzenmacher:2004, RTAD:2007}.
 
 %Segundo \cite{Almeida:2007}, códigos Reed-Solomon (RS) são
 %particularmente úteis para correção de erros em rajada (seqüência
